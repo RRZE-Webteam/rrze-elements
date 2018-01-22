@@ -1,3 +1,37 @@
+// Font Awesome Icons
+@import "font-awesome";
+
+// Variables
+$page: #fff;
+$header: #636071;
+$text: #393944;
+$border: #C3C3CB;
+$medium-blue: #005CAE;
+$text-blue: #00458C;
+$dark-grey: #4B4A56;
+$medium-grey: #707070;
+$light-grey: #dedee3;
+$link: $medium-grey;
+$bg-grey: #e7e7eb;
+$green: #00905A;
+$red: #D94000;
+
+// FAU Colors
+$colorPhilFak:	    #A36B0D;
+$colorRwFak:	    #8d1429;
+$colorMedFak:	    #0381A2;
+$colorNatFak:	    #048767;
+$colorTechFak:	    #6E7881;
+$colorZUV:	    #003366;
+$colorDefault:	    #003366;
+
+// Functions and Mixins
+
+
+/*
+ * Timeline
+ */
+
 [id^="timeline"] {
     max-width: 100%;
     overflow-x: hidden;
@@ -323,5 +357,136 @@
             }
         }
     }
+}
 
+/*
+ * Absatzklassen
+ */
+div {
+    &.notice {
+        display: block;
+        margin: 20px 0;
+        padding-left: 36px;
+        &::before {
+            @extend .fa !optional;
+            @extend .fa-2x !optional;
+            min-width: 24px;
+            padding-right: 8px;
+            margin-left: -36px;
+            float: left;
+            position: relative;
+            top: -3px;
+        }
+        h3 {
+            margin-bottom: 0;
+        }
+        p, ul, ol {
+            margin-bottom: .3em;
+        }
+    }
+
+    &.notice-alert,
+    &.notice-attention {
+        @extend .fa-exclamation-circle !optional;
+        color: $red;
+        font-weight: bold;
+        h3 {
+            color: $red;
+        }
+        h3+p, h3+ul, h3+ol {
+            font-weight: normal;
+            color: $text;
+        }
+    }
+
+    &.notice-hinweis {
+        @extend .fa-exclamation-circle !optional;
+        color: $text-blue;
+        font-weight: bold;
+        &::before {
+            font-weight: normal;
+        }
+        h3 {
+            color: $text-blue;
+        }
+        h3+p, h3+ul, h3+ol {
+            font-weight: normal;
+            color: $text;
+        }
+    }
+
+    &.notice-baustelle {
+        @extend .fa-wrench !optional;
+        color: $dark-grey;
+        font-weight: bold;
+        h3 {
+            color: $dark-grey;
+        }
+        h3+p, h3+ul, h3+ol {
+            font-weight: normal;
+            color: $text;
+        }
+    }
+
+    &.notice-question {
+        @extend .fa-question-circle !optional;
+        &::before {
+            color: $medium-blue;
+        }
+    }
+
+    &.notice-minus {
+        @extend .fa-minus-circle !optional;
+        &::before {
+            color: $red;
+        }
+    }
+
+    &.notice-plus {
+        @extend .fa-plus-circle !optional;
+        &::before {
+            color: $green;
+        }
+    }
+    &.notice-tipp {
+        @extend .fa-lightbulb-o !optional;
+        font-weight: bold;
+        h3 {
+            color: $dark-grey;
+        }
+        h3+p, h3+ul, h3+ol {
+            font-weight: normal;
+            color: $text;
+        }
+        &::before {
+            color: orange;
+        }
+    }
+    &.notice-download {
+        @extend .fa-download !optional;
+        &::before {
+            color: $medium-blue;
+        }
+    }
+
+    &.notice-faubox {
+        @extend .fa-cloud-download !optional;
+        &::before {
+            color: $medium-blue;
+        }
+    }
+
+    &.notice-audio {
+        @extend .fa-volume-up !optional;
+        &::before {
+            color: $medium-blue;
+        }
+    }
+
+    &.notice-video {
+        @extend .fa-youtube-play !optional;
+        &::before {
+            color: $medium-blue;
+        }
+    }
 }
