@@ -48,19 +48,6 @@ $colorDefault:	    #003366;
         margin: 0;
         padding: 0;
     }
-    a {
-        opacity: 0.7;
-        text-decoration: none;
-        -webkit-transition: 0.5s;
-        -moz-transition: 0.5s;
-        -o-transition: 0.5s;
-        -ms-transition: 0.5s;
-        transition: 0.5s;
-        &:hover,
-        &.selected {
-            opacity: 1;
-        }
-    }
 
     h1,h2,h4,h5,h6 {
         margin-bottom: 5px;
@@ -96,9 +83,21 @@ $colorDefault:	    #003366;
             line-height: 18px;
             padding-bottom: 10px;
             text-decoration: none;
+            opacity: 0.7;
+            text-decoration: none;
+            -webkit-transition: 0.5s;
+            -moz-transition: 0.5s;
+            -o-transition: 0.5s;
+            -ms-transition: 0.5s;
+            transition: 0.5s;
             @media screen and (min-width: 45em) {
                 font-size: 24px;
                 line-height: 24px;
+            }
+            &:hover,
+            &.selected {
+                opacity: 1;
+                text-decoration: none;
             }
             &.selected {
                 font-size: 24px;
@@ -132,6 +131,7 @@ $colorDefault:	    #003366;
                 -o-transform: scale(1.0,1.0);
                 -ms-transform: scale(1.0,1.0);
                 transform: scale(1.0,1.0);
+                opacity: 1;
             }
             img {
                 //float: left;
@@ -149,6 +149,7 @@ $colorDefault:	    #003366;
                 -ms-transform: scale(0.9,0.9);
                 transform: scale(0.9,0.9);
                 vertical-align: middle;
+                opacity: 0.7;
             }
             .wp-caption img {
                 margin:0;
