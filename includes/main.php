@@ -75,11 +75,18 @@ class Main {
                 || has_shortcode($post->post_content, 'collapse')
                 || has_shortcode($post->post_content, 'accordion'))) {
             //wp_enqueue_style('rrze-accordions', $plugin_url . 'css/style.css');
-            wp_enqueue_script('rrze-accordions', $plugin_url . 'js/accordion.js', array('jquery'));
-            wp_localize_script('rrze-accordions', 'accordionToggle', array(
-                'expand_all' => __('Alle öffnen', 'rrze-2015'),
-                'collapse_all' => __('Alle schließen', 'rrze-2015'),
-            ));
+            if($this->checkThemes() === false) {
+                //if($this->checkRRZETheme() === false) {
+                    //wp_enqueue_style( 'rrze-accordions' );
+                    wp_enqueue_script( 'rrze-accordions' );
+                    wp_localize_script('rrze-accordions', 'accordionToggle', array(
+                        'expand_all' => __('Alle öffnen', 'rrze-2015'),
+                        'collapse_all' => __('Alle schließen', 'rrze-2015'),
+                    ));
+                //}
+            }
+            //wp_enqueue_script('rrze-accordions', $plugin_url . 'js/accordion.js', array('jquery'));
+           
         }
     }
 
@@ -230,5 +237,27 @@ class Main {
         $output .= '<p>' . do_shortcode($content) . '</p></aside>';
         return $output;
     }
+    
+    public function checkThemes() {
+        $current_theme = wp_get_theme();
+        $themes = array('FAU-Einrichtungen', 'FAU-Natfak', 'FAU-Philfak', 'FAU-RWFak', 'FAU-Techfak', 'FAU-Medfak', 'RRZE 2015');
+
+        if(!in_array($current_theme, $themes)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    /*public function checkRRZETheme() {
+        $current_theme = wp_get_theme();
+        $themes = array('RRZE 2015');
+
+        if(!in_array($current_theme, $themes)) {
+            return false;
+        } else {
+            return true;
+        }
+    }*/
 
 }
