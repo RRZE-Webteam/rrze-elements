@@ -48,6 +48,8 @@ class Main {
 
         add_shortcode('pull-left', array($this, 'rrze_elements_pull_left_right'));
         add_shortcode('pull-right', array($this, 'rrze_elements_pull_left_right'));
+
+        add_shortcode('custom-news', array($this, 'rrze_elements_news'));
     }
 
     public static function rrze_elements_enqueue_styles() {
@@ -73,7 +75,9 @@ class Main {
                 || has_shortcode($post->post_content, 'accordion')
                 || has_shortcode($post->post_content, 'accordionsub')
                 || has_shortcode($post->post_content, 'collapse')
-                || has_shortcode($post->post_content, 'accordion'))) {
+                || has_shortcode($post->post_content, 'accordion')
+                || has_shortcode($post->post_content, 'cris')
+                || has_shortcode($post->post_content, 'cris-custom'))) {
             //wp_enqueue_style('rrze-accordions', $plugin_url . 'css/style.css');
             wp_enqueue_script('rrze-accordions', $plugin_url . 'js/accordion.js', array('jquery'));
             wp_localize_script('rrze-accordions', 'accordionToggle', array(
@@ -205,7 +209,7 @@ class Main {
         }
 
         $output = '<div class="accordion-group' . $color . '">';
-        $output .= '<div class="accordion-heading"><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-' . $GLOBALS['collapsibles_count'] . '" href="#collapse_' . $id . '">' . $title . '</a></div>' . "\n";
+        $output .= '<div class="accordion-heading"><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-' . $GLOBALS['current_collapse'] . '" href="#collapse_' . $id . '">' . $title . '</a></div>' . "\n";
         $output .= '<div id="collapse_' . $id . '" class="accordion-body' . $addclass . '"' . $name . '>';
         $output .= '<div class="accordion-inner clearfix">' . "\n";
         $output .= do_shortcode($content);
@@ -228,6 +232,140 @@ class Main {
         $output = '<aside class="pull-' . $type . ' ' . $textalign . '">';
         $output .= (isset($title) && $title != '') ? '<h1>' . $title . '</h1>' : '';
         $output .= '<p>' . do_shortcode($content) . '</p></aside>';
+        return $output;
+    }
+
+    /*
+     * Shortcode zum Einbinden von News
+     */
+
+    public function rrze_elements_news($atts, $content = null) {
+        global $options;
+        extract(shortcode_atts(array(
+            'category' => '',
+            'tag' => '',
+            'number' => '',
+            'days' => '',
+            'id' => '',
+            'hide' => '',
+            'display' => '',
+            'imgfloat' => 'left'
+                        ), $atts));
+
+        $args = array(
+            'post_type' => 'post',
+            'post_status' => 'publish',
+            'orderby' => 'date',
+            'posts_per_page' => -1,
+            'ignore_sticky_posts' => 1
+        );
+
+        if ($category != '') {
+            $c_id = array();
+            if (strpos($category, ',')) {
+                $categories = explode(',', $category);
+            } else {
+                $categories[] = $category;
+            }
+            foreach ($categories as $_c) {
+                $c_id[] = get_cat_ID($_c);
+            }
+            $args['cat'] = implode(',', $c_id);
+        }
+
+        if ($tag != '') {
+            $t_id = array();
+            if (strpos($tag, ',')) {
+                $tags = explode(',', $tag);
+            } else {
+                $tags[] = $tag;
+            }
+            foreach ($tags as $_t) {
+                $t_id[] = \get_term_by('name', $_t, 'post_tag')->term_id;
+            }
+            $args['tag__in'] = implode(',', $t_id);
+        }
+
+        if ($number != '' && is_numeric($number))
+            $args['posts_per_page'] = $number;
+
+        if ($days != '') {
+            $startdate = date('Y-m-d', strtotime('-' . $days . ' days'));
+            $date_elements = explode('-', $startdate);
+            $date_query = array(
+                        'after' => array(
+                            'year' => $date_elements[0],
+                            'month' => $date_elements[1],
+                            'day' => $date_elements[2],
+                        ),
+            );
+            $args['date_query'] = $date_query;
+        }
+
+        if ($id != '') {
+            $args['post__in'] = $id;
+        }
+        $output = '';
+        $imgfloat = ($imgfloat == 'right') ? 'float-right' : 'float-left';
+        $the_query = new \WP_Query($args);
+        if ($the_query->have_posts()) {
+            if ($display == 'list') {
+                $output .= '<ul class="rrze-elements-news">';
+            } else {
+                $output .= '<div class="rrze-elements-news">';
+            }
+            while ($the_query->have_posts()) {
+                $the_query->the_post();
+                $id = \get_the_ID();
+                $title = \get_the_title();
+                $permalink = \get_permalink();
+                if ($display == 'list') {
+                    $output .= '<li>';
+                    if (strpos($hide, 'date') === false) {
+                        $output .= \get_the_date('d.m.Y', $id) . ': ';
+                    }
+                    $output .= '<a href="' . $permalink . '" rel="bookmark">' . $title . '</a>';
+                    $output .= '</li>';
+                } else {
+                    $output .= '<article id="post-' . $id . '" class="' . implode(\get_post_class(), ' ') . ' cf">';
+                    if (has_post_thumbnail($id) && (strpos($hide, 'thumbnail') === false)) {
+                        $output .= '<div class="entry-thumbnail ' . $imgfloat . '">' . \get_the_post_thumbnail($id, 'post-thumbnail') . '</div>';
+                    }
+                    $output .= '<header class="entry-header">';
+                    $output .= '<h2 class="entry-title"><a href="' . $permalink . '" rel="bookmark">' . $title . '</a></h2>';
+                    $output .= '</header>';
+                    $output .= '<div class="entry-meta">';
+                    if (strpos($hide, 'date') === false) {
+                        $output .= '<div class="entry-date">' . \get_the_date('d.m.Y', $id) . '</div>';
+                    }
+                    if (strpos($hide, 'categories') === false) {
+                        $categories = \get_the_category($id);
+                        $separator = " / ";
+                        $cat_links = array();
+                        if ( ! empty( $categories ) ) {
+                            foreach( $categories as $category ) {
+                                $cat_links[] = '<a href="' . esc_url( get_category_link( $category->term_id ) ) . '" alt="' . esc_attr( sprintf( __( 'View all posts in %s', 'rrze-elements' ), $category->name ) ) . '">' . esc_html( $category->name ) . '</a>';
+                            }
+                            $output .= '<div class="entry-cats">' . implode( $separator, $cat_links ) . '</div>';
+                        }
+                    }
+                    $output .= '</div>';
+                    $output .= '<div class="entry-content">' . \get_the_excerpt($id) . "</div>";
+                    $output .= '</article>';
+                }
+            }
+            if ($display == 'list') {
+                $output .= '</ul>';
+            } else {
+                $output .= '</div>';
+            }
+            /* Restore original Post Data */
+            wp_reset_postdata();
+        } else {
+            ?>
+            <p><?php $output = __('Keine Beiträge gefunden', 'rrze-2015'); ?></p>
+        <?php
+        }
         return $output;
     }
 

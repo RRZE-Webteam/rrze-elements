@@ -1,5 +1,5 @@
 // Font Awesome Icons
-@import "font-awesome";
+//@import "font-awesome";
 
 // Variables
 $page: #fff;
@@ -488,6 +488,25 @@ div {
         @extend .fa-youtube-play !optional;
         &::before {
             color: $medium-blue;
+        }
+    }
+}
+
+// News
+
+div.rrze-elements-news {
+    .float-left {
+        @media screen and (min-width: 37.5em) {
+            float: left;
+            padding: 0 20px 10px 0;
+            background: #fff;
+        }
+    }
+    .float-right {
+        @media screen and (min-width: 37.5em) {
+            float: right;
+            padding: 0 0 10px 20px;
+            background: #fff;
         }
     }
 }
