@@ -9,10 +9,12 @@ defined('ABSPATH') || exit;
 
 class Main {
 
+    public $plugin_basename;
     public $options;
     public $settings;
 
-    public function init($plugin_basename) {
+    public function __construct($plugin_basename) {
+        $this->plugin_basename = $plugin_basename;
         $this->options = new Options();
         $this->settings = new Settings($this);
 
@@ -54,7 +56,13 @@ class Main {
 
     public static function rrze_elements_enqueue_styles() {
         global $post;
-        $plugin_url = plugin_dir_url(dirname(__FILE__));
+        
+        wp_register_style('rrze_elements', plugins_url('css/rrze-elements.css', $this->plugin_basename));
+        
+        if (isset($post->post_content) && has_shortcode($post->post_content, 'custom-news')) {
+            wp_enqueue_style('rrze_elements');
+        }
+        
         if ($post && has_shortcode($post->post_content, 'timeline')
                 || has_shortcode($post->post_content, 'notice')
                 || has_shortcode($post->post_content, 'notice-attention')
@@ -68,9 +76,10 @@ class Main {
                 || has_shortcode($post->post_content, 'notice-audio')
                 || has_shortcode($post->post_content, 'notice-download')
                 || has_shortcode($post->post_content, 'notice-faubox')) {
-            wp_enqueue_style('rrze-elements', $plugin_url . 'css/style.css');
-            wp_enqueue_script('rrze-timeline', $plugin_url . 'js/jquery.timelinr-0.9.6.js', array('jquery'));
+            wp_enqueue_style('rrze_elements');
+            wp_enqueue_script('rrze-timeline', plugins_url('js/jquery.timelinr-0.9.6.js', $this->plugin_basename), array('jquery'), NULL, TRUE);
         }
+        
         if ($post && (has_shortcode($post->post_content, 'collapsibles')
                 || has_shortcode($post->post_content, 'accordion')
                 || has_shortcode($post->post_content, 'accordionsub')
@@ -78,8 +87,8 @@ class Main {
                 || has_shortcode($post->post_content, 'accordion')
                 || has_shortcode($post->post_content, 'cris')
                 || has_shortcode($post->post_content, 'cris-custom'))) {
-            //wp_enqueue_style('rrze-accordions', $plugin_url . 'css/style.css');
-            wp_enqueue_script('rrze-accordions', $plugin_url . 'js/accordion.js', array('jquery'));
+            wp_enqueue_style('rrze_elements');
+            wp_enqueue_script('rrze-accordions', plugins_url('js/accordion.js', $this->plugin_basename), array('jquery'), NULL, TRUE);
             wp_localize_script('rrze-accordions', 'accordionToggle', array(
                 'expand_all' => __('Alle öffnen', 'rrze-2015'),
                 'collapse_all' => __('Alle schließen', 'rrze-2015'),

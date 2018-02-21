@@ -4,7 +4,7 @@
  * Plugin Name:     RRZE Elements
  * Plugin URI:      https://gitlab.rrze.fau.de/rrze-webteam/rrze-elements
  * Description:     Erweiterte Gestaltungselemente für WordPress-Websites
- * Version:         1.0.1
+ * Version:         1.0.2
  * Author:          RRZE-Webteam
  * Author URI:      https://blogs.fau.de/webworking/
  * License:         GNU General Public License v2
@@ -45,9 +45,6 @@ register_activation_hook(__FILE__, 'RRZE\Elements\activation');
 register_deactivation_hook(__FILE__, 'RRZE\Elements\deactivation');
 
 add_action('plugins_loaded', 'RRZE\Elements\loaded');
-add_action('wp_enqueue_scripts', 'RRZE\Elements\enqueue_styles');
-
-
 
 /*
  * Einbindung der Sprachdateien.
@@ -124,21 +121,5 @@ function loaded() {
  */
 function autoload() {
     require __DIR__ . '/includes/autoload.php';
-    $main = new Main();
-    $main->init(plugin_basename(__FILE__));
-}
-
-/*
- * Einbindung von Styles und Skripten
- */
-
-function enqueue_styles() {
-    global $post;
-    $plugin_url = plugin_dir_url(__FILE__);
-    if (isset($post->post_content) && has_shortcode($post->post_content, 'custom-news')) {
-        wp_enqueue_style('rrze_elements', plugins_url('css/rrze-elements.css', __FILE__), array(), VERSION);
-    }
-    if (isset($post->post_content) && has_shortcode($post->post_content, 'collapsibles')) {
-            wp_enqueue_script('rrze_elements', plugins_url('js/accordion.js', __FILE__), array(), VERSION);
-    }
+    $main = new Main(plugin_basename(__FILE__));
 }
