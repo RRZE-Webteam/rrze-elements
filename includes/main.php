@@ -56,13 +56,7 @@ class Main {
 
     public static function rrze_elements_enqueue_styles() {
         global $post;
-        
-        wp_register_style('rrze_elements', plugins_url('css/rrze-elements.css', $this->plugin_basename));
-        
-        if (isset($post->post_content) && has_shortcode($post->post_content, 'custom-news')) {
-            wp_enqueue_style('rrze_elements');
-        }
-        
+        $plugin_url = plugin_dir_url(dirname(__FILE__));
         if ($post && has_shortcode($post->post_content, 'timeline')
                 || has_shortcode($post->post_content, 'notice')
                 || has_shortcode($post->post_content, 'notice-attention')
@@ -76,23 +70,27 @@ class Main {
                 || has_shortcode($post->post_content, 'notice-audio')
                 || has_shortcode($post->post_content, 'notice-download')
                 || has_shortcode($post->post_content, 'notice-faubox')) {
-            wp_enqueue_style('rrze_elements');
-            wp_enqueue_script('rrze-timeline', plugins_url('js/jquery.timelinr-0.9.6.js', $this->plugin_basename), array('jquery'), NULL, TRUE);
+            wp_enqueue_style('rrze-elements', $plugin_url . 'css/style.css');
+            wp_enqueue_script('rrze-timeline', $plugin_url . 'js/jquery.timelinr-0.9.6.js', array('jquery'));
         }
-        
         if ($post && (has_shortcode($post->post_content, 'collapsibles')
                 || has_shortcode($post->post_content, 'accordion')
                 || has_shortcode($post->post_content, 'accordionsub')
                 || has_shortcode($post->post_content, 'collapse')
-                || has_shortcode($post->post_content, 'accordion')
-                || has_shortcode($post->post_content, 'cris')
-                || has_shortcode($post->post_content, 'cris-custom'))) {
-            wp_enqueue_style('rrze_elements');
-            wp_enqueue_script('rrze-accordions', plugins_url('js/accordion.js', $this->plugin_basename), array('jquery'), NULL, TRUE);
-            wp_localize_script('rrze-accordions', 'accordionToggle', array(
-                'expand_all' => __('Alle öffnen', 'rrze-2015'),
-                'collapse_all' => __('Alle schließen', 'rrze-2015'),
-            ));
+                || has_shortcode($post->post_content, 'accordion'))) {
+            //wp_enqueue_style('rrze-accordions', $plugin_url . 'css/style.css');
+            if($this->checkThemes() === false) {
+                //if($this->checkRRZETheme() === false) {
+                    //wp_enqueue_style( 'rrze-accordions' );
+                    wp_enqueue_script( 'rrze-accordions' );
+                    wp_localize_script('rrze-accordions', 'accordionToggle', array(
+                        'expand_all' => __('Alle öffnen', 'rrze-2015'),
+                        'collapse_all' => __('Alle schließen', 'rrze-2015'),
+                    ));
+                //}
+            }
+            //wp_enqueue_script('rrze-accordions', $plugin_url . 'js/accordion.js', array('jquery'));
+
         }
     }
 
@@ -232,12 +230,13 @@ class Main {
     /*
      * Pull-left / pull-right divs
      */
+
     public function rrze_elements_pull_left_right($atts, $content = null, $tag) {
         add_filter('the_content', 'wpautop', 12);
         extract(shortcode_atts(array("title" => '', 'align' => ''), $atts));
         $tag_array = explode('-', $tag);
         $type = $tag_array[1];
-        $textalign = in_array($align, array('left', 'right')) ? 'align-'.$align : NULL;
+        $textalign = in_array($align, array('left', 'right')) ? 'align-' . $align : NULL;
         $output = '<aside class="pull-' . $type . ' ' . $textalign . '">';
         $output .= (isset($title) && $title != '') ? '<h1>' . $title . '</h1>' : '';
         $output .= '<p>' . do_shortcode($content) . '</p></aside>';
@@ -302,11 +301,11 @@ class Main {
             $startdate = date('Y-m-d', strtotime('-' . $days . ' days'));
             $date_elements = explode('-', $startdate);
             $date_query = array(
-                        'after' => array(
-                            'year' => $date_elements[0],
-                            'month' => $date_elements[1],
-                            'day' => $date_elements[2],
-                        ),
+                'after' => array(
+                    'year' => $date_elements[0],
+                    'month' => $date_elements[1],
+                    'day' => $date_elements[2],
+                ),
             );
             $args['date_query'] = $date_query;
         }
@@ -351,11 +350,11 @@ class Main {
                         $categories = \get_the_category($id);
                         $separator = " / ";
                         $cat_links = array();
-                        if ( ! empty( $categories ) ) {
-                            foreach( $categories as $category ) {
-                                $cat_links[] = '<a href="' . esc_url( get_category_link( $category->term_id ) ) . '" alt="' . esc_attr( sprintf( __( 'View all posts in %s', 'rrze-elements' ), $category->name ) ) . '">' . esc_html( $category->name ) . '</a>';
+                        if (!empty($categories)) {
+                            foreach ($categories as $category) {
+                                $cat_links[] = '<a href="' . esc_url(get_category_link($category->term_id)) . '" alt="' . esc_attr(sprintf(__('View all posts in %s', 'rrze-elements'), $category->name)) . '">' . esc_html($category->name) . '</a>';
                             }
-                            $output .= '<div class="entry-cats">' . implode( $separator, $cat_links ) . '</div>';
+                            $output .= '<div class="entry-cats">' . implode($separator, $cat_links) . '</div>';
                         }
                     }
                     $output .= '</div>';
@@ -373,9 +372,27 @@ class Main {
         } else {
             ?>
             <p><?php $output = __('Keine Beiträge gefunden', 'rrze-2015'); ?></p>
-        <?php
+            <?php
         }
         return $output;
     }
 
+    public function checkThemes() {
+        $current_theme = wp_get_theme();
+        $themes = array('FAU-Einrichtungen', 'FAU-Natfak', 'FAU-Philfak', 'FAU-RWFak', 'FAU-Techfak', 'FAU-Medfak', 'RRZE 2015');
+        if(!in_array($current_theme, $themes)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+    /*public function checkRRZETheme() {
+        $current_theme = wp_get_theme();
+        $themes = array('RRZE 2015');
+        if(!in_array($current_theme, $themes)) {
+            return false;
+        } else {
+            return true;
+        }
+    }*/
 }
