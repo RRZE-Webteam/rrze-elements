@@ -86,7 +86,7 @@ class Main {
                 //}
             }
             //wp_enqueue_script('rrze-accordions', $plugin_url . 'js/accordion.js', array('jquery'));
-           
+
         }
     }
 
