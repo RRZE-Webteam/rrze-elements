@@ -48,9 +48,13 @@ class Main {
 
         add_shortcode('pull-left', array($this, 'rrze_elements_pull_left_right'));
         add_shortcode('pull-right', array($this, 'rrze_elements_pull_left_right'));
+
+        add_shortcode('content-slider', array($this, 'rrze_elements_content_slider'));
     }
 
     public static function rrze_elements_enqueue_styles() {
+        if (is_404())
+            return;
         global $post;
         $plugin_url = plugin_dir_url(dirname(__FILE__));
         if ($post && has_shortcode($post->post_content, 'timeline')
@@ -75,20 +79,30 @@ class Main {
                 || has_shortcode($post->post_content, 'collapse')
                 || has_shortcode($post->post_content, 'accordion'))) {
             //wp_enqueue_style('rrze-accordions', $plugin_url . 'css/style.css');
-            if($this->checkThemes() === false) {
+            if ($this->checkThemes() === false) {
                 //if($this->checkRRZETheme() === false) {
-                    //wp_enqueue_style( 'rrze-accordions' );
-                    wp_enqueue_script( 'rrze-accordions' );
-                    wp_localize_script('rrze-accordions', 'accordionToggle', array(
-                        'expand_all' => __('Alle öffnen', 'rrze-2015'),
-                        'collapse_all' => __('Alle schließen', 'rrze-2015'),
-                    ));
+                //wp_enqueue_style( 'rrze-accordions' );
+                wp_enqueue_script('rrze-accordions');
+                wp_localize_script('rrze-accordions', 'accordionToggle', array(
+                    'expand_all' => __('Alle öffnen', 'rrze-2015'),
+                    'collapse_all' => __('Alle schließen', 'rrze-2015'),
+                ));
                 //}
+               // wp_enqueue_script('rrze-accordions', $plugin_url . 'js/accordion.js', array('jquery'));
             }
-            //wp_enqueue_script('rrze-accordions', $plugin_url . 'js/accordion.js', array('jquery'));
+            wp_enqueue_script('rrze-accordions', $plugin_url . 'js/accordion.js', array('jquery'));
+        }
 
+        if ($post && (has_shortcode($post->post_content, 'content-slider'))) {
+            wp_enqueue_style('elements', $plugin_url . 'css/style.css');
+            wp_enqueue_script('jquery-flexslider', $plugin_url . 'js/jquery.flexslider-min.js', array('jquery'), '2.2.0', true);
+            wp_enqueue_script('flexslider', $plugin_url . 'js/flexslider.js', array(), false, true);
         }
     }
+
+    /* ---------------------------------------------------------------------------------- */
+    /* Absatzklassen Shortcodes
+      /*----------------------------------------------------------------------------------- */
 
     public function rrze_elements_absatzklasse($atts, $content = null, $tag) {
         add_filter('the_content', 'wpautop', 12);
@@ -100,6 +114,10 @@ class Main {
         $output .= '<p>' . do_shortcode($content) . '</p></div>';
         return $output;
     }
+
+    /* ---------------------------------------------------------------------------------- */
+    /* Timeline
+      /*----------------------------------------------------------------------------------- */
 
     public function rrze_elements_timeline($atts, $content = null) {
         extract(shortcode_atts(array(
@@ -171,16 +189,16 @@ class Main {
 
         $output = '';
 
-// if( count($tab_titles) ){
+        // if( count($tab_titles) ){
         $output .= '<div class="accordion" id="accordion-' . $GLOBALS['collapsibles_count'] . '">';
         if ($expand == "true") {
             $output .= '<p class="textalign-right small"><small><a href="#" class="expand-all" data-status="closed">' . __('Alle öffnen', 'rrze-2015') . '</a></small></p>';
         }
         $output .= do_shortcode($content);
         $output .= '</div>';
-// } else {
-//   $output .= do_shortcode( $content );
-//  }
+        // } else {
+        //   $output .= do_shortcode( $content );
+        //  }
 
         return $output;
     }
@@ -223,41 +241,106 @@ class Main {
         return $output;
     }
 
-    /*
-     * Pull-left / pull-right divs
-     */
+    /* ---------------------------------------------------------------------------------- */
+    /* Pull left / pull right
+      /*----------------------------------------------------------------------------------- */
+
     public function rrze_elements_pull_left_right($atts, $content = null, $tag) {
         add_filter('the_content', 'wpautop', 12);
         extract(shortcode_atts(array("title" => '', 'align' => ''), $atts));
         $tag_array = explode('-', $tag);
         $type = $tag_array[1];
-        $textalign = in_array($align, array('left', 'right')) ? 'align-'.$align : NULL;
+        $textalign = in_array($align, array('left', 'right')) ? 'align-' . $align : NULL;
         $output = '<aside class="pull-' . $type . ' ' . $textalign . '">';
         $output .= (isset($title) && $title != '') ? '<h1>' . $title . '</h1>' : '';
         $output .= '<p>' . do_shortcode($content) . '</p></aside>';
         return $output;
     }
-    
+
+    /* ---------------------------------------------------------------------------------- */
+    /* Content Slider
+      /*----------------------------------------------------------------------------------- */
+
+    public function rrze_elements_content_slider($atts) {
+        global $post;
+        // Attributes
+        extract(shortcode_atts(
+                        array(
+            "id" => '',
+            "type" => 'post',
+            "number" => '-1',
+            "category" => '',
+            "tag" => '',
+            'orderby' => 'date', // 'rand' auch möglich!
+                        ), $atts, 'content-slider')
+        );
+        $id = sanitize_text_field($id);
+        $ids = explode(",", $id);
+        $ids = array_map('trim', $ids);
+        $type = sanitize_text_field($type);
+        $orderby = sanitize_text_field($orderby);
+        if ($orderby == 'random')
+            $orderby == 'rand';
+        $cat = sanitize_text_field($category);
+        $tag = sanitize_text_field($tag);
+        $num = sanitize_text_field($number);
+
+        // Code
+        $args = array(
+            'post_type' => $type,
+            'posts_per_page' => $num,
+            'category_name' => $cat,
+            'orderby' => $orderby,
+            'post__not_in' => array($post->ID),
+            'ignore_sticky_posts' => 1);
+        if (strlen($id) > 0) {
+            $args['post__in'] = $ids;
+        }
+        $the_query = new \WP_Query($args);
+        $output = '';
+        if ($the_query->have_posts()) :
+            $output = '<div class="content-slider flexslider">';
+            $output .= '<ul class="slides">';
+            while ($the_query->have_posts()) : $the_query->the_post();
+                $id = get_the_ID();
+                $output .= '<li>';
+                $output .= '<h2><a href="'. get_permalink($id) . '">' . get_the_title() . '</a></h2>';
+                $output .= '<a href="'. get_permalink($id) . '">' . get_the_post_thumbnail($id, 'teaser-thumb', array('class' => 'attachment-teaser-thumb')) . '</a>';
+                $output .= get_the_excerpt($id);
+                //$output .= get_wke2014_custom_excerpt($length = 200, $continuenextline = 1, $removeyoutube = 1);
+                $output .= '</li>';
+            endwhile;
+            $output .= '</ul>';
+            $output .= '</div>';
+        endif;
+        wp_reset_postdata();
+
+        return $output;
+    }
+
+    /* ---------------------------------------------------------------------------------- */
+    /* Helper Functions
+      /*----------------------------------------------------------------------------------- */
+
     public function checkThemes() {
         $current_theme = wp_get_theme();
         $themes = array('FAU-Einrichtungen', 'FAU-Natfak', 'FAU-Philfak', 'FAU-RWFak', 'FAU-Techfak', 'FAU-Medfak', 'RRZE 2015');
 
-        if(!in_array($current_theme, $themes)) {
+        if (!in_array($current_theme, $themes)) {
             return false;
         } else {
             return true;
         }
     }
 
-    /*public function checkRRZETheme() {
-        $current_theme = wp_get_theme();
-        $themes = array('RRZE 2015');
+    /* public function checkRRZETheme() {
+      $current_theme = wp_get_theme();
+      $themes = array('RRZE 2015');
 
-        if(!in_array($current_theme, $themes)) {
-            return false;
-        } else {
-            return true;
-        }
-    }*/
-
+      if(!in_array($current_theme, $themes)) {
+      return false;
+      } else {
+      return true;
+      }
+      } */
 }
