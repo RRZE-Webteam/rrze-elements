@@ -25,10 +25,10 @@ jQuery(document).ready(function ($) {
     function toggleAccordion($accordion){
         var $thisgroup = $($accordion).closest('.accordion-group');
         var $othergroups = $($accordion).closest('.accordion').find('.accordion-group').not($thisgroup);
-        $($othergroups).find('.accordion-toggle').removeClass('active');
-        $($othergroups).find('.accordion-body').not('.accordion-body.stayopen').slideUp();
-        $($thisgroup).find('.accordion-toggle').toggleClass('active');
-        $($thisgroup).find('.accordion-body').slideToggle();
+        $($othergroups).children('.accordion-toggle').removeClass('active');
+        $($othergroups).children('.accordion-body').not('.accordion-body.stayopen').slideUp();
+        $($thisgroup).children('.accordion-toggle').toggleClass('active');
+        $($thisgroup).children('.accordion-body').slideToggle();
     }
 
     function openAnchorAccordion($target) {
