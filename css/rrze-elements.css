@@ -190,3 +190,7 @@ h3.accordion-heading { width: 100%; padding: 0 !important; margin: 0; border: no
 button.accordion-toggle { width: 100%; border: none; text-align: left; }
 
 button.expand-all { margin: 5px 0; }
+
+@media screen and (min-width: 37.5em) { div.rrze-elements-news .float-left { float: left; padding: 0 20px 10px 0; background: #fff; } }
+@media screen and (min-width: 37.5em) { div.rrze-elements-news .float-right { float: right; padding: 0 0 10px 20px; background: #fff; } }
+

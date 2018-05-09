@@ -93,7 +93,7 @@ $colorDefault:	    #003366;
                 line-height: 24px;
             }
             &:hover,
-                &.selected {
+            &.selected {
                 opacity: 1;
                 text-decoration: none;
             }
@@ -121,7 +121,7 @@ $colorDefault:	    #003366;
             float: left;
             @media screen and (min-width: 45em) {
                 width: 800px;
-                //    height: 350px;
+                //  height: 350px;
             }
             &.selected img {
                 -webkit-transform: scale(1.0,1.0);
@@ -489,6 +489,7 @@ div {
         }
     }
 }
+
 /*
  * jQuery FlexSlider v2.2.0
  * http://www.woothemes.com/flexslider/
@@ -806,4 +807,22 @@ button.accordion-toggle {
 }
 button.expand-all {
     margin: 5px 0;
+
+// News
+
+div.rrze-elements-news {
+    .float-left {
+        @media screen and (min-width: 37.5em) {
+            float: left;
+            padding: 0 20px 10px 0;
+            background: #fff;
+        }
+    }
+    .float-right {
+        @media screen and (min-width: 37.5em) {
+            float: right;
+            padding: 0 0 10px 20px;
+            background: #fff;
+        }
+    }
 }

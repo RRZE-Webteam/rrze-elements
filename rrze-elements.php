@@ -39,6 +39,7 @@ defined('ABSPATH') || exit;
 
 const RRZE_PHP_VERSION = '5.5';
 const RRZE_WP_VERSION = '4.8';
+const VERSION = '1.0.1';
 
 register_activation_hook(__FILE__, 'RRZE\Elements\activation');
 register_deactivation_hook(__FILE__, 'RRZE\Elements\deactivation');
@@ -120,6 +121,5 @@ function loaded() {
  */
 function autoload() {
     require __DIR__ . '/includes/autoload.php';
-    $main = new Main();
-    $main->init(plugin_basename(__FILE__));
+    $main = new Main(plugin_basename(__FILE__));
 }
