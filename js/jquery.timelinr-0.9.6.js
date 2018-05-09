@@ -305,7 +305,7 @@ function updateSize() {
         }
         var thisHeight = parseInt(jQuery(this).css('height'));
         minHeight=(minHeight>=thisHeight?minHeight:thisHeight);
-        //console.log(minHeight);
+        //console.log(thisHeight);
     });
     //console.log(jQuery(settings.datesDiv).height());
     jQuery(settings.issuesDiv +' li').css('height',(+minHeight + +50)+'px');
