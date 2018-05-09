@@ -476,7 +476,4 @@ class Main {
             return true;
         }
     }
-
-    
-
-    
+}
