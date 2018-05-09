@@ -1,5 +1,3 @@
-// Font Awesome Icons
-@import "font-awesome";
 
 // Variables
 $page: #fff;
@@ -788,4 +786,24 @@ html[xmlns] .slides {
 @media screen and (max-width: 860px) {
     .content-slider .flex-direction-nav .flex-prev { opacity: 1; left: 10px;}
     .content-slider .flex-direction-nav .flex-next { opacity: 1; right: 10px;}
+}
+
+/*
+ * Accordion
+ */
+
+h3.accordion-heading {
+    width: 100%;
+    padding: 0 !important;
+    margin: 0;
+    border: none;
+    text-align: left;
+}
+button.accordion-toggle {
+    width: 100%;
+    border: none;
+    text-align: left;
+}
+button.expand-all {
+    margin: 5px 0;
 }

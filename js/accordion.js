@@ -25,9 +25,9 @@ jQuery(document).ready(function ($) {
     function toggleAccordion($accordion){
         var $thisgroup = $($accordion).closest('.accordion-group');
         var $othergroups = $($accordion).closest('.accordion').find('.accordion-group').not($thisgroup);
-        $($othergroups).children('.accordion-toggle').removeClass('active');
+        $($othergroups).children('.accordion-heading').children(' .accordion-toggle').removeClass('active');
         $($othergroups).children('.accordion-body').not('.accordion-body.stayopen').slideUp();
-        $($thisgroup).children('.accordion-toggle').toggleClass('active');
+        $($thisgroup).children('.accordion-heading').children('.accordion-toggle').toggleClass('active');
         $($thisgroup).children('.accordion-body').slideToggle();
     }
 
@@ -65,8 +65,7 @@ jQuery(document).ready(function ($) {
         // nur auf Seiten, auf denen ein Accordion existiert,
         // und nur, wenn der geklickte Link nicht der Accordion-Toggle-Link oder der Expand-All-Link ist
         if (($('#accordion-0').length)
-                && (!$(this).hasClass("accordion-toggle"))
-                && (!$(this).hasClass("expand-all"))) {
+                && (!$(this).hasClass("accordion-toggle"))) {
             var $hash = $(this).prop("hash");
             var identifier = $hash.split('_')[0];
             var inpagenum = $hash.split('_')[1];
@@ -80,20 +79,21 @@ jQuery(document).ready(function ($) {
                 var $target = $('body').find('div[name=' + $findname + ']');
             }
             if ($target) {
-                //openAnchorAccordion($target);
+                openAnchorAccordion($target);
             }
-        }
-        // nur beim "Alle öffnen"-Link
-        if (($('#accordion-0').length)
-                && ($(this).hasClass("expand-all"))) {
-            var $thisgroup = $(this).closest('.accordion');
-            $($thisgroup).find('.accordion-toggle').toggleClass('active');
-            $($thisgroup).find('.accordion-body').slideToggle();
-            if ($(this).data('status') === 'open') {
-                $(this).attr("data-status", 'closed').data('status','closed').html(accordionToggle.expand_all);
-            } else {
-                $(this).attr("data-status", 'open').data('status','open').html(accordionToggle.collapse_all);
-            }
+        }       
+    });
+
+    $('.expand-all').click(function(e) {
+        var $thisgroup = $(this).closest('.accordion');
+        if ($(this).data('status') === 'open') {
+            $($thisgroup).find('.accordion-body').slideUp();
+            $($thisgroup).find('.accordion-toggle').removeClass('active');
+            $(this).attr("data-status", 'closed').data('status','closed').html(accordionToggle.expand_all);
+        } else {
+            $($thisgroup).find('.accordion-body').slideDown();
+            $($thisgroup).find('.accordion-toggle').addClass('active');
+            $(this).attr("data-status", 'open').data('status','open').html(accordionToggle.collapse_all);
         }
     });
 
