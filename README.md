@@ -1,6 +1,6 @@
 ### RRZE Elements
 
-Version 1.1.0
+Version 1.1.1
 
 Sammlung nützlicher Gestaltungselemente für WordPress-Websites:
 
@@ -9,4 +9,5 @@ Sammlung nützlicher Gestaltungselemente für WordPress-Websites:
 - Absatzklassen (https://www.wordpress.rrze.fau.de/redaktion/grafiken-im-text/absatzklassen/)
 - ausgewählte Meldungen per Shortcode [custom-news]
 - Content-Slider
+- Buttons
 - tbc.
