@@ -52,8 +52,12 @@ class Main {
         add_shortcode('pull-right', array($this, 'rrze_elements_pull_left_right'));
 
         add_shortcode('custom-news', array($this, 'rrze_elements_news'));
-        
-        add_shortcode('content-slider', array($this, 'rrze_elements_content_slider'));      
+
+        add_shortcode('content-slider', array($this, 'rrze_elements_content_slider'));
+
+        add_shortcode('alert', array($this, 'rrze_elements_shortcode_alert'));
+        add_shortcode('button', array($this, 'rrze_elements_button'));
+
     }
 
     public static function rrze_elements_enqueue_styles() {
@@ -78,7 +82,9 @@ class Main {
                 || has_shortcode($post->post_content, 'accordion')
                 || has_shortcode($post->post_content, 'accordionsub')
                 || has_shortcode($post->post_content, 'collapse')
-                || has_shortcode($post->post_content, 'rrze_elements_content_slider')) {
+                || has_shortcode($post->post_content, 'rrze_elements_content_slider')
+                || has_shortcode($post->post_content, 'alert')
+                || has_shortcode($post->post_content, 'button')) {
             if (!wp_style_is('fontawesome') || !wp_style_is('font-awesome')) {
                 wp_enqueue_style('fontawesome', $plugin_url . 'css/font-awesome.css');
             }
@@ -279,6 +285,7 @@ class Main {
             "category" => '',
             "tag" => '',
             'orderby' => 'date', // 'rand' auch möglich!
+            'link' => '1'
                         ), $atts, 'content-slider')
         );
         $id = sanitize_text_field($id);
@@ -291,12 +298,12 @@ class Main {
         $cat = sanitize_text_field($category);
         $tag = sanitize_text_field($tag);
         $num = sanitize_text_field($number);
+        $link = filter_var($link, FILTER_VALIDATE_BOOLEAN);
 
         // Code
         $args = array(
             'post_type' => $type,
             'posts_per_page' => $num,
-            'category_name' => $cat,
             'orderby' => $orderby,
             'post__not_in' => array($post->ID),
             'ignore_sticky_posts' => 1);
@@ -310,11 +317,17 @@ class Main {
             $output .= '<ul class="slides">';
             while ($the_query->have_posts()) : $the_query->the_post();
                 $id = get_the_ID();
+                if ($link) {
+                    $link_open = '<a href="' . get_permalink($id) . '">';
+                    $link_close = '</a>';
+                } else {
+                    $link_open = '';
+                    $link_close = '';
+                }
                 $output .= '<li>';
-                $output .= '<h2><a href="'. get_permalink($id) . '">' . get_the_title() . '</a></h2>';
-                $output .= '<a href="'. get_permalink($id) . '">' . get_the_post_thumbnail($id, 'teaser-thumb', array('class' => 'attachment-teaser-thumb')) . '</a>';
+                $output .= '<h2>' . $link_open . get_the_title() . $link_close . '</h2>';
+                $output .= $link_open . get_the_post_thumbnail($id, 'teaser-thumb', array('class' => 'attachment-teaser-thumb')) . $link_close;
                 $output .= get_the_excerpt($id);
-                //$output .= get_wke2014_custom_excerpt($length = 200, $continuenextline = 1, $removeyoutube = 1);
                 $output .= '</li>';
             endwhile;
             $output .= '</ul>';
@@ -458,7 +471,84 @@ class Main {
         }
         return $output;
     }
-  
+
+    /*
+     * Alerts
+     */
+
+    function rrze_elements_shortcode_alert($atts, $content = null) {
+        extract(shortcode_atts(array(
+            'style' => '',
+            'color' => '',
+            'border_color' => '',
+            'font' => 'dark'), $atts));
+
+        $style = (in_array($style, array('success', 'info', 'warning', 'danger'))) ? ' alert-' . $style : '';
+        $color = ((substr($color, 0, 1) == '#') && (in_array(strlen($color), array(4, 7)))) ? 'background-color:' . $color . ';' : '';
+        $border_color = ((substr($border_color, 0, 1) == '#') && (in_array(strlen($border_color), array(4, 7)))) ? ' border:1px solid' . $border_color . ';' : '';
+        $font = ($font == 'light') ? ' color: #fff;letter-spacing: 0.03em;' : '';
+
+        if ('' != $color || '' != $border_color || '' != $font) {
+            $style = '';
+        }
+
+        return '<div class="alert' . $style . '" style="' . $color . $border_color . $font . '">' . do_shortcode(($content)) . '</div>';
+    }
+
+    /* ----------------------------------------------------------------------------------- */
+    /* Buttons Shortcodes
+      /*----------------------------------------------------------------------------------- */
+
+    function rrze_elements_button($atts, $content = null) {
+        extract(shortcode_atts(array(
+            'link' => '#',
+            'target' => '',
+            'color' => '',
+            'border_color' => '',
+            'size' => '',
+            'width' => '',
+            'style' => '',
+            'font' => '',
+                        ), $atts));
+        //var_dump($font);
+        $style = (in_array($style, array('success', 'info', 'warning', 'danger', 'primary'))) ? ' ' . $style . '-btn' : '';
+        $color_hex = '';
+        $color_name = '';
+        if ((substr($color, 0, 1) == '#') && (in_array(strlen($color), array(4, 7)))) {
+            $color_name = '';
+            $color_hex = 'background-color:' . $color . ';';
+            $style = 'X';
+        }
+        if (in_array($color, array('red', 'yellow', 'blue', 'green', 'grey', 'black'))) {
+            $color_name = ' ' . $color . '-btn';
+            $style = 'Y';
+        }
+        
+        $border_color = ((substr($border_color, 0, 1) == '#') && (in_array(strlen($border_color), array(4, 7)))) ? ' border:1px solid' . $border_color . ';' : '';
+
+        $size = ($size) ? ' ' . $size . '-btn' : '';
+        $target = ($target == 'blank') ? ' target="_blank"' : '';
+        $link = esc_url($link);
+        $font = ($font == 'dark') ? ' color: #1a1a1a;' : '';
+        if ($width == 'full') {
+            $width_full = ' full-btn';
+            $width_px = '';
+        } elseif (is_numeric($width)) {
+            $width_px = 'width:' . $width . 'px; max-width:100%;"';
+            $width_full = '';
+        } else {
+            $width_px = '';
+            $width_full = '';
+        }
+        if ('' != $color || '' != $font) {
+            $style = '';
+        }
+
+        $out = '<a' . $target . ' class="standard-btn' . $color_name . $size . $width_full . $style . '" href="' . $link . '" style="' . $font . $color_hex . $width_px . $border_color . '"><span>' . do_shortcode($content) . '</span></a>';
+
+        return $out;
+    }
+
     /* ---------------------------------------------------------------------------------- */
     /* Helper Functions
     /*----------------------------------------------------------------------------------- */

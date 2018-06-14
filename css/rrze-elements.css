@@ -189,7 +189,38 @@ h3.accordion-heading { width: 100%; padding: 0 !important; margin: 0; border: no
 
 button.accordion-toggle { width: 100%; border: none; text-align: left; }
 
-button.expand-all { margin: 5px 0; }
+button.expand-all { margin: 5px 0; float: right; }
 
+/* News */
 @media screen and (min-width: 37.5em) { div.rrze-elements-news .float-left { float: left; padding: 0 20px 10px 0; background: #fff; } }
 @media screen and (min-width: 37.5em) { div.rrze-elements-news .float-right { float: right; padding: 0 0 10px 20px; background: #fff; } }
+
+/* Bootstrap Alerts */
+.alert { padding: 15px; margin-bottom: 20px; border: 1px solid transparent; font-weight: normal; background-color: #e9edf2; }
+.alert strong { color: inherit; }
+
+.alert-success { color: #3c763d; background-color: #dff0d8; border-color: #d6e9c6; }
+
+.alert-info { color: #31708f; background-color: #d9edf7; border-color: #bce8f1; }
+
+.alert-warning { color: #8a6d3b; background-color: #fcf8e3; border-color: #faebcc; }
+
+.alert-danger { color: #a94442; background-color: #f2dede; border-color: #ebccd1; }
+
+/* Buttons */
+a.standard-btn { display: inline-block; margin: 0 0 30px; padding: 10px 18px; overflow: hidden; cursor: pointer; background: #286090; color: #fff; font-size: 16px; font-size: 1rem; text-align: center; font-weight: normal; text-decoration: none !important; -webkit-transition: 0.2s background ease; -moz-transition: 0.2s background ease; -o-transition: 0.2s background ease; -ms-transition: 0.2s background ease; transition: 0.2s background ease; border: 1px solid transparent; }
+
+.post .entry-content a.standard-btn, .page .entry-content a.standard-btn, .post .entry-content a.standard-btn:hover, .page .entry-content a.standard-btn:hover { color: #fff; }
+
+a.standard-btn.xsmall-btn { padding: 5px 10px; font-size: 14px; font-size: 0.875rem; }
+a.standard-btn.small-btn { padding: 7px 12px 5px; }
+a.standard-btn.large-btn { padding: 14px 20px 13px; font-size: 23px; font-size: 1.4375rem; }
+a.standard-btn.xlarge-btn { padding: 18px 30px 17px; font-size: 25px; font-size: 1.5625rem; }
+a.standard-btn.primary-btn, a.standard-btn.blue-btn { background: #286090; border-color: #22537c; }
+a.standard-btn.success-btn, a.standard-btn.green-btn { background: #5cb85c; border-color: #4cae4c; }
+a.standard-btn.info-btn { background: #5bc0de; border-color: #46b8da; }
+a.standard-btn.warning-btn, a.standard-btn.yellow-btn { background: #f0ad4e; border-color: #eea236; }
+a.standard-btn.danger-btn, a.standard-btn.red-btn { background: #d9534f; border-color: #d43f3a; }
+a.standard-btn.secondary-btn, a.standard-btn.grey-btn { background: #5a6268; }
+a.standard-btn.black-btn { background: #393944; }
+a.standard-btn.full-btn { width: 100%; }
