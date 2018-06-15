@@ -61,7 +61,7 @@ class Main {
     }
 
     public static function rrze_elements_enqueue_styles() {
-        if (is_404())
+        if (is_404()|| is_search())
             return;
         global $post;
         $plugin_url = plugin_dir_url(dirname(__FILE__));
