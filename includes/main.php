@@ -294,7 +294,7 @@ class Main {
         $type = sanitize_text_field($type);
         $orderby = sanitize_text_field($orderby);
         if ($orderby == 'random')
-            $orderby == 'rand';
+            $orderby = 'rand';
         $cat = sanitize_text_field($category);
         $tag = sanitize_text_field($tag);
         $num = sanitize_text_field($number);
@@ -309,6 +309,27 @@ class Main {
             'ignore_sticky_posts' => 1);
         if (strlen($id) > 0) {
             $args['post__in'] = $ids;
+        }
+        if ($type == 'speaker' || $type == 'talk') {
+            $cats = explode(',', $cat);
+            $cats = array_map('trim', $cats);
+            $args = array(
+                'relation' => 'AND',
+            );
+            foreach ($cats as $_c) {
+                $args['tax_query'][] = array(
+                    'taxonomy' => $type . '_category',
+                        'field' => 'slug',
+                        'terms' => $_c,
+                );
+            }
+        } else {
+            if ($cat !='') {
+                $args['category_name'] = $cat;
+            }
+            if ($tag !='') {
+                $args['tag'] = $tag;
+            }
         }
         $the_query = new \WP_Query($args);
         $output = '';
