@@ -61,59 +61,18 @@ class Main {
     }
 
     public static function rrze_elements_enqueue_styles() {
-        if (is_404())
+        if (is_404()|| is_search())
             return;
-        global $post;
         $plugin_url = plugin_dir_url(dirname(__FILE__));
-        if ($post && has_shortcode($post->post_content, 'timeline')
-                || has_shortcode($post->post_content, 'notice')
-                || has_shortcode($post->post_content, 'notice-attention')
-                || has_shortcode($post->post_content, 'notice-hinweis')
-                || has_shortcode($post->post_content, 'notice-baustelle')
-                || has_shortcode($post->post_content, 'notice-plus')
-                || has_shortcode($post->post_content, 'notice-minus')
-                || has_shortcode($post->post_content, 'notice-question')
-                || has_shortcode($post->post_content, 'notice-tipp')
-                || has_shortcode($post->post_content, 'notice-video')
-                || has_shortcode($post->post_content, 'notice-audio')
-                || has_shortcode($post->post_content, 'notice-download')
-                || has_shortcode($post->post_content, 'notice-faubox')
-                || has_shortcode($post->post_content, 'collapsibles')
-                || has_shortcode($post->post_content, 'accordion')
-                || has_shortcode($post->post_content, 'accordionsub')
-                || has_shortcode($post->post_content, 'collapse')
-                || has_shortcode($post->post_content, 'rrze_elements_content_slider')
-                || has_shortcode($post->post_content, 'alert')
-                || has_shortcode($post->post_content, 'button')) {
-            if (!wp_style_is('fontawesome') || !wp_style_is('font-awesome')) {
-                wp_enqueue_style('fontawesome', $plugin_url . 'css/font-awesome.css');
-            }
-            wp_enqueue_style('rrze-elements', $plugin_url . 'css/rrze-elements.css');
+
+        wp_register_style('rrze-elements', $plugin_url . 'css/rrze-elements.css');
+        if (!wp_style_is('fontawesome') && !wp_style_is('font-awesome')) {
+            wp_register_style('fontawesome', $plugin_url . 'css/font-awesome.css');
         }
-
-        if ($post && (has_shortcode($post->post_content, 'collapsibles')
-                || has_shortcode($post->post_content, 'accordion')
-                || has_shortcode($post->post_content, 'accordionsub')
-                || has_shortcode($post->post_content, 'collapse'))) {
-            if ($this->checkThemes(array('FAU-Themes', 'RRZE-Theme')) === false) {
-                //wp_enqueue_script('rrze-accordions');
-                // wp_enqueue_script('rrze-accordions', $plugin_url . 'js/accordion.js', array('jquery'));
-            }
-            wp_enqueue_script('rrze-accordions', $plugin_url . 'js/accordion.js', array('jquery'));
-            wp_localize_script('rrze-accordions', 'accordionToggle', array(
-                'expand_all' => __('Alle öffnen', 'rrze-elements'),
-                'collapse_all' => __('Alle schließen', 'rrze-elements'),
-            ));
-        }
-
-        wp_enqueue_script('rrze-timeline', $plugin_url . 'js/jquery.timelinr-0.9.6.js', array('jquery'));
-
-
-        if ($post && (has_shortcode($post->post_content, 'content-slider'))) {
-            wp_enqueue_style('elements', $plugin_url . 'css/rrze-elements.css');
-            wp_enqueue_script('jquery-flexslider', $plugin_url . 'js/jquery.flexslider-min.js', array('jquery'), '2.2.0', true);
-            wp_enqueue_script('flexslider', $plugin_url . 'js/flexslider.js', array(), false, true);
-        }
+        wp_register_script('rrze-accordions', $plugin_url . 'js/accordion.js', array('jquery'));
+        wp_register_script('rrze-timeline', $plugin_url . 'js/jquery.timelinr-0.9.6.js', array('jquery'));
+        wp_register_script('jquery-flexslider', $plugin_url . 'js/jquery.flexslider-min.js', array('jquery'), '2.2.0', true);
+        wp_register_script('flexslider', $plugin_url . 'js/flexslider.js', array(), false, true);
     }
 
     /* ---------------------------------------------------------------------------------- */
@@ -127,6 +86,8 @@ class Main {
         $output = '<div class="notice notice-' . $type . '">';
         $output .= (isset($title) && $title != '') ? '<h3>' . $title . '</h3>' : '';
         $output .= '<p>' . do_shortcode($content) . '</p></div>';
+
+        wp_enqueue_style('rrze-elements');
         return $output;
     }
 
@@ -139,9 +100,11 @@ class Main {
             'orientation' => 'horizontal',
             'speed' => 'normal',
             'startat' => 1,
-            'autoplay' => 'false',
+            'autoplay' => '0',
             'autoplaypause' => 3000
                         ), $atts));
+        $autoplay = filter_var($autoplay, FILTER_VALIDATE_BOOLEAN);
+        $autoplay_text = $autoplay ? 'true' : 'false';
         static $count = 0;
         $count++;
         $output = '';
@@ -159,7 +122,7 @@ class Main {
             $output .= "<a href=\"#\" class=\"next\"><i class=\"fa fa-angle-down\"></i><span class=\"sr-only\">Next</span></a>" .
                     "<a href=\"#\" class=\"prev\"><i class=\"fa fa-angle-up\"></i><span class=\"sr-only\">Previous</span></a>";
         }
-        if ($autoplay == "true") {
+        if ($autoplay) {
             $output .= "<a href=\"#\" class=\"toggle-autoplay\" data-toggle=\"pause\"><i class=\"fa fa-pause\" aria-hidden=\"true\"></i><span class=\"sr-only\">Pause</span></a>";
         }
         $output .= "</div>";
@@ -169,7 +132,7 @@ class Main {
                 datesSpeed: '" . $speed . "',
                 issuesSpeed: '" . $speed . "',
                 startAt: " . $startat . ",
-                autoPlay: '" . $autoplay . "',
+                autoPlay: '" . $autoplay_text . "',
                 autoPlayPause: " . $autoplaypause . ""
                 . "});});</script>";
         return $output;
@@ -183,6 +146,9 @@ class Main {
         $output .= "<li name=" . sanitize_title($name) . ">";
         $output .= do_shortcode($content);
         $output .= "</li>";
+
+        wp_enqueue_style('rrze-elements');
+        wp_enqueue_script('rrze-timeline');
         return $output;
     }
 
@@ -213,6 +179,13 @@ class Main {
         // } else {
         //   $output .= do_shortcode( $content );
         //  }
+        
+        wp_enqueue_style('rrze-elements');
+        wp_enqueue_script('rrze-accordions');
+        wp_localize_script('rrze-accordions', 'accordionToggle', array(
+            'expand_all' => __('Alle öffnen', 'rrze-elements'),
+            'collapse_all' => __('Alle schließen', 'rrze-elements'),
+        ));
         return $output;
     }
 
@@ -267,6 +240,8 @@ class Main {
         $output = '<aside class="pull-' . $type . ' ' . $textalign . '">';
         $output .= (isset($title) && $title != '') ? '<h1>' . $title . '</h1>' : '';
         $output .= '<p>' . do_shortcode($content) . '</p></aside>';
+
+        wp_enqueue_style('rrze-elements');
         return $output;
     }
 
@@ -294,7 +269,7 @@ class Main {
         $type = sanitize_text_field($type);
         $orderby = sanitize_text_field($orderby);
         if ($orderby == 'random')
-            $orderby == 'rand';
+            $orderby = 'rand';
         $cat = sanitize_text_field($category);
         $tag = sanitize_text_field($tag);
         $num = sanitize_text_field($number);
@@ -309,6 +284,27 @@ class Main {
             'ignore_sticky_posts' => 1);
         if (strlen($id) > 0) {
             $args['post__in'] = $ids;
+        }
+        if ($type == 'speaker' || $type == 'talk') {
+            $cats = explode(',', $cat);
+            $cats = array_map('trim', $cats);
+            $args = array(
+                'relation' => 'AND',
+            );
+            foreach ($cats as $_c) {
+                $args['tax_query'][] = array(
+                    'taxonomy' => $type . '_category',
+                        'field' => 'slug',
+                        'terms' => $_c,
+                );
+            }
+        } else {
+            if ($cat !='') {
+                $args['category_name'] = $cat;
+            }
+            if ($tag !='') {
+                $args['tag'] = $tag;
+            }
         }
         $the_query = new \WP_Query($args);
         $output = '';
@@ -335,6 +331,9 @@ class Main {
         endif;
         wp_reset_postdata();
 
+        wp_enqueue_style('rrze-elements');
+        wp_enqueue_script('jquery-flexslider');
+        wp_enqueue_script('flexslider');
         return $output;
     }
 
@@ -469,6 +468,8 @@ class Main {
             <p><?php $output = __('Keine Beiträge gefunden', 'rrze-2015'); ?></p>
             <?php
         }
+
+        wp_enqueue_style('rrze-elements');
         return $output;
     }
 
@@ -492,6 +493,7 @@ class Main {
             $style = '';
         }
 
+        wp_enqueue_style('rrze-elements');
         return '<div class="alert' . $style . '" style="' . $color . $border_color . $font . '">' . do_shortcode(($content)) . '</div>';
     }
 
@@ -510,7 +512,6 @@ class Main {
             'style' => '',
             'font' => '',
                         ), $atts));
-        //var_dump($font);
         $style = (in_array($style, array('success', 'info', 'warning', 'danger', 'primary'))) ? ' ' . $style . '-btn' : '';
         $color_hex = '';
         $color_name = '';
@@ -546,6 +547,7 @@ class Main {
 
         $out = '<a' . $target . ' class="standard-btn' . $color_name . $size . $width_full . $style . '" href="' . $link . '" style="' . $font . $color_hex . $width_px . $border_color . '"><span>' . do_shortcode($content) . '</span></a>';
 
+        wp_enqueue_style('rrze-elements');
         return $out;
     }
 
