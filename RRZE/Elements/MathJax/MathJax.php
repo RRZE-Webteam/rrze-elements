@@ -24,7 +24,7 @@ class MathJax {
             if (!file_exists($mathjax_file)) {
                 $cdn = '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML,Safe.js';
             } else {
-                $cdn = content_url('cdn/mathjax/2.7.4') . '/MathJax.js?config=TeX-MML-AM_CHTML,Safe.js';
+                $cdn = get_site_url(NULL, 'wp-content/cdn/mathjax/2.7.4') . '/MathJax.js?config=TeX-MML-AM_CHTML,Safe.js';
             }
 
             if (wp_register_script('mathjax', $cdn, [], '2.7.4', TRUE)) {
