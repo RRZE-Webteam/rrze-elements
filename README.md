@@ -1,13 +1,17 @@
 ### RRZE Elements
 
-Version 1.1.1
+Version 1.2.0
 
 Sammlung nützlicher Gestaltungselemente für WordPress-Websites:
 
-- Zeitstrahl/Timeline
-- Accordions (https://www.wordpress.rrze.fau.de/redaktion/accordion/, ToDo)
-- Absatzklassen (https://www.wordpress.rrze.fau.de/redaktion/grafiken-im-text/absatzklassen/)
-- ausgewählte Meldungen per Shortcode [custom-news]
-- Content-Slider
+- Accordions
+- Alerts
 - Buttons
-- tbc.
+- Content-Slider
+- MathJax (stellt mathematische Formeln, die LaTeX und MathML Markup beinhalten, grafisch dar)
+- ausgewählte Meldungen per Shortcode [custom-news]
+- Absatzklassen
+- Pull-left / pull-right divs
+- Zeitstrahl/Timeline
+
+Vgl. https://www.wordpress.rrze.fau.de/plugins/elements/
