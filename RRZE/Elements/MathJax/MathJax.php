@@ -8,13 +8,17 @@ class MathJax {
 
     public function __construct() {
         add_shortcode('mathjax', [$this, 'shortcode_mathjax']);
+
         add_action('wp_enqueue_scripts', [$this, 'enqueue_scripts']);
     }
 
     public function shortcode_mathjax($atts) {
+        wp_enqueue_script('mathjax');
+        add_action('wp_head', [$this, 'mathjax_config']);
+        
         return '';
     }
-    
+
     public function enqueue_scripts() {
         global $post;
 
@@ -27,10 +31,7 @@ class MathJax {
                 $cdn = get_site_url(NULL, 'wp-content/cdn/mathjax/2.7.4') . '/MathJax.js?config=TeX-MML-AM_CHTML,Safe.js';
             }
 
-            if (wp_register_script('mathjax', $cdn, [], '2.7.4', TRUE)) {
-                wp_enqueue_script('mathjax');
-                add_action('wp_head', [$this, 'mathjax_config']);
-            }
+            wp_register_script('mathjax', $cdn, [], '2.7.4', TRUE);
         }
     }
 

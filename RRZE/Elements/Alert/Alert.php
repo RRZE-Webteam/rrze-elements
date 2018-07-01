@@ -8,8 +8,6 @@ class Alert {
 
     public function __construct() {
         add_shortcode('alert', [$this, 'shortcode_alert']);
-        
-        add_action('wp_enqueue_scripts', [$this, 'enqueue_scripts']);
     }
 
     public function shortcode_alert($atts, $content = '') {
@@ -29,22 +27,12 @@ class Alert {
             $style = '';
         }
 
-        return '<div class="alert' . $style . '" style="' . $color . $border_color . $font . '">' . do_shortcode(($content)) . '</div>';
-    }
-    
-    public function enqueue_scripts() {
-        global $post;
-        
-        $shortcode_tags = ['alert'];
-        
-        foreach ($shortcode_tags as $tag) {
-            if (has_shortcode($post->post_content, $tag)) {
-                wp_enqueue_style('fontawesome');
-                wp_enqueue_style('rrze-elements');
-                break;
-            }        
-        }
+        $output = '<div class="alert' . $style . '" style="' . $color . $border_color . $font . '">' . do_shortcode(($content)) . '</div>';
 
+        wp_enqueue_style('fontawesome');
+        wp_enqueue_style('rrze-elements');
+
+        return $output;
     }
 
 }

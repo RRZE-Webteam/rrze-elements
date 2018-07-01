@@ -7,18 +7,18 @@ use RRZE\Elements\Main;
 defined('ABSPATH') || exit;
 
 class Accordion {
-    
+
     protected $main;
-    
+
     public function __construct(Main $main) {
         $this->main = $main;
-        
+
         add_shortcode('collapsibles', [$this, 'shortcode_collapsibles']);
         add_shortcode('accordion', [$this, 'shortcode_collapsibles']);
         add_shortcode('accordionsub', [$this, 'shortcode_collapsibles']);
         add_shortcode('collapse', [$this, 'shortcode_collapse']);
         add_shortcode('accordion-item', [$this, 'shortcode_collapse']);
-        
+
         add_action('wp_enqueue_scripts', [$this, 'enqueue_scripts']);
     }
 
@@ -29,7 +29,7 @@ class Accordion {
         } else {
             $GLOBALS['collapsibles_count'] = 0;
         }
-        
+
         $defaults = array('expand-all-link' => 'false');
         $args = shortcode_atts($defaults, $atts);
         $expand = esc_attr($args['expand-all-link']);
@@ -38,7 +38,7 @@ class Accordion {
 
         $output .= '<div class="accordion" id="accordion-' . $GLOBALS['collapsibles_count'] . '">';
         if ($expand == "true") {
-            $output .= '<button class="expand-all" data-status="closed">' . __('Alle öffnen', 'rrze-2015') . '</button>';
+            $output .= '<button class="expand-all" data-status="closed">' . __('Expand All', 'rrze-elements') . '</button>';
         }
         $output .= do_shortcode($content);
         $output .= '</div>';
@@ -52,7 +52,7 @@ class Accordion {
         } else {
             $GLOBALS['current_collapse'] ++;
         }
-        
+
         $defaults = array('title' => 'Tab', 'color' => '', 'id' => '', 'load' => '', 'name' => '');
         extract(shortcode_atts($defaults, $atts));
 
@@ -82,34 +82,19 @@ class Accordion {
         $output .= '</div></div>';  // .accordion-inner & .accordion-body
         $output .= '</div>';        // . accordion-group
 
+        wp_enqueue_style('fontawesome');
+        wp_enqueue_style('rrze-elements');
+        wp_enqueue_script('rrze-accordions');
+
         return $output;
     }
 
     public function enqueue_scripts() {
-        global $post;
-        
-        $shortcode_tags = [
-            'collapsibles',
-            'accordion',
-            'accordionsub',
-            'collapse',
-            'accordion-item'
-        ];
-        
-        foreach ($shortcode_tags as $tag) {
-            if (has_shortcode($post->post_content, $tag)) {
-                wp_enqueue_style('fontawesome');
-                wp_enqueue_style('rrze-elements');
-                wp_register_script('rrze-accordions', plugins_url('js/accordion.js', $this->main->plugin_basename), ['jquery']);
-                wp_localize_script('rrze-accordions', 'accordionToggle', [
-                    'expand_all' => __('Alle öffnen', 'rrze-elements'),
-                    'collapse_all' => __('Alle schließen', 'rrze-elements'),
-                ]);
-                wp_enqueue_script('rrze-accordions');
-                break;
-            }        
-        }
-
+        wp_register_script('rrze-accordions', plugins_url('js/accordion.js', $this->main->plugin_basename), ['jquery']);
+        wp_localize_script('rrze-accordions', 'accordionToggle', [
+            'expand_all' => __('Expand All', 'rrze-elements'),
+            'collapse_all' => __('Collapse All', 'rrze-elements'),
+        ]);
     }
-    
+
 }

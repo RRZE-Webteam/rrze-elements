@@ -7,18 +7,16 @@ use RRZE\Elements\Main;
 defined('ABSPATH') || exit;
 
 class TimeLine {
-    
+
     protected $main;
-    
+
     public function __construct(Main $main) {
         $this->main = $main;
-        
+        add_action('wp_enqueue_scripts', [$this, 'enqueue_scripts']);
         add_shortcode('timeline', [$this, 'shortcode_timeline']);
         add_shortcode('timeline-item', [$this, 'shortcode_timeline_item']);
-        
-        add_action('wp_enqueue_scripts', [$this, 'enqueue_scripts']);
     }
-    
+
     public function shortcode_timeline($atts, $content = '') {
         extract(shortcode_atts([
             'orientation' => 'horizontal',
@@ -27,18 +25,18 @@ class TimeLine {
             'autoplay' => '0',
             'autoplaypause' => 3000
         ], $atts));
-        
+
         $autoplay = filter_var($autoplay, FILTER_VALIDATE_BOOLEAN);
         $autoplay_text = $autoplay ? 'true' : 'false';
-        
+
         static $timelinr_instance;
         $timelinr_instance++;
-        
+
         $output = '';
         $output .= "<div id=\"timeline-" . $timelinr_instance . "\" class=\"" . $orientation . "\"><ul class=\"issues\">";
         $output .= do_shortcode($content);
         $output .= "</ul>";
-        
+
         if ($orientation == 'horizontal') {
             $output .= "<div class=\"grad_left\"></div>" .
                     "<div class=\"grad_right\"></div>";
@@ -50,13 +48,13 @@ class TimeLine {
             $output .= "<a href=\"#\" class=\"next\"><i class=\"fa fa-angle-down\"></i><span class=\"sr-only\">Next</span></a>" .
                     "<a href=\"#\" class=\"prev\"><i class=\"fa fa-angle-up\"></i><span class=\"sr-only\">Previous</span></a>";
         }
-        
+
         if ($autoplay) {
             $output .= "<a href=\"#\" class=\"toggle-autoplay\" data-toggle=\"pause\"><i class=\"fa fa-pause\" aria-hidden=\"true\"></i><span class=\"sr-only\">Pause</span></a>";
         }
-        
+
         $output .= "</div>";
-        
+
         add_action('wp_footer', function() use ($timelinr_instance, $orientation, $speed, $startat, $autoplay_text, $autoplaypause) {
             $config = "jQuery(document).ready(function() {jQuery().timelinr({"
                 . "orientation: '" . $orientation . "',"
@@ -69,7 +67,7 @@ class TimeLine {
                 . "});});";
             echo '<script type="text/javascript">' . $config . '</script>';
         });
-        
+
         return $output;
     }
 
@@ -77,30 +75,21 @@ class TimeLine {
         extract(shortcode_atts([
             'name' => ''
         ], $atts));
-        
+
         $output = '';
         $output .= "<li name=" . sanitize_title($name) . ">";
         $output .= do_shortcode($content);
         $output .= "</li>";
-        
+
+        wp_enqueue_style('fontawesome');
+        wp_enqueue_style('rrze-elements');
+        wp_enqueue_script('jquery-timelinr');
+
         return $output;
     }
-    
-    public function enqueue_scripts() {
-        global $post;
-        
-        $shortcode_tags = ['timeline', 'timeline-item'];
-        
-        foreach ($shortcode_tags as $tag) {
-            if (has_shortcode($post->post_content, $tag)) {
-                wp_enqueue_style('fontawesome');
-                wp_enqueue_style('rrze-elements');
-                wp_register_script('rrze-timeline', plugins_url('js/jquery.timelinr-0.9.6.js', $this->main->plugin_basename), ['jquery']);
-                wp_enqueue_script('rrze-timeline');
-                break;
-            }        
-        }
 
+    public function enqueue_scripts() {
+        wp_register_script('jquery-timelinr', plugins_url('js/jquery.timelinr-0.9.6.js', $this->main->plugin_basename), ['jquery']);
     }
-    
+
 }

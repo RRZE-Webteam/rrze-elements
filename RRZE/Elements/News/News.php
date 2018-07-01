@@ -7,7 +7,7 @@ defined('ABSPATH') || exit;
 class News {
 
     public function __construct() {
-        add_shortcode('custom-news', [$this, 'shortcode_custom_news']);      
+        add_shortcode('custom-news', [$this, 'shortcode_custom_news']);
     }
 
     public function shortcode_custom_news($atts) {
@@ -77,24 +77,24 @@ class News {
         if ($id != '') {
             $args['post__in'] = $id;
         }
-        
+
         $output = '';
         $imgfloat = ($imgfloat == 'right') ? 'float-right' : 'float-left';
         $the_query = new \WP_Query($args);
-        
+
         if ($the_query->have_posts()) {
             if ($display == 'list') {
                 $output .= '<ul class="rrze-elements-news">';
             } else {
                 $output .= '<div class="rrze-elements-news">';
             }
-            
+
             while ($the_query->have_posts()) {
                 $the_query->the_post();
                 $id = get_the_ID();
                 $title = get_the_title();
                 $permalink = get_permalink();
-                
+
                 if ($display == 'list') {
                     $output .= '<li>';
                     if (strpos($hide, 'date') === false) {
@@ -130,13 +130,13 @@ class News {
                     $output .= '</article>';
                 }
             }
-            
+
             if ($display == 'list') {
                 $output .= '</ul>';
             } else {
                 $output .= '</div>';
             }
-            
+
             /* Restore original Post Data */
             wp_reset_postdata();
         } else {
@@ -144,6 +144,10 @@ class News {
             <p><?php $output = __('No posts found', 'rrze-elements'); ?></p>
             <?php
         }
+
+        wp_enqueue_style('fontawesome');
+        wp_enqueue_style('rrze-elements');
+
         return $output;
     }
 
