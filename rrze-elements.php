@@ -2,7 +2,7 @@
 
 /**
  * Plugin Name:     RRZE Elements
- * Plugin URI:      https://gitlab.rrze.fau.de/rrze-webteam/rrze-elements
+ * Plugin URI:      https://github.com/RRZE-Webteam/rrze-elements
  * Description:     Erweiterte Gestaltungselemente für WordPress-Websites
  * Version:         1.1.1
  * Author:          RRZE-Webteam
@@ -13,24 +13,6 @@
  * Text Domain:     rrze-elements
  */
 
-/*
-  Verzeichnisschema:
-  rrze-elements
-  |-- languages                     Verzeichnis der Sprachdateien
-  |   +-- rrze-elements.pot             Vorlagedatei falls Übersetzungen in andere Sprachen nötig werden
-  |   +-- rrze-elements-de_DE.po        Deutsche Übersetzungsdatei (kann mit poedit angepasst werden)
-  |   +-- rrze-elements-de_DE.mo        Deutsche Übersetzungsdatei (wird beim Speichern in poedit aktualisiert)
-  |   +-- rrze-elements-de_DE_formal.po Deutsche (Sie) Übersetzungsdatei (kann mit poedit angepasst werden)
-  |   +-- rrze-elements-de_DE_formal.mo Deutsche (Sie) Übersetzungsdatei (wird beim Speichern in poedit aktualisiert)
-  |-- includes                      (Optional)
-      +-- autoload.php              Automatische Laden von Klassen
-      +-- main.php                  Main-Klasse
-      +-- options.php               Optionen-Klasse
-      +-- settings.php              Settings-Klasse
-  +-- README.md                     Anweisungen
-  +-- rrze-elements.php                 Hauptdatei des Plugins
- */
-
 namespace RRZE\Elements;
 
 use RRZE\Elements\Main;
@@ -38,8 +20,7 @@ use RRZE\Elements\Main;
 defined('ABSPATH') || exit;
 
 const RRZE_PHP_VERSION = '5.5';
-const RRZE_WP_VERSION = '4.8';
-const VERSION = '1.0.1';
+const RRZE_WP_VERSION = '4.9';
 
 register_activation_hook(__FILE__, 'RRZE\Elements\activation');
 register_deactivation_hook(__FILE__, 'RRZE\Elements\deactivation');
@@ -111,7 +92,7 @@ function loaded() {
     // Sprachdateien werden eingebunden.
     load_textdomain();
 
-    // Ab hier können weitere Funktionen bzw. Klassen angelegt werden.
+    // Automatische Laden von Klassen.
     autoload();
 }
 
@@ -120,6 +101,6 @@ function loaded() {
  * @return void
  */
 function autoload() {
-    require __DIR__ . '/includes/autoload.php';
-    $main = new Main(plugin_basename(__FILE__));
+    require 'autoload.php';
+    return new Main(plugin_basename(__FILE__));
 }
