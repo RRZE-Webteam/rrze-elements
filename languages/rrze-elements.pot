@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RRZE Elements\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-11 14:15+0200\n"
+"POT-Creation-Date: 2018-07-02 14:10+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: RRZE-Webteam <webmaster@rrze.fau.de>\n"
@@ -18,48 +18,38 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.3\n"
+"X-Generator: Poedit 2.0.8\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPath-1: ..\n"
 
-#: ../rrze-elements.php:87
+#: ../RRZE/Elements/Accordion/Accordion.php:41
+#: ../RRZE/Elements/Accordion/Accordion.php:95
+msgid "Expand All"
+msgstr ""
+
+#: ../RRZE/Elements/Accordion/Accordion.php:96
+msgid "Collapse All"
+msgstr ""
+
+#: ../RRZE/Elements/News/News.php:123
+#, php-format
+msgid "View all posts in %s"
+msgstr ""
+
+#: ../RRZE/Elements/News/News.php:144
+msgid "No posts found"
+msgstr ""
+
+#: ../rrze-elements.php:72
 #, php-format
 msgid ""
 "Your server is running PHP version %s. Please upgrade at least to PHP "
 "version %s."
 msgstr ""
 
-#: ../rrze-elements.php:91
+#: ../rrze-elements.php:76
 #, php-format
 msgid ""
 "Your Wordpress version is %s. Please upgrade at least to Wordpress version "
 "%s."
-msgstr ""
-
-#: ../includes/settings.php:36
-msgid "RRZE Elements"
-msgstr ""
-
-#: ../includes/settings.php:47
-msgid "Settings &rsaquo; RRZE Elements"
-msgstr ""
-
-#: ../includes/settings.php:66
-msgid "Field 1"
-msgstr ""
-
-#: ../includes/settings.php:96
-msgid "Here comes the Context Help content."
-msgstr ""
-
-#: ../includes/settings.php:102
-msgid "Overview"
-msgstr ""
-
-#: ../includes/settings.php:106
-msgid "For more information"
-msgstr ""
-
-#: ../includes/settings.php:106
-msgid "RRZE Webteam on Github"
 msgstr ""
