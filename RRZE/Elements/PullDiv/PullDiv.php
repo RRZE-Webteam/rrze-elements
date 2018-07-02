@@ -22,7 +22,7 @@ class PullDiv {
         
         $textalign = in_array($align, ['left', 'right']) ? 'align-' . $align : '';
         $output = '<aside class="pull-' . $type . ' ' . $textalign . '">';
-        $output .= (isset($title) && $title != '') ? '<h1>' . $title . '</h1>' : '';
+        $output .= $title ? '<h1>' . $title . '</h1>' : '';
         $output .= '<p>' . do_shortcode($content) . '</p></aside>';
         
         return $output;
