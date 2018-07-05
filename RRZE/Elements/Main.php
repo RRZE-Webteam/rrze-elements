@@ -6,7 +6,7 @@ use RRZE\Elements\Accordion\Accordion;
 use RRZE\Elements\Alert\Alert;
 use RRZE\Elements\Button\Button;
 use RRZE\Elements\ContentSlider\ContentSlider;
-use RRZE\Elements\LaTex\LaTex;
+use RRZE\Elements\LaTeX\LaTeX;
 use RRZE\Elements\News\News;
 use RRZE\Elements\Notice\Notice;
 use RRZE\Elements\PullDiv\PullDiv;
@@ -30,7 +30,7 @@ class Main {
         $alert = new Alert();
         $button = new Button();
         $content_slider = new ContentSlider($this);
-        $latex = new LateX();
+        $latex = new LaTeX();
         $news = new News();
         $notice = new Notice();
         $pulldiv = new PullDiv();
