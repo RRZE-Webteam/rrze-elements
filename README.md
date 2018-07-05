@@ -1,14 +1,12 @@
 ### RRZE Elements
 
-Version 1.2.0
-
 Sammlung nützlicher Gestaltungselemente für WordPress-Websites:
 
 - Accordions
 - Alerts
 - Buttons
 - Content-Slider
-- MathJax (stellt mathematische Formeln, die LaTeX und MathML Markup beinhalten, grafisch dar)
+- LaTeX (stellt mathematische Formeln, die LaTeX enthalten, grafisch dar)
 - ausgewählte Meldungen per Shortcode [custom-news]
 - Absatzklassen
 - Pull-left / pull-right divs
