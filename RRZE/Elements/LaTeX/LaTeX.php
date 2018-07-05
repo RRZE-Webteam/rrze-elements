@@ -19,7 +19,7 @@ class LaTeX {
     		'display' => 'false'
     	], $atts );
 
-        $display = (bool) $latex_atts['display'];
+        $display = $latex_atts['display'] == 'true' ? true : false;
         
         $output = '';
         
