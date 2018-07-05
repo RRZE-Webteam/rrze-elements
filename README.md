@@ -8,7 +8,7 @@ Sammlung nützlicher Gestaltungselemente für WordPress-Websites:
 - Alerts
 - Buttons
 - Content-Slider
-- MathJax (stellt mathematische Formeln, die LaTeX und MathML Markup beinhalten, grafisch dar)
+- LaTeX (stellt mathematische Formeln, die LaTeX beinhalten, grafisch dar)
 - ausgewählte Meldungen per Shortcode [custom-news]
 - Absatzklassen
 - Pull-left / pull-right divs
