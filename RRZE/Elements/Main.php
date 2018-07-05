@@ -30,7 +30,7 @@ class Main {
         $alert = new Alert();
         $button = new Button();
         $content_slider = new ContentSlider($this);
-        $latex = new LateX();
+        $latex = new LaTex();
         $news = new News();
         $notice = new Notice();
         $pulldiv = new PullDiv();
