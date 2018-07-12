@@ -63,6 +63,9 @@ jQuery.fn.timelinr = function (options) {
             var heightDates = jQuery(settings.datesDiv).height();
             var widthDate = jQuery(settings.datesDiv + ' li').width();
             var heightDate = jQuery(settings.datesDiv + ' li').height();
+            var currentIndex = jQuery(settings.issuesDiv).find('li.' + settings.issuesSelectedClass).index();
+            var prevHref = jQuery(settings.datesDiv + ' li').eq(currentIndex).find('a').attr('href');
+            var nextHref = jQuery(settings.datesDiv + ' li').eq(currentIndex + 2).find('a').attr('href');
 
             // set positions!
             if (settings.orientation == 'horizontal') {
@@ -79,8 +82,14 @@ jQuery.fn.timelinr = function (options) {
                 var defaultPositionDates = parseInt(jQuery(settings.datesDiv).css('marginTop').substring(0, jQuery(settings.datesDiv).css('marginTop').indexOf('px')));
             }
 
+            // insert hrefs
+            var prevHref = jQuery(settings.datesDiv + ' li').eq(settings.startAt - 2).find('a').attr('href');
+            var nextHref = jQuery(settings.datesDiv + ' li').eq(settings.startAt).find('a').attr('href');
+            jQuery(settings.prevButton).attr('href',prevHref);
+            jQuery(settings.nextButton).attr('href',nextHref);
+
             jQuery(settings.datesDiv + ' a').click(function (event) {
-                event.preventDefault();
+                //event.preventDefault();
                 // first vars
                 var whichIssue = jQuery(this).text();
                 var currentIndex = jQuery(this).parent().prevAll().length;
@@ -121,12 +130,21 @@ jQuery.fn.timelinr = function (options) {
                 } else if (settings.orientation == 'vertical') {
                     jQuery(settings.datesDiv).animate({'marginTop': defaultPositionDates - (heightDate * currentIndex)}, {queue: false, duration: 'settings.datesSpeed'});
                 }
+
+                // insert hrefs
+                var prevHref = jQuery(settings.datesDiv + ' li').eq(currentIndex - 1).find('a').attr('href');
+                var nextHref = jQuery(settings.datesDiv + ' li').eq(currentIndex + 1).find('a').attr('href');
+                console.log(currentIndex, prevHref,nextHref);
+                jQuery(settings.prevButton).attr('href',prevHref);
+                jQuery(settings.nextButton).attr('href',nextHref);
             });
 
             jQuery(settings.nextButton).bind('click', function (event) {
-                event.preventDefault();
+                //event.preventDefault();
                 // bugixed from 0.9.54: now the dates gets centered when there's too much dates.
                 var currentIndex = jQuery(settings.issuesDiv).find('li.' + settings.issuesSelectedClass).index();
+                var prevHref = jQuery(settings.datesDiv + ' li').eq(currentIndex).find('a').attr('href');
+                var nextHref = jQuery(settings.datesDiv + ' li').eq(currentIndex + 2).find('a').attr('href');
                 if (settings.orientation == 'horizontal') {
                     var currentPositionIssues = parseInt(jQuery(settings.issuesDiv).css('marginLeft').substring(0, jQuery(settings.issuesDiv).css('marginLeft').indexOf('px')));
                     var currentIssueIndex = currentPositionIssues / widthIssue;
@@ -139,6 +157,9 @@ jQuery.fn.timelinr = function (options) {
                         if (!jQuery(settings.issuesDiv).is(':animated')) {
                             // bugixed from 0.9.52: now the dates gets centered when there's too much dates.
                             jQuery(settings.datesDiv + ' li').eq(currentIndex + 1).find('a').trigger('click');
+                            console.log(currentIndex, prevHref, nextHref)
+                            jQuery(settings.prevButton).attr('href',prevHref);
+                            jQuery(settings.nextButton).attr('href',nextHref);
                         }
                     }
                 } else if (settings.orientation == 'vertical') {
@@ -152,6 +173,8 @@ jQuery.fn.timelinr = function (options) {
                     } else {
                         if (!jQuery(settings.issuesDiv).is(':animated')) {
                             // bugixed from 0.9.54: now the dates gets centered when there's too much dates.
+                            jQuery(settings.prevButton).attr('href',prevHref);
+                            jQuery(settings.nextButton).attr('href',nextHref);
                             jQuery(settings.datesDiv + ' li').eq(currentIndex + 1).find('a').trigger('click');
                         }
                     }
@@ -179,9 +202,11 @@ jQuery.fn.timelinr = function (options) {
             });
 
             jQuery(settings.prevButton).click(function (event) {
-                event.preventDefault();
+                //event.preventDefault();
                 // bugixed from 0.9.54: now the dates gets centered when there's too much dates.
                 var currentIndex = jQuery(settings.issuesDiv).find('li.' + settings.issuesSelectedClass).index();
+                var prevHref = jQuery(settings.datesDiv + ' li').eq(currentIndex).find('a').attr('href');
+                var nextHref = jQuery(settings.datesDiv + ' li').eq(currentIndex + 2).find('a').attr('href');
                 if (settings.orientation == 'horizontal') {
                     var currentPositionIssues = parseInt(jQuery(settings.issuesDiv).css('marginLeft').substring(0, jQuery(settings.issuesDiv).css('marginLeft').indexOf('px')));
                     var currentIssueIndex = currentPositionIssues / widthIssue;
@@ -194,6 +219,9 @@ jQuery.fn.timelinr = function (options) {
                         if (!jQuery(settings.issuesDiv).is(':animated')) {
                             // bugixed from 0.9.54: now the dates gets centered when there's too much dates.
                             jQuery(settings.datesDiv + ' li').eq(currentIndex - 1).find('a').trigger('click');
+                            console.log(currentIndex, prevHref, nextHref)
+                            jQuery(settings.prevButton).attr('href',prevHref);
+                            jQuery(settings.nextButton).attr('href',nextHref);
                         }
                     }
                 } else if (settings.orientation == 'vertical') {
@@ -207,6 +235,8 @@ jQuery.fn.timelinr = function (options) {
                     } else {
                         if (!jQuery(settings.issuesDiv).is(':animated')) {
                             // bugixed from 0.9.54: now the dates gets centered when there's too much dates.
+                            jQuery(settings.prevButton).attr('href',prevHref);
+                            jQuery(settings.nextButton).attr('href',nextHref);
                             jQuery(settings.datesDiv + ' li').eq(currentIndex - 1).find('a').trigger('click');
                         }
                     }
@@ -255,7 +285,13 @@ jQuery.fn.timelinr = function (options) {
                 }
             }
             // default position startAt, added since 0.9.3
-            jQuery(settings.datesDiv + ' li').eq(settings.startAt - 1).find('a').trigger('click');
+            // modified B.Bothe: start at selected issue if hash given
+            if (window.location.hash) {
+                var identifier = window.location.hash.slice(1);
+                jQuery(settings.datesDiv + ' li').find('a[href=#'+identifier+']').trigger('click');
+            } else {
+                jQuery(settings.datesDiv + ' li').eq(settings.startAt - 1).find('a').trigger('click');
+            }
             // autoPlay, added since 0.9.4
             var intervalId = null;
             if (settings.autoPlay == 'true') {
