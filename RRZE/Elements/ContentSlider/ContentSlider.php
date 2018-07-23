@@ -36,7 +36,7 @@ class ContentSlider {
         $id = sanitize_text_field($id);
         $ids = explode(",", $id);
         $ids = array_map('trim', $ids);
-        $type = sanitize_text_field($type);
+        $type = (in_array(sanitize_text_field($type), array('post', 'page', 'speaker', 'talk'))) ? sanitize_text_field($type) : '';
         $orderby = sanitize_text_field($orderby);
         $img_width = (int) $img_width;
         $img_height = (int) $img_height;

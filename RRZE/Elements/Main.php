@@ -44,10 +44,6 @@ class Main {
             return;
         }
         
-        if (!wp_style_is('fontawesome') || !wp_style_is('font-awesome')) {
-            wp_register_style('fontawesome', plugins_url('css/font-awesome.css', $this->plugin_basename));
-        }
-        
         wp_register_style('rrze-elements', plugins_url('css/rrze-elements.css', $this->plugin_basename));
     }
 }
