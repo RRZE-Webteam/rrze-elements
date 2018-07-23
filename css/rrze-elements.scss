@@ -972,3 +972,85 @@ a.standard-btn {
         width: 100%;
     }
 }
+
+/* --- Multi Columns --- */
+
+.two-columns-one,
+.three-columns-one,
+.three-columns-two,
+.four-columns-one,
+.four-columns-two,
+.four-columns-three {
+    width: 100%;
+    position: relative;
+    margin-bottom: 30px;
+    font-size: 16px;
+    font-size: 1rem;
+    p {
+        font-size: 16px;
+        font-size: 1rem;
+    }
+    @media screen and (min-width: 48em) {
+        float: left;
+        margin-bottom: 0;
+    }
+}
+
+.two-columns-one {
+    @media screen and (min-width: 48em) {
+        width: 48.5%;
+        margin: 0 1.5% 0 0;
+    }
+}
+
+.three-columns-one {
+    @media screen and (min-width: 48em) {
+        width: 31.3%;
+        margin: 0 3% 0 0;
+    }
+    .last {
+        @media screen and (min-width: 48em) {
+            margin: 0 1.5% 0;
+        }
+    }
+}
+
+.three-columns-two {
+    @media screen and (min-width: 48em) {
+        width: 65.15%;
+    }
+}
+
+.four-columns-one {
+    @media screen and (min-width: 48em) {
+        width: 22.375%;
+        margin: 0 3.5% 0 0;
+    }
+}
+
+.four-columns-two {
+    @media screen and (min-width: 48em) {
+        width: 48%;
+        margin: 0 3.5% 0 0;
+    }
+}
+
+.four-columns-three {
+    @media screen and (min-width: 48em) {
+        width: 74.5%;
+        margin: 0 3.5% 0 0;
+    }
+}
+
+.last {
+    clear: right;
+    margin-right: 0 !important;
+}
+
+.divider {
+    width: 100%;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    display: block;
+    clear: both;
+}

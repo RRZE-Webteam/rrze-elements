@@ -5,6 +5,7 @@ namespace RRZE\Elements;
 use RRZE\Elements\Accordion\Accordion;
 use RRZE\Elements\Alert\Alert;
 use RRZE\Elements\Button\Button;
+use RRZE\Elements\Columns\Columns;
 use RRZE\Elements\ContentSlider\ContentSlider;
 use RRZE\Elements\LaTeX\LaTeX;
 use RRZE\Elements\News\News;
@@ -29,6 +30,7 @@ class Main {
         $accordion = new Accordion($this);
         $alert = new Alert();
         $button = new Button();
+        $columns = new Columns();
         $content_slider = new ContentSlider($this);
         $latex = new LaTeX();
         $news = new News();
