@@ -1571,6 +1571,8 @@ html[xmlns] .slides { display: block; }
 .content-slider.flexslider .flex-direction-nav li, #content .content-slider.flexslider .flex-direction-nav li { list-style-type: none; }
 .content-slider.flexslider h2, #content .content-slider.flexslider h2 { border-bottom: 1px solid #ccc; margin-bottom: 10px; padding-top: 0; }
 @media screen and (min-width: 48em) { .content-slider.flexslider h2, #content .content-slider.flexslider h2 { margin-bottom: 20px; } }
+.content-slider.flexslider h2 a, #content .content-slider.flexslider h2 a { text-decoration: none; }
+.content-slider.flexslider h2 a:hover, .content-slider.flexslider h2 a:focus, .content-slider.flexslider h2 a:active, #content .content-slider.flexslider h2 a:hover, #content .content-slider.flexslider h2 a:focus, #content .content-slider.flexslider h2 a:active { text-decoration: underline; }
 
 /* Direction Nav */
 .content-slider .flex-direction-nav { *height: 0; margin-bottom: 0; position: static; }
@@ -1598,8 +1600,8 @@ html[xmlns] .slides { display: block; }
 .content-slider .flex-pauseplay { position: static; }
 
 .content-slider .flex-pauseplay a { display: block; float: right; width: 40px; height: 40px; padding-top: 6px; z-index: 10; overflow: hidden; cursor: pointer; color: #555; background-image: none; text-indent: 0; text-align: right; font-size: 16px; line-height: 1.6; }
-@media screen and (min-width: 48em) { .content-slider .flex-pauseplay a { opacity: 0.8; position: absolute; bottom: -65px; top: auto; right: 10px; } }
-.content-slider .flex-pauseplay a:before { font-family: "FontAwesome"; font-size: 20px; display: inline-block; content: '\f04c'; }
+@media screen and (min-width: 48em) { .content-slider .flex-pauseplay a { position: absolute; bottom: -2px; top: auto; right: 0; } }
+.content-slider .flex-pauseplay a:before { font-family: "FontAwesome"; font-size: 20px; display: inline-block; content: '\f04c'; color: #1559a6; }
 .content-slider .flex-pauseplay a:hover, .content-slider .flex-pauseplay a:focus, .content-slider .flex-pauseplay a:active { opacity: 1; background: transparent !important; text-decoration: none !important; }
 .content-slider .flex-pauseplay a.flex-play:before { content: '\f04b'; }
 
@@ -1629,6 +1631,7 @@ button.accordion-toggle { width: 100%; border: none; text-align: left; }
 button.expand-all { margin: 5px 0; float: right; }
 
 /* News */
+div.rrze-elements-news .entry-content { width: 100%; }
 @media screen and (min-width: 37.5em) { div.rrze-elements-news .float-left { float: left; padding: 0 20px 10px 0; background: #fff; } }
 @media screen and (min-width: 37.5em) { div.rrze-elements-news .float-right { float: right; padding: 0 0 10px 20px; background: #fff; } }
 
