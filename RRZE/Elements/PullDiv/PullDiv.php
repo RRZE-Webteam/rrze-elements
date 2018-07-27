@@ -25,6 +25,7 @@ class PullDiv {
         $output .= $title ? '<h1>' . $title . '</h1>' : '';
         $output .= '<p>' . do_shortcode($content) . '</p></aside>';
         
+        wp_enqueue_style('rrze-elements');
         return $output;
     }
 

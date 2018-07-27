@@ -73,7 +73,7 @@ class Accordion {
         }
 
         $output = '<div class="accordion-group' . $color . '">';
-        $output .= '<h3 class="accordion-heading"><button class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-' . $GLOBALS['collapsibles_count'] . '" href="#collapse_' . $id . '">' . $title . '</button></h3>';
+        $output .= '<h3 class="accordion-heading"><button class="accordion-toggle" data-toggle="collapse" href="#collapse_' . $id . '">' . $title . '</button></h3>';
         $output .= '<div id="collapse_' . $id . '" class="accordion-body' . $addclass . '"' . $name . '>';
         $output .= '<div class="accordion-inner clearfix">';
 

@@ -103,31 +103,59 @@ class News {
                     $output .= '<a href="' . $permalink . '" rel="bookmark">' . $title . '</a>';
                     $output .= '</li>';
                 } else {
-                    $output .= '<article id="post-' . $id . '" class="' . implode(get_post_class(), ' ') . ' cf">';
-                    if (has_post_thumbnail($id) && (strpos($hide, 'thumbnail') === false)) {
-                        $output .= '<div class="entry-thumbnail ' . $imgfloat . '">' . get_the_post_thumbnail($id, 'post-thumbnail') . '</div>';
-                    }
-                    $output .= '<header class="entry-header">';
-                    $output .= '<h2 class="entry-title"><a href="' . $permalink . '" rel="bookmark">' . $title . '</a></h2>';
-                    $output .= '</header>';
-                    $output .= '<div class="entry-meta">';
-                    if (strpos($hide, 'date') === false) {
-                        $output .= '<div class="entry-date">' . get_the_date('d.m.Y', $id) . '</div>';
-                    }
-                    if (strpos($hide, 'categories') === false) {
-                        $categories = get_the_category($id);
-                        $separator = " / ";
-                        $cat_links = [];
-                        if (!empty($categories)) {
-                            foreach ($categories as $category) {
-                                $cat_links[] = '<a href="' . esc_url(get_category_link($category->term_id)) . '" alt="' . esc_attr(sprintf(__('View all posts in %s', 'rrze-elements'), $category->name)) . '">' . esc_html($category->name) . '</a>';
-                            }
-                            $output .= '<div class="entry-cats">' . implode($separator, $cat_links) . '</div>';
+                    $stylesheets = [
+			'fau'        => [
+				'FAU-Einrichtungen',
+				'FAU-Einrichtungen-BETA',
+				'FAU-Medfak',
+				'FAU-RWFak',
+				'FAU-Philfak',
+				'FAU-Techfak',
+				'FAU-Natfak',
+			],
+			'rrze'       => [
+				'rrze-2015',
+			],
+			'fau-events' => [
+				'FAU-Events',
+			],
+                    ];
+                    $current_theme = wp_get_theme();
+                    if (in_array($current_theme->Name, $stylesheets['fau'])) {
+                        $withdate = (strpos($hide, 'date') === false);
+                        $hidemeta = strpos($hide, 'categories');
+                        $output .= fau_display_news_teaser($id, $withdate, 2, $hidemeta);
+                    } elseif (in_array($current_theme->Name, $stylesheets['fau-events'])) {
+                        $output .= get_template_part('content');
+                    } elseif (in_array($current_theme->Name, $stylesheets['rrze'])) {
+                        $output .= get_template_part('template-parts/content');
+                    } else {
+                        $output .= '<article id="post-' . $id . '" class="news-item clear clearfix ' . implode(get_post_class(), ' ') . ' cf">';
+                        $output .= '<header class="entry-header">';
+                        $output .= '<h2 class="entry-title"><a href="' . $permalink . '" rel="bookmark">' . $title . '</a></h2>';
+                        $output .= '</header>';
+                        $output .= '<div class="entry-meta">';
+                        if (strpos($hide, 'date') === false) {
+                            $output .= '<div class="entry-date">' . get_the_date('d.m.Y', $id) . '</div>';
                         }
+                        if (strpos($hide, 'categories') === false) {
+                            $categories = get_the_category($id);
+                            $separator = " / ";
+                            $cat_links = [];
+                            if (!empty($categories)) {
+                                foreach ($categories as $category) {
+                                    $cat_links[] = '<a href="' . esc_url(get_category_link($category->term_id)) . '" alt="' . esc_attr(sprintf(__('View all posts in %s', 'rrze-elements'), $category->name)) . '">' . esc_html($category->name) . '</a>';
+                                }
+                                $output .= '<div class="entry-cats">' . implode($separator, $cat_links) . '</div>';
+                            }
+                        }
+                        $output .= '</div>';
+                        if (has_post_thumbnail($id) && (strpos($hide, 'thumbnail') === false)) {
+                            $output .= '<div class="entry-thumbnail ' . $imgfloat . '">' . get_the_post_thumbnail($id, 'post-thumbnail') . '</div>';
+                        }
+                        $output .= '<div class="entry-content">' . get_the_excerpt($id) . "</div>";
+                        $output .= '</article>';
                     }
-                    $output .= '</div>';
-                    $output .= '<div class="entry-content">' . get_the_excerpt($id) . "</div>";
-                    $output .= '</article>';
                 }
             }
 

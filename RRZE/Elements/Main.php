@@ -5,6 +5,7 @@ namespace RRZE\Elements;
 use RRZE\Elements\Accordion\Accordion;
 use RRZE\Elements\Alert\Alert;
 use RRZE\Elements\Button\Button;
+use RRZE\Elements\Columns\Columns;
 use RRZE\Elements\ContentSlider\ContentSlider;
 use RRZE\Elements\LaTeX\LaTeX;
 use RRZE\Elements\News\News;
@@ -29,6 +30,7 @@ class Main {
         $accordion = new Accordion($this);
         $alert = new Alert();
         $button = new Button();
+        $columns = new Columns();
         $content_slider = new ContentSlider($this);
         $latex = new LaTeX();
         $news = new News();
@@ -40,10 +42,6 @@ class Main {
     public function enqueue_scripts() {
         if (is_404()|| is_search()) {
             return;
-        }
-        
-        if (!wp_style_is('fontawesome') || !wp_style_is('font-awesome')) {
-            wp_register_style('fontawesome', plugins_url('css/font-awesome.css', $this->plugin_basename));
         }
         
         wp_register_style('rrze-elements', plugins_url('css/rrze-elements.css', $this->plugin_basename));

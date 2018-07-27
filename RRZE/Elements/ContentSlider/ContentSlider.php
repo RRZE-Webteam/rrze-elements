@@ -28,18 +28,29 @@ class ContentSlider {
             "category" => '',
             "tag" => '',
             'orderby' => 'date', // 'rand' auch möglich!
-            'link' => '1'
+            'link' => '1',
+            'img_width' => '',
+            'img_height' => ''
         ], $atts, 'content-slider'));
 
         $id = sanitize_text_field($id);
         $ids = explode(",", $id);
         $ids = array_map('trim', $ids);
-        $type = sanitize_text_field($type);
+        $type = (in_array(sanitize_text_field($type), array('post', 'page', 'speaker', 'talk'))) ? sanitize_text_field($type) : '';
         $orderby = sanitize_text_field($orderby);
+        $img_width = (int) $img_width;
+        $img_height = (int) $img_height;
+        if ($img_width != '' && $img_height == '') {
+            $img_height = 'auto';
+        }
+        if ($img_height != '' && $img_width == '') {
+            $img_width = 'auto';
+        }
 
         if ($orderby == 'random') {
             $orderby = 'rand';
         }
+        $img_style = ($img_width != '' || $img_height != '') ? ' width:'.$img_width.'px; height:'.$img_height.'px; object-fit: cover;' : '';
 
         $cat = sanitize_text_field($category);
         $tag = sanitize_text_field($tag);
@@ -84,7 +95,7 @@ class ContentSlider {
         $output = '';
 
         if ($the_query->have_posts()) {
-            $output = '<div class="content-slider flexslider">';
+            $output = '<div class="content-slider flexslider clear clearfix">';
             $output .= '<ul class="slides">';
 
             while ($the_query->have_posts()) {
@@ -99,7 +110,7 @@ class ContentSlider {
                 }
                 $output .= '<li>';
                 $output .= '<h2>' . $link_open . get_the_title() . $link_close . '</h2>';
-                $output .= $link_open . get_the_post_thumbnail($id, 'teaser-thumb', ['class' => 'attachment-teaser-thumb']) . $link_close;
+                $output .= $link_open . get_the_post_thumbnail($id, 'medium_large', array('class' => 'attachment-teaser-thumb', 'style' => $img_style)) . $link_close;
                 $output .= get_the_excerpt($id);
                 $output .= '</li>';
             }
