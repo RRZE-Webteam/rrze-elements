@@ -92,7 +92,7 @@ class Columns {
     // Divide Text Shortcode
     public function shortcode_divider($atts, $content = null) {
         wp_enqueue_style('rrze-elements');
-        return '<div class="divider"></div>';
+        return '<div class="elements-divider"></div>';
     }
 
 }
