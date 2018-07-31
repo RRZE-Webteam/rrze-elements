@@ -403,8 +403,17 @@ div {
         }
         p, ul, ol {
             margin-bottom: .3em;
+            .alert & {
+                margin-bottom: 0;
+            }
+        }
+        .alert & {
+            margin: 0;
+            padding-top: 0;
+            padding-bottom: 0;
         }
     }
+
 
     &.notice-alert,
     &.notice-attention {
