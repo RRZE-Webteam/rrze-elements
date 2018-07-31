@@ -13,7 +13,8 @@ $light-grey: #dedee3;
 $link: $medium-grey;
 $bg-grey: #e7e7eb;
 $green: #00905A;
-$red: #D94000;
+//$red: #D94000;
+$red: #a71c18;
 
 // Bootstrap Colors
 $primary: #286090;
@@ -1056,7 +1057,7 @@ a.standard-btn {
 
 .four-columns-three {
     @media screen and (min-width: 48em) {
-        width: 74.5%;
+        width: 74.125%;
         margin: 0 3.5% 0 0;
     }
 }
