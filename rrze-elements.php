@@ -4,7 +4,7 @@
  * Plugin Name:     RRZE Elements
  * Plugin URI:      https://github.com/RRZE-Webteam/rrze-elements
  * Description:     Erweiterte Gestaltungselemente für WordPress-Websites
- * Version:         1.4.0
+ * Version:         1.4.1
  * Author:          RRZE-Webteam
  * Author URI:      https://blogs.fau.de/webworking/
  * License:         GNU General Public License v2
@@ -102,5 +102,6 @@ function loaded() {
  */
 function autoload() {
     require 'autoload.php';
+    new TinyMCEButtons();
     return new Main(plugin_basename(__FILE__));
 }

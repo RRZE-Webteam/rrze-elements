@@ -19,6 +19,14 @@ class Notice {
         add_shortcode('notice-audio', [$this, 'shortcode_notice']);
         add_shortcode('notice-download', [$this, 'shortcode_notice']);
         add_shortcode('notice-faubox', [$this, 'shortcode_notice']);
+        /* Für die Abwärtskompatibilität der bereits in FAU-Einrichtungen
+         * abwärtskompatiblen Shortcodes noch folgendes: */
+        add_shortcode('attention', [$this, 'shortcode_notice']);
+        add_shortcode('hinweis', [$this, 'shortcode_notice']);
+        add_shortcode('baustelle', [$this, 'shortcode_notice']);
+        add_shortcode('plus', [$this, 'shortcode_notice']);
+        add_shortcode('minus', [$this, 'shortcode_notice']);
+        add_shortcode('question', [$this, 'shortcode_notice']);
     }
 
     public function shortcode_notice($atts, $content = '', $tag) {
@@ -28,7 +36,11 @@ class Notice {
 
         $tag_array = explode('-', $tag);
 
-        $type = $tag_array[1];
+        if (count($tag_array) > 1) {
+            $type = $tag_array[1];
+        } else {
+            $type = $tag_array[0];
+        }
         $output = '<div class="notice notice-' . $type . '">';
         $output .= (isset($title) && $title != '') ? '<h3>' . $title . '</h3>' : '';
         $output .= '<p>' . do_shortcode($content) . '</p></div>';
