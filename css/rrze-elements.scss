@@ -845,7 +845,7 @@ html[xmlns] .slides {
  */
 
 h3.accordion-heading {
-    width: 100%;
+    width: auto;
     padding: 0 !important;
     margin: 0;
     border: none;
@@ -856,9 +856,17 @@ button.accordion-toggle {
     border: none;
     text-align: left;
 }
-button.expand-all {
+button.expand-all.standard-btn {
     margin: 5px 0;
-    float: right;
+    float: none;
+}
+
+.button-container-right {
+    text-align: right;
+}
+
+.button-container-left {
+    text-align: left;
 }
 
 /*
@@ -923,6 +931,7 @@ div.rrze-elements-news {
  * Buttons
  */
 
+button.standard-btn,
 a.standard-btn {
     display: inline-block;
     margin: 0 0 30px;
@@ -944,14 +953,19 @@ a.standard-btn {
     border: 1px solid transparent;
 }
 
-.post .entry-content a.standard-btn,
-.page .entry-content a.standard-btn,
-.post .entry-content a.standard-btn:hover,
-.page .entry-content a.standard-btn:hover {
-    color: #fff;
-    //border: none;
+.post, .page {
+    .entry-content {
+        button.standard-btn,
+        a.standard-btn {
+            color: #fff;
+            &:hover {
+                color: #fff;
+            }
+        }
+    }
 }
 
+button.standard-btn,
 a.standard-btn {
     &.xsmall-btn {
         padding: 5px 10px;
