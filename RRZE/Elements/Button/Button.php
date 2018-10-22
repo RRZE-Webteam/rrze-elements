@@ -43,16 +43,15 @@ class Button {
         $target = ($target == 'blank') ? ' target="_blank"' : '';
         $link = esc_url($link);
         $font = ($font == 'dark') ? ' color: #1a1a1a;' : '';
-
+        $width = trim($width);
+        $width_full = '';
+        $width_px = '';
         if ($width == 'full') {
             $width_full = ' full-btn';
-            $width_px = '';
         } elseif (is_numeric($width)) {
             $width_px = 'width:' . $width . 'px; max-width:100%;"';
-            $width_full = '';
-        } else {
-            $width_px = '';
-            $width_full = '';
+        } elseif (strpos($width, 'px')) {
+                $width = $width . 'px';
         }
 
         if ('' != $color || '' != $font) {
