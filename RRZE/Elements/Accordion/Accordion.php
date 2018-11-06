@@ -37,7 +37,7 @@ class Accordion {
         $output = '';
 
         $output .= '<div class="accordion" id="accordion-' . $GLOBALS['collapsibles_count'] . '">';
-        if ($expand == "true") {
+        if ($expand == "true" || $expand == "1") {
             $output .= '<div class="button-container-right"><button class="expand-all standard-btn primary-btn xsmall-btn" data-status="closed">' . __('Expand All', 'rrze-elements') . '</button></div>';
         }
         $output .= do_shortcode($content);

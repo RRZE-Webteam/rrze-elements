@@ -42,22 +42,31 @@ class ContentIndex {
     function shortcode_contentindex($atts, $content = '') {
         $output = '';
 
-        extract(shortcode_atts([
-            'category_name' => 'page_category',
-            'tag_name' => 'page_tag',
+        $defaults = [
+            'category-name' => 'page_category',
+            'tag-name' => 'page_tag',
             'show' => 'page',
             'category' => '',
             'tag' => '',
             'display' => '',
             'excerpt' => '0',
-            'accordion_color' => '',
+            'accordion-color' => '',
             'register' => '0',
             'prefix' => '',
-                        ], $atts));
-        $excerpt = ($excerpt == '1') ? true : false;
-        $register = ($register == '1') ? true : false;
-        $accordion_color = sanitize_text_field($accordion_color);
-        $prefix = ($prefix != '') ? sanitize_title($prefix) . '_' : '';
+            'expand-all-link' => '0'
+                        ];
+        $sc_args = shortcode_atts($defaults, $atts);
+        $show = (post_type_exists(sanitize_text_field($sc_args['show']))) ? sanitize_text_field($sc_args['show']) : 'page_tag';
+        $category_name = sanitize_text_field($sc_args['category-name']);
+        $category = sanitize_text_field($sc_args['category']);
+        $tag_name = sanitize_text_field($sc_args['tag-name']);
+        $tag = sanitize_text_field($sc_args['tag']);
+        $display = (sanitize_text_field($sc_args['display']) == 'list') ? 'list' : '';
+        $excerpt = ($sc_args['excerpt'] == '1') ? true : false;
+        $accordion_color = sanitize_text_field($sc_args['accordion-color']);
+        $register = ($sc_args['register'] == '1') ? true : false;
+        $prefix = ($sc_args['prefix'] != '') ? sanitize_title($sc_args['prefix']) . '_' : '';
+        $expand = ($sc_args['expand-all-link'] == '1') ? '1' : '0';
 
         // Query Args
         $args = [
@@ -171,7 +180,7 @@ class ContentIndex {
                     }
                 }
                 if ($display != 'list') {
-                    $output .= do_shortcode('[collapsibles]' . $shortcode_data . '[/collapsibles]');
+                    $output .= do_shortcode('[collapsibles expand-all-link="' . $expand . '"]' . $shortcode_data . '[/collapsibles]');
                 }
             }
             $output .= '</div>';
