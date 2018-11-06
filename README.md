@@ -6,6 +6,7 @@ Sammlung nützlicher Gestaltungselemente für WordPress-Websites:
 - Alerts
 - Buttons
 - Content-Slider
+- Content-Index
 - LaTeX (stellt mathematische Formeln, die LaTeX enthalten, grafisch dar)
 - ausgewählte Meldungen per Shortcode [custom-news]
 - Absatzklassen
