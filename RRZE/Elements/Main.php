@@ -12,6 +12,7 @@ use RRZE\Elements\News\News;
 use RRZE\Elements\Notice\Notice;
 use RRZE\Elements\PullDiv\PullDiv;
 use RRZE\Elements\TimeLine\TimeLine;
+use RRZE\Elements\ContentIndex\ContentIndex;
 
 defined('ABSPATH') || exit;
 
@@ -37,6 +38,7 @@ class Main {
         $notice = new Notice();
         $pulldiv = new PullDiv();
         $timeline = new TimeLine($this);
+        $content_index = new ContentIndex($this);
     }
     
     public function enqueue_scripts() {
