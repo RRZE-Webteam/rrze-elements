@@ -14,6 +14,8 @@ class ContentIndex {
         $this->main = $main;
         add_action('init', [$this, 'elements_enable_page_tax']);
         add_shortcode('content-index', [$this, 'shortcode_contentindex']);
+        add_filter( 'manage_pages_columns', [$this, 'elements_add_cat_column'] );
+        add_action( 'manage_pages_custom_column', [$this, 'elements_add_cat_value'], 10, 2 );
         if (!post_type_supports('page', 'excerpt')) {
             add_post_type_support('page', 'excerpt');
         }
@@ -188,6 +190,25 @@ class ContentIndex {
         
         wp_enqueue_style('rrze-elements');
         return $output;
+    }
+
+    public static function elements_add_cat_column($cols) {
+        $cols['category'] = __('Kategorie', 'rrze-elements');
+        return $cols;
+    }
+
+    public static function elements_add_cat_value($column_name, $post_id) {
+        if ( 'category' == $column_name ) {
+            $page_cats = (get_the_terms($post_id, 'page_category'));
+            $cats = array();
+            if ($page_cats) {
+                foreach ($page_cats as $_pc) {
+                    $cat_link = '<a href="'.get_term_link($_pc->term_id).'">'.$_pc->name.'</a>';
+                    array_push($cats, $cat_link);
+                }
+                echo implode("<br />", $cats);
+            }
+        }
     }
 
 }
