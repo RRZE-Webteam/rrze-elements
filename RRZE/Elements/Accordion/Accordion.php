@@ -77,7 +77,7 @@ class Accordion {
         $output .= '<div id="collapse_' . $id . '" class="accordion-body' . $addclass . '"' . $name . '>';
         $output .= '<div class="accordion-inner clearfix">';
 
-        $output .= do_shortcode(trim($content));
+        $output .= do_shortcode($content);
 
         $output .= '</div></div>';  // .accordion-inner & .accordion-body
         $output .= '</div>';        // . accordion-group
