@@ -14,7 +14,7 @@ jQuery.fn.timelinr = function (options) {
 
     settings = jQuery.extend({
         orientation: 'horizontal', // value: horizontal | vertical, default to horizontal
-        containerDiv: '#timeline_1', // value: any HTML tag or #id, default to #timeline
+        containerDiv: '#timeline-1', // value: any HTML tag or #id, default to #timeline
         datesDiv: options.containerDiv + ' .dates', // value: any HTML tag or #id, default to #dates
         datesSelectedClass: 'selected', // value: any class, default to selected
         datesSpeed: 'normal', // value: integer between 100 and 1000 (recommended) or 'slow', 'normal' or 'fast'; default to normal
@@ -29,7 +29,8 @@ jQuery.fn.timelinr = function (options) {
         startAt: 1, // value: integer, default to 1 (first)
         autoPlay: 'false', // value: true | false, default to false
         autoPlayDirection: 'forward', // value: forward | backward, default to forward
-        autoPlayPause: 3000 // value: integer (1000 = 1 seg), default to 2000 (2segs)
+        autoPlayPause: 3000, // value: integer (1000 = 1 seg), default to 2000 (2segs)
+        fixedSize : 'true',
     }, options);
 
     jQuery(function () {
@@ -46,7 +47,9 @@ jQuery.fn.timelinr = function (options) {
 
         // Checks if required elements exist on page before initializing timelinr | improvement since 0.9.55
         if (jQuery(settings.datesDiv).length > 0 && jQuery(settings.issuesDiv).length > 0) {
-            updateSize();
+            if (options.fixedSize == 'true') {
+                updateSize();
+            }
 
             // setting variables... many of them
             var howManyDates = jQuery(settings.datesDiv + ' li').length;
@@ -134,7 +137,7 @@ jQuery.fn.timelinr = function (options) {
                 // insert hrefs
                 var prevHref = jQuery(settings.datesDiv + ' li').eq(currentIndex - 1).find('a').attr('href');
                 var nextHref = jQuery(settings.datesDiv + ' li').eq(currentIndex + 1).find('a').attr('href');
-                console.log(currentIndex, prevHref,nextHref);
+                //console.log(currentIndex, prevHref,nextHref);
                 jQuery(settings.prevButton).attr('href',prevHref);
                 jQuery(settings.nextButton).attr('href',nextHref);
             });

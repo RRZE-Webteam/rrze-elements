@@ -13,6 +13,7 @@ use RRZE\Elements\Notice\Notice;
 use RRZE\Elements\PullDiv\PullDiv;
 use RRZE\Elements\TimeLine\TimeLine;
 use RRZE\Elements\ContentIndex\ContentIndex;
+use RRZE\Elements\Lightbox\Lightbox;
 
 defined('ABSPATH') || exit;
 
@@ -39,6 +40,7 @@ class Main {
         $pulldiv = new PullDiv();
         $timeline = new TimeLine($this);
         $content_index = new ContentIndex($this);
+        $lightbox = new Lightbox($this);
     }
     
     public function enqueue_scripts() {

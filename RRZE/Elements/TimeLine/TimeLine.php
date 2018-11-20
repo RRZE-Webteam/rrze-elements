@@ -23,12 +23,13 @@ class TimeLine {
             'speed' => 'normal',
             'startat' => 1,
             'autoplay' => '0',
-            'autoplaypause' => 3000
+            'autoplaypause' => 3000,
+            'fixedsize' => '1'
         ], $atts));
 
         $autoplay = filter_var($autoplay, FILTER_VALIDATE_BOOLEAN);
         $autoplay_text = $autoplay ? 'true' : 'false';
-
+        $fixedsize = $fixedsize == '1' ? 'true' : 'false';
         static $timelinr_instance;
         $timelinr_instance++;
 
@@ -55,7 +56,7 @@ class TimeLine {
 
         $output .= "</div>";
 
-        add_action('wp_footer', function() use ($timelinr_instance, $orientation, $speed, $startat, $autoplay_text, $autoplaypause) {
+        add_action('wp_footer', function() use ($timelinr_instance, $orientation, $speed, $startat, $autoplay_text, $autoplaypause, $fixedsize) {
             $config = "jQuery(document).ready(function() {jQuery().timelinr({"
                 . "orientation: '" . $orientation . "',"
                 . "containerDiv: '#timeline-" . $timelinr_instance . "',"
@@ -63,7 +64,8 @@ class TimeLine {
                 . "issuesSpeed: '" . $speed . "',"
                 . "startAt: " . $startat . ","
                 . "autoPlay: '" . $autoplay_text . "',"
-                . "autoPlayPause: " . $autoplaypause . ""
+                . "autoPlayPause: " . $autoplaypause . ","
+                . "fixedSize: '" . $fixedsize . "'"
                 . "});});";
             echo '<script type="text/javascript">' . $config . '</script>';
         });
