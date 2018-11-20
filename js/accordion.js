@@ -58,7 +58,9 @@ jQuery(document).ready(function ($) {
             var $findname = identifier.replace('\#','');
             var $target = $('body').find('div[name=' + $findname + ']');
         }
-        openAnchorAccordion($target);
+        if ($target.length > 0) {
+            openAnchorAccordion($target);
+        }
     }
 
     $('a').click(function(e) {
