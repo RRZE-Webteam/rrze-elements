@@ -14,21 +14,26 @@ use RRZE\Elements\PullDiv\PullDiv;
 use RRZE\Elements\TimeLine\TimeLine;
 use RRZE\Elements\ContentIndex\ContentIndex;
 use RRZE\Elements\Lightbox\Lightbox;
+use RRZE\Elements\TinyMCE\TinyMCEButtons;
 
 defined('ABSPATH') || exit;
 
-class Main {
-    
+class Main
+{
     public $plugin_basename;
 
-    public function __construct($plugin_basename) {
+    public function __construct($plugin_basename)
+    {
         $this->plugin_basename = $plugin_basename;
-        
+
         remove_filter('the_content', 'wpautop');
         add_filter('the_content', 'wpautop', 12);
-        
+
         add_action('wp_enqueue_scripts', [$this, 'enqueue_scripts']);
-        
+
+        $tinyMCE = new TinyMCEButtons($this);
+        $lightbox = new Lightbox($this);
+
         $accordion = new Accordion($this);
         $alert = new Alert();
         $button = new Button();
@@ -40,14 +45,14 @@ class Main {
         $pulldiv = new PullDiv();
         $timeline = new TimeLine($this);
         $content_index = new ContentIndex($this);
-        $lightbox = new Lightbox($this);
     }
-    
-    public function enqueue_scripts() {
+
+    public function enqueue_scripts()
+    {
         if (is_404()|| is_search()) {
             return;
         }
-        
+
         wp_register_style('rrze-elements', plugins_url('css/rrze-elements.css', $this->plugin_basename));
     }
 }
