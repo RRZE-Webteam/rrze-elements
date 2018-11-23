@@ -23,7 +23,7 @@ class Lightbox
     public function enqueue_scripts()
     {
         wp_register_script('jquery-fancybox', plugins_url('js/jquery.fancybox.min.js', $this->main->plugin_basename), ['jquery'], '3.5.2', true);
-        wp_register_script('rrze-fancybox', plugins_url('js/fancybox.js', $this->main->plugin_basename), ['jquery-fancybox'], false, true);
+        wp_register_script('rrze-fancybox', plugins_url('js/fancybox.min.js', $this->main->plugin_basename), ['jquery-fancybox'], false, true);
     }
 
     public function the_content($content)
