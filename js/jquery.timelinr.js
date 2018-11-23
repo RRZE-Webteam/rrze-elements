@@ -40,7 +40,11 @@ jQuery.fn.timelinr = function (options) {
         var issues = jQuery(timeline).find("ul.issues");
         dates_content += "<ul class='dates'>";
         jQuery(issues).find("li").each(function(j) {
-            dates_content += "<li><a href='#" + jQuery(this).attr("name") + "'>" +jQuery(this).attr("name") + "</a></li>";
+            if (jQuery(this).attr("name").match("^__")) {
+                dates_content += "<li><a href='#" + jQuery(this).attr("name") + "'><span class=\"sr-only\">" + jQuery(this).attr("name") + "</span>&nbsp;&nbsp;&nbsp;&nbsp;</a></li>";
+            } else {
+                dates_content += "<li><a href='#" + jQuery(this).attr("name") + "'>" +jQuery(this).attr("name") + "</a></li>";
+            }
         });
         dates_content += "</ul>";
         jQuery(timeline).prepend(dates_content);

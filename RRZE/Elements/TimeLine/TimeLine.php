@@ -91,7 +91,7 @@ class TimeLine {
     }
 
     public function enqueue_scripts() {
-        wp_register_script('jquery-timelinr', plugins_url('js/jquery.timelinr-0.9.6.js', $this->main->plugin_basename), ['jquery']);
+        wp_register_script('jquery-timelinr', plugins_url('js/jquery.timelinr.min.js', $this->main->plugin_basename), ['jquery']);
     }
 
 }
