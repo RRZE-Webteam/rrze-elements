@@ -4,7 +4,7 @@
  * Plugin Name:     RRZE Elements
  * Plugin URI:      https://github.com/RRZE-Webteam/rrze-elements
  * Description:     Erweiterte Gestaltungselemente für WordPress-Websites
- * Version:         1.6.0
+ * Version:         1.6.1
  * Author:          RRZE-Webteam
  * Author URI:      https://blogs.fau.de/webworking/
  * License:         GNU General Public License v2
@@ -31,15 +31,17 @@ add_action('plugins_loaded', 'RRZE\Elements\loaded');
  * Einbindung der Sprachdateien.
  * @return void
  */
-function load_textdomain() {
-    load_plugin_textdomain('rrze-elements', FALSE, sprintf('%s/languages/', dirname(plugin_basename(__FILE__))));
+function load_textdomain()
+{
+    load_plugin_textdomain('rrze-elements', false, sprintf('%s/languages/', dirname(plugin_basename(__FILE__))));
 }
 
 /*
  * Wird durchgeführt, nachdem das Plugin aktiviert wurde.
  * @return void
  */
-function activation() {
+function activation()
+{
     // Sprachdateien werden eingebunden.
     load_textdomain();
 
@@ -55,7 +57,8 @@ function activation() {
  * Wird durchgeführt, nachdem das Plugin deaktiviert wurde.
  * @return void
  */
-function deactivation() {
+function deactivation()
+{
     // Hier können die Funktionen hinzugefügt werden, die
     // bei der Deaktivierung des Plugins aufgerufen werden müssen.
     // Bspw. wp_clear_scheduled_hook, flush_rewrite_rules, etc.
@@ -65,7 +68,8 @@ function deactivation() {
  * Überprüft die minimal erforderliche PHP- u. WP-Version.
  * @return void
  */
-function system_requirements() {
+function system_requirements()
+{
     $error = '';
 
     if (version_compare(PHP_VERSION, RRZE_PHP_VERSION, '<')) {
@@ -78,7 +82,7 @@ function system_requirements() {
 
     // Wenn die Überprüfung fehlschlägt, dann wird das Plugin automatisch deaktiviert.
     if (!empty($error)) {
-        deactivate_plugins(plugin_basename(__FILE__), FALSE, TRUE);
+        deactivate_plugins(plugin_basename(__FILE__), false, true);
         wp_die($error);
     }
 }
@@ -88,7 +92,8 @@ function system_requirements() {
  * und alle Plugins eingebunden wurden.
  * @return void
  */
-function loaded() {
+function loaded()
+{
     // Sprachdateien werden eingebunden.
     load_textdomain();
 
@@ -100,8 +105,8 @@ function loaded() {
  * Automatische Laden von Klassen.
  * @return void
  */
-function autoload() {
+function autoload()
+{
     require 'autoload.php';
-    new TinyMCEButtons();
     return new Main(plugin_basename(__FILE__));
 }
