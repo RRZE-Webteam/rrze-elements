@@ -13,5 +13,6 @@ Sammlung nützlicher Gestaltungselemente für WordPress-Websites:
 - Absatzklassen
 - Pull-left / pull-right divs
 - Zeitstrahl/Timeline
+- Hidden-Text (Text temporär oder dauerhaft ausblenden)
 
 Vgl. https://www.wordpress.rrze.fau.de/plugins/elements/
