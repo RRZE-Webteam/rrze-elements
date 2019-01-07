@@ -15,6 +15,7 @@ use RRZE\Elements\TimeLine\TimeLine;
 use RRZE\Elements\ContentIndex\ContentIndex;
 use RRZE\Elements\Lightbox\Lightbox;
 use RRZE\Elements\TinyMCE\TinyMCEButtons;
+use RRZE\Elements\HiddenText\HiddenText;
 
 defined('ABSPATH') || exit;
 
@@ -45,6 +46,7 @@ class Main
         $pulldiv = new PullDiv();
         $timeline = new TimeLine($this);
         $content_index = new ContentIndex($this);
+        $hidden_text = new HiddenText($this);
     }
 
     public function enqueue_scripts()
