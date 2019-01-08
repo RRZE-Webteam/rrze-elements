@@ -16,18 +16,22 @@ class HiddenText {
             'end' => ''
         ], $atts));
 
-        $now = new \DateTime(date("Y-m-d H:i:s"));
-        $now->setTimezone(new \DateTimeZone('Europe/Berlin'));
+        $now = strtotime(current_time("Y-m-d H:i:s"));
         if ($start == '') {
             $start = $now;
         } else {
-            $start = new \DateTime($start, new \DateTimeZone('Europe/Berlin'));
+            $start = strtotime($start);
         }
         if ($end == '') {
             $end = $now;
         } else {
-            $end = new \DateTime($end, new \DateTimeZone('Europe/Berlin'));
+            $end = strtotime($end);
         }
+
+        if (!$start || !$end) {
+            return do_shortcode('[notice-attention]' . __('Please use a valid date format: Y-m-d H:i:s.', 'rrze-elements') . '[/notice-attention]' . $content);
+        }
+
         if ($now < $start || $now > $end) {
             $output = '<p>' . do_shortcode($content) . '</p>';
         } else {
