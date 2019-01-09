@@ -12,7 +12,7 @@ jQuery(document).ready(function ($) {
         event.preventDefault();
         var $accordion = $(this).attr('href');
         toggleAccordion($accordion);
-        window.history.pushState({}, $accordion, window.location.href + $accordion);
+        window.history.replaceState(null, null, $accordion);
     });
 
     // Keyboard navigation for accordions
@@ -20,7 +20,7 @@ jQuery(document).ready(function ($) {
         if (event.keyCode == 32) {
             var $accordion = $(this).attr('href');
             toggleAccordion($accordion);
-            window.history.pushState({}, $accordion, window.location.href + $accordion);
+            window.history.replaceState(null, null, $accordion);
         }
     });
 
