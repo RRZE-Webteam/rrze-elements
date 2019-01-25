@@ -46,7 +46,7 @@ class Main
         $pulldiv = new PullDiv();
         $timeline = new TimeLine($this);
         $content_index = new ContentIndex($this);
-        $hidden_text = new HiddenText($this);
+        $hidden_text = new HiddenText();
     }
 
     public function enqueue_scripts()

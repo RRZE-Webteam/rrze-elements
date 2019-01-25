@@ -1,54 +1,11 @@
+// Font Awesome
 @import "font-awesome";
 
-// Variables
-$page: #fff;
-$header: #636071;
-$text: #393944;
-$border: #C3C3CB;
-$medium-blue: #005CAE;
-$text-blue: #00458C;
-$dark-grey: #4B4A56;
-$medium-grey: #707070;
-$light-grey: #dedee3;
-$link: $medium-grey;
-$bg-grey: #e7e7eb;
-$green: #00905A;
-//$red: #D94000;
-$red: #a71c18;
+// Konstanten fuer das Design
+@import "variables";
 
-// Bootstrap Colors
-$primary: #286090;
-$primary-light:#d9edf7;
-$success: #5cb85c;
-$sucess-light:#dff0d8;
-$info:#5bc0de;
-$info-light:#d9edf7;
-$warning:#f0ad4e;
-$warning-light:#fcf8e3;
-$danger:#d9534f;
-$danger-light:#fcf8e3;
-$secondary: #5a6268;
-
-// FAU Colors
-$colorPhilFak:	    #A36B0D;
-$colorRwFak:	    #8d1429;
-$colorMedFak:	    #0381A2;
-$colorNatFak:	    #048767;
-$colorTechFak:	    #6E7881;
-$colorZUV:	    #003366;
-$colorDefault:	    #003366;
-
-// Functions and Mixins
-
-@function px2rem($font-size, $base-font-size: 16) {
-  @return $font-size / $base-font-size + rem;
-}
-@mixin px2rem($font-size, $line: $font-size * 1.4, $base-font-size: 16) {
-    font-size: $font-size + px; // für den IE8
-    line-height: ($line) + px;
-    font-size: px2rem($font-size, $base-font-size);
-    line-height: ($line / $base-font-size) + rem;
-}
+// Mixins
+@import "mixins";
 
 /*
  * Timeline
@@ -382,147 +339,9 @@ $colorDefault:	    #003366;
     }
 }
 
-/*
- * Absatzklassen
- */
-//div {
-    .notice {
-        display: block;
-        margin: 20px 0;
-        padding-left: 36px;
-        &::before {
-            @extend .fa !optional;
-            @extend .fa-2x !optional;
-            min-width: 24px;
-            padding-right: 8px;
-            margin-left: -36px;
-            float: left;
-            position: relative;
-            top: -3px;
-        }
-        h3 {
-            margin-bottom: 0;
-            padding-top: 0;
-        }
-        p, ul, ol {
-            margin-bottom: .3em;
-            .alert & {
-                margin-bottom: 0;
-            }
-        }
-        .alert & {
-            margin: 0;
-            padding-top: 0;
-            padding-bottom: 0;
-        }
-    }
+// Absatzklassen
+@import "absatzklassen";
 
-
-    .notice-alert,
-    .notice-attention {
-        @extend .fa-exclamation-circle !optional;
-        color: $red;
-        font-weight: bold;
-        h3, p {
-            color: $red;
-        }
-        h3+p, h3+ul, h3+ol {
-            font-weight: normal;
-            color: $text;
-        }
-    }
-
-    .notice-hinweis {
-        @extend .fa-exclamation-circle !optional;
-        color: $text-blue;
-        font-weight: bold;
-        &::before {
-            font-weight: normal;
-        }
-        h3, p {
-            color: $text-blue;
-        }
-        h3+p, h3+ul, h3+ol {
-            font-weight: normal;
-            color: $text;
-        }
-    }
-
-    .notice-baustelle {
-        @extend .fa-wrench !optional;
-        color: $dark-grey;
-        font-weight: bold;
-        h3 {
-            color: $dark-grey;
-        }
-        h3+p, h3+ul, h3+ol {
-            font-weight: normal;
-            color: $text;
-        }
-    }
-
-    .notice-question {
-        @extend .fa-question-circle !optional;
-        &::before {
-            color: $medium-blue;
-        }
-    }
-
-    .notice-minus {
-        @extend .fa-minus-circle !optional;
-        &::before {
-            color: $red;
-        }
-    }
-
-    .notice-plus {
-        @extend .fa-plus-circle !optional;
-        &::before {
-            color: $green;
-        }
-    }
-    .notice-tipp {
-        @extend .fa-lightbulb-o !optional;
-        font-weight: bold;
-        h3 {
-            color: $dark-grey;
-        }
-        h3+p, h3+ul, h3+ol {
-            font-weight: normal;
-            color: $text;
-        }
-        &::before {
-            color: orange;
-        }
-    }
-    .notice-download {
-        @extend .fa-download !optional;
-        &::before {
-            color: $medium-blue;
-        }
-    }
-
-    .notice-faubox {
-        @extend .fa-cloud-download !optional;
-        &::before {
-            color: $medium-blue;
-        }
-    }
-
-    .notice-audio {
-        @extend .fa-volume-up !optional;
-        &::before {
-            color: $medium-blue;
-        }
-    }
- 
-    .notice-video {
-        @extend .fa-youtube-play !optional;
-        &::before {
-            color: $medium-blue;
-        }
-    }
-//}
 
 /*
  * jQuery FlexSlider v2.2.0
@@ -896,39 +715,9 @@ div.rrze-elements-news {
     }
 }
 
-/*
- * Bootstrap Alerts
- */
-.alert {
-    padding: 15px;
-    margin-bottom: 20px;
-    border: 1px solid transparent;
-    font-weight: normal;
-    background-color: #e9edf2;
-    strong {
-        color: inherit;
-    }
-}
-.alert-success {
-    color: #3c763d;
-    background-color: #dff0d8;
-    border-color: #d6e9c6;
-}
-.alert-info {
-    color: #31708f;
-    background-color: #d9edf7;
-    border-color: #bce8f1;
-}
-.alert-warning {
-    color: #8a6d3b;
-    background-color: #fcf8e3;
-    border-color: #faebcc;
-}
-.alert-danger {
-    color: #a94442;
-    background-color: #f2dede;
-    border-color: #ebccd1;
-}
+//Bootstrap Alerts
+@import "alerts";
+
 
 /*
  * Buttons

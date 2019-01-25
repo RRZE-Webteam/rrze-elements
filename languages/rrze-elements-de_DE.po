@@ -2,10 +2,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RRZE Elements\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-02 14:10+0200\n"
-"PO-Revision-Date: \n"
-"Last-Translator: \n"
-"Language-Team: RRZE-Webteam <webmaster@rrze.fau.de>\n"
+"POT-Creation-Date: 2019-01-08 16:07+0000\n"
+"PO-Revision-Date: 2019-01-08 16:09+0000\n"
+"Last-Translator: barbara <barbara.bothe@fau.de>\n"
+"Language-Team: Deutsch\n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -16,29 +16,12 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.8\n"
+"X-Generator: Loco https://localise.biz/\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPath-1: ..\n"
+"X-Loco-Version: 2.2.0; wp-5.0.2"
 
-#: ../RRZE/Elements/Accordion/Accordion.php:41
-#: ../RRZE/Elements/Accordion/Accordion.php:95
-msgid "Expand All"
-msgstr "Alle öffnen"
-
-#: ../RRZE/Elements/Accordion/Accordion.php:96
-msgid "Collapse All"
-msgstr "Alle schließen"
-
-#: ../RRZE/Elements/News/News.php:123
-#, php-format
-msgid "View all posts in %s"
-msgstr "Alle Beiträge in %s anzeigen"
-
-#: ../RRZE/Elements/News/News.php:144
-msgid "No posts found"
-msgstr "Keine Beiträge gefunden"
-
-#: ../rrze-elements.php:72
+#: rrze-elements.php:76
 #, php-format
 msgid ""
 "Your server is running PHP version %s. Please upgrade at least to PHP "
@@ -47,7 +30,7 @@ msgstr ""
 "Ihre PHP-Version %s ist veraltet. Bitte aktualisieren Sie mindestens auf die "
 "PHP-Version %s."
 
-#: ../rrze-elements.php:76
+#: rrze-elements.php:80
 #, php-format
 msgid ""
 "Your Wordpress version is %s. Please upgrade at least to Wordpress version "
@@ -56,23 +39,49 @@ msgstr ""
 "Ihre Wordpress-Version %s ist veraltet. Bitte aktualisieren Sie mindestens "
 "auf die Wordpress-Version %s."
 
-#~ msgid "RRZE Elements"
-#~ msgstr "RRZE Elements"
+#: RRZE/Elements/Accordion/Accordion.php:41
+#: RRZE/Elements/Accordion/Accordion.php:95
+msgid "Expand All"
+msgstr "Alle öffnen"
 
-#~ msgid "Settings &rsaquo; RRZE Elements"
-#~ msgstr "Einstellungen &rsaquo; RRZE Elements"
+#: RRZE/Elements/Accordion/Accordion.php:96
+msgid "Collapse All"
+msgstr "Alle schließen"
 
-#~ msgid "Field 1"
-#~ msgstr "Feld 1"
+#: RRZE/Elements/ContentIndex/ContentIndex.php:196
+msgid "Category"
+msgstr "Kategorie"
 
-#~ msgid "Here comes the Context Help content."
-#~ msgstr "Hier kommt der Inhalt der Kontexthilfe."
+#: RRZE/Elements/HiddenText/HiddenText.php:32
+msgid "Please use a valid date format: Y-m-d H:i:s."
+msgstr ""
+"Ungültiges Datumsformat. Bitte verwenden Sie ein Datum im Format Y-m-d H:i:s."
 
-#~ msgid "Overview"
-#~ msgstr "Übersicht"
+#: RRZE/Elements/News/News.php:147
+#, php-format
+msgid "View all posts in %s"
+msgstr "Alle Beiträge in %s anzeigen"
 
-#~ msgid "For more information"
-#~ msgstr "Für mehr Information"
+#: RRZE/Elements/News/News.php:172
+msgid "No posts found"
+msgstr "Keine Beiträge gefunden"
 
-#~ msgid "RRZE Webteam on Github"
-#~ msgstr "RRZE-Webteam in Github"
+#. Name of the plugin
+msgid "RRZE Elements"
+msgstr "RRZE Elements"
+
+#. Description of the plugin
+msgid "Erweiterte Gestaltungselemente für WordPress-Websites"
+msgstr "Erweiterte Gestaltungselemente für WordPress-Websites"
+
+#. URI of the plugin
+msgid "https://github.com/RRZE-Webteam/rrze-elements"
+msgstr "https://github.com/RRZE-Webteam/rrze-elements"
+
+#. Author of the plugin
+msgid "RRZE-Webteam"
+msgstr "RRZE-Webteam"
+
+#. Author URI of the plugin
+msgid "https://blogs.fau.de/webworking/"
+msgstr "https://blogs.fau.de/webworking/"

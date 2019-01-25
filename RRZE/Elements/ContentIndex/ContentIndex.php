@@ -193,7 +193,7 @@ class ContentIndex {
     }
 
     public static function elements_add_cat_column($cols) {
-        $cols['category'] = __('Kategorie', 'rrze-elements');
+        $cols['category'] = __('Category', 'rrze-elements');
         return $cols;
     }
 
