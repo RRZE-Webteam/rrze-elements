@@ -16,23 +16,16 @@ class HiddenText {
             'end' => ''
         ], $atts));
 
-        $now = strtotime(current_time("Y-m-d H:i:s"));
-        if ($start == '') {
-            $start = $now;
-        } else {
-            $start = strtotime($start);
-        }
-        if ($end == '') {
-            $end = $now;
-        } else {
-            $end = strtotime($end);
-        }
+        $now = current_time('timestamp');
 
-        if (!$start || !$end) {
+        $start = $start ? strtotime($start, $now) : $now;
+        $end = $end ? strtotime($end, $now) : $now;
+
+        if (! $start || ! $end) {
             return do_shortcode('[notice-attention]' . __('Please use a valid date format: Y-m-d H:i:s.', 'rrze-elements') . '[/notice-attention]' . $content);
         }
 
-        if ($now < $start || $now > $end) {
+        if ($now > $start || $now < $end) {
             $output = '<p>' . do_shortcode($content) . '</p>';
         } else {
             $output = '';
