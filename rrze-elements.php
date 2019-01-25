@@ -19,8 +19,8 @@ use RRZE\Elements\Main;
 
 defined('ABSPATH') || exit;
 
-const RRZE_PHP_VERSION = '5.5';
-const RRZE_WP_VERSION = '4.9';
+const RRZE_PHP_VERSION = '7.1';
+const RRZE_WP_VERSION = '5.0';
 
 register_activation_hook(__FILE__, 'RRZE\Elements\activation');
 register_deactivation_hook(__FILE__, 'RRZE\Elements\deactivation');
