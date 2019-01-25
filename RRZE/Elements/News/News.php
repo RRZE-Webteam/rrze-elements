@@ -91,6 +91,7 @@ class News
         $hide_ary = array_map('trim', explode(",", $hide));
         $hide_date = in_array('date', $hide_ary);
         $hide_category = in_array('category', $hide_ary);
+        $hide_thumbnail = in_array('thumbnail', $hide_ary);
 
         if ($wp_query->have_posts()) {
             if ($display == 'list') {
@@ -158,7 +159,7 @@ class News
                             }
                         }
                         $output .= '</div>';
-                        if (has_post_thumbnail($id) && (strpos($hide, 'thumbnail') === false)) {
+                        if (has_post_thumbnail($id) && ! $hide_thumbnail) {
                             $output .= '<div class="entry-thumbnail ' . $imgfloat . '">' . get_the_post_thumbnail($id, 'post-thumbnail') . '</div>';
                         }
                         $output .= '<div class="entry-content">' . get_the_excerpt($id) . "</div>";
