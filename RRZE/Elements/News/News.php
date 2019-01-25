@@ -133,7 +133,7 @@ class News
                     ];
                     $current_theme = wp_get_theme();
                     if (in_array($current_theme->Name, $stylesheets['fau']) && function_exists('fau_display_news_teaser')) {
-                        $output .= fau_display_news_teaser($id, $hide_date, 2, $hide_category);
+                        $output .= fau_display_news_teaser($id, ! $hide_date, 2, $hide_category);
                     } elseif (in_array($current_theme->Name, $stylesheets['fau-events'])) {
                         $output .= get_template_part('content');
                     } elseif (in_array($current_theme->Name, $stylesheets['rrze'])) {
