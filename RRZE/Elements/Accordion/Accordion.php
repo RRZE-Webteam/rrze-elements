@@ -40,7 +40,7 @@ class Accordion {
         if ($expand == "true" || $expand == "1") {
             $output .= '<div class="button-container-right"><button class="expand-all standard-btn primary-btn xsmall-btn" data-status="closed">' . __('Expand All', 'rrze-elements') . '</button></div>';
         }
-        $output .= do_shortcode(wpautop($content));
+        $output .= do_shortcode($content);
         $output .= '</div>';
 
         return $output;
@@ -77,8 +77,8 @@ class Accordion {
         $output .= '<div id="collapse_' . $id . '" class="accordion-body' . $addclass . '"' . $name . '>';
         $output .= '<div class="accordion-inner clearfix">';
 
-        $output .= do_shortcode(wpautop($content));
-        
+        $output .= do_shortcode($content);
+
         $output .= '</div></div>';  // .accordion-inner & .accordion-body
         $output .= '</div>';        // . accordion-group
 
