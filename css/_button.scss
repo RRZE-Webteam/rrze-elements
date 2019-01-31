@@ -1,0 +1,88 @@
+/*!
+ * Buttons
+ */
+
+button.standard-btn,
+a.standard-btn {
+    display: inline-block;
+    margin: 0 0 30px;
+    padding: 10px 18px;
+    overflow: hidden;
+    cursor: pointer;
+    background: $primary;
+    color: #fff;
+    font-size: 16px;
+    font-size: 1rem;
+    text-align: center;
+    font-weight: normal;
+    text-decoration: none !important;
+    -webkit-transition: 0.2s background ease;
+    -moz-transition: 0.2s background ease;
+    -o-transition: 0.2s background ease;
+    -ms-transition: 0.2s background ease;
+    transition: 0.2s background ease;
+    border: 1px solid transparent;
+}
+
+.post, .page {
+    .entry-content {
+        button.standard-btn,
+        a.standard-btn {
+            color: #fff;
+            &:hover {
+                color: #fff;
+            }
+        }
+    }
+}
+
+button.standard-btn,
+a.standard-btn {
+    &.xsmall-btn {
+        padding: 5px 10px;
+        font-size: 14px;
+        font-size: 0.875rem;
+    }
+    &.small-btn {
+        padding: 7px 12px 5px;
+    }
+    &.large-btn {
+        padding: 14px 20px 13px;
+        font-size: 23px;
+        font-size: 1.4375rem;
+    }
+    &.xlarge-btn {
+        padding: 18px 30px 17px;
+        font-size: 25px;
+        font-size: 1.5625rem;
+    }
+    &.primary-btn, &.blue-btn {
+        background: $primary;
+        border-color: darken($primary, 5%);
+    }
+    &.success-btn, &.green-btn {
+        background: $success;
+        border-color: darken($success, 5%);
+    }
+    &.info-btn {
+        background: $info;
+        border-color: darken($info, 5%);
+    }
+    &.warning-btn, &.yellow-btn {
+        background: $warning;
+        border-color: darken($warning, 5%);
+    }
+    &.danger-btn, &.red-btn {
+        background: $danger;
+        border-color: darken($danger, 5%);
+    }
+    &.secondary-btn, &.grey-btn {
+        background: $secondary;
+    }
+    &.black-btn {
+        background: $text;
+    }
+    &.full-btn {
+        width: 100%;
+    }
+}

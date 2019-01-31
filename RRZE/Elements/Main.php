@@ -55,6 +55,6 @@ class Main
             return;
         }
 
-        wp_register_style('rrze-elements', plugins_url('css/rrze-elements.css', $this->plugin_basename));
+        wp_register_style('rrze-elements', plugins_url('css/rrze-elements.min.css', $this->plugin_basename));
     }
 }

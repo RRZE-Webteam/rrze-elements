@@ -1,0 +1,28 @@
+/*!
+ * Accordion
+ */
+
+h3.accordion-heading {
+    width: auto;
+    padding: 0 !important;
+    margin: 0;
+    border: none;
+    text-align: left;
+}
+button.accordion-toggle {
+    width: 100%;
+    border: none;
+    text-align: left;
+}
+button.expand-all.standard-btn {
+    margin: 5px 0;
+    float: none;
+}
+
+.button-container-right {
+    text-align: right;
+}
+
+.button-container-left {
+    text-align: left;
+}

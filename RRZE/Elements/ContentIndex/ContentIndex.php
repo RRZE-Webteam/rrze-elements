@@ -6,22 +6,24 @@ use RRZE\Elements\Main;
 
 defined('ABSPATH') || exit;
 
-class ContentIndex {
-
+class ContentIndex
+{
     protected $main;
 
-    public function __construct(Main $main) {
+    public function __construct(Main $main)
+    {
         $this->main = $main;
         add_action('init', [$this, 'elements_enable_page_tax']);
         add_shortcode('content-index', [$this, 'shortcode_contentindex']);
-        add_filter( 'manage_pages_columns', [$this, 'elements_add_cat_column'] );
-        add_action( 'manage_pages_custom_column', [$this, 'elements_add_cat_value'], 10, 2 );
+        add_filter('manage_pages_columns', [$this, 'elements_add_cat_column']);
+        add_action('manage_pages_custom_column', [$this, 'elements_add_cat_value'], 10, 2);
         if (!post_type_supports('page', 'excerpt')) {
             add_post_type_support('page', 'excerpt');
         }
     }
 
-    function elements_enable_page_tax() {
+    public function elements_enable_page_tax()
+    {
         if (!taxonomy_exists('page_tag')) {
             $labels_tag = array();
             $args_tag = array(
@@ -41,7 +43,8 @@ class ContentIndex {
         }
     }
 
-    function shortcode_contentindex($atts, $content = '') {
+    public function shortcode_contentindex($atts, $content = '')
+    {
         $output = '';
 
         $defaults = [
@@ -149,8 +152,9 @@ class ContentIndex {
             // Build Output
             $output .= '<div class="content-index">';
             if ($register) {
-                $alphabet = range( 'A', 'Z' );
+                $alphabet = range('A', 'Z');
                 $output .= '<ul aria-hidden="true" class="tax-list-register clear clearfix">';
+
                 foreach ($alphabet as $letter) {
                     if (array_key_exists($letter, $list_categories_ordered)) {
                         $output .= '<li><a href="#' . $prefix . $letter . '">' . $letter . '</a></li>';
@@ -160,45 +164,59 @@ class ContentIndex {
                 }
                 $output .= '</ul>';
             }
+
             foreach ($list_categories_ordered as $index => $group) {
                 $shortcode_data = '';
                 if ($register) {
                     $output .= '<h2><a name="' . $prefix . $index . '"></a>' . $index . '</h2>';
                 }
+
                 foreach ($group as $cat) {
                     $page_list = '<ul>';
                     foreach ($pages as $page) {
                         if (isset($page['cats']) && in_array($cat->slug, $page['cats'])) {
-                            $page_list .= '<li><a href="' . $page['url'] . '">' . $page['title'] . '</a>';
-                            $page_list .= $excerpt ? ('<br />' . $page['excerpt']) : '';
+                            $page_list .= '<li><a href="' . $page['url'] . '">' . $this->esc_brackets($page['title']) . '</a>';
+                            $page_list .= $excerpt ? '<br>' . $this->esc_brackets($page['excerpt']) : '';
                             $page_list .= '</li>';
                         }
                     }
                     $page_list .= '</ul>';
+
                     if ($display == 'list') {
                         $output .= '<h3>' . $cat->name . '</h3>' . $page_list;
                     } else {
-                        $shortcode_data .= do_shortcode('[collapse title="' . $cat->name . '" color="' . $accordion_color . '"]' . $page_list . '[/collapse]');
+                        $collapse = sprintf('[collapse title="%1$s" color="%2$s"]%3$s[/collapse]', $cat->name, $accordion_color, $page_list);
+                        $shortcode_data .= do_shortcode($collapse);
                     }
                 }
                 if ($display != 'list') {
-                    $output .= do_shortcode('[collapsibles expand-all-link="' . $expand . '"]' . $shortcode_data . '[/collapsibles]');
+                    $collapsibles = sprintf('[collapsibles expand-all-link="%1$s"]%2$s[/collapsibles]', $expand, $shortcode_data);
+                    $output .= do_shortcode($collapsibles);
                 }
             }
             $output .= '</div>';
         }
-        
+
+        wp_reset_postdata();
+
         wp_enqueue_style('rrze-elements');
         return $output;
     }
 
-    public static function elements_add_cat_column($cols) {
+    protected function esc_brackets($content = '')
+    {
+        return str_replace(["[" , "]"], ["&#91;" , "&#93;"], $content);
+    }
+
+    public static function elements_add_cat_column($cols)
+    {
         $cols['category'] = __('Category', 'rrze-elements');
         return $cols;
     }
 
-    public static function elements_add_cat_value($column_name, $post_id) {
-        if ( 'category' == $column_name ) {
+    public static function elements_add_cat_value($column_name, $post_id)
+    {
+        if ('category' == $column_name) {
             $page_cats = (get_the_terms($post_id, 'page_category'));
             $cats = array();
             if ($page_cats) {
@@ -210,5 +228,4 @@ class ContentIndex {
             }
         }
     }
-
 }

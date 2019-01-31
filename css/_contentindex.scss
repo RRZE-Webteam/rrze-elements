@@ -1,0 +1,29 @@
+/*!
+ * ContentIndex
+ */
+
+.content-index {
+    .tax-list-register {
+        padding-left: 0;
+        margin: 0 0 .25em;
+        li {
+            float: left;
+            list-style-type: none;
+            padding: .25em .5em;
+            &.empty {
+                opacity: .5;
+            }
+            a {
+                font-weight: bold;
+            }
+        }
+    }
+    h2 {
+        margin-bottom: 0;
+        padding-bottom: 0;
+        padding-top: .5em;
+    }
+    ul {
+        margin-bottom: 0;
+    }
+}
