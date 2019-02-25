@@ -9,6 +9,8 @@ defined('ABSPATH') || exit;
 class Columns {
 
     public function __construct() {
+        add_shortcode('columns', [$this, 'shortcode_columns']);
+        add_shortcode('column', [$this, 'shortcode_column']);
         add_shortcode('two_columns_one', [$this, 'shortcode_two_columns_one']);
         add_shortcode('two_columns_one_last', [$this, 'shortcode_two_columns_one_last']);
         add_shortcode('three_columns_one', [$this, 'shortcode_three_columns_one']);
@@ -24,6 +26,29 @@ class Columns {
         add_shortcode('divider', [$this, 'shortcode_divider']);
 
     }
+
+    // Grid Columns
+    public function shortcode_columns($atts, $content = null) {
+        wp_enqueue_style('rrze-elements');
+        $defaults = array(
+            'cols' => ' 1,1,1',
+        
+        );
+        $args = shortcode_atts($defaults, $atts);
+        $grid = explode(',', $args['cols']);
+        array_walk($grid, function (&$v, $k) { $v = (is_numeric($v)) ? $v.'fr' : $v; });
+        $cols = 'grid-template-columns: ' . implode(' ', $grid) . ';';
+        return '<div class="columns" style="' . $cols . '">'
+                . do_shortcode(($content))
+                . '</div>';
+    }
+
+    
+    public function shortcode_column($atts, $content = null) {
+        wp_enqueue_style('rrze-elements');
+        return '<div class="column">' . do_shortcode(($content)) . '</div>';
+    }
+
 
     // Two Columns
     public function shortcode_two_columns_one($atts, $content = null) {

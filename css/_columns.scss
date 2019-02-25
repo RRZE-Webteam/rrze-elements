@@ -86,3 +86,21 @@
     display: block;
     clear: both;
 }
+
+.columns {
+    display: grid;
+    grid-gap: 20px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    font-size: 1rem;
+    @media screen and (max-width: 37.5em) {
+        grid-template-columns: 1fr !important;
+    }
+    @media screen and (min-width: 37.51em) and (max-width: 48em) {
+        grid-template-columns: 1fr 1fr !important;
+    }
+    p {
+        font-size: 16px;
+        font-size: 1rem;
+    }
+}
