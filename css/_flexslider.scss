@@ -27,6 +27,7 @@
 /* FlexSlider Necessary Styles
 *********************************/
 .content-slider.flexslider,
+aside .content-slider.flexslider,
 #content .content-slider.flexslider {   // Fix für FAU-Theme
     margin: 0;
     padding: 0;
@@ -90,6 +91,7 @@ html[xmlns] .slides {
     margin-bottom: 20px;
     ul.slides {
         margin: 0 0 10px;
+        padding-left: 0;
         background: #fff;
         border: 10px solid #fff;
         -webkit-border-radius: 4px;
@@ -108,6 +110,9 @@ html[xmlns] .slides {
         }
         @media screen and (min-width: 66.25em) {
             border-width: 30px 40px;
+        }
+        li {
+            padding-left: 0;
         }
     }
 

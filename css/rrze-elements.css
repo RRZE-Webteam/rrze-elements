@@ -2249,20 +2249,24 @@ Functions and Mixins
 /* FlexSlider Necessary Styles
 *********************************/
 .content-slider.flexslider,
+aside .content-slider.flexslider,
 #content .content-slider.flexslider {
   margin: 0;
   padding: 0;
   /* Hide the slides before the JS is loaded. Avoids image jumping */ }
   .content-slider.flexslider .slides > li,
+  aside .content-slider.flexslider .slides > li,
   #content .content-slider.flexslider .slides > li {
     display: none;
     -webkit-backface-visibility: hidden; }
   .content-slider.flexslider .slides img,
+  aside .content-slider.flexslider .slides img,
   #content .content-slider.flexslider .slides img {
     width: 100%;
     display: block;
     object-fit: cover; }
     .content-slider.flexslider .slides img.attachment-teaser-thumb,
+    aside .content-slider.flexslider .slides img.attachment-teaser-thumb,
     #content .content-slider.flexslider .slides img.attachment-teaser-thumb {
       width: auto;
       float: left;
@@ -2270,12 +2274,14 @@ Functions and Mixins
       margin-bottom: 10px; }
       @media screen and (min-width: 48em) {
         .content-slider.flexslider .slides img.attachment-teaser-thumb,
+        aside .content-slider.flexslider .slides img.attachment-teaser-thumb,
         #content .content-slider.flexslider .slides img.attachment-teaser-thumb {
           max-width: 30%;
           height: auto;
           margin-right: 20px;
           max-height: 300px; }
           #content .content-slider.flexslider .slides img.attachment-teaser-thumb, #content
+          aside .content-slider.flexslider .slides img.attachment-teaser-thumb, #content
           #content .content-slider.flexslider .slides img.attachment-teaser-thumb {
             max-width: 30%; } }
 
@@ -2312,6 +2318,7 @@ html[xmlns] .slides {
   .content-slider.flexslider ul.slides,
   #content .content-slider.flexslider ul.slides {
     margin: 0 0 10px;
+    padding-left: 0;
     background: #fff;
     border: 10px solid #fff;
     -webkit-border-radius: 4px;
@@ -2333,6 +2340,9 @@ html[xmlns] .slides {
       .content-slider.flexslider ul.slides,
       #content .content-slider.flexslider ul.slides {
         border-width: 30px 40px; } }
+    .content-slider.flexslider ul.slides li,
+    #content .content-slider.flexslider ul.slides li {
+      padding-left: 0; }
   .content-slider.flexslider .flex-viewport,
   #content .content-slider.flexslider .flex-viewport {
     max-height: 2000px;
