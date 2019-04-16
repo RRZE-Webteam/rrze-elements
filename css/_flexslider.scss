@@ -113,6 +113,9 @@ html[xmlns] .slides {
         }
         li {
             padding-left: 0;
+            &:before {
+                content: none;
+            }
         }
     }
 
@@ -149,179 +152,225 @@ html[xmlns] .slides {
         }
     }
 }
+aside .content-slider.flexslider,
+#content aside .content-slider.flexslider {
+    ul.slides {
+        @media screen and (min-width: 48em) {
+            border-width: 20px;
+        }
+    }
+    .flex-direction-nav .flex-prev {
+        left: 1px;
+    }
+    .flex-direction-nav .flex-next {
+        right: 1px;
+    }
+}
+    /* Direction Nav */
+    .content-slider .flex-direction-nav {
+        *height: 0;
+        margin-bottom: 0;
+        position: static; // Fix für FAU-Einrichtungen
+        a  {
+            display: block;
+            float: left;
+            width: 40px;
+            height: 40px;
+            margin: 0 0;
+            z-index: 10;
+            overflow: hidden;
+            line-height: 1;
+            opacity: 1;
+            cursor: pointer;
+            color: #555;
+            text-shadow: 1px 1px 0 rgba(255,255,255,0.3);
+            -webkit-transition: all .3s ease;
+            -moz-transition: all .3s ease;
+            transition: all .3s ease;
+            background-image: none; // Fix für FAU-Einrichtungen
+            text-indent: 0; // Fix für FAU-Einrichtungen
+            background-color: transparent;
+            @media screen and (min-width: 48em) {
+                opacity: 0;
+                position: absolute;
+                top: 40%;
+            }
+            &:hover, &:focus, &:active {
+                background-color:transparent;
+                border-bottom:none;
+                color:#1559A6;
+            }
+        }
+        .flex-prev {
+            left: 0;
+            @media screen and (min-width: 48em) {
+                left: -25px;
+            }
+        }
+        .flex-next {
+            text-align: right;
+            right: 0;
+            @media screen and (min-width: 48em) {
+                right: -25px;
+            }
+        }
+    }
 
-/* Direction Nav */
-.content-slider .flex-direction-nav {
-    *height: 0;
-    margin-bottom: 0;
-    position: static; // Fix für FAU-Einrichtungen
-    a  {
+    .content-slider.flexslider:hover,
+    .content-slider.flexslider:focus,
+    .content-slider.flexslider:active {
+        opacity: 1;
+        .flex-prev {
+            opacity: 0.7;
+        }
+        .flex-next {
+            opacity: 0.7;
+        }
+    }
+    .content-slider {
+        .flex-next:hover,
+        .flex-prev:hover,
+        .flex-next:focus,
+        .flex-prev:focus,
+        .flex-next:active,
+        .flex-prev:active {
+            opacity: 1;
+        }
+    }
+    .content-slider .flex-direction-nav .flex-disabled {
+        opacity: 0!important;
+        filter:alpha(opacity=0);
+        cursor: default;
+    }
+    .content-slider .flex-direction-nav a:before  {
+        font-family: "FontAwesome";
+        font-size: 40px;
+        display: inline-block;
+        content: '\f104';
+    }
+    .content-slider .flex-direction-nav a.flex-next:before  { content: '\f105'; }
+
+    /* Pause/Play */
+    .content-slider .flex-pauseplay {
+        position: static;
+    }
+    .content-slider .flex-pauseplay a {
         display: block;
-        float: left;
+        float: right;
         width: 40px;
         height: 40px;
-        margin: 0 0;
+        padding-top: 6px;
         z-index: 10;
         overflow: hidden;
-        line-height: 1;
-        opacity: 1;
         cursor: pointer;
         color: #555;
-        text-shadow: 1px 1px 0 rgba(255,255,255,0.3);
-        -webkit-transition: all .3s ease;
-        -moz-transition: all .3s ease;
-        transition: all .3s ease;
         background-image: none; // Fix für FAU-Einrichtungen
         text-indent: 0; // Fix für FAU-Einrichtungen
-        background-color: transparent;
+        text-align: right;
+        font-size: 16px;
+        line-height: 1.6;
         @media screen and (min-width: 48em) {
-            opacity: 0;
+            //opacity: 0.8;
             position: absolute;
-            top: 40%;
+            bottom: -2px;
+            top: auto; // Fix für FAU-Einrichtungen
+            right: 0;
+        }
+        &:before  {
+            font-family: "FontAwesome";
+            font-size: 20px;
+            display: inline-block;
+            content: '\f04c';
+            color: #1559a6;
         }
         &:hover, &:focus, &:active {
-            background-color:transparent;
-            border-bottom:none;
-            color:#1559A6;
+            opacity: 1;
+            background:transparent !important;
+            text-decoration: none !important;
+        }
+        &.flex-play:before {
+            content: '\f04b';
         }
     }
-    .flex-prev {
-        left: 0;
+
+    /* Control Nav */
+    .content-slider .flex-control-nav {
+        display: block;
+        width: 100%;
+        text-align: left;
+        padding-left: 0;
         @media screen and (min-width: 48em) {
-            left: -25px;
+            padding-right: 50px;
         }
-    }
-    .flex-next {
-        text-align: right;
-        right: 0;
-        @media screen and (min-width: 48em) {
-            right: -25px;
-        }
-    }
-}
-
-.content-slider.flexslider:hover,
-.content-slider.flexslider:focus,
-.content-slider.flexslider:active {
-    opacity: 1;
-    .flex-prev {
-        opacity: 0.7;
-    }
-    .flex-next {
-        opacity: 0.7;
-    }
-}
-.content-slider {
-    .flex-next:hover,
-    .flex-prev:hover,
-    .flex-next:focus,
-    .flex-prev:focus,
-    .flex-next:active,
-    .flex-prev:active {
-        opacity: 1;
-    }
-}
-.content-slider .flex-direction-nav .flex-disabled {
-    opacity: 0!important;
-    filter:alpha(opacity=0);
-    cursor: default;
-}
-.content-slider .flex-direction-nav a:before  {
-    font-family: "FontAwesome";
-    font-size: 40px;
-    display: inline-block;
-    content: '\f104';
-}
-.content-slider .flex-direction-nav a.flex-next:before  { content: '\f105'; }
-
-/* Pause/Play */
-.content-slider .flex-pauseplay {
-    position: static;
-}
-.content-slider .flex-pauseplay a {
-    display: block;
-    float: right;
-    width: 40px;
-    height: 40px;
-    padding-top: 6px;
-    z-index: 10;
-    overflow: hidden;
-    cursor: pointer;
-    color: #555;
-    background-image: none; // Fix für FAU-Einrichtungen
-    text-indent: 0; // Fix für FAU-Einrichtungen
-    text-align: right;
-    font-size: 16px;
-    line-height: 1.6;
-    @media screen and (min-width: 48em) {
-        //opacity: 0.8;
-        position: absolute;
-        bottom: -2px;
-        top: auto; // Fix für FAU-Einrichtungen
-        right: 0;
-    }
-    &:before  {
-        font-family: "FontAwesome";
-        font-size: 20px;
-        display: inline-block;
-        content: '\f04c';
-        color: #1559a6;
-    }
-    &:hover, &:focus, &:active {
-        opacity: 1;
-        background:transparent !important;
-        text-decoration: none !important;
-    }
-    &.flex-play:before {
-        content: '\f04b';
-    }
-}
-
-/* Control Nav */
-.content-slider .flex-control-nav {
-    display: block;
-    width: 100%;
-    text-align: left;
-    padding-left: 0;
-    @media screen and (min-width: 48em) {
-        padding-right: 50px;
-    }
-    li {
-        margin: 12px 6px 6px;
-        display: inline-block;
-        zoom: 1;
-        *display: inline;
-        a {
-            width: 12px;
-            height: 12px;
-            display: block;
-            background: #666;
-            background: rgba(0,0,0,0.5);
-            cursor: pointer;
-            text-indent: -9999px;
-            -webkit-border-radius: 20px;
-            -moz-border-radius: 20px;
-            -o-border-radius: 20px;
-            border-radius: 20px;
-            -webkit-box-shadow: inset 0 0 3px rgba(0,0,0,0.3);
-            -moz-box-shadow: inset 0 0 3px rgba(0,0,0,0.3);
-            -o-box-shadow: inset 0 0 3px rgba(0,0,0,0.3);
-            box-shadow: inset 0 0 3px rgba(0,0,0,0.3);
-            &:hover {
+        li {
+            margin: 12px 6px 6px;
+            display: inline-block;
+            zoom: 1;
+            *display: inline;
+            &:before {
+                content: none;
+            }
+            aside & {
+                padding: 0;
+            }
+            a {
+                width: 12px;
+                height: 12px;
+                display: block;
                 background: #666;
-                background: rgba(0,0,0,0.7);
-            }
-            &.flex-active {
-                background: #1559A6;
-                background: rgba(21,89,166,1);
-                cursor: default;
+                background: rgba(0,0,0,0.5);
+                cursor: pointer;
+                text-indent: -9999px;
+                -webkit-border-radius: 20px;
+                -moz-border-radius: 20px;
+                -o-border-radius: 20px;
+                border-radius: 20px;
+                -webkit-box-shadow: inset 0 0 3px rgba(0,0,0,0.3);
+                -moz-box-shadow: inset 0 0 3px rgba(0,0,0,0.3);
+                -o-box-shadow: inset 0 0 3px rgba(0,0,0,0.3);
+                box-shadow: inset 0 0 3px rgba(0,0,0,0.3);
+                &:hover {
+                    background: #666;
+                    background: rgba(0,0,0,0.7);
+                }
+                &.flex-active {
+                    background: #1559A6;
+                    background: rgba(21,89,166,1);
+                    cursor: default;
+                }
             }
         }
     }
-}
 
-.content-slider .flex-control-thumbs {margin: 5px 0 0; position: static; overflow: hidden;}
-.content-slider .flex-control-thumbs li {width: 25%; float: left; margin: 0;}
-.content-slider .flex-control-thumbs img {width: 100%; display: block; opacity: .7; cursor: pointer;}
-.content-slider .flex-control-thumbs img:hover {opacity: 1;}
-.content-slider .flex-control-thumbs .flex-active {opacity: 1; cursor: default;}
+    .content-slider .flex-control-thumbs {margin: 5px 0 0; position: static; overflow: hidden;}
+    .content-slider .flex-control-thumbs li {width: 25%; float: left; margin: 0;}
+    .content-slider .flex-control-thumbs img {width: 100%; display: block; opacity: .7; cursor: pointer;}
+    .content-slider .flex-control-thumbs img:hover {opacity: 1;}
+    .content-slider .flex-control-thumbs .flex-active {opacity: 1; cursor: default;}
+
+/* Fixes for FAU-Themes */
+.content-slider.flexslider {
+    .row {
+        margin: 0;
+    }
+    .thumbnailregion {
+        margin-left: 0;
+    }
+    .teaserregion {
+        @media (min-width: 480px) {
+            width: calc(100% - 220px);
+        }
+    }
+}
+aside .content-slider.flexslider {
+    .thumbnailregion {
+        max-width: 100%;
+        margin-left: 0;
+        .passpartout {
+            max-width: 100%;
+        }
+    }.teaserregion {
+        width: 100%;
+        padding: 3px 0 0;
+    }
+}

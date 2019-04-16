@@ -2343,6 +2343,9 @@ html[xmlns] .slides {
     .content-slider.flexslider ul.slides li,
     #content .content-slider.flexslider ul.slides li {
       padding-left: 0; }
+      .content-slider.flexslider ul.slides li:before,
+      #content .content-slider.flexslider ul.slides li:before {
+        content: none; }
   .content-slider.flexslider .flex-viewport,
   #content .content-slider.flexslider .flex-viewport {
     max-height: 2000px;
@@ -2381,6 +2384,17 @@ html[xmlns] .slides {
       #content .content-slider.flexslider h2 a:focus,
       #content .content-slider.flexslider h2 a:active {
         text-decoration: underline; }
+
+@media screen and (min-width: 48em) {
+  aside .content-slider.flexslider ul.slides,
+  #content aside .content-slider.flexslider ul.slides {
+    border-width: 20px; } }
+aside .content-slider.flexslider .flex-direction-nav .flex-prev,
+#content aside .content-slider.flexslider .flex-direction-nav .flex-prev {
+  left: 1px; }
+aside .content-slider.flexslider .flex-direction-nav .flex-next,
+#content aside .content-slider.flexslider .flex-direction-nav .flex-next {
+  right: 1px; }
 
 /* Direction Nav */
 .content-slider .flex-direction-nav {
@@ -2514,6 +2528,10 @@ html[xmlns] .slides {
     display: inline-block;
     zoom: 1;
     *display: inline; }
+    .content-slider .flex-control-nav li:before {
+      content: none; }
+    aside .content-slider .flex-control-nav li {
+      padding: 0; }
     .content-slider .flex-control-nav li a {
       width: 12px;
       height: 12px;
@@ -2560,6 +2578,21 @@ html[xmlns] .slides {
 .content-slider .flex-control-thumbs .flex-active {
   opacity: 1;
   cursor: default; }
+
+/* Fixes for FAU-Themes */
+.content-slider.flexslider .row {
+  margin: 0; }
+.content-slider.flexslider .thumbnailregion {
+  margin-left: 0; }
+
+aside .content-slider.flexslider .thumbnailregion {
+  max-width: 100%;
+  margin-left: 0; }
+  aside .content-slider.flexslider .thumbnailregion .passpartout {
+    max-width: 100%; }
+aside .content-slider.flexslider .teaserregion {
+  width: 100%;
+  padding: 3px 0 0; }
 
 /*!
  * Accordion
