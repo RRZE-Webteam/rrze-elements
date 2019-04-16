@@ -111,7 +111,7 @@ class ContentSlider {
                 $output .= '<li>';
                 $output .= '<h2>' . $link_open . get_the_title() . $link_close . '</h2>';
                 $output .= $link_open . get_the_post_thumbnail($id, 'medium_large', array('class' => 'attachment-teaser-thumb', 'style' => $img_style)) . $link_close;
-                $output .= get_the_excerpt($id);
+	            $output .= function_exists('fau_custom_excerpt') ? fau_custom_excerpt($id): get_the_excerpt($id);
                 $output .= '</li>';
             }
 
