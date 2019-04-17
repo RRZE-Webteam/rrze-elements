@@ -52,6 +52,7 @@
     @media screen and (min-width: 37.5em) {
         width: 48.5%;
         margin: 0 1.5% 0 0;
+        float: left;
     }
     @media screen and (min-width: 48em) {
         width: 22.375%;
@@ -84,4 +85,22 @@
     padding-top: 10px;
     display: block;
     clear: both;
+}
+
+.columns {
+    display: grid;
+    grid-gap: 20px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    font-size: 1rem;
+    @media screen and (max-width: 37.5em) {
+        grid-template-columns: 1fr !important;
+    }
+    @media screen and (min-width: 37.51em) and (max-width: 48em) {
+        grid-template-columns: 1fr 1fr !important;
+    }
+    p {
+        font-size: 16px;
+        font-size: 1rem;
+    }
 }

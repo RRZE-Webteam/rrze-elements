@@ -8,7 +8,7 @@
     position: relative;
     background: url('../images/dot.gif') left 35px repeat-x;
     @media screen and (min-width: 45em) {
-        width: 800px;
+        max-width: 800px;
         //height: 350px;
         overflow: hidden;
         margin: 100px auto;
@@ -32,7 +32,7 @@
     }
     .dates {
         @media screen and (min-width: 45em) {
-            width: 800px;
+            max-width: 800px;
             height: 60px;
             overflow: hidden;
         }
@@ -84,7 +84,7 @@
         clear:left;
         padding-top: 10px;
         @media screen and (min-width: 45em) {
-            width: 800px;
+            //width: 800px;
             //height: 350px;
             overflow: hidden;
         }
@@ -92,7 +92,7 @@
             list-style: none;
             float: left;
             @media screen and (min-width: 45em) {
-                width: 800px;
+                max-width: 800px;
                 //  height: 350px;
             }
             &.selected img {

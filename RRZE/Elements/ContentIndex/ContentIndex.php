@@ -172,7 +172,7 @@ class ContentIndex
                 }
 
                 foreach ($group as $cat) {
-                    $page_list = '<ul>';
+                    $page_list = '';
                     foreach ($pages as $page) {
                         if (isset($page['cats']) && in_array($cat->slug, $page['cats'])) {
                             $page_list .= '<li><a href="' . $page['url'] . '">' . $this->esc_brackets($page['title']) . '</a>';
@@ -180,13 +180,17 @@ class ContentIndex
                             $page_list .= '</li>';
                         }
                     }
-                    $page_list .= '</ul>';
-
-                    if ($display == 'list') {
-                        $output .= '<h3>' . $cat->name . '</h3>' . $page_list;
-                    } else {
-                        $collapse = sprintf('[collapse title="%1$s" color="%2$s"]%3$s[/collapse]', $cat->name, $accordion_color, $page_list);
-                        $shortcode_data .= do_shortcode($collapse);
+                    if (strlen($page_list)>0) {
+                        $page_list = '<ul>' . $page_list . '</ul>';
+                    }
+                    
+                    if (strlen($page_list) > 0) {
+                        if ($display == 'list') {
+                             $output .= '<h3>' . $cat->name . '</h3>' . $page_list;
+                        } else {
+                            $collapse = sprintf('[collapse title="%1$s" color="%2$s"]%3$s[/collapse]', $cat->name, $accordion_color, $page_list);
+                            $shortcode_data .= do_shortcode($collapse);
+                        }
                     }
                 }
                 if ($display != 'list') {
