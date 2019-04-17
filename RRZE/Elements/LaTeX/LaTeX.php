@@ -4,7 +4,7 @@ namespace RRZE\Elements\LaTeX;
 
 defined('ABSPATH') || exit;
 
-const KATEX_VERSION = '0.10.0';
+const KATEX_VERSION = '0.10.1';
 
 class LaTeX {
 
