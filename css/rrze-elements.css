@@ -2584,12 +2584,18 @@ aside .content-slider.flexslider .flex-direction-nav .flex-next,
   margin: 0; }
 .content-slider.flexslider .thumbnailregion {
   margin-left: 0; }
+@media (min-width: 480px) {
+  .content-slider.flexslider .teaserregion {
+    width: calc(100% - 220px); } }
 
+.startpage-sidebar .content-slider.flexslider .thumbnailregion,
 aside .content-slider.flexslider .thumbnailregion {
   max-width: 100%;
   margin-left: 0; }
+  .startpage-sidebar .content-slider.flexslider .thumbnailregion .passpartout,
   aside .content-slider.flexslider .thumbnailregion .passpartout {
     max-width: 100%; }
+.startpage-sidebar .content-slider.flexslider .teaserregion,
 aside .content-slider.flexslider .teaserregion {
   width: 100%;
   padding: 3px 0 0; }
@@ -3802,7 +3808,6 @@ main aside.align-right {
     line-height: 16px; }
   @media screen and (min-width: 45em) {
     [id^="timeline"] .dates {
-      max-width: 800px;
       height: 60px;
       overflow: hidden; } }
   [id^="timeline"] .dates li {
