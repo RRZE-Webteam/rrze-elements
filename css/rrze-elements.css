@@ -2749,6 +2749,19 @@ button.expand-all.standard-btn {
   background-color: #f2dede;
   border-color: #ebccd1; }
 
+.alert.light {
+  color: #fff;
+  letter-spacing: 0.03em; }
+  .alert.light h1, .alert.light h2, .alert.light h3, .alert.light h4, .alert.light h5, .alert.light h6 {
+    color: #fff; }
+  .alert.light a {
+    color: #cccccc; }
+    .alert.light a:hover, .alert.light a:focus, .alert.light a:active {
+      color: #fff; }
+
+.alert a.standard-btn {
+  margin-bottom: 0; }
+
 /*!
  * Buttons
  */
