@@ -4,7 +4,7 @@
  * Plugin Name:     RRZE Elements
  * Plugin URI:      https://github.com/RRZE-Webteam/rrze-elements
  * Description:     Erweiterte Gestaltungselemente für WordPress-Websites
- * Version:         1.7.4
+ * Version:         1.7.5
  * Author:          RRZE-Webteam
  * Author URI:      https://blogs.fau.de/webworking/
  * License:         GNU General Public License v2
