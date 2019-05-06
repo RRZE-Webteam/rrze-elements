@@ -31,3 +31,21 @@
     background-color: #f2dede;
     border-color: #ebccd1;
 }
+
+.alert.light {
+    color: #fff;
+    letter-spacing: 0.03em;
+    h1, h2, h3, h4, h5, h6 {
+        color: #fff;
+    }
+    a {
+        color: darken(#fff, 20%);
+        &:hover, &:focus, &:active{
+            color: #fff;
+        }
+    }
+}
+
+.alert a.standard-btn {
+    margin-bottom: 0;
+}
