@@ -79,7 +79,7 @@ class TimeLine {
         ], $atts));
 
         $output = '';
-        $output .= "<li name=" . sanitize_title($name) . ">";
+        $output .= "<li data-date=" . $name . " name=" . sanitize_title($name) . ">";
         $output .= do_shortcode($content);
         $output .= "</li>";
 
