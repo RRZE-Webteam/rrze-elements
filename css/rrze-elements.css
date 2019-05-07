@@ -4069,3 +4069,9 @@ main aside.align-right {
       top: 0; }
       [id^="timeline"].vertical .prev i {
         vertical-align: top; }
+
+.date-large .dates li {
+  width: 140px; }
+  @media screen and (min-width: 45em) {
+    .date-large .dates li {
+      width: 200px; } }

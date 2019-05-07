@@ -14,27 +14,32 @@
         margin: 100px auto;
         background-position-y: 45px
     }
+
     * {
         margin: 0;
         padding: 0;
     }
 
-    h1,h2,h4,h5,h6 {
+    h1, h2, h4, h5, h6 {
         margin-bottom: 5px;
     }
+
     h1 {
         font-size: 18px;
         line-height: 20px;
     }
+
     h2 {
         font-size: 14px;
         line-height: 16px;
     }
+
     .dates {
         @media screen and (min-width: 45em) {
             height: 60px;
             overflow: hidden;
         }
+
         li {
             width: 70px;
             height: 40px;
@@ -47,6 +52,7 @@
                 height: 50px;
             }
         }
+
         a {
             font-size: 18px;
             line-height: 18px;
@@ -63,11 +69,13 @@
                 font-size: 24px;
                 line-height: 24px;
             }
+
             &:hover,
             &.selected {
                 opacity: 1;
                 text-decoration: none;
             }
+
             &.selected {
                 font-size: 24px;
                 line-height: 24px;
@@ -78,6 +86,8 @@
             }
         }
     }
+
+
 
     .issues {
         clear:left;
@@ -326,5 +336,11 @@
                 vertical-align: top;
             }
         }
+    }
+}
+.date-large .dates li {
+    width: 140px;
+    @media screen and (min-width: 45em) {
+        width: 200px;
     }
 }

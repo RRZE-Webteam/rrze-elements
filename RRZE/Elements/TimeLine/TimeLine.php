@@ -24,17 +24,19 @@ class TimeLine {
             'startat' => 1,
             'autoplay' => '0',
             'autoplaypause' => 3000,
-            'fixedsize' => '1'
+            'fixedsize' => '1',
+	        'datewidth' => 'normal'
         ], $atts));
 
         $autoplay = filter_var($autoplay, FILTER_VALIDATE_BOOLEAN);
         $autoplay_text = $autoplay ? 'true' : 'false';
         $fixedsize = $fixedsize == '1' ? 'true' : 'false';
-        static $timelinr_instance;
+	    $datewidth = $datewidth == 'large' ? 'large' : 'normal';
+	    static $timelinr_instance;
         $timelinr_instance++;
 
         $output = '';
-        $output .= "<div id=\"timeline-" . $timelinr_instance . "\" class=\"" . $orientation . "\"><ul class=\"issues\">";
+        $output .= "<div id=\"timeline-" . $timelinr_instance . "\" class=\"$orientation date-$datewidth\"><ul class=\"issues\">";
         $output .= do_shortcode($content);
         $output .= "</ul>";
 
