@@ -14,34 +14,32 @@ class ContentSlider {
         $this->main = $main;
 
         add_shortcode('content-slider', [$this, 'shortcode_content_slider']);
-	    add_shortcode('content-slider-item', [$this, 'shortcode_content_slider_item']);
-        
-        add_action('wp_enqueue_scripts', [$this, 'enqueue_scripts']);
+	    add_shortcode('text-slider', [$this, 'shortcode_content_slider']);
+	    add_shortcode('text-slider-item', [$this, 'shortcode_text_slider_item']);
+
+	    add_action('wp_enqueue_scripts', [$this, 'enqueue_scripts']);
     }
 
-    public function shortcode_content_slider($atts, $content='') {
+    public function shortcode_content_slider($atts, $content='', $tag) {
         global $post;
-
-        extract(shortcode_atts([
-            "id" => '',
-            "type" => 'post',
-            "number" => '-1',
-            "category" => '',
-            "tag" => '',
-            'orderby' => 'date', // 'rand' auch möglich!
-            'link' => '1',
-            'img_width' => '',
-            'img_height' => ''
-        ], $atts, 'content-slider'));
-	    $output    = '';
-	    $output = '<div class="content-slider flexslider clear clearfix">';
-	    $output .= '<ul class="slides">';
-
-	    if ($type == 'text') {
+	    $output = '<div class="content-slider flexslider clear clearfix">'
+		            . '<ul class="slides">';
+	    if ($tag == 'text-slider') {
 		    $output .= do_shortcode($content);
         } else {
+		    extract(shortcode_atts([
+			    "id" => '',
+			    "type" => 'post',
+			    "number" => '-1',
+			    "category" => '',
+			    "tag" => '',
+			    'orderby' => 'date', // 'rand' auch möglich!
+			    'link' => '1',
+			    'img_width' => '',
+			    'img_height' => ''
+		    ], $atts, 'content-slider'));
 
-	        $id         = sanitize_text_field( $id );
+		    $id         = sanitize_text_field( $id );
 	        $ids        = explode( ",", $id );
 	        $ids        = array_map( 'trim', $ids );
 	        $type       = ( in_array( sanitize_text_field( $type ), array(
@@ -148,7 +146,7 @@ class ContentSlider {
         return $output;
     }
 
-	public function shortcode_content_slider_item($atts, $content = '') {
+	public function shortcode_text_slider_item($atts, $content = '') {
 		extract(shortcode_atts([
 			'name' => ''
 		], $atts));
