@@ -14,11 +14,12 @@ class ContentSlider {
         $this->main = $main;
 
         add_shortcode('content-slider', [$this, 'shortcode_content_slider']);
+	    add_shortcode('content-slider-item', [$this, 'shortcode_content_slider_item']);
         
         add_action('wp_enqueue_scripts', [$this, 'enqueue_scripts']);
     }
 
-    public function shortcode_content_slider($atts) {
+    public function shortcode_content_slider($atts, $content='') {
         global $post;
 
         extract(shortcode_atts([
@@ -32,98 +33,112 @@ class ContentSlider {
             'img_width' => '',
             'img_height' => ''
         ], $atts, 'content-slider'));
+	    $output    = '';
+	    $output = '<div class="content-slider flexslider clear clearfix">';
+	    $output .= '<ul class="slides">';
 
-        $id = sanitize_text_field($id);
-        $ids = explode(",", $id);
-        $ids = array_map('trim', $ids);
-        $type = (in_array(sanitize_text_field($type), array('post', 'page', 'speaker', 'talk'))) ? sanitize_text_field($type) : '';
-        $orderby = sanitize_text_field($orderby);
-        $img_width = (int) $img_width;
-        $img_height = (int) $img_height;
-        if ($img_width != '' && $img_height == '') {
-            $img_height = 'auto';
-        }
-        if ($img_height != '' && $img_width == '') {
-            $img_width = 'auto';
-        }
-
-        if ($orderby == 'random') {
-            $orderby = 'rand';
-        }
-        $img_style = ($img_width != '' || $img_height != '') ? ' width:'.$img_width.'px; height:'.$img_height.'px; object-fit: cover;' : '';
-
-        $cat = sanitize_text_field($category);
-        $tag = sanitize_text_field($tag);
-        $num = sanitize_text_field($number);
-        $link = filter_var($link, FILTER_VALIDATE_BOOLEAN);
-
-        $args = [
-            'post_type' => $type,
-            'posts_per_page' => $num,
-            'orderby' => $orderby,
-            'post__not_in' => [$post->ID],
-            'ignore_sticky_posts' => 1
-        ];
-
-        if (strlen($id) > 0) {
-            $args['post__in'] = $ids;
-        }
-
-        if ($type == 'speaker' || $type == 'talk') {
-            $cats = explode(',', $cat);
-            $cats = array_map('trim', $cats);
-            $args = array(
-                'relation' => 'AND',
-            );
-            foreach ($cats as $_c) {
-                $args['tax_query'][] = array(
-                    'taxonomy' => $type . '_category',
-                        'field' => 'slug',
-                        'terms' => $_c,
-                );
-            }
+	    if ($type == 'text') {
+		    $output .= do_shortcode($content);
         } else {
-            if ($cat !='') {
-                $args['category_name'] = $cat;
-            }
-            if ($tag !='') {
-                $args['tag'] = $tag;
-            }
+
+	        $id         = sanitize_text_field( $id );
+	        $ids        = explode( ",", $id );
+	        $ids        = array_map( 'trim', $ids );
+	        $type       = ( in_array( sanitize_text_field( $type ), array(
+		        'post',
+		        'page',
+		        'speaker',
+		        'talk'
+	        ) ) ) ? sanitize_text_field( $type ) : '';
+	        $orderby    = sanitize_text_field( $orderby );
+	        $img_width  = (int) $img_width;
+	        $img_height = (int) $img_height;
+	        if ( $img_width != '' && $img_height == '' ) {
+		        $img_height = 'auto';
+	        }
+	        if ( $img_height != '' && $img_width == '' ) {
+		        $img_width = 'auto';
+	        }
+
+	        if ( $orderby == 'random' ) {
+		        $orderby = 'rand';
+	        }
+	        $img_style = ( $img_width != '' || $img_height != '' ) ? ' width:' . $img_width . 'px; height:' . $img_height . 'px; object-fit: cover;' : '';
+
+	        $cat  = sanitize_text_field( $category );
+	        $tag  = sanitize_text_field( $tag );
+	        $num  = sanitize_text_field( $number );
+	        $link = filter_var( $link, FILTER_VALIDATE_BOOLEAN );
+
+	        $args = [
+		        'post_type'           => $type,
+		        'posts_per_page'      => $num,
+		        'orderby'             => $orderby,
+		        'post__not_in'        => [ $post->ID ],
+		        'ignore_sticky_posts' => 1
+	        ];
+
+	        if ( strlen( $id ) > 0 ) {
+		        $args['post__in'] = $ids;
+	        }
+
+	        if ( $type == 'speaker' || $type == 'talk' ) {
+		        $cats = explode( ',', $cat );
+		        $cats = array_map( 'trim', $cats );
+		        $args = array(
+			        'relation' => 'AND',
+		        );
+		        foreach ( $cats as $_c ) {
+			        $args['tax_query'][] = array(
+				        'taxonomy' => $type . '_category',
+				        'field'    => 'slug',
+				        'terms'    => $_c,
+			        );
+		        }
+	        } else {
+		        if ( $cat != '' ) {
+			        $args['category_name'] = $cat;
+		        }
+		        if ( $tag != '' ) {
+			        $args['tag'] = $tag;
+		        }
+	        }
+
+	        $the_query = new \WP_Query( $args );
+
+	        if ( $the_query->have_posts() ) {
+
+		        while ( $the_query->have_posts() ) {
+			        $the_query->the_post();
+			        $id = get_the_ID();
+			        if ( $link ) {
+				        $link_open  = '<a href="' . get_permalink( $id ) . '">';
+				        $link_close = '</a>';
+			        } else {
+				        $link_open  = '';
+				        $link_close = '';
+			        }
+			        $output .= '<li>';
+			        if ( function_exists( 'fau_display_news_teaser' ) ) {
+				        $output .= fau_display_news_teaser( $id );
+			        } else {
+				        $output .= '<h2>' . $link_open . get_the_title() . $link_close . '</h2>';
+				        $output .= $link_open . get_the_post_thumbnail( $id, 'medium_large', array(
+						        'class' => 'attachment-teaser-thumb',
+						        'style' => $img_style
+					        ) ) . $link_close;
+				        $output .= get_the_excerpt( $id );
+			        }
+			        $output .= '</li>';
+		        }
+	        }
+
+	        wp_reset_postdata();
+
         }
 
-        $the_query = new \WP_Query($args);
-        $output = '';
-
-        if ($the_query->have_posts()) {
-            $output = '<div class="content-slider flexslider clear clearfix">';
-            $output .= '<ul class="slides">';
-
-            while ($the_query->have_posts()) {
-                $the_query->the_post();
-                $id = get_the_ID();
-                if ($link) {
-                    $link_open = '<a href="' . get_permalink($id) . '">';
-                    $link_close = '</a>';
-                } else {
-                    $link_open = '';
-                    $link_close = '';
-                }
-                $output .= '<li>';
-                if (function_exists('fau_display_news_teaser')) {
-                	$output .= fau_display_news_teaser($id);
-                } else {
-	                $output .= '<h2>' . $link_open . get_the_title() . $link_close . '</h2>';
-	                $output .= $link_open . get_the_post_thumbnail($id, 'medium_large', array('class' => 'attachment-teaser-thumb', 'style' => $img_style)) . $link_close;
-	                $output .= get_the_excerpt($id);
-                }
-                $output .= '</li>';
-            }
-
-            $output .= '</ul>';
-            $output .= '</div>';
-        }
-
-        wp_reset_postdata();
+	    $output .= '</ul>';
+	    $output .= '</div>';
 
         wp_enqueue_style('fontawesome');
         wp_enqueue_style('rrze-elements');
@@ -132,6 +147,19 @@ class ContentSlider {
 
         return $output;
     }
+
+	public function shortcode_content_slider_item($atts, $content = '') {
+		extract(shortcode_atts([
+			'name' => ''
+		], $atts));
+
+		$output = '';
+		$output .= "<li>";
+		$output .= do_shortcode($content);
+		$output .= "</li>";
+
+		return $output;
+	}
 
     public function enqueue_scripts() {
         wp_register_script('jquery-flexslider', plugins_url('js/jquery.flexslider-min.js', $this->main->plugin_basename), ['jquery'], '2.2.0', true);
