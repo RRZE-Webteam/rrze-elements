@@ -2249,24 +2249,32 @@ Functions and Mixins
 /* FlexSlider Necessary Styles
 *********************************/
 .content-slider.flexslider,
-aside .content-slider.flexslider,
 #content .content-slider.flexslider {
   margin: 0;
   padding: 0;
   /* Hide the slides before the JS is loaded. Avoids image jumping */ }
   .content-slider.flexslider .slides > li,
-  aside .content-slider.flexslider .slides > li,
   #content .content-slider.flexslider .slides > li {
     display: none;
     -webkit-backface-visibility: hidden; }
   .content-slider.flexslider .slides img,
-  aside .content-slider.flexslider .slides img,
   #content .content-slider.flexslider .slides img {
-    width: 100%;
+    max-width: 100%;
+    max-height: 300px;
     display: block;
     object-fit: cover; }
+    @media screen and (min-width: 48em) {
+      .content-slider.flexslider .slides img,
+      #content .content-slider.flexslider .slides img {
+        width: auto;
+        max-width: 30%;
+        height: auto;
+        margin-right: 20px;
+        max-height: 300px; }
+        #content .content-slider.flexslider .slides img, #content
+        #content .content-slider.flexslider .slides img {
+          max-width: 30%; } }
     .content-slider.flexslider .slides img.attachment-teaser-thumb,
-    aside .content-slider.flexslider .slides img.attachment-teaser-thumb,
     #content .content-slider.flexslider .slides img.attachment-teaser-thumb {
       width: auto;
       float: left;
@@ -2274,16 +2282,19 @@ aside .content-slider.flexslider,
       margin-bottom: 10px; }
       @media screen and (min-width: 48em) {
         .content-slider.flexslider .slides img.attachment-teaser-thumb,
-        aside .content-slider.flexslider .slides img.attachment-teaser-thumb,
         #content .content-slider.flexslider .slides img.attachment-teaser-thumb {
           max-width: 30%;
           height: auto;
           margin-right: 20px;
           max-height: 300px; }
           #content .content-slider.flexslider .slides img.attachment-teaser-thumb, #content
-          aside .content-slider.flexslider .slides img.attachment-teaser-thumb, #content
           #content .content-slider.flexslider .slides img.attachment-teaser-thumb {
             max-width: 30%; } }
+
+@media screen and (min-width: 48em) {
+  aside[class*="sidebar"] .content-slider.flexslider .slides img, aside[class*="sidebar"] .content-slider.flexslider .slides img.attachment-teaser-thumb {
+    max-width: 100%;
+    max-height: 200px; } }
 
 .flex-pauseplay span {
   text-transform: capitalize; }
@@ -2580,25 +2591,45 @@ aside .content-slider.flexslider .flex-direction-nav .flex-next,
   cursor: default; }
 
 /* Fixes for FAU-Themes */
-.content-slider.flexslider .row {
+#content .content-slider.flexslider .flex-prev, #content .content-slider.flexslider .flex-next, #content .content-slider.flexslider .flex-pauseplay a {
+  position: static; }
+  @media screen and (min-width: 48em) {
+    #content .content-slider.flexslider .flex-prev, #content .content-slider.flexslider .flex-next, #content .content-slider.flexslider .flex-pauseplay a {
+      position: absolute; } }
+#content .content-slider.flexslider .slides .row {
   margin: 0; }
-.content-slider.flexslider .thumbnailregion {
+#content .content-slider.flexslider .slides .thumbnailregion {
   margin-left: 0; }
+  #content .content-slider.flexslider .slides .thumbnailregion img {
+    max-width: 100%;
+    width: 100%; }
 @media (min-width: 480px) {
-  .content-slider.flexslider .teaserregion {
+  #content .content-slider.flexslider .slides .teaserregion {
     width: calc(100% - 220px); } }
 
-.startpage-sidebar .content-slider.flexslider .thumbnailregion,
-aside .content-slider.flexslider .thumbnailregion {
+#content .sidebar-inline + .content-inline .content-slider.flexslider {
+  clear: left;
+  margin-right: 235px; }
+  #content .sidebar-inline + .content-inline .content-slider.flexslider .slides:after {
+    clear: left; }
+  #content .sidebar-inline + .content-inline .content-slider.flexslider.clearfix:after {
+    clear: left; }
+
+#content .startpage-sidebar .content-slider.flexslider .slides .thumbnailregion,
+#content aside .content-slider.flexslider .slides .thumbnailregion {
   max-width: 100%;
   margin-left: 0; }
-  .startpage-sidebar .content-slider.flexslider .thumbnailregion .passpartout,
-  aside .content-slider.flexslider .thumbnailregion .passpartout {
+  #content .startpage-sidebar .content-slider.flexslider .slides .thumbnailregion .passpartout,
+  #content aside .content-slider.flexslider .slides .thumbnailregion .passpartout {
     max-width: 100%; }
-.startpage-sidebar .content-slider.flexslider .teaserregion,
-aside .content-slider.flexslider .teaserregion {
+#content .startpage-sidebar .content-slider.flexslider .slides .teaserregion,
+#content aside .content-slider.flexslider .slides .teaserregion {
   width: 100%;
   padding: 3px 0 0; }
+  @media (min-width: 480px) {
+    #content .startpage-sidebar .content-slider.flexslider .slides .teaserregion,
+    #content aside .content-slider.flexslider .slides .teaserregion {
+      width: 100%; } }
 
 /*!
  * Accordion

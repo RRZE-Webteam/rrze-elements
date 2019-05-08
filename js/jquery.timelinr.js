@@ -44,7 +44,7 @@ jQuery.fn.timelinr = function (options) {
                 dates_content += "<li><a href='#" + jQuery(this).attr("name") + "'><span class=\"sr-only\">" + jQuery(this).attr("name") + "</span>&nbsp;&nbsp;&nbsp;&nbsp;</a></li>";
             } else {
                 //dates_content += "<li><a href='#" + jQuery(this).attr("name") + "'>" +jQuery(this).attr("name") + "</a></li>";
-                dates_content += "<li><a href='#1" + jQuery(this).attr("name") + "'>" +jQuery(this).data("date") + "</a></li>";
+                dates_content += "<li><a href='#" + jQuery(this).attr("name") + "'>" +jQuery(this).data("date") + "</a></li>";
             }
         });
         dates_content += "</ul>";

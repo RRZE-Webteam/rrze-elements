@@ -27,7 +27,6 @@
 /* FlexSlider Necessary Styles
 *********************************/
 .content-slider.flexslider,
-aside .content-slider.flexslider,
 #content .content-slider.flexslider {   // Fix für FAU-Theme
     margin: 0;
     padding: 0;
@@ -36,9 +35,20 @@ aside .content-slider.flexslider,
         -webkit-backface-visibility: hidden;
     } /* Hide the slides before the JS is loaded. Avoids image jumping */
     .slides img {
-        width: 100%;
+        max-width: 100%;
+        max-height: 300px;
         display: block;
         object-fit: cover;
+        @media screen and (min-width: 48em) {
+            width: auto;
+            max-width: 30%;
+            height: auto;
+            margin-right: 20px;
+            max-height: 300px;
+            #content & {
+                max-width: 30%;
+            }
+        }
         &.attachment-teaser-thumb {
             width: auto;
             float: left;
@@ -56,6 +66,15 @@ aside .content-slider.flexslider,
         }
     }
 }
+aside[class*="sidebar"] .content-slider.flexslider .slides {
+    img, img.attachment-teaser-thumb {
+        @media screen and (min-width: 48em) {
+            max-width: 100%;
+            max-height: 200px;
+        }
+    }
+}
+
 .flex-pauseplay span {
     text-transform: capitalize;
 }
@@ -349,30 +368,61 @@ aside .content-slider.flexslider,
     .content-slider .flex-control-thumbs .flex-active {opacity: 1; cursor: default;}
 
 /* Fixes for FAU-Themes */
-.content-slider.flexslider {
-    .row {
-        margin: 0;
-    }
-    .thumbnailregion {
-        margin-left: 0;
-    }
-    .teaserregion {
-        @media (min-width: 480px) {
-            width: calc(100% - 220px);
+#content .content-slider.flexslider {
+    .flex-prev, .flex-next, .flex-pauseplay a {
+        position: static;
+        @media screen and (min-width: 48em) {
+            position: absolute;
         }
+    }
+    .slides {
+        .row {
+            margin: 0;
+        }
+
+        .thumbnailregion {
+            margin-left: 0;
+
+            img {
+                max-width: 100%;
+                width: 100%;
+            }
+        }
+
+        .teaserregion {
+            @media (min-width: 480px) {
+                width: calc(100% - 220px);
+            }
+        }
+
     }
 }
 
-.startpage-sidebar .content-slider.flexslider,
-aside .content-slider.flexslider {
+#content .sidebar-inline + .content-inline .content-slider.flexslider {
+    clear: left;
+    margin-right: 235px;
+    .slides:after {
+        clear:left;
+    }
+    &.clearfix:after {
+        clear:left;
+    }
+}
+
+#content .startpage-sidebar .content-slider.flexslider .slides,
+#content aside .content-slider.flexslider .slides {
     .thumbnailregion {
         max-width: 100%;
         margin-left: 0;
         .passpartout {
             max-width: 100%;
         }
-    }.teaserregion {
+    }
+    .teaserregion {
         width: 100%;
         padding: 3px 0 0;
+        @media (min-width: 480px) {
+            width: 100%;
+        }
     }
 }
