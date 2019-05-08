@@ -2290,6 +2290,9 @@ Functions and Mixins
           #content .content-slider.flexslider .slides img.attachment-teaser-thumb, #content
           #content .content-slider.flexslider .slides img.attachment-teaser-thumb {
             max-width: 30%; } }
+  .content-slider.flexslider .slides .wp-caption img,
+  #content .content-slider.flexslider .slides .wp-caption img {
+    max-width: 100%; }
 
 @media screen and (min-width: 48em) {
   aside[class*="sidebar"] .content-slider.flexslider .slides img, aside[class*="sidebar"] .content-slider.flexslider .slides img.attachment-teaser-thumb {

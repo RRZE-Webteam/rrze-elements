@@ -65,6 +65,9 @@
             }
         }
     }
+    .slides .wp-caption img {
+        max-width: 100%;
+    }
 }
 aside[class*="sidebar"] .content-slider.flexslider .slides {
     img, img.attachment-teaser-thumb {
@@ -379,22 +382,18 @@ aside .content-slider.flexslider,
         .row {
             margin: 0;
         }
-
         .thumbnailregion {
             margin-left: 0;
-
             img {
                 max-width: 100%;
                 width: 100%;
             }
         }
-
         .teaserregion {
             @media (min-width: 480px) {
                 width: calc(100% - 220px);
             }
         }
-
     }
 }
 
