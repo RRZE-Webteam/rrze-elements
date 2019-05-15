@@ -386,7 +386,8 @@ aside .content-slider.flexslider,
             margin-left: 0;
             img {
                 max-width: 100%;
-                width: 100%;
+                display: inline;
+                //width: 100%;
             }
         }
         .teaserregion {
