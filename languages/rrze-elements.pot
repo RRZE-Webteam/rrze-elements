@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RRZE Elements\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-08 16:07+0000\n"
+"POT-Creation-Date: 2019-05-17 15:15+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: \n"
 "Language-Team: RRZE-Webteam <webmaster@rrze.fau.de>\n"
@@ -21,44 +21,43 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPath-1: .."
 
-#: rrze-elements.php:76
+#: rrze-elements.php:68
 #, php-format
 msgid ""
-"Your server is running PHP version %s. Please upgrade at least to PHP "
-"version %s."
+"The server is running PHP version %1$s. The Plugin requires at least PHP "
+"version %2$s."
 msgstr ""
 
-#: rrze-elements.php:80
+#: rrze-elements.php:70
 #, php-format
 msgid ""
-"Your Wordpress version is %s. Please upgrade at least to Wordpress version "
-"%s."
+"The server is running WordPress version %1$s. The Plugin requires at least "
+"WordPress version %2$s."
 msgstr ""
 
-#: RRZE/Elements/Accordion/Accordion.php:41
-#: RRZE/Elements/Accordion/Accordion.php:95
+#: includes/Accordion/Accordion.php:50 includes/Accordion/Accordion.php:123
 msgid "Expand All"
 msgstr ""
 
-#: RRZE/Elements/Accordion/Accordion.php:96
+#: includes/Accordion/Accordion.php:124
 msgid "Collapse All"
 msgstr ""
 
-#: RRZE/Elements/ContentIndex/ContentIndex.php:196
+#: includes/ContentIndex/ContentIndex.php:238
 msgid "Category"
 msgstr ""
 
-#: RRZE/Elements/HiddenText/HiddenText.php:32
-msgid "Please use a valid date format: Y-m-d H:i:s."
-msgstr ""
-
-#: RRZE/Elements/News/News.php:147
+#: includes/News/News.php:168
 #, php-format
 msgid "View all posts in %s"
 msgstr ""
 
-#: RRZE/Elements/News/News.php:172
-msgid "No posts found"
+#: includes/News/News.php:192
+msgid "No posts found."
+msgstr ""
+
+#: includes/HiddenText/HiddenText.php:39
+msgid "Please use a valid date format: Y-m-d H:i:s."
 msgstr ""
 
 #. Name of the plugin
@@ -66,7 +65,7 @@ msgid "RRZE Elements"
 msgstr ""
 
 #. Description of the plugin
-msgid "Erweiterte Gestaltungselemente für WordPress-Websites"
+msgid "Advanced design elements for WordPress websites."
 msgstr ""
 
 #. URI of the plugin
@@ -74,7 +73,7 @@ msgid "https://github.com/RRZE-Webteam/rrze-elements"
 msgstr ""
 
 #. Author of the plugin
-msgid "RRZE-Webteam"
+msgid "RRZE Webteam"
 msgstr ""
 
 #. Author URI of the plugin
