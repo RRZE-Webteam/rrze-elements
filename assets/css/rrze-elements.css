@@ -2762,13 +2762,16 @@ button.expand-all.standard-btn {
   background-color: #e9edf2; }
   .alert strong {
     color: inherit; }
-  .alert.light * {
+  .alert.light {
     color: #fff;
     letter-spacing: 0.03em; }
-  .alert.light a {
-    color: #cccccc; }
-    .alert.light a:hover, .alert.light a:focus, .alert.light a:active {
-      color: #fff; }
+    .alert.light * {
+      color: #fff;
+      letter-spacing: 0.03em; }
+    .alert.light a {
+      color: #cccccc; }
+      .alert.light a:hover, .alert.light a:focus, .alert.light a:active {
+        color: #fff; }
   .alert a.standard-btn {
     margin-bottom: 0; }
   .alert :last-child {
@@ -2852,35 +2855,88 @@ a.standard-btn.primary-btn,
 a.standard-btn.blue-btn {
   background: #286090;
   border-color: #22537c; }
+  button.standard-btn.primary-btn:hover, button.standard-btn.primary-btn:focus, button.standard-btn.primary-btn:active, button.standard-btn.blue-btn:hover, button.standard-btn.blue-btn:focus, button.standard-btn.blue-btn:active,
+  a.standard-btn.primary-btn:hover,
+  a.standard-btn.primary-btn:focus,
+  a.standard-btn.primary-btn:active,
+  a.standard-btn.blue-btn:hover,
+  a.standard-btn.blue-btn:focus,
+  a.standard-btn.blue-btn:active {
+    background: #1d4568; }
 button.standard-btn.success-btn, button.standard-btn.green-btn,
 a.standard-btn.success-btn,
 a.standard-btn.green-btn {
   background: #5cb85c;
   border-color: #4cae4c; }
+  button.standard-btn.success-btn:hover, button.standard-btn.success-btn:focus, button.standard-btn.success-btn:active, button.standard-btn.green-btn:hover, button.standard-btn.green-btn:focus, button.standard-btn.green-btn:active,
+  a.standard-btn.success-btn:hover,
+  a.standard-btn.success-btn:focus,
+  a.standard-btn.success-btn:active,
+  a.standard-btn.green-btn:hover,
+  a.standard-btn.green-btn:focus,
+  a.standard-btn.green-btn:active {
+    background: #419641; }
 button.standard-btn.info-btn,
 a.standard-btn.info-btn {
   background: #5bc0de;
   border-color: #46b8da; }
+  button.standard-btn.info-btn:hover, button.standard-btn.info-btn:focus, button.standard-btn.info-btn:active,
+  a.standard-btn.info-btn:hover,
+  a.standard-btn.info-btn:focus,
+  a.standard-btn.info-btn:active {
+    background: #2aabd2; }
 button.standard-btn.warning-btn, button.standard-btn.yellow-btn,
 a.standard-btn.warning-btn,
 a.standard-btn.yellow-btn {
   background: #f0ad4e;
   border-color: #eea236; }
+  button.standard-btn.warning-btn:hover, button.standard-btn.warning-btn:focus, button.standard-btn.warning-btn:active, button.standard-btn.yellow-btn:hover, button.standard-btn.yellow-btn:focus, button.standard-btn.yellow-btn:active,
+  a.standard-btn.warning-btn:hover,
+  a.standard-btn.warning-btn:focus,
+  a.standard-btn.warning-btn:active,
+  a.standard-btn.yellow-btn:hover,
+  a.standard-btn.yellow-btn:focus,
+  a.standard-btn.yellow-btn:active {
+    background: #eb9316; }
 button.standard-btn.danger-btn, button.standard-btn.red-btn,
 a.standard-btn.danger-btn,
 a.standard-btn.red-btn {
   background: #d9534f;
   border-color: #d43f3a; }
+  button.standard-btn.danger-btn:hover, button.standard-btn.danger-btn:focus, button.standard-btn.danger-btn:active, button.standard-btn.red-btn:hover, button.standard-btn.red-btn:focus, button.standard-btn.red-btn:active,
+  a.standard-btn.danger-btn:hover,
+  a.standard-btn.danger-btn:focus,
+  a.standard-btn.danger-btn:active,
+  a.standard-btn.red-btn:hover,
+  a.standard-btn.red-btn:focus,
+  a.standard-btn.red-btn:active {
+    background: #c12e2a; }
 button.standard-btn.secondary-btn, button.standard-btn.grey-btn,
 a.standard-btn.secondary-btn,
 a.standard-btn.grey-btn {
   background: #5a6268; }
+  button.standard-btn.secondary-btn:hover, button.standard-btn.secondary-btn:focus, button.standard-btn.secondary-btn:active, button.standard-btn.grey-btn:hover, button.standard-btn.grey-btn:focus, button.standard-btn.grey-btn:active,
+  a.standard-btn.secondary-btn:hover,
+  a.standard-btn.secondary-btn:focus,
+  a.standard-btn.secondary-btn:active,
+  a.standard-btn.grey-btn:hover,
+  a.standard-btn.grey-btn:focus,
+  a.standard-btn.grey-btn:active {
+    background: #3e4347; }
 button.standard-btn.black-btn,
 a.standard-btn.black-btn {
   background: #393944; }
+  button.standard-btn.black-btn:hover, button.standard-btn.black-btn:focus, button.standard-btn.black-btn:active,
+  a.standard-btn.black-btn:hover,
+  a.standard-btn.black-btn:focus,
+  a.standard-btn.black-btn:active {
+    background: #1d1d23; }
 button.standard-btn.full-btn,
 a.standard-btn.full-btn {
   width: 100%; }
+button.standard-btn:active,
+a.standard-btn:active {
+  transform: scale(0.95); }
 
 /*!
  * Columns
@@ -2929,7 +2985,8 @@ a.standard-btn.full-btn {
 
 @media screen and (min-width: 48em) {
   .three-columns-two {
-    width: 65.15%; } }
+    width: 65.15%;
+    margin: 0 3% 0 0; } }
 
 @media screen and (min-width: 37.5em) {
   .four-columns-one {

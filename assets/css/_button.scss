@@ -59,30 +59,54 @@ a.standard-btn {
     &.primary-btn, &.blue-btn {
         background: $primary;
         border-color: darken($primary, 5%);
+        &:hover, &:focus, &:active {
+            background: darken($primary, 10%);
+        }
     }
     &.success-btn, &.green-btn {
         background: $success;
         border-color: darken($success, 5%);
+        &:hover, &:focus, &:active {
+            background: darken($success, 12%);
+        }
     }
     &.info-btn {
         background: $info;
         border-color: darken($info, 5%);
+        &:hover, &:focus, &:active {
+            background: darken($info, 12%);
+        }
     }
     &.warning-btn, &.yellow-btn {
         background: $warning;
         border-color: darken($warning, 5%);
+        &:hover, &:focus, &:active {
+            background: darken($warning, 12%);
+        }
     }
     &.danger-btn, &.red-btn {
         background: $danger;
         border-color: darken($danger, 5%);
+        &:hover, &:focus, &:active {
+            background: darken($danger, 12%);
+        }
     }
     &.secondary-btn, &.grey-btn {
         background: $secondary;
+        &:hover, &:focus, &:active {
+            background: darken($secondary, 12%);
+        }
     }
     &.black-btn {
         background: $text;
+        &:hover, &:focus, &:active {
+            background: darken($text, 12%);
+        }
     }
     &.full-btn {
         width: 100%;
+    }
+    &:active {
+        transform: scale(.95);
     }
 }
