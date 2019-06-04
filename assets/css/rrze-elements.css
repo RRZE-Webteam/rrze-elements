@@ -4009,15 +4009,12 @@ main aside.align-right {
         font-size: 24px;
         line-height: 30px;
         padding-bottom: 10px; }
-        @media screen and (min-width: 45em) {
-          [id^="timeline"] .issues li h1 {
-            margin: 0 70px; } }
       [id^="timeline"] .issues li h2 {
         font-size: 20px;
         line-height: 24px; }
-        @media screen and (min-width: 45em) {
-          [id^="timeline"] .issues li h2 {
-            margin: 0 70px; } }
+      @media screen and (min-width: 45em) {
+        [id^="timeline"] .issues li h1, [id^="timeline"] .issues li h2, [id^="timeline"] .issues li h3, [id^="timeline"] .issues li h4, [id^="timeline"] .issues li h5, [id^="timeline"] .issues li h6 {
+          margin: 0 70px; } }
       [id^="timeline"] .issues li p:not(.wp-caption-text) {
         font-size: 14px;
         font-weight: normal;
@@ -4027,6 +4024,12 @@ main aside.align-right {
             margin-left: 70px;
             margin-right: 70px;
             margin-bottom: 10px; } }
+      @media screen and (min-width: 45em) {
+        [id^="timeline"] .issues li .rrze-video {
+          margin: 0 70px; } }
+      [id^="timeline"] .issues li .rrze-video img {
+        margin: 0;
+        transform: unset; }
   [id^="timeline"] .grad_left,
   [id^="timeline"] .grad_right {
     height: 50px;
@@ -4036,7 +4039,7 @@ main aside.align-right {
     @media screen and (min-width: 45em) {
       [id^="timeline"] .grad_left,
       [id^="timeline"] .grad_right {
-        height: 350px;
+        height: 100%;
         width: 100px; } }
   [id^="timeline"] .grad_left {
     left: 0;
@@ -4109,20 +4112,10 @@ main aside.align-right {
         overflow: hidden;
         padding-top: 50px;
         padding-bottom: 50px; }
-        [id^="timeline"].vertical .issues li h1 {
+        [id^="timeline"].vertical .issues li h1, [id^="timeline"].vertical .issues li h2, [id^="timeline"].vertical .issues li h3, [id^="timeline"].vertical .issues li h4, [id^="timeline"].vertical .issues li h5, [id^="timeline"].vertical .issues li h6, [id^="timeline"].vertical .issues li p {
           margin: 0 10px 10px; }
           @media screen and (min-width: 45em) {
-            [id^="timeline"].vertical .issues li h1 {
-              margin: 10px 20px; } }
-        [id^="timeline"].vertical .issues li h2 {
-          margin: 0 10px 10px; }
-          @media screen and (min-width: 45em) {
-            [id^="timeline"].vertical .issues li h2 {
-              margin: 10px 20px; } }
-        [id^="timeline"].vertical .issues li p {
-          margin: 0 10px 10px; }
-          @media screen and (min-width: 45em) {
-            [id^="timeline"].vertical .issues li p {
+            [id^="timeline"].vertical .issues li h1, [id^="timeline"].vertical .issues li h2, [id^="timeline"].vertical .issues li h3, [id^="timeline"].vertical .issues li h4, [id^="timeline"].vertical .issues li h5, [id^="timeline"].vertical .issues li h6, [id^="timeline"].vertical .issues li p {
               margin: 10px 20px; } }
         [id^="timeline"].vertical .issues li .wp-caption-text {
           margin-bottom: 0;
@@ -4135,7 +4128,7 @@ main aside.align-right {
       @media screen and (min-width: 45em) {
         [id^="timeline"].vertical .grad_top,
         [id^="timeline"].vertical .grad_bottom {
-          height: 80px; } }
+          height: 100%; } }
     [id^="timeline"].vertical .grad_top {
       top: 0;
       background: -moz-linear-gradient(top, white 0%, rgba(255, 255, 255, 0) 100%);
