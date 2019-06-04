@@ -36,7 +36,7 @@ class Button
             'font' => '',
         ], $atts));
 
-        $style = (in_array($style, ['success', 'info', 'warning', 'danger', 'primary'])) ? ' ' . $style . '-btn' : '';
+        $style = (in_array($style, ['success', 'info', 'warning', 'danger', 'primary'])) ? ' ' . $style . '-btn' : ' primary-btn';
         $color_hex = '';
         $color_name = '';
 

@@ -158,13 +158,12 @@
                 font-size: 24px;
                 line-height: 30px;
                 padding-bottom: 10px;
-                @media screen and (min-width: 45em) {
-                    margin: 0 70px;
-                }
             }
             h2 {
                 font-size: 20px;
                 line-height: 24px;
+            }
+            h1, h2, h3, h4, h5, h6 {
                 @media screen and (min-width: 45em) {
                     margin: 0 70px;
                 }
@@ -180,6 +179,15 @@
                     margin-bottom: 10px;
                 }
             }
+            .rrze-video {
+                @media screen and (min-width: 45em) {
+                    margin: 0 70px;
+                }
+                img {
+                    margin: 0;
+                    transform: unset;
+                }
+            }
         }
     }
 
@@ -190,7 +198,7 @@
         position: absolute;
         top: 0;
         @media screen and (min-width: 45em) {
-            height: 350px;
+            height: 100%;
             width: 100px;
         }
     }
@@ -273,19 +281,7 @@
                 overflow: hidden;
                 padding-top: 50px;
                 padding-bottom: 50px;
-                h1 {
-                    margin: 0 10px 10px;
-                    @media screen and (min-width: 45em) {
-                        margin: 10px 20px;
-                    }
-                }
-                h2 {
-                    margin: 0 10px 10px;
-                    @media screen and (min-width: 45em) {
-                        margin: 10px 20px;
-                    }
-                }
-                p {
+                h1, h2, h3, h4, h5, h6, p {
                     margin: 0 10px 10px;
                     @media screen and (min-width: 45em) {
                         margin: 10px 20px;
@@ -303,7 +299,7 @@
             height: 50px;
             position: absolute;
             @media screen and (min-width: 45em) {
-                height: 80px;
+                height: 100%;
             }
         }
         .grad_top {
