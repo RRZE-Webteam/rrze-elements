@@ -37,16 +37,31 @@ class Accordion
             $GLOBALS['collapsibles_count'] = 0;
         }
 
-        $defaults = array('expand-all-link' => 'false');
+        $defaults = array('expand-all-link' => 'false', 'register' => false);
         $args = shortcode_atts($defaults, $atts);
         $expand = esc_attr($args['expand-all-link']);
+        $expand = (($expand == '1')||($expand == true)) ? true : false;
+        $register = esc_attr($args['register']);
+        $register = (($register == '1')||($register == true)) ? true : false;
 
         $output = '';
 
         $output .= '<div class="accordion" id="accordion-' . $GLOBALS['collapsibles_count'] . '">';
-        if ($expand == "true" || $expand == "1") {
+        if ($expand) {
             $output .= '<div class="button-container-right"><button class="expand-all standard-btn primary-btn xsmall-btn" data-status="closed">' . __('Expand All', 'rrze-elements') . '</button></div>';
         }
+        if ($register) {
+            preg_match_all('(name="(.*?)")',$content, $matches);
+            $names = array_filter($matches[1], function($value) { return $value !== ''; });
+            if (!empty($names)) {
+                $output .= '<ul aria-hidden="true" class="accordion-register clear clearfix">';
+                foreach ($names as $name) {
+                    $output .= '<li><a href="#' . $name . '">' . $name . '</a></li>';
+                }
+                $output .= '</ul>';
+            }
+        }
+
         $output .= do_shortcode($content);
         $output .= '</div>';
 
