@@ -37,12 +37,12 @@ class Accordion
             $GLOBALS['collapsibles_count'] = 0;
         }
 
-        $defaults = array('expand-all-link' => 'false', 'register' => false);
+        $defaults = array('expand-all-link' => 'false', 'register' => 'false');
         $args = shortcode_atts($defaults, $atts);
         $expand = esc_attr($args['expand-all-link']);
-        $expand = (($expand == '1')||($expand == true)) ? true : false;
+        $expand = (($expand == '1')||($expand == 'true')) ? true : false;
         $register = esc_attr($args['register']);
-        $register = (($register == '1')||($register == true)) ? true : false;
+        $register = (($register == '1')||($register == 'true')) ? true : false;
 
         $output = '';
 
