@@ -4,13 +4,17 @@ namespace RRZE\Elements\LaTeX;
 
 defined('ABSPATH') || exit;
 
-const KATEX_VERSION = '0.11.0';
-
 /**
  * [LaTeX description]
  */
 class LaTeX
 {
+    /**
+     * [KATEX_VERSION description]
+     * @var string
+     */
+    const KATEX_VERSION = '0.11.1';
+    
     /**
      * [__construct description]
      */
@@ -58,15 +62,15 @@ class LaTeX
     {
         wp_register_style(
             'katex',
-            plugins_url('assets/katex/' . KATEX_VERSION .'/katex.min.css', plugin_basename(__FILE__)),
+            plugins_url('assets/katex/' . static::KATEX_VERSION .'/katex.min.css', plugin_basename(__FILE__)),
             false,
-            KATEX_VERSION
+            static::KATEX_VERSION
         );
         wp_register_script(
             'katex',
-            plugins_url('assets/katex/' . KATEX_VERSION .'/katex.min.js', plugin_basename(__FILE__)),
+            plugins_url('assets/katex/' . static::KATEX_VERSION .'/katex.min.js', plugin_basename(__FILE__)),
             [],
-            KATEX_VERSION,
+            static::KATEX_VERSION,
             true
         );
     }
