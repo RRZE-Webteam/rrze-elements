@@ -166,7 +166,7 @@ jQuery.fn.timelinr = function (options) {
                         if (!jQuery(settings.issuesDiv).is(':animated')) {
                             // bugixed from 0.9.52: now the dates gets centered when there's too much dates.
                             jQuery(settings.datesDiv + ' li').eq(currentIndex + 1).find('a').trigger('click');
-                            console.log(currentIndex, prevHref, nextHref)
+                            //console.log(currentIndex, prevHref, nextHref)
                             jQuery(settings.prevButton).attr('href',prevHref);
                             jQuery(settings.nextButton).attr('href',nextHref);
                         }
@@ -228,7 +228,7 @@ jQuery.fn.timelinr = function (options) {
                         if (!jQuery(settings.issuesDiv).is(':animated')) {
                             // bugixed from 0.9.54: now the dates gets centered when there's too much dates.
                             jQuery(settings.datesDiv + ' li').eq(currentIndex - 1).find('a').trigger('click');
-                            console.log(currentIndex, prevHref, nextHref)
+                            //console.log(currentIndex, prevHref, nextHref)
                             jQuery(settings.prevButton).attr('href',prevHref);
                             jQuery(settings.nextButton).attr('href',nextHref);
                         }

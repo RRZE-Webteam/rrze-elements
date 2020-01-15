@@ -69,6 +69,12 @@
         max-width: 100%;
     }
 }
+
+.text-slider.flexslider,
+#content .text-slider.flexslider {   // Fix für FAU-Theme
+
+}
+
 aside[class*="sidebar"] .content-slider.flexslider .slides {
     img, img.attachment-teaser-thumb {
         @media screen and (min-width: 48em) {

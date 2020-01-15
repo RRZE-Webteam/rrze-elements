@@ -29,7 +29,7 @@ class Accordion
      * @param  string $content [description]
      * @return string          [description]
      */
-    public function shortcodeCollapsibles($atts, $content = '')
+    public function shortcodeCollapsibles($atts, $content = '', $tag)
     {
         if (isset($GLOBALS['collapsibles_count'])) {
             $GLOBALS['collapsibles_count'] ++;
@@ -74,7 +74,7 @@ class Accordion
      * @param  string $content [description]
      * @return string          [description]
      */
-    public function shortcodeCollapse($atts, $content = '')
+    public function shortcodeCollapse($atts, $content = '', $tag)
     {
         if (!isset($GLOBALS['current_collapse'])) {
             $GLOBALS['current_collapse'] = 0;
@@ -91,6 +91,10 @@ class Accordion
         $color = $color ? ' ' . esc_attr($color) : '';
         $load = $load ? ' ' . esc_attr($load) : '';
         $name = $name ? ' name="' . esc_attr($name) . '"' : '';
+        $hlevel = 'h3';
+        if ($tag == 'accordion-item') {
+            $hlevel = 'h4';
+        }
 
         if (!empty($load)) {
             $addclass .= " " . $load;
@@ -102,7 +106,7 @@ class Accordion
         }
 
         $output = '<div class="accordion-group' . $color . '">';
-        $output .= '<h3 class="accordion-heading"><button class="accordion-toggle" data-toggle="collapse" href="#collapse_' . $id . '">' . $title . '</button></h3>';
+        $output .= "<$hlevel class=\"accordion-heading\"><button class=\"accordion-toggle\" data-toggle=\"collapse\" href=\"#collapse_$id\">$title</button></$hlevel>";
         $output .= '<div id="collapse_' . $id . '" class="accordion-body' . $addclass . '"' . $name . '>';
         $output .= '<div class="accordion-inner clearfix">';
 

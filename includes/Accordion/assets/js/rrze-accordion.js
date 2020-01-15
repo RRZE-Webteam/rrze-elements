@@ -58,7 +58,7 @@ jQuery(document).ready(function($) {
                 var $target = $('body').find('#' + $findid);
             }
         } else {
-            var $findname = identifier.replace('\#', '');
+            var $findname = window.location.hash.replace('\#', '');
             var $target = $('body').find('div[name=' + $findname + ']');
         }
         if ($target.length > 0) {
