@@ -357,6 +357,6 @@ function updateSize() {
     if (settings.orientation == 'vertical') {
         jQuery(settings.containerDiv).css('height',(+minHeight + +50)+'px');
     } else {
-        jQuery(settings.containerDiv).css('height',(+minHeight + +100 +jQuery(settings.datesDiv).height())+'px');
+        jQuery(settings.containerDiv).css('height',(+minHeight + +10 +jQuery(settings.datesDiv).height())+'px');
     }
 }
