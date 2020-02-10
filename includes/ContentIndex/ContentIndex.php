@@ -14,13 +14,15 @@ class ContentIndex
      */
     public function __construct()
     {
-        add_action('init', [$this, 'elementsEnablePageTax']);
+        add_action('wp_loaded', [$this, 'elementsEnablePageTax']);
         add_shortcode('content-index', [$this, 'shortcodeContentIndex']);
         add_filter('manage_pages_columns', [$this, 'elementsAddCatColumn']);
         add_action('manage_pages_custom_column', [$this, 'elementsAddCatValue'], 10, 2);
         if (!post_type_supports('page', 'excerpt')) {
             add_post_type_support('page', 'excerpt');
         }
+        $this->page_cat = 'page_category';
+        $this->page_tag = 'page_tag';
     }
 
     /**
@@ -29,22 +31,25 @@ class ContentIndex
      */
     public function elementsEnablePageTax()
     {
-        if (!taxonomy_exists('page_tag')) {
-            $labels_tag = [];
-            $args_tag = [
-                'labels' => $labels_tag,
-                'rewrite' => false,
-            ];
-            register_taxonomy('page_tag', 'page', $args_tag);
-        }
-        if (!taxonomy_exists('page_category')) {
+        $existingTax = get_object_taxonomies('page');
+
+        if (!in_array($this->page_cat, $existingTax)) {
             $labels_cat = [];
             $args_cat = [
                 'labels' => $labels_cat,
                 'hierarchical' => true,
                 'rewrite' => false,
             ];
-            register_taxonomy('page_category', 'page', $args_cat);
+            register_taxonomy($this->page_cat, 'page', $args_cat);
+        }
+
+        if (!in_array($this->page_tag, $existingTax)) {
+            $labels_tag = [];
+            $args_tag = [
+                'labels' => $labels_tag,
+                'rewrite' => false,
+            ];
+            register_taxonomy( $this->page_tag, 'page', $args_tag );
         }
     }
 
@@ -59,8 +64,8 @@ class ContentIndex
         $output = '';
 
         $defaults = [
-            'category-name' => 'page_category',
-            'tag-name' => 'page_tag',
+            'category-name' => $this->page_cat,
+            'tag-name' => $this->page_tag,
             'show' => 'page',
             'category' => '',
             'tag' => '',
@@ -245,10 +250,10 @@ class ContentIndex
      * @param  integer $post_id     [description]
      * @return void
      */
-    public static function elementsAddCatValue($column_name, $post_id)
+    public function elementsAddCatValue($column_name, $post_id)
     {
         if ('category' == $column_name) {
-            $page_cats = (get_the_terms($post_id, 'page_category'));
+            $page_cats = (get_the_terms($post_id, $this->page_cat));
             $cats = [];
             if ($page_cats) {
                 foreach ($page_cats as $_pc) {
