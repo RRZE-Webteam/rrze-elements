@@ -41,3 +41,28 @@ button.expand-all.standard-btn {
         }
     }
 }
+
+@media print {
+    .accordion {
+        position: relative;
+        display: block;
+        overflow: visible;
+    }
+    .accordion-group,
+    .accordion-body,
+    .accordion-inner,
+    .accordion-inner p {
+        position:relative;
+        display: block !important;
+        page-break-inside: avoid;
+        break-inside: avoid;
+        overflow: visible;
+    }
+    button.expand-all.standard-btn {
+        display: none;
+    }
+    h3.accordion-heading,
+    h4.accordion-heading {
+        margin-bottom: 0 !important;
+    }
+}
