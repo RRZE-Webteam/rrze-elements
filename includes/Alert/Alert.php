@@ -41,7 +41,7 @@ class Alert
             $style = '';
         }
 
-        $output = '<div class="alert' . $style . $font . '" style="' . $color . $border_color . '">' . do_shortcode(($content)) . '</div>';
+        $output = '<div class="alert clearfix clear' . $style . $font . '" style="' . $color . $border_color . '">' . do_shortcode(($content)) . '</div>';
 
         wp_enqueue_style('fontawesome');
         wp_enqueue_style('rrze-elements');
