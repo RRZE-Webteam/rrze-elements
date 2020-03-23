@@ -11,7 +11,7 @@
   font-weight: normal;
   font-style: normal;
 }
-.fa, .notice::before {
+.fa, [id^=timeline] .dates li:before, .notice::before {
   display: inline-block;
   font: normal normal normal 14px/1 FontAwesome;
   font-size: inherit;
@@ -25,6 +25,14 @@
   font-size: 1.33333em;
   line-height: 0.75em;
   vertical-align: -15%;
+}
+
+.fa-xs, [id^=timeline] .dates li:before {
+  font-size: 0.75em;
+}
+
+.fa-sm {
+  font-size: 0.875em;
 }
 
 .fa-2x, .notice::before {
@@ -84,11 +92,11 @@
   float: right;
 }
 
-.fa.fa-pull-left, .fa-pull-left.notice::before {
+.fa.fa-pull-left, [id^=timeline] .dates li.fa-pull-left:before, .fa-pull-left.notice::before {
   margin-right: 0.3em;
 }
 
-.fa.fa-pull-right, .fa-pull-right.notice::before {
+.fa.fa-pull-right, [id^=timeline] .dates li.fa-pull-right:before, .fa-pull-right.notice::before {
   margin-left: 0.3em;
 }
 
@@ -101,11 +109,11 @@
   float: left;
 }
 
-.fa.pull-left, .pull-left.notice::before {
+.fa.pull-left, [id^=timeline] .dates li.pull-left:before, .pull-left.notice::before {
   margin-right: 0.3em;
 }
 
-.fa.pull-right, .pull-right.notice::before {
+.fa.pull-right, [id^=timeline] .dates li.pull-right:before, .pull-right.notice::before {
   margin-left: 0.3em;
 }
 
@@ -1184,7 +1192,7 @@
   content: "";
 }
 
-.fa-circle:before {
+.fa-circle:before, [id^=timeline] .dates li:before {
   content: "";
 }
 
@@ -5000,7 +5008,6 @@ main aside.align-right {
   max-width: 100%;
   overflow-x: hidden;
   position: relative;
-  background: url("../images/dot.gif") left 35px repeat-x;
 }
 @media screen and (min-width: 45em) {
   [id^=timeline] {
@@ -5009,6 +5016,11 @@ main aside.align-right {
     margin: 100px auto;
     background-position-y: 45px;
   }
+}
+[id^=timeline] .dotted-line {
+  border-bottom: 3px dotted #888;
+  position: relative;
+  top: -16px;
 }
 [id^=timeline] * {
   margin: 0;
@@ -5036,8 +5048,15 @@ main aside.align-right {
   height: 40px;
   list-style: none;
   float: left;
-  background: url("../images/biggerdot.png") center bottom no-repeat;
   text-align: center;
+  position: relative;
+}
+[id^=timeline] .dates li:before {
+  position: absolute;
+  left: 45%;
+  bottom: -1px;
+  color: #666;
+  z-index: 1;
 }
 @media screen and (min-width: 45em) {
   [id^=timeline] .dates li {
@@ -5246,13 +5265,21 @@ main aside.align-right {
   width: 500px;
   height: 600px;
   margin: 0 auto;
-  background: url("../images/dot.gif") 3px top repeat-y;
   overflow-y: hidden;
 }
 @media screen and (min-width: 45em) {
   [id^=timeline].vertical {
     margin: 40px auto;
   }
+}
+[id^=timeline].vertical .dotted-line {
+  border-bottom: none;
+  border-right: 3px dotted #888;
+  width: 3px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 3px;
 }
 [id^=timeline].vertical .dates {
   width: 70px;
@@ -5269,7 +5296,12 @@ main aside.align-right {
   height: 100px;
   line-height: 100px;
   padding-left: 10px;
-  background: url("../images/biggerdot.png") left center no-repeat;
+}
+[id^=timeline].vertical .dates li:before {
+  left: 0;
+  top: 38%;
+  color: #666;
+  z-index: 1;
 }
 [id^=timeline].vertical .issues {
   max-width: 100%;

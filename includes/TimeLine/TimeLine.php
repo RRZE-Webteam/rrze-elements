@@ -47,7 +47,7 @@ class TimeLine
         $timelinr_instance++;
 
         $output = '';
-        $output .= "<div id=\"timeline-" . $timelinr_instance . "\" class=\"$orientation date-$datewidth\"><ul class=\"issues\">";
+        $output .= "<div id=\"timeline-" . $timelinr_instance . "\" class=\"$orientation date-$datewidth\"><div class=\"dotted-line\"></div><ul class=\"issues\">";
         $output .= do_shortcode($content);
         $output .= "</ul>";
 
