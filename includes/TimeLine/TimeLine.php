@@ -52,10 +52,10 @@ class TimeLine
         $output .= "</ul>";
 
         if ($orientation == 'horizontal') {
-            $output .= "<div class=\"grad_left\"></div>" .
+            $output .= "<div class=\"grad_left\"><a href=\"#\" class=\"prev\"><i class=\"fa fa-angle-left\"></i><span class=\"sr-only\">Previous</span></a></div>" .
                     "<div class=\"grad_right\"></div>";
-            $output .= "<a href=\"#\" class=\"prev\"><i class=\"fa fa-angle-left\"></i><span class=\"sr-only\">Previous</span></a>"
-                    . "<a href=\"#\" class=\"next\"><i class=\"fa fa-angle-right\"></i><span class=\"sr-only\">Next</span></a>";
+            $output .= "<div><a href=\"#\" class=\"prev\"><i class=\"fa fa-angle-left\"></i><span class=\"sr-only\">Previous</span></a></div>"
+                    . "<div><a href=\"#\" class=\"next\"><i class=\"fa fa-angle-right\"></i><span class=\"sr-only\">Next</span></a></div>";
         } else {
             $output .= "<div class=\"grad_top\"></div>" .
                     "<div class=\"grad_bottom\"></div>";

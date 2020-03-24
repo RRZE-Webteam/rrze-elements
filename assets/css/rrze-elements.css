@@ -5238,7 +5238,7 @@ main aside.align-right {
   opacity: 0;
   display: block;
   position: absolute;
-  top: 170px;
+  top: 30%;
   font-size: 70px;
   width: 25px;
   height: 38px;
@@ -5247,7 +5247,7 @@ main aside.align-right {
 @media screen and (min-width: 45em) {
   [id^=timeline] .next,
 [id^=timeline] .prev {
-    opacity: 1;
+    opacity: 0.9;
   }
 }
 [id^=timeline] .next.disabled,
@@ -5339,12 +5339,6 @@ main aside.align-right {
   width: 20px;
   height: 50px;
   position: absolute;
-}
-@media screen and (min-width: 45em) {
-  [id^=timeline].vertical .grad_top,
-[id^=timeline].vertical .grad_bottom {
-    height: 100%;
-  }
 }
 [id^=timeline].vertical .grad_top {
   top: 0;

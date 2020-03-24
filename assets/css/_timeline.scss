@@ -235,13 +235,13 @@
         opacity: 0;
         display: block;
         position: absolute;
-        top: 170px;
+        top: 30%;
         font-size: 70px;
         width: 25px;
         height: 38px;
         vertical-align: top;
         @media screen and (min-width: 45em) {
-            opacity: 1;
+            opacity: .9;
         }
         &.disabled {
             opacity: 0.2;
@@ -325,9 +325,6 @@
             width: 20px;
             height: 50px;
             position: absolute;
-            @media screen and (min-width: 45em) {
-                height: 100%;
-            }
         }
         .grad_top {
             top: 0;
