@@ -3029,6 +3029,84 @@ Functions and Mixins
   max-width: 100%;
 }
 
+.content-slider.flexslider.carousel .slides,
+#content .content-slider.flexslider.carousel .slides {
+  box-shadow: none;
+  border: 0;
+}
+.content-slider.flexslider.carousel .slides > li,
+#content .content-slider.flexslider.carousel .slides > li {
+  background-color: #efefef;
+  max-height: 400px;
+  overflow: hidden;
+  padding: 0;
+}
+.fau-theme .content-slider.flexslider.carousel .slides > li,
+.fau-theme #content .content-slider.flexslider.carousel .slides > li {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  background-color: #dde5f0;
+}
+.rrze-2019 .content-slider.flexslider.carousel .slides > li, .fau-events .content-slider.flexslider.carousel .slides > li,
+.rrze-2019 #content .content-slider.flexslider.carousel .slides > li,
+.fau-events #content .content-slider.flexslider.carousel .slides > li {
+  background-color: #efeff2;
+  border: 1px solid #efeff2;
+}
+.content-slider.flexslider.carousel .slides img,
+#content .content-slider.flexslider.carousel .slides img {
+  height: 170px;
+  width: 300px;
+  object-fit: cover;
+  float: none;
+  box-shadow: none;
+}
+@media screen and (min-width: 48em) {
+  .content-slider.flexslider.carousel .slides img,
+#content .content-slider.flexslider.carousel .slides img {
+    max-width: 100%;
+    margin: 0;
+  }
+}
+.content-slider.flexslider.carousel .slides .content-container,
+#content .content-slider.flexslider.carousel .slides .content-container {
+  height: 170px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.content-slider.flexslider.carousel .slides .posted-on,
+#content .content-slider.flexslider.carousel .slides .posted-on {
+  margin: 0;
+  padding: 0;
+  flex-basis: 10%;
+  flex-grow: 1;
+}
+.rrze-2019 .content-slider.flexslider.carousel .slides .posted-on, .fau-events .content-slider.flexslider.carousel .slides .posted-on,
+.rrze-2019 #content .content-slider.flexslider.carousel .slides .posted-on,
+.fau-events #content .content-slider.flexslider.carousel .slides .posted-on {
+  color: #393944;
+}
+.content-slider.flexslider.carousel .slides h2,
+#content .content-slider.flexslider.carousel .slides h2 {
+  margin: 10px 0;
+  padding: 0;
+  border-bottom: none;
+  line-height: 1.2;
+  flex-grow: 20;
+  flex-basis: 80%;
+}
+.content-slider.flexslider.carousel .slides .post-categories,
+#content .content-slider.flexslider.carousel .slides .post-categories {
+  flex-basis: 10%;
+  flex-grow: 1;
+  font-size: 0.9em;
+}
+.content-slider.flexslider.carousel .slides .post-categories a,
+#content .content-slider.flexslider.carousel .slides .post-categories a {
+  color: rgba(0, 0, 0, 0.7);
+}
+
 @media screen and (min-width: 48em) {
   aside[class*=sidebar] .content-slider.flexslider .slides img, aside[class*=sidebar] .content-slider.flexslider .slides img.attachment-teaser-thumb {
     max-width: 100%;
