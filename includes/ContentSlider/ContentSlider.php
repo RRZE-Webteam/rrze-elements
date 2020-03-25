@@ -47,7 +47,7 @@ class ContentSlider
                 'orderby' => 'date', // 'rand' auch möglich!
                 'link' => '1',
                 'img_width' => '',
-                'img_height' => ''
+                'img_height' => '300'
             ], $atts, 'content-slider'));
 
             $id         = sanitize_text_field($id);
@@ -60,19 +60,18 @@ class ContentSlider
                 'talk'
             ))) ? sanitize_text_field($type) : '';
             $orderby    = sanitize_text_field($orderby);
-            $img_width  = (int) $img_width;
-            $img_height = (int) $img_height;
+            $img_width  = (is_numeric($img_width) ? $img_width . 'px' : '');
+            $img_height = (is_numeric($img_height) ? $img_height . 'px' : '');
             if ($img_width != '' && $img_height == '') {
                 $img_height = 'auto';
             }
             if ($img_height != '' && $img_width == '') {
                 $img_width = 'auto';
             }
-
             if ($orderby == 'random') {
                 $orderby = 'rand';
             }
-            $img_style = ($img_width != '' || $img_height != '') ? ' width:' . $img_width . 'px; height:' . $img_height . 'px; object-fit: cover;' : '';
+            $img_style = ($img_width != '' || $img_height != '') ? ' width:' . $img_width . '; height:' . $img_height . '; object-fit: cover;' : '';
 
             $cat  = sanitize_text_field($category);
             $tag  = sanitize_text_field($tag);

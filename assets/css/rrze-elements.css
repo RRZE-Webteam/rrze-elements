@@ -2985,7 +2985,6 @@ Functions and Mixins
 .content-slider.flexslider .slides img,
 #content .content-slider.flexslider .slides img {
   max-width: 100%;
-  max-height: 300px;
   display: block;
   object-fit: cover;
 }
@@ -2996,7 +2995,6 @@ Functions and Mixins
     max-width: 30%;
     height: auto;
     margin-right: 20px;
-    max-height: 300px;
   }
   #content .content-slider.flexslider .slides img,
 #content #content .content-slider.flexslider .slides img {
@@ -3016,12 +3014,15 @@ Functions and Mixins
     max-width: 30%;
     height: auto;
     margin-right: 20px;
-    max-height: 300px;
   }
   #content .content-slider.flexslider .slides img.attachment-teaser-thumb,
 #content #content .content-slider.flexslider .slides img.attachment-teaser-thumb {
     max-width: 30%;
   }
+}
+.content-slider.flexslider .slides .wp-caption:last-child,
+#content .content-slider.flexslider .slides .wp-caption:last-child {
+  margin-bottom: 0;
 }
 .content-slider.flexslider .slides .wp-caption img,
 #content .content-slider.flexslider .slides .wp-caption img {
@@ -3450,6 +3451,11 @@ aside .content-slider .flex-control-nav li {
 #content aside .content-slider.flexslider .slides .teaserregion {
     width: 100%;
   }
+}
+
+/* Fixes for RRZE-Theme */
+.rrze-2019 .content-slider figure:first-child {
+  margin-top: 0;
 }
 
 /*!
