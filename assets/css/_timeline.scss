@@ -6,13 +6,17 @@
     max-width: 100%;
     overflow-x: hidden;
     position: relative;
-    background: url('../images/dot.gif') left 35px repeat-x;
     @media screen and (min-width: 45em) {
         max-width: 800px;
         //height: 350px;
         overflow: hidden;
         margin: 100px auto;
         background-position-y: 45px
+    }
+    .dotted-line {
+        border-bottom: 3px dotted #888;
+        position: relative;
+        top: -16px;
     }
 
     * {
@@ -39,14 +43,23 @@
             height: 60px;
             overflow: hidden;
         }
-
         li {
             width: 70px;
             height: 40px;
             list-style: none;
             float: left;
-            background: url('../images/biggerdot.png') center bottom no-repeat;
             text-align: center;
+            position: relative;
+            &:before {
+                @extend .fa;
+                @extend .fa-circle;
+                @extend .fa-xs;
+                position: absolute;
+                left: 45%;
+                bottom: -1px;
+                color: #666;
+                z-index: 1;
+            }
             @media screen and (min-width: 45em) {
                 width: 100px;
                 height: 50px;
@@ -222,13 +235,13 @@
         opacity: 0;
         display: block;
         position: absolute;
-        top: 170px;
+        top: 30%;
         font-size: 70px;
         width: 25px;
         height: 38px;
         vertical-align: top;
         @media screen and (min-width: 45em) {
-            opacity: 1;
+            opacity: .9;
         }
         &.disabled {
             opacity: 0.2;
@@ -246,10 +259,19 @@
         width: 500px;
         height: 600px;
         margin: 0 auto;
-        background: url('../images/dot.gif') 3px top repeat-y;
         overflow-y: hidden;
         @media screen and (min-width: 45em) {
             margin: 40px auto;
+        }
+        .dotted-line {
+            border-bottom: none;
+            border-right: 3px dotted #888;
+            width: 3px;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 3px;
+//            top: -16px;
         }
         .dates {
             width: 70px;
@@ -263,7 +285,12 @@
                 height: 100px;
                 line-height: 100px;
                 padding-left: 10px;
-                background: url('../images/biggerdot.png') left center no-repeat;
+                &:before {
+                    left: 0;
+                    top: 38%;
+                    color: #666;
+                    z-index: 1;
+                }
             }
         }
         .issues {
@@ -298,9 +325,6 @@
             width: 20px;
             height: 50px;
             position: absolute;
-            @media screen and (min-width: 45em) {
-                height: 100%;
-            }
         }
         .grad_top {
             top: 0;
