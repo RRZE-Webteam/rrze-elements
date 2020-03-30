@@ -3045,6 +3045,7 @@ Functions and Mixins
 .fau-theme #content .content-slider.flexslider.carousel .slides > li {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
   background-color: #dde5f0;
+  border: 1px solid #dde5f0;
 }
 .rrze-2019 .content-slider.flexslider.carousel .slides > li, .fau-events .content-slider.flexslider.carousel .slides > li,
 .rrze-2019 #content .content-slider.flexslider.carousel .slides > li,
