@@ -474,8 +474,8 @@ aside .content-slider.flexslider,
 }
 
 #content .sidebar-inline + .content-inline .content-slider.flexslider {
-    clear: left;
-    margin-right: 235px;
+    clear: right;
+    //margin-right: 267px;
     .slides:after {
         clear:left;
     }

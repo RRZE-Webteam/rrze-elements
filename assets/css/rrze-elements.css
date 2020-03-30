@@ -3501,8 +3501,7 @@ aside .content-slider .flex-control-nav li {
 }
 
 #content .sidebar-inline + .content-inline .content-slider.flexslider {
-  clear: left;
-  margin-right: 235px;
+  clear: right;
 }
 #content .sidebar-inline + .content-inline .content-slider.flexslider .slides:after {
   clear: left;
