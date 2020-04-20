@@ -3040,6 +3040,10 @@ Functions and Mixins
   max-height: 400px;
   overflow: hidden;
   padding: 0;
+  -webkit-transition: background-color 0.5s ease-out;
+  -moz-transition: background-color 0.5s ease-out;
+  -o-transition: background-color 0.5s ease-out;
+  transition: background-color 0.5s ease-out;
 }
 .fau-theme .content-slider.flexslider.carousel .slides > li,
 .fau-theme #content .content-slider.flexslider.carousel .slides > li {
@@ -3053,6 +3057,28 @@ Functions and Mixins
   background-color: #efeff2;
   border: 1px solid #efeff2;
 }
+.content-slider.flexslider.carousel .slides > li:hover img, .content-slider.flexslider.carousel .slides > li:focus img,
+#content .content-slider.flexslider.carousel .slides > li:hover img,
+#content .content-slider.flexslider.carousel .slides > li:focus img {
+  -webkit-transform: scale(1.05, 1.05);
+  transform: scale(1.05, 1.05);
+}
+.fau-theme .content-slider.flexslider.carousel .slides > li:hover, .fau-theme .content-slider.flexslider.carousel .slides > li:focus,
+.fau-theme #content .content-slider.flexslider.carousel .slides > li:hover,
+.fau-theme #content .content-slider.flexslider.carousel .slides > li:focus {
+  background-color: #cbd7e8;
+}
+.rrze-2019 .content-slider.flexslider.carousel .slides > li:hover, .fau-events .content-slider.flexslider.carousel .slides > li:hover, .rrze-2019 .content-slider.flexslider.carousel .slides > li:focus, .fau-events .content-slider.flexslider.carousel .slides > li:focus,
+.rrze-2019 #content .content-slider.flexslider.carousel .slides > li:hover,
+.fau-events #content .content-slider.flexslider.carousel .slides > li:hover,
+.rrze-2019 #content .content-slider.flexslider.carousel .slides > li:focus,
+.fau-events #content .content-slider.flexslider.carousel .slides > li:focus {
+  background-color: #e1e1e7;
+}
+.content-slider.flexslider.carousel .slides .image-container,
+#content .content-slider.flexslider.carousel .slides .image-container {
+  overflow: hidden;
+}
 .content-slider.flexslider.carousel .slides img,
 #content .content-slider.flexslider.carousel .slides img {
   height: 170px;
@@ -3060,6 +3086,10 @@ Functions and Mixins
   object-fit: cover;
   float: none;
   box-shadow: none;
+  -webkit-transition: transform 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out;
+  -moz-transition: transform 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out;
+  -o-transition: transform 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out;
+  transition: transform 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out;
 }
 @media screen and (min-width: 48em) {
   .content-slider.flexslider.carousel .slides img,
