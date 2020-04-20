@@ -38,9 +38,11 @@ jQuery(document).ready(function($) {
             var $othergroups = $($target).closest('.accordion').find('.accordion-group').not($thisgroup);
             $($othergroups).find('.accordion-toggle').removeClass('active');
             $($othergroups).find('.accordion-body').not('.accordion-body.stayopen').slideUp();
-            $($thisgroup).find('.accordion-toggle').not('.active').addClass('active');
-            $($thisgroup).find('.accordion-body').slideDown();
-
+            $($thisgroup).find('.accordion-toggle:first').not('.active').addClass('active');
+            $($thisgroup).find('.accordion-body:first').slideDown();
+            // open parent accordion bodies if target = nested accordion
+            $($thisgroup).parents('.accordion-group').find('.accordion-toggle:first').not('.active').addClass('active');
+            $($thisgroup).parents('.accordion-body').slideDown();
         }
         var offset = $target.offset();
         var $scrolloffset = offset.top - 300;
