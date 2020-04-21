@@ -10,16 +10,27 @@ jQuery(document).ready(function($) {
     $('.accordion-toggle').bind('click', function(event) {
         event.preventDefault();
         var $accordion = $(this).attr('href');
+        var $name = $(this).data('name');
         toggleAccordion($accordion);
-        window.history.replaceState(null, null, $accordion);
+        // Put name attribute in URL path if available, else href
+        if (typeof($name) !== 'undefined') {
+            window.history.replaceState(null, null, '#' + $name);
+        } else {
+            window.history.replaceState(null, null, $accordion);
+        }
     });
 
     // Keyboard navigation for accordions
     $('.accordion-toggle').keydown(function(event) {
         if (event.keyCode == 32) {
             var $accordion = $(this).attr('href');
+            var $name = $(this).data('name');
             toggleAccordion($accordion);
-            window.history.replaceState(null, null, $accordion);
+            if (typeof($name) !== 'undefined') {
+                window.history.replaceState(null, null, '#' + $name);
+            } else {
+                window.history.replaceState(null, null, $accordion);
+            }
         }
     });
 
