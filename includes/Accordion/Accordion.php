@@ -90,6 +90,7 @@ class Accordion
         $title = esc_attr($title);
         $color = $color ? ' ' . esc_attr($color) : '';
         $load = $load ? ' ' . esc_attr($load) : '';
+        $dataname = $name ? 'data-name="' . esc_attr($name) . '"' : '';
         $name = $name ? ' name="' . esc_attr($name) . '"' : '';
         $hlevel = 'h3';
         if ($tag == 'accordion-item') {
@@ -106,7 +107,7 @@ class Accordion
         }
 
         $output = '<div class="accordion-group' . $color . '">';
-        $output .= "<$hlevel class=\"accordion-heading\"><button class=\"accordion-toggle\" data-toggle=\"collapse\" href=\"#collapse_$id\">$title</button></$hlevel>";
+        $output .= "<$hlevel class=\"accordion-heading\"><button class=\"accordion-toggle\" data-toggle=\"collapse\" $dataname href=\"#collapse_$id\">$title</button></$hlevel>";
         $output .= '<div id="collapse_' . $id . '" class="accordion-body' . $addclass . '"' . $name . '>';
         $output .= '<div class="accordion-inner clearfix">';
 
