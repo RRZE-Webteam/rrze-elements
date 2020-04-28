@@ -14,8 +14,8 @@ class Columns
      */
     public function __construct()
     {
-        add_shortcode('columns', [$this, 'shortcodeColumns']);
-        add_shortcode('column', [$this, 'shortcodeColumn']);
+        add_shortcode('grid', [$this, 'shortcodeGrid']);
+        add_shortcode('cell', [$this, 'shortcodeGridCell']);
         add_shortcode('two_columns_one', [$this, 'shortcodeTwoColumnsOne']);
         add_shortcode('two_columns_one_last', [$this, 'shortcodeTwoColumnsOneLast']);
         add_shortcode('three_columns_one', [$this, 'shortcodeThreeColumnsOne']);
@@ -29,15 +29,40 @@ class Columns
         add_shortcode('four_columns_three', [$this, 'shortcodeFourColumnsThree']);
         add_shortcode('four_columns_three_last', [$this, 'shortcodeFourColumnsThreeLast']);
         add_shortcode('divider', [$this, 'shortcodeDivider']);
+        add_shortcode('columns', [$this, 'shortcodeColumns']);
+        add_shortcode('column', [$this, 'shortcodeColumn']);
     }
 
-    /**
-     * Grid Columns
+    /*
+     * Flexbox Columns
      * @param  array $atts    [description]
      * @param  string $content [description]
      * @return string          [description]
      */
-    public function shortcodeColumns($atts, $content = null)
+    public function shortcodeColumns($atts, $content = null){
+        wp_enqueue_style('rrze-elements');
+        return '<div class="elements-columns">' . do_shortcode(($content)) . '</div>';
+    }
+
+    public function shortcodeColumn($atts, $content = null){
+        $defaults = array(
+            'span' => '1',
+        );
+        $spans =['1', '2', '3'];
+        $args = shortcode_atts($defaults, $atts);
+        $class = 'span_' . (in_array($args['span'], $spans) ? $args['span'] : $defaults['span']);
+
+        return "<div class=\"column $class\">" . do_shortcode(($content)) . '</div>';
+    }
+
+
+    /**
+     * Grid Cells
+     * @param  array $atts    [description]
+     * @param  string $content [description]
+     * @return string          [description]
+     */
+    public function shortcodeGrid($atts, $content = null)
     {
         wp_enqueue_style('rrze-elements');
         $defaults = array(
@@ -50,7 +75,7 @@ class Columns
             $v = (is_numeric($v)) ? $v.'fr' : $v;
         });
         $cols = 'grid-template-columns: ' . implode(' ', $grid) . ';';
-        return '<div class="columns" style="' . $cols . '">'
+        return '<div class="columns-grid" style="' . $cols . '">'
                 . do_shortcode(($content))
                 . '</div>';
     }
@@ -61,10 +86,10 @@ class Columns
      * @param  string $content [description]
      * @return string          [description]
      */
-    public function shortcodeColumn($atts, $content = null)
+    public function shortcodeGridCell($atts, $content = null)
     {
         wp_enqueue_style('rrze-elements');
-        return '<div class="column">' . do_shortcode(($content)) . '</div>';
+        return '<div class="column-grid">' . do_shortcode(($content)) . '</div>';
     }
 
     /**

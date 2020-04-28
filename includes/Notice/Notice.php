@@ -56,8 +56,12 @@ class Notice
         } else {
             $type = $tag_array[0];
         }
-        $output = '<div class="notice notice-' . $type . '">';
-        $output .= (isset($title) && $title != '') ? '<h3>' . $title . '</h3>' : '';
+        $class = ($title == '' ? ' no-title' : '');
+
+        $output = '<div class="notice notice-' . $type . $class . '">';
+        if (isset($title) && $title != '') {
+            $output .= '<h3>' . $title . '</h3>';
+        }
         $output .= '<p>' . do_shortcode($content) . '</p></div>';
 
         wp_enqueue_style('fontawesome');

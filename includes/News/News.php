@@ -135,6 +135,7 @@ class News
                             'FAU-Philfak',
                             'FAU-Techfak',
                             'FAU-Natfak',
+                            'Fau-Blog'
                         ],
                         'rrze' => [
                             'rrze-2015',
@@ -151,7 +152,7 @@ class News
                     } elseif (in_array($current_theme->Name, $stylesheets['rrze'])) {
                         $output .= get_template_part('template-parts/content');
                     } else {
-                        $output .= '<article id="post-' . $id . '" class="news-item clear clearfix ' . implode(get_post_class(), ' ') . ' cf">';
+                        $output .= '<article id="post-' . $id . '" class="news-item clear clearfix ' . implode(' ', get_post_class()) . ' cf">';
                         $output .= '<header class="entry-header">';
                         $output .= '<h2 class="entry-title"><a href="' . $permalink . '" rel="bookmark">' . $title . '</a></h2>';
                         $output .= '</header>';
