@@ -6,7 +6,7 @@
         display: block;
         margin: 20px 0;
         padding-left: 36px;
-        &::before {
+        &:before {
             @extend .fa !optional;
             @extend .fa-2x !optional;
             min-width: 24px;
@@ -37,97 +37,96 @@
     .notice-alert,
     .notice-attention {
         @extend .fa-exclamation-circle !optional;
-        color: $red;
-        font-weight: bold;
-        h3, p {
+        &:before {
             color: $red;
         }
-        h3+p, h3+ul, h3+ol {
-            font-weight: normal;
-            color: $text;
+        h3 {
+            color: $red;
+        }
+        &.no-title p {
+            color: $red;
+            font-weight: bold;
         }
     }
 
     .notice-hinweis {
         @extend .fa-exclamation-circle !optional;
-        color: $text-blue;
-        font-weight: bold;
-        &::before {
-            font-weight: normal;
-        }
-        h3, p {
+        &:before {
             color: $text-blue;
         }
-        h3+p, h3+ul, h3+ol {
-            font-weight: normal;
-            color: $text;
+        h3 {
+            color: $text-blue;
+        }
+        &.no-title p {
+            color: $text-blue;
+            font-weight: bold;
         }
     }
 
     .notice-baustelle {
         @extend .fa-wrench !optional;
-        color: $dark-grey;
-        font-weight: bold;
+        &:before {
+            color: $dark-grey;
+        }
         h3 {
             color: $dark-grey;
         }
-        h3+p, h3+ul, h3+ol {
-            font-weight: normal;
-            color: $text;
+        &.no-title p {
+            color: $dark-grey;
+            font-weight: bold;
         }
     }
 
     .notice-question {
         @extend .fa-question-circle !optional;
-        &::before {
+        &:before {
             color: $medium-blue;
         }
     }
 
     .notice-minus {
         @extend .fa-minus-circle !optional;
-        &::before {
+        &:before {
             color: $red;
         }
     }
 
     .notice-plus {
         @extend .fa-plus-circle !optional;
-        &::before {
+        &:before {
             color: $green;
         }
     }
     .notice-tipp {
         @extend .fa-lightbulb-o !optional;
-        font-weight: bold;
+        &:before {
+            color: orange;
+        }
         h3 {
             color: $dark-grey;
         }
-        h3+p, h3+ul, h3+ol {
-            font-weight: normal;
-            color: $text;
-        }
-        &::before {
-            color: orange;
+        &.no-title p {
+            color: $dark-grey;
+            font-weight: bold;
         }
     }
     .notice-download {
         @extend .fa-download !optional;
-        &::before {
+        &:before {
             color: $medium-blue;
         }
     }
 
     .notice-faubox {
         @extend .fa-cloud-download !optional;
-        &::before {
+        &:before {
             color: $medium-blue;
         }
     }
 
     .notice-audio {
         @extend .fa-volume-up !optional;
-        &::before {
+        &:before {
             color: $medium-blue;
         }
     }
