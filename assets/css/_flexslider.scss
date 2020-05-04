@@ -206,6 +206,7 @@ html[xmlns] .slides {
 
 /* FlexSlider Default Theme
 *********************************/
+//.gallery-slider.flexslider,
 .content-slider.flexslider,
 #content .content-slider.flexslider {
     position: relative;
@@ -287,8 +288,12 @@ aside .content-slider.flexslider,
         right: 1px;
     }
 }
-    /* Direction Nav */
-    .content-slider .flex-direction-nav {
+/* Direction Nav */
+.content-slider,
+.gallery-slider,
+//.gallery-slider-thumbs
+{
+    .flex-direction-nav {
         *height: 0;
         margin-bottom: 0;
         position: static; // Fix für FAU-Einrichtungen
@@ -312,7 +317,7 @@ aside .content-slider.flexslider,
             text-indent: 0; // Fix für FAU-Einrichtungen
             background-color: transparent;
             @media screen and (min-width: 48em) {
-                opacity: 0;
+                //opacity: 0;
                 position: absolute;
                 top: 40%;
             }
@@ -320,6 +325,15 @@ aside .content-slider.flexslider,
                 background-color:transparent;
                 border-bottom:none;
                 color:#1559A6;
+            }
+            &:before {
+                font-family: "FontAwesome";
+                font-size: 40px;
+                display: inline-block;
+                content: '\f104';
+            }
+            &.flex-next:before  {
+                content: '\f105';
             }
         }
         .flex-prev {
@@ -335,11 +349,96 @@ aside .content-slider.flexslider,
                 right: -25px;
             }
         }
+        .flex-disabled {
+            opacity: 0!important;
+            filter:alpha(opacity=0);
+            cursor: default;
+        }
     }
+    .flex-pauseplay {
+        position: static;
+        a {
+            display: block;
+            float: right;
+            width: 40px;
+            height: 40px;
+            padding-top: 6px;
+            z-index: 10;
+            overflow: hidden;
+            cursor: pointer;
+            color: #555;
+            background-image: none; // Fix für FAU-Einrichtungen
+            text-indent: 0; // Fix für FAU-Einrichtungen
+            text-align: right;
+            font-size: 16px;
+            line-height: 1.6;
+            @media screen and (min-width: 48em) {
+                //opacity: 0.8;
+                position: absolute;
+                bottom: -2px;
+                top: auto; // Fix für FAU-Einrichtungen
+                right: 0;
+            }
 
-    .content-slider.flexslider:hover,
-    .content-slider.flexslider:focus,
-    .content-slider.flexslider:active {
+            &:before {
+                font-family: "FontAwesome";
+                font-size: 20px;
+                display: inline-block;
+                content: '\f04c';
+                color: #1559a6;
+            }
+
+            &:hover, &:focus {
+                opacity: 1;
+                background: transparent !important;
+                text-decoration: none !important;
+            }
+
+            &.flex-play:before {
+                content: '\f04b';
+            }
+        }
+    }
+}
+
+// Gallery only
+.gallery-slider,
+.gallery-slider-thumbs {
+    li {
+        text-align: center;
+    }
+    .flex-direction-nav {
+        .flex-prev, .flex-next {
+            text-align: center;
+            opacity: 0;
+            height: 60px;
+            width: 50px;
+            background: rgba(255, 255, 255, 0.8);
+            &:before {
+                font-size: 60px;
+            }
+            &:hover, &:focus, &:active {
+                background-color: rgba(255, 255, 255, 0.3);
+            }
+            @media screen and (min-width: 48em) {
+                top: 37%;
+            }
+        }
+        .flex-prev {
+            left: 0;
+            padding: 0 12px 0 10px;
+        }
+        .flex-next {
+            right: 0;
+            padding: 0 10px 0 12px;
+        }
+    }
+}
+
+
+.gallery-slider.flexslider,
+.content-slider.flexslider {
+    &:hover, &:focus, &:active {
         opacity: 1;
         .flex-prev {
             opacity: 0.7;
@@ -348,74 +447,21 @@ aside .content-slider.flexslider,
             opacity: 0.7;
         }
     }
-    .content-slider {
-        .flex-next:hover,
-        .flex-prev:hover,
-        .flex-next:focus,
-        .flex-prev:focus,
-        .flex-next:active,
-        .flex-prev:active {
-            opacity: 1;
-        }
+    .flex-next:hover,
+    .flex-prev:hover,
+    .flex-next:focus,
+    .flex-prev:focus,
+    .flex-next:active,
+    .flex-prev:active {
+        opacity: 1;
     }
-    .content-slider .flex-direction-nav .flex-disabled {
-        opacity: 0!important;
-        filter:alpha(opacity=0);
-        cursor: default;
-    }
-    .content-slider .flex-direction-nav a:before  {
-        font-family: "FontAwesome";
-        font-size: 40px;
-        display: inline-block;
-        content: '\f104';
-    }
-    .content-slider .flex-direction-nav a.flex-next:before  { content: '\f105'; }
+}
 
-    /* Pause/Play */
-    .content-slider .flex-pauseplay {
-        position: static;
-    }
-    .content-slider .flex-pauseplay a {
-        display: block;
-        float: right;
-        width: 40px;
-        height: 40px;
-        padding-top: 6px;
-        z-index: 10;
-        overflow: hidden;
-        cursor: pointer;
-        color: #555;
-        background-image: none; // Fix für FAU-Einrichtungen
-        text-indent: 0; // Fix für FAU-Einrichtungen
-        text-align: right;
-        font-size: 16px;
-        line-height: 1.6;
-        @media screen and (min-width: 48em) {
-            //opacity: 0.8;
-            position: absolute;
-            bottom: -2px;
-            top: auto; // Fix für FAU-Einrichtungen
-            right: 0;
-        }
-        &:before  {
-            font-family: "FontAwesome";
-            font-size: 20px;
-            display: inline-block;
-            content: '\f04c';
-            color: #1559a6;
-        }
-        &:hover, &:focus, &:active {
-            opacity: 1;
-            background:transparent !important;
-            text-decoration: none !important;
-        }
-        &.flex-play:before {
-            content: '\f04b';
-        }
-    }
-
-    /* Control Nav */
-    .content-slider .flex-control-nav {
+/* Control Nav */
+.content-slider,
+.gallery-slider,
+.gallery-slider-thumbs {
+    .flex-control-nav {
         display: block;
         width: 100%;
         text-align: left;
@@ -462,12 +508,30 @@ aside .content-slider.flexslider,
             }
         }
     }
-
-    .content-slider .flex-control-thumbs {margin: 5px 0 0; position: static; overflow: hidden;}
-    .content-slider .flex-control-thumbs li {width: 25%; float: left; margin: 0;}
-    .content-slider .flex-control-thumbs img {width: 100%; display: block; opacity: .7; cursor: pointer;}
-    .content-slider .flex-control-thumbs img:hover {opacity: 1;}
-    .content-slider .flex-control-thumbs .flex-active {opacity: 1; cursor: default;}
+    .flex-control-thumbs {
+        margin: 5px 0 0;
+        position: static;
+        overflow: hidden;
+        li {
+            width: 25%;
+            float: left;
+            margin: 0;
+        }
+        img {
+            width: 100%;
+            display: block;
+            opacity: .7;
+            cursor: pointer;
+            &:hover {
+                opacity: 1;
+            }
+        }
+        .flex-active {
+            opacity: 1;
+            cursor: default;
+        }
+    }
+}
 
 /* Fixes for FAU-Themes */
 #content .content-slider.flexslider {
