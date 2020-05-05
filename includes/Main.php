@@ -58,7 +58,10 @@ class Main
         new TimeLine();
         new ContentIndex();
         new HiddenText();
-        new Gallery();
+        $theme = wp_get_theme();
+        if (in_array($theme->get('Name'), ['FAU Events', 'RRZE 2019'])) {
+            new Gallery();
+        }
     }
 
     /**
