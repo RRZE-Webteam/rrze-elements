@@ -1,0 +1,60 @@
+.elements-gallery {
+    .gallery-grid {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        figure {
+          flex: 1 0 200px;
+          padding: 3px;
+          margin: 0;
+        }
+        img {
+          object-fit: cover;
+          height: 100%;
+          width: 100%;
+        }
+        &.nospace {
+          figure {
+            padding: 0;
+          }
+        }
+      &.withcaption {
+        figure {
+          display: flex;
+          flex-direction: column;
+        }
+        img {
+          height: auto;
+        }
+      }
+      .wp-caption-text {
+        padding: 3px 5px 10px;
+        //min-height: 40px;
+      }
+      &.cols1 {
+          figure {
+            width: 100%;
+          }
+      }
+      &.cols2 {
+        figure {
+          min-width: 50%;
+        }
+      }
+      &.cols3 {
+        figure {
+          min-width: 33.33%;
+        }
+      }
+      &.cols4 {
+        figure {
+          min-width: 25%;
+        }
+      }
+      &.cols5 {
+        figure {
+          min-width: 20%;
+        }
+      }
+    }
+}

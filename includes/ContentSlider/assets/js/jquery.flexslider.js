@@ -33,7 +33,7 @@
         fade = slider.vars.animation === "fade",
         asNav = slider.vars.asNavFor !== "",
         methods = {};
-console.log(slider.vars);
+
     // Store a reference to the slider object
     $.data(el, "flexslider", slider);
 

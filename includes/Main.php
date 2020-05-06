@@ -18,6 +18,7 @@ use RRZE\Elements\ContentIndex\ContentIndex;
 use RRZE\Elements\Lightbox\Lightbox;
 use RRZE\Elements\TinyMCE\TinyMCEButtons;
 use RRZE\Elements\HiddenText\HiddenText;
+use RRZE\Elements\Gallery\Gallery;
 
 /**
  * [Main description]
@@ -57,6 +58,10 @@ class Main
         new TimeLine();
         new ContentIndex();
         new HiddenText();
+        $theme = wp_get_theme();
+        if (in_array($theme->get('Name'), ['FAU Events', 'RRZE 2019'])) {
+            new Gallery();
+        }
     }
 
     /**

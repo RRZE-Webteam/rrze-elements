@@ -37,6 +37,11 @@ main aside {
                 @include px2rem(16);
             }
         }
+        .no-sidebar & {
+            @media screen and (min-width: 66.25em) {
+                width: 30%;
+            }
+        }
     }
     &.pull-left {
         @media screen and (min-width: 37.5em) {
