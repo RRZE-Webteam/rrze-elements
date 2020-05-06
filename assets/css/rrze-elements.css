@@ -5222,6 +5222,13 @@ main aside.pull-right h6 {
     line-height: 1.4rem;
   }
 }
+@media screen and (min-width: 66.25em) {
+  .no-sidebar .entry-content aside.pull-left, .no-sidebar .entry-content aside.pull-right,
+.no-sidebar main aside.pull-left,
+.no-sidebar main aside.pull-right {
+    width: 30%;
+  }
+}
 @media screen and (min-width: 37.5em) {
   .entry-content aside.pull-left,
 main aside.pull-left {
