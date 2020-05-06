@@ -31,14 +31,7 @@ class Lightbox
             'jquery-fancybox',
             plugins_url('assets/js/jquery.fancybox.min.js', plugin_basename(__FILE__)),
             ['jquery'],
-            '3.5.2',
-            true
-        );
-        wp_register_script(
-            'rrze-fancybox',
-            plugins_url('assets/js/rrze-fancybox.min.js', plugin_basename(__FILE__)),
-            ['jquery-fancybox'],
-            ['1.0.0'],
+            '3.5.7',
             true
         );
     }
@@ -51,7 +44,7 @@ class Lightbox
     public function theContent($content)
     {
         $current_theme = wp_get_theme();
-        $allowed_themes = ['rrze-2015', 'fau-events'];
+        $allowed_themes = ['rrze-2019', 'fau-events'];
 
         if (!in_array(strtolower($current_theme->stylesheet), $allowed_themes)) {
             return $content;
@@ -63,8 +56,13 @@ class Lightbox
         $entries = $xpath->query("//a[@class='lightbox']");
 
         if ($entries->length) {
+            $content .= '<script type="text/javascript"> 
+            jQuery(document).ready(function($) {
+                $("a.lightbox").fancybox();
+            });
+            </script>';
             wp_enqueue_style('rrze-elements');
-            wp_enqueue_script('rrze-fancybox');
+            wp_enqueue_script('jquery-fancybox');
         }
         return $content;
     }

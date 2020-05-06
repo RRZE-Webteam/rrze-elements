@@ -8,6 +8,7 @@ class Gallery {
     public function __construct()
     {
         add_filter( 'post_gallery', [$this, 'shortcodeGallery'], 10, 3 );
+        add_action( 'wp_enqueue_scripts', [$this, 'enqueueScripts'] );
     }
 
     public function shortcodeGallery( $input = '', $atts = null, $instance = null ) {
@@ -27,7 +28,7 @@ class Gallery {
             'columns'	=> 0,
             'include'	=> '',
             'exclude'	=> '',
-            'type'	=> 'default',
+            'type'	=> 'slider',
             'captions'	=> 'false',
             'link'	=> 'post',
             // aus Wizard:
@@ -104,10 +105,31 @@ class Gallery {
                 wp_enqueue_script('jquery-flexslider');
             break;
             case 'grid':
-                $output .= '<div class="gallery-grid ' . $atts['class'] . '">';
+                $rand = rand();
+                $lightboxattr = '';
+                $output .= '<div id="gallery-'.$rand.'" class="gallery-grid ' . $atts['class'] . '">';
                 foreach ($attachments as $attachment) {
-                    $output .= '<figure>'
-                        . wp_get_attachment_image($attachment->ID, 'full');
+                    //var_dump(wp_get_attachment_image_srcset($attachment->ID));
+                    //exit;
+
+//                    print "<pre>";
+//                    var_dump($img_full);
+//                    print "</pre>";
+                    $output .= '<figure>';//<a href="' . '' . '">'
+                    if ($atts['link'] == 'file') {
+                        $img_full = wp_get_attachment_image_src($attachment->ID, 'full');
+                        $lightboxtitle = sanitize_text_field($attachment->post_excerpt);
+                        if (strlen(trim($lightboxtitle))>1) {
+                            $lightboxattr = ' title="'.$lightboxtitle.'"';
+                        }
+                        $output .= '<a href="' . $img_full[0] . '"' .$lightboxattr. ' data-fancybox="lightbox-'.$rand.'" data-caption="'.$lightboxtitle.'" data-srcset="' . wp_get_attachment_image_srcset($attachment->ID) . '">';
+                    } elseif ($atts['link'] == 'post') {
+                        $output .= '<a href="'.get_attachment_link( $attachment->ID ).'">';
+                    }
+                    $output .= wp_get_attachment_image($attachment->ID, 'full') . '</a>';
+                    if (in_array($atts['link'],['file', 'post'])) {
+                        $output .= '</a>';
+                    }
                     if ($atts['captions'] != 'false') {
                         $output .= '<figcaption class="wp-caption-text">';
                         if ($attachment->post_excerpt != '') {
@@ -118,6 +140,16 @@ class Gallery {
                     $output .= '</figure>';
                 }
                 $output .= '</div>';
+                if ($atts['link'] == 'file') {
+                    $output .= '<script type="text/javascript">
+                        jQuery(document).ready(function($) {
+                            $("[data-fancybox="lightbox-'.$rand.'"]").fancybox({
+                                "loop": true,
+                            });
+                        });
+                        </script>';
+                    wp_enqueue_script('jquery-fancybox');
+                }
             default:
 
                 break;
@@ -130,5 +162,20 @@ class Gallery {
 
         wp_enqueue_style('rrze-elements');
         return $return;
+    }
+
+    /**
+     * [enqueueScripts description]
+     * @return void
+     */
+    public function enqueueScripts()
+    {
+        wp_register_script(
+            'jquery-fancybox',
+            plugins_url('../Lightbox/assets/js/jquery.fancybox.min.js', plugin_basename(__FILE__)),
+            ['jquery'],
+            '3.5.7',
+            true
+        );
     }
 }

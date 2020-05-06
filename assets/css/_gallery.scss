@@ -6,6 +6,7 @@
         figure {
           flex: 1 0 200px;
           padding: 3px;
+          margin: 0;
         }
         img {
           object-fit: cover;
@@ -21,6 +22,9 @@
         figure {
           display: flex;
           flex-direction: column;
+        }
+        img {
+          height: auto;
         }
       }
       .wp-caption-text {
