@@ -3747,6 +3747,9 @@ button.expand-all.standard-btn {
   text-align: left;
 }
 
+.accordion .accordion {
+  margin: 0;
+}
 .accordion .accordion-register {
   padding-left: 0;
   margin: 0 0 0.5em;
