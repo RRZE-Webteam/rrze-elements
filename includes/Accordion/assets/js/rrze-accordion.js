@@ -6,6 +6,18 @@
 jQuery(document).ready(function($) {
     // Close Accordions on start, except first
     $('.accordion-body').not(".accordion-body.open").not('.accordion-body.stayopen').hide();
+    $('.accordion-body.open').parent().find('button.accordion-toggle').addClass('active');
+    $('.accordion').each(function() {
+        if ($(this).find('button.expand-all').length > 0) {
+            var items = $(this).find(".accordion-group");
+            var open = $(this).find(".accordion-body.open");
+            if (items.length == open.length) {
+                $(this).find('button.expand-all').attr("data-status", 'open').data('status', 'open').html(accordionToggle.collapse_all);
+                //console.log("items = " + items.length + " open = " + open.length);
+            }
+        }
+
+    });
 
     $('.accordion-toggle').bind('click', function(event) {
         event.preventDefault();
@@ -38,7 +50,7 @@ jQuery(document).ready(function($) {
         var $thisgroup = $($accordion).closest('.accordion-group');
         var $othergroups = $($accordion).closest('.accordion').find('.accordion-group').not($thisgroup);
         $($othergroups).children('.accordion-heading').children(' .accordion-toggle').removeClass('active');
-        $($othergroups).children('.accordion-body').not('.accordion-body.stayopen').slideUp();
+        $($othergroups).children('.accordion-body').not('.accordion-body.stayopen').not('.accordion-body.open').slideUp();
         $($thisgroup).children('.accordion-heading').children('.accordion-toggle').toggleClass('active');
         $($thisgroup).children('.accordion-body').slideToggle();
     }
