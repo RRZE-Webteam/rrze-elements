@@ -17,6 +17,8 @@ namespace RRZE\Elements;
 
 defined('ABSPATH') || exit;
 
+require_once 'config/config.php';
+
 use RRZE\Elements\Main;
 
 const RRZE_PHP_VERSION = '7.3';
