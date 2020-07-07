@@ -17,6 +17,7 @@ class News
     public function __construct()
     {
         add_shortcode('custom-news', [$this, 'shortcodeCustomNews']);
+        add_shortcode('blogroll', [$this, 'shortcodeCustomNews']);
     }
 
     /**
@@ -128,6 +129,7 @@ class News
         $hide_date = in_array('date', $hide);
         if ($hidemeta) {
             $hide[] = 'category';
+            $hide[] = 'date';
         }
 
         /* FAU-Einrichtungen, FAU-Philfak*/
@@ -165,7 +167,7 @@ class News
                             break;
                         case 'rrze':
                             if (function_exists('rrze_display_news_teaser')) {
-                                $output .= rrze_display_news_teaser($id, !$hide_date, $hstart, $hidemeta);
+                                $output .= rrze_display_news_teaser($id, $hide, $hstart, $imgfloat);
                             } else {
                                 $output .= $this->display_news_teaser($id, $hide, $hstart, $imgfloat);
                             }
@@ -180,7 +182,7 @@ class News
             if ($display == 'list') {
                 $output .= '</ul>';
             } else {
-                $output .= '</div>';
+                $output .= '</section>';
             }
 
             wp_reset_postdata();
