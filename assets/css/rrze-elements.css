@@ -5067,22 +5067,33 @@ body:not(.fau-theme) .fancybox-thumbs__list a.fancybox-thumbs-active::before {
 /*!
  * News
  */
-div.rrze-elements-news .entry-content {
+.rrze-elements-news .entry-content {
   width: 100%;
 }
 @media screen and (min-width: 37.5em) {
-  div.rrze-elements-news .float-left {
+  .rrze-elements-news .float-left {
     float: left;
     padding: 0 20px 10px 0;
     background: #fff;
   }
 }
 @media screen and (min-width: 37.5em) {
-  div.rrze-elements-news .float-right {
+  .rrze-elements-news .float-right {
     float: right;
     padding: 0 0 10px 20px;
     background: #fff;
   }
+}
+@media screen and (min-width: 37.5em) {
+  .rrze-elements-news .post.has-post-thumbnail .post-thumbnail {
+    float: left;
+    margin-right: 16px;
+    width: 150px;
+    height: 150px;
+  }
+}
+.rrze-elements-news .entry-title {
+  margin-top: 8px;
 }
 
 /*!

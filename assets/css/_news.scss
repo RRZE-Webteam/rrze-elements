@@ -2,7 +2,7 @@
  * News
  */
 
-div.rrze-elements-news {
+.rrze-elements-news {
     .entry-content {
         width: 100%;
     }
@@ -19,5 +19,16 @@ div.rrze-elements-news {
             padding: 0 0 10px 20px;
             background: #fff;
         }
+    }
+    .post.has-post-thumbnail .post-thumbnail {
+        @media screen and (min-width: 37.5em) {
+            float: left;
+            margin-right: 16px;
+            width: 150px;
+            height: 150px;
+        }
+    }
+    .entry-title {
+        margin-top: 8px;
     }
 }
