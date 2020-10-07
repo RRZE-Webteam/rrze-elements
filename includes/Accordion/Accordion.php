@@ -37,12 +37,14 @@ class Accordion
             $GLOBALS['collapsibles_count'] = 0;
         }
 
-        $defaults = array('expand-all-link' => 'false', 'register' => 'false');
+        $defaults = array('expand-all-link' => 'false', 'register' => 'false', 'icon' => '', 'suffix' => '');
         $args = shortcode_atts($defaults, $atts);
         $expand = esc_attr($args['expand-all-link']);
         $expand = (($expand == '1')||($expand == 'true')) ? true : false;
         $register = esc_attr($args['register']);
         $register = (($register == '1')||($register == 'true')) ? true : false;
+        $icon = esc_attr($icon);
+        $suffix = esc_attr($suffix);
 
         $output = '';
 
@@ -82,7 +84,7 @@ class Accordion
             $GLOBALS['current_collapse'] ++;
         }
 
-        $defaults = array('title' => 'Tab', 'color' => '', 'id' => '', 'load' => '', 'name' => '');
+        $defaults = array('title' => 'Tab', 'color' => '', 'id' => '', 'load' => '', 'name' => '', 'icon' => '', 'suffix' => '');
         extract(shortcode_atts($defaults, $atts));
 
         $addclass = '';
@@ -93,6 +95,8 @@ class Accordion
         $dataname = $name ? 'data-name="' . esc_attr($name) . '"' : '';
         $name = $name ? ' name="' . esc_attr($name) . '"' : '';
         $hlevel = 'h3';
+        $icon = esc_attr($icon);
+        $suffix = esc_attr($suffix);
         if ($tag == 'accordion-item') {
             $hlevel = 'h4';
         }
@@ -101,13 +105,20 @@ class Accordion
             $addclass .= " " . $load;
         }
 
+        if (!empty($icon)) {
+            $icon_hmtl = "<span class=\"accordion-icon fa fa-$icon\"></span> " ;
+        }
+        if (!empty($suffix)) {
+            $suffix_hmtl = "<span class=\"accordion-suffix\">$suffix</span>" ;
+        }
+
         $id = intval($id) ? intval($id) : 0;
         if ($id < 1) {
             $id = $GLOBALS['current_collapse'];
         }
 
         $output = '<div class="accordion-group' . $color . '">';
-        $output .= "<$hlevel class=\"accordion-heading\"><button class=\"accordion-toggle\" data-toggle=\"collapse\" $dataname href=\"#collapse_$id\">$title</button></$hlevel>";
+        $output .= "<$hlevel class=\"accordion-heading\"><button class=\"accordion-toggle\" data-toggle=\"collapse\" $dataname href=\"#collapse_$id\">$icon_hmtl $title $suffix_hmtl</button></$hlevel>";
         $output .= '<div id="collapse_' . $id . '" class="accordion-body' . $addclass . '"' . $name . '>';
         $output .= '<div class="accordion-inner clearfix">';
 
