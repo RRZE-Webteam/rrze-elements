@@ -36,6 +36,8 @@ class News
             'hide' => '',
             'display' => '',
             'imgfloat' => 'left',
+            'title' => '',
+            'has_thumbnail' => '',
             // aus FAU-Einrichtungen
             'cat'	=> '',
             'num'	=> '',
@@ -46,7 +48,7 @@ class News
         $sc_atts = array_map('sanitize_text_field', $sc_atts);
 
         $cat = ($sc_atts['cat'] != '') ? $sc_atts['cat'] : $sc_atts['category'];
-        $tag = $sc_atts['cat'];
+        $tag = $sc_atts['tag'];
         $num = ($sc_atts['num'] != '') ? intval($sc_atts['num']) : intval($sc_atts['number']);
         $days = intval($sc_atts['days']);
         $hide = array_map('trim', explode(",", $sc_atts['hide']));
@@ -55,7 +57,8 @@ class News
         $hstart = intval($sc_atts['hstart']);
         $divclass = esc_attr($sc_atts['divclass']);
         $hidemeta = $sc_atts['hidemeta'] == 'true' ? true : false;
-
+        $title = esc_attr($sc_atts['title']);
+        $hasThumbnail = $sc_atts['has_thumbnail'] == 'true' ? true : false;
 
         if ($sc_atts['id'] != '') {
             $id = array_map(
@@ -123,6 +126,16 @@ class News
             $args['post__in'] = $id;
         }
 
+        if ($hasThumbnail) {
+            $args['meta_query'] = [
+                [
+                    'key'     => '_thumbnail_id',
+                    'value'   => '',
+                    'compare' => '!=',
+                ]
+            ];
+        }
+
         $output = '';
         $wp_query = new \WP_Query($args);
 
@@ -132,14 +145,50 @@ class News
             $hide[] = 'date';
         }
 
-        /* FAU-Einrichtungen, FAU-Philfak*/
+        $titleText = '';
+        $titleHtml = '';
+        switch ($title) {
+            case 'category':
+                if ($cat != '') {
+                    $catNames = [];
+                    foreach ($categories as $category) {
+                        //var_dump(get_term_by('slug', $category, 'category'));
+                        if ($catObj = get_term_by('slug', $category, 'category')) {
+                            $catNames[] = $catObj->name;
+                        }
+                    }
+                    $titleText = implode(' | ', $catNames);
+                }
+                break;
+            case 'tag':
+                if ($tag != '') {
+                    $tagNames = [];
+                    foreach ($tags as $onetag) {
+                        if ($tagObj = get_term_by('name', $onetag, 'post_tag')) {
+                            $tagNames[] = $tagObj->name;
+                        }
+                    }
+                    $titleText = implode(' | ', $tagNames);
+                }
+                break;
+            case '':
+                break;
+            default:
+                $titleText = $title;
+                break;
+        }
+
+        if ($titleText != '') {
+            $titleHtml = '<h'.$hstart.'>'.$titleText.'</h'.$hstart.'>';
+            $hstart++;
+        }
 
         if ($wp_query->have_posts()) {
 
             if ($display == 'list') {
-                $output .= '<ul class="rrze-elements-news">';
+                $output .= $titleHtml . '<ul class="rrze-elements-news">';
             } else {
-                $output .= '<section class="rrze-elements-news blogroll ' . $divclass . '">';
+                $output .= '<section class="rrze-elements-news blogroll ' . $divclass . '">' . $titleHtml;
             }
 
             while ($wp_query->have_posts()) {
