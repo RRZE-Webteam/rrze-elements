@@ -45,10 +45,19 @@ class Accordion
         $register = (($register == '1')||($register == 'true')) ? true : false;
 
         $output = '';
-
         $output .= '<div class="accordion" id="accordion-' . $GLOBALS['collapsibles_count'] . '">';
         if ($expand) {
-            $output .= '<div class="button-container-right"><button class="expand-all standard-btn primary-btn xsmall-btn" data-status="closed">' . __('Expand All', 'rrze-elements') . '</button></div>';
+            switch (get_post_meta(get_the_ID(), 'fauval_langcode', true)) {
+                case 'en':
+                    $expandText = 'Expand All';
+                    break;
+                case 'de':
+                    $expandText = 'Alle öffnen';
+                    break;
+                default:
+                    $expandText = __('Expand All', 'rrze-elements');
+            }
+            $output .= '<div class="button-container-right"><button class="expand-all standard-btn primary-btn xsmall-btn" data-status="closed">' . $expandText . '</button></div>';
         }
         if ($register) {
             preg_match_all('(name="(.*?)")',$content, $matches);
@@ -136,12 +145,25 @@ class Accordion
             ['jquery'],
             '1.0.0'
         );
+        switch (get_post_meta(get_the_ID(), 'fauval_langcode', true)) {
+            case 'en':
+                $expandText = 'Expand All';
+                $collapseText = 'Collapse All';
+                break;
+            case 'de':
+                $expandText = 'Alle öffnen';
+                $collapseText = 'Alle schließen';
+                break;
+            default:
+                $expandText = __('Expand All', 'rrze-elements');
+                $collapseText = __('Collapse All', 'rrze-elements');
+        }
         wp_localize_script(
             'rrze-accordions',
             'accordionToggle',
             [
-                'expand_all' => __('Expand All', 'rrze-elements'),
-                'collapse_all' => __('Collapse All', 'rrze-elements'),
+                'expand_all' => $expandText,
+                'collapse_all' => $collapseText,
             ]
         );
     }
