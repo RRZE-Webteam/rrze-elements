@@ -114,7 +114,7 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    width: 100%;
+    width: calc(100% + 20px);
     margin: 0 -10px;
 
     .span_1,
@@ -140,6 +140,12 @@
     }
     .span_3 {
         flex: 3;
+    }
+
+    &.cols-2 {
+        .span_1 {
+            flex-basis: 50%;
+        }
     }
 
     &.cols-3 {

@@ -37,7 +37,11 @@ class News
             'display' => '',
             'imgfloat' => 'left',
             'title' => '',
-            'has_thumbnail' => '',
+            'has_thumbnail' => 'false',
+            'columns' => '',
+            'img_first' => 'false',
+            'ili_mode' => 'true',
+            'type' => '',
             // aus FAU-Einrichtungen
             'cat'	=> '',
             'num'	=> '',
@@ -59,6 +63,24 @@ class News
         $hidemeta = $sc_atts['hidemeta'] == 'true' ? true : false;
         $title = esc_attr($sc_atts['title']);
         $hasThumbnail = $sc_atts['has_thumbnail'] == 'true' ? true : false;
+        $columns = absint($sc_atts['columns']);
+        $type = esc_attr($sc_atts['type']);
+        $types = array_map('trim', explode(",", $type));
+
+        if ($columns > 0) {
+            //$divclass .= ' elements-columns cols-'.$columns;
+            $scColumnsOpen = '[columns number='.$columns.']';
+            $scColumnsClose = '[/columns]';
+        } else {
+            $scColumnsOpen = '';
+            $scColumnsClose = '';
+        }
+
+        if (in_array('ili_mode', $types)) {
+            $divclass .= ' ili-tpl';
+        }
+
+        $imgFirst = (in_array('img_first', $types)) ? true : false;
 
         if ($sc_atts['id'] != '') {
             $id = array_map(
@@ -183,12 +205,17 @@ class News
             $hstart++;
         }
 
+        $moreLink = '';
+        if (in_array('show_more', $types)) {
+            $moreLink = '<p class="more-posts"><a href="'.get_category_link($c_id[0]).'">' . __('Weitere Artikel', 'rrze-elements') . '</a></p>';
+        }
+
         if ($wp_query->have_posts()) {
 
             if ($display == 'list') {
                 $output .= $titleHtml . '<ul class="rrze-elements-news">';
             } else {
-                $output .= '<section class="rrze-elements-news blogroll ' . $divclass . '">' . $titleHtml;
+                $output .= '<section class="rrze-elements-news blogroll ' . $divclass . '">' . $titleHtml . $moreLink . $scColumnsOpen;
             }
 
             while ($wp_query->have_posts()) {
@@ -205,25 +232,28 @@ class News
                     $output .= '<a href="' . $permalink . '" rel="bookmark">' . $title . '</a>';
                     $output .= '</li>';
                 } else {
-                    //var_dump(get_stylesheet());
-                    switch (getThemeGroup(get_stylesheet())) {
-                        case 'fau':
-                            if (function_exists('fau_display_news_teaser')) {
-                                $output .= fau_display_news_teaser($id, !$hide_date, $hstart, $hidemeta);
-                            } else {
-                                $output .= $this->display_news_teaser($id, $hide, $hstart, $imgfloat);
-                            }
-                            break;
-                        case 'rrze':
-                            if (function_exists('rrze_display_news_teaser')) {
-                                $output .= rrze_display_news_teaser($id, $hide, $hstart, $imgfloat);
-                            } else {
-                                $output .= $this->display_news_teaser($id, $hide, $hstart, $imgfloat);
-                            }
-                            break;
-                        case 'events':
-                        default:
-                            $output .= $this->display_news_teaser($id, $hide, $hstart, $imgfloat);
+                    if ($columns > 0) {
+                        $output .= do_shortcode('[column]' . $this->display_news_teaser($id, $hide, $hstart, $imgfloat, $imgFirst) . '[/column]');
+                    } else {
+                        switch (getThemeGroup(get_stylesheet())) {
+                            case 'fau':
+                                if (function_exists('fau_display_news_teaser')) {
+                                    $output .= do_shortcode('[column]' . fau_display_news_teaser($id, !$hide_date, $hstart, $hidemeta) . '[/column]');
+                                } else {
+                                    $output .= do_shortcode('[column]' . $this->display_news_teaser($id, $hide, $hstart, $imgfloat) . '[/column]');
+                                }
+                                break;
+                            case 'rrze':
+                                if (function_exists('rrze_display_news_teaser')) {
+                                    $output .= rrze_display_news_teaser($id, $hide, $hstart, $imgfloat);
+                                } else {
+                                    $output .= $this->display_news_teaser($id, $hide, $hstart, $imgfloat);
+                                }
+                                break;
+                            case 'events':
+                            default:
+                                $output .= $this->display_news_teaser($id, $hide, $hstart, $imgfloat, $imgFirst);
+                        }
                     }
                 }
             }
@@ -231,7 +261,7 @@ class News
             if ($display == 'list') {
                 $output .= '</ul>';
             } else {
-                $output .= '</section>';
+                $output .= $scColumnsClose . '</section>';
             }
 
             wp_reset_postdata();
@@ -245,10 +275,10 @@ class News
         wp_enqueue_style('rrze-elements');
 
         wp_reset_postdata();
-        return $output;
+        return do_shortcode($output);
     }
 
-    private function display_news_teaser($id = 0, $hide = [], $hstart = 2, $imgfloat = 'float-left') {
+    private function display_news_teaser($id = 0, $hide = [], $hstart = 2, $imgfloat = 'float-left', $imgFirst = false) {
         if ($id == 0) return;
 
         $hide_date = in_array('date', $hide);
@@ -256,6 +286,9 @@ class News
         $hide_thumbnail = in_array('thumbnail', $hide);
 
         $output = '<article id="post-' . $id . '" class="news-item clear clearfix ' . implode(' ', get_post_class()) . ' cf">';
+        if (has_post_thumbnail($id) && ! $hide_thumbnail && $imgFirst) {
+            $output .= '<div class="entry-thumbnail ' . $imgfloat . '">' . get_the_post_thumbnail($id, 'post-thumbnail') . '</div>';
+        }
         $output .= '<header class="entry-header">';
         $output .= '<h'.$hstart.' class="entry-title"><a href="' . get_permalink() . '" rel="bookmark">' . get_the_title() . '</a></h'.$hstart.'>';
         $output .= '</header>';
@@ -275,7 +308,7 @@ class News
             }
         }
         $output .= '</div>';
-        if (has_post_thumbnail($id) && ! $hide_thumbnail) {
+        if (has_post_thumbnail($id) && ! $hide_thumbnail && !$imgFirst) {
             $output .= '<div class="entry-thumbnail ' . $imgfloat . '">' . get_the_post_thumbnail($id, 'post-thumbnail') . '</div>';
         }
         $output .= '<div class="entry-content">' . get_the_excerpt($id) . "</div>";
