@@ -63,7 +63,7 @@ class Button
         if ($width == 'full') {
             $width_full = ' full-btn';
         } elseif (is_numeric($width)) {
-            $width_px = 'width:' . $width . 'px; max-width:100%;"';
+            $width_px = 'width:' . $width . 'px; max-width:100%;';
         } elseif (strpos($width, 'px')) {
             $width = $width . 'px';
         }
