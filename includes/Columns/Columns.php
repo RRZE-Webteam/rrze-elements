@@ -41,7 +41,13 @@ class Columns
      */
     public function shortcodeColumns($atts, $content = null){
         wp_enqueue_style('rrze-elements');
-        return '<div class="elements-columns">' . do_shortcode(($content)) . '</div>';
+        $defaults = array(
+            'number' => '',
+        );
+        $args = shortcode_atts($defaults, $atts);
+        $columns = absint($args['number']);
+        $colClass = $columns > 0 ? 'cols-'.$columns : '';
+        return '<div class="elements-columns '.$colClass.'">' . do_shortcode(($content)) . '</div>';
     }
 
     public function shortcodeColumn($atts, $content = null){
