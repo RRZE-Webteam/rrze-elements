@@ -4261,9 +4261,14 @@ a.standard-btn:active {
   flex-basis: 100%;
   flex-shrink: 0;
   margin-bottom: 1.5em;
-  min-width: 160px;
+  min-width: 200px;
   float: none;
   margin: 0 10px 1.5em;
+}
+.fau-theme .elements-columns .span_1,
+.fau-theme .elements-columns .span_2,
+.fau-theme .elements-columns .span_3 {
+  min-width: 180px;
 }
 .elements-columns .span_1 {
   flex: 1;

@@ -123,10 +123,13 @@
         flex-basis: 100%;
         flex-shrink: 0;
         margin-bottom: 1.5em;
-        min-width: 160px;
+        min-width: 200px;
         // Fix für FAU-Themes
         float: none;
         margin: 0 10px 1.5em;
+        .fau-theme & {
+            min-width: 180px;
+        }
     }
 
     .span_1 {
