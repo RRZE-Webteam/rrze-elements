@@ -56,7 +56,7 @@ class Columns
         );
         $spans =['1', '2', '3'];
         $args = shortcode_atts($defaults, $atts);
-        $class = 'span_' . (in_array($args['span'], $spans) ? $args['span'] : $defaults['span']);
+        $class = 'colspan-' . (in_array($args['span'], $spans) ? $args['span'] : $defaults['span']);
 
         return "<div class=\"column $class\">" . do_shortcode(($content)) . '</div>';
     }

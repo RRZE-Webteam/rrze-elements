@@ -4255,56 +4255,50 @@ a.standard-btn:active {
   width: calc(100% + 20px);
   margin: 0 -10px;
 }
-.elements-columns .span_1,
-.elements-columns .span_2,
-.elements-columns .span_3 {
+.elements-columns .colspan-1,
+.elements-columns .colspan-2,
+.elements-columns .colspan-3 {
   flex-basis: 100%;
   flex-shrink: 0;
+  flex-grow: 1;
   min-width: 200px;
   float: none;
   margin: 0;
   padding: 0 10px 1.5em;
 }
-.fau-theme .elements-columns .span_1,
-.fau-theme .elements-columns .span_2,
-.fau-theme .elements-columns .span_3 {
+.fau-theme .elements-columns .colspan-1,
+.fau-theme .elements-columns .colspan-2,
+.fau-theme .elements-columns .colspan-3 {
   min-width: 180px;
 }
-.elements-columns .span_1 {
-  flex: 1;
-}
-.elements-columns .span_2 {
-  flex: 2;
-}
-.elements-columns .span_3 {
-  flex: 3;
-}
-.elements-columns.cols-2 .span_1 {
-  flex-basis: 50%;
-}
-.elements-columns.cols-3 .span_1 {
-  flex-basis: 33%;
-}
-.elements-columns.cols-3 .span_2 {
-  flex-basis: 66%;
-}
-.elements-columns.cols-4 .span_1 {
-  flex-basis: 25%;
-}
-.elements-columns.cols-4 .span_2 {
-  flex-basis: 50%;
-}
-.elements-columns.cols-4 .span_3 {
-  flex-basis: 75%;
-}
-.elements-columns.cols-5 .span_1 {
-  flex-basis: 20%;
-}
-.elements-columns.cols-5 .span_2 {
-  flex-basis: 40%;
-}
-.elements-columns.cols-5 .span_3 {
-  flex-basis: 60%;
+@media (min-width: 480px) {
+  .elements-columns.cols-2 .colspan-1 {
+    flex-basis: 50%;
+  }
+  .elements-columns.cols-3 .colspan-1 {
+    flex-basis: 33%;
+  }
+  .elements-columns.cols-3 .colspan-2 {
+    flex-basis: 66%;
+  }
+  .elements-columns.cols-4 .colspan-1 {
+    flex-basis: 25%;
+  }
+  .elements-columns.cols-4 .colspan-2 {
+    flex-basis: 50%;
+  }
+  .elements-columns.cols-4 .colspan-3 {
+    flex-basis: 75%;
+  }
+  .elements-columns.cols-5 .colspan-1 {
+    flex-basis: 20%;
+  }
+  .elements-columns.cols-5 .colspan-2 {
+    flex-basis: 40%;
+  }
+  .elements-columns.cols-5 .colspan-3 {
+    flex-basis: 60%;
+  }
 }
 
 /*!
@@ -5127,16 +5121,33 @@ body:not(.fau-theme) .fancybox-thumbs__list a.fancybox-thumbs-active::before {
 .rrze-elements-news .entry-title {
   margin-top: 8px;
 }
-.rrze-elements-news .more-posts {
-  text-align: right;
+.rrze-elements-news .section-title {
+  float: left;
+  padding-right: 20px;
 }
 
+#content .rrze-elements-news p.more-posts {
+  text-align: right;
+  padding: 22px 0;
+  hyphens: none;
+}
+
+@media (min-width: 480px) {
+  .rrze-elements-news .elements-columns.cols-4 .colspan-1 {
+    flex-basis: 50%;
+  }
+}
+@media (min-width: 730px) {
+  .rrze-elements-news .elements-columns.cols-4 .colspan-1 {
+    flex-basis: 25%;
+  }
+}
+.rrze-elements-news .elements-columns .entry-title {
+  padding-top: 0px;
+  margin-top: 0;
+}
 .rrze-elements-news .elements-columns .entry-content {
   padding: 0;
-}
-.rrze-elements-news .elements-columns .news-item > .entry-header > .entry-title {
-  padding-top: 0;
-  margin-top: 0;
 }
 .rrze-elements-news .elements-columns .entry-thumbnail.float-left {
   float: none;
@@ -5149,28 +5160,38 @@ body:not(.fau-theme) .fancybox-thumbs__list a.fancybox-thumbs-active::before {
 .rrze-elements-news .elements-columns .news-item {
   position: relative;
 }
+.rrze-elements-news:not(.ili-tpl.post-cols) .elements-columns .entry-title {
+  padding-top: 10px;
+  margin-top: 0;
+}
 
 .rrze-elements-news.ili-tpl .news-item .entry-thumbnail {
   position: relative;
-  padding-top: 1em;
-}
-.rrze-elements-news.ili-tpl .news-item .entry-thumbnail img {
   width: 100%;
-  height: 30%;
-  object-fit: cover;
+  -webkit-clip-path: polygon(0 5%, 100% 0, 100% 100%, 0% 100%);
+  clip-path: polygon(0 5%, 100% 0, 100% 100%, 0% 100%);
 }
-.rrze-elements-news.ili-tpl .news-item .entry-thumbnail:after {
-  content: "";
-  width: calc(100% + 1em);
-  height: 1em;
+.rrze-elements-news.ili-tpl .news-item .entry-thumbnail.ratio-portrait {
+  -webkit-clip-path: polygon(0 2%, 100% 0, 100% 100%, 0% 100%);
+  clip-path: polygon(0 2%, 100% 0, 100% 100%, 0% 100%);
+}
+.rrze-elements-news.ili-tpl:not(.post-cols) .news-item .entry-thumbnail {
+  padding-top: 66.66%;
+  /* 3:2 Aspect Ratio (divide 2 by 3 = 0.6666)  */
+}
+.rrze-elements-news.ili-tpl:not(.post-cols) .news-item .entry-thumbnail.ratio-portrait {
+  padding-top: 150%;
+  /* 2:3 Aspect Ratio (divide 2 by 3 = 0.6666)  */
+}
+.rrze-elements-news.ili-tpl:not(.post-cols) .news-item .entry-thumbnail img {
   position: absolute;
-  left: -0.5em;
   top: 0;
-  background: #fff;
-  transform-origin: right top;
-  transform: skewY(-1.75deg);
-  display: block;
-  overflow: hidden;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  min-width: 100%;
+  object-fit: cover;
 }
 
 /*!

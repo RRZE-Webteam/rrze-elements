@@ -39,8 +39,6 @@ class News
             'title' => '',
             'has_thumbnail' => 'false',
             'columns' => '',
-            'img_first' => 'false',
-            'ili_mode' => 'true',
             'type' => '',
             // aus FAU-Einrichtungen
             'cat'	=> '',
@@ -65,8 +63,10 @@ class News
         $hasThumbnail = $sc_atts['has_thumbnail'] == 'true' ? true : false;
         $columns = absint($sc_atts['columns']);
         $type = esc_attr($sc_atts['type']);
-        $types = array_map('trim', explode(",", $type));
+        $mode = array_map('trim', explode(",", $type));
+        $thumbnailSize = 'post-thumbnail';
 
+        $postCols = [];
         if ($columns > 0) {
             //$divclass .= ' elements-columns cols-'.$columns;
             $scColumnsOpen = '[columns number='.$columns.']';
@@ -74,13 +74,25 @@ class News
         } else {
             $scColumnsOpen = '';
             $scColumnsClose = '';
+            foreach ($mode as $v) {
+                if (substr($v,0, 5) == 'cols_') {
+                    $colsPart = explode('_', $v);
+                    $tmpPostCols = explode('-', $colsPart[1]);
+                    if (count($tmpPostCols) < 2) {
+                        continue;
+                    }
+                    $postCols['left'] = $tmpPostCols[0];
+                    $postCols['right'] = $tmpPostCols[1];
+                    $divclass .= ' post-cols';
+                }
+            }
         }
 
-        if (in_array('ili_mode', $types)) {
+        if (in_array('ili_mode', $mode)) {
             $divclass .= ' ili-tpl';
         }
 
-        $imgFirst = (in_array('img_first', $types)) ? true : false;
+        $imgFirst = (in_array('img_first', $mode)) ? true : false;
 
         if ($sc_atts['id'] != '') {
             $id = array_map(
@@ -158,9 +170,6 @@ class News
             ];
         }
 
-        $output = '';
-        $wp_query = new \WP_Query($args);
-
         $hide_date = in_array('date', $hide);
         if ($hidemeta) {
             $hide[] = 'category';
@@ -174,7 +183,6 @@ class News
                 if ($cat != '') {
                     $catNames = [];
                     foreach ($categories as $category) {
-                        //var_dump(get_term_by('slug', $category, 'category'));
                         if ($catObj = get_term_by('slug', $category, 'category')) {
                             $catNames[] = $catObj->name;
                         }
@@ -201,14 +209,22 @@ class News
         }
 
         if ($titleText != '') {
-            $titleHtml = '<h'.$hstart.'>'.$titleText.'</h'.$hstart.'>';
+            $titleHtml = '<h'.$hstart.' class="section-title">'.$titleText.'</h'.$hstart.'>';
             $hstart++;
         }
 
         $moreLink = '';
-        if (in_array('show_more', $types)) {
-            $moreLink = '<p class="more-posts"><a href="'.get_category_link($c_id[0]).'">' . __('Weitere Artikel', 'rrze-elements') . '</a></p>';
+        if (in_array('show_more', $mode)) {
+            if ($cat != '') {
+                $moreLink = '<p class="more-posts"><a href="'.get_category_link($c_id[0]).'">' . __('Weitere Artikel', 'rrze-elements') . '</a></p>';
+            } elseif ($tag != '') {
+                $moreLink = '<p class="more-posts"><a href="'.get_tag_link($t_id[0]).'">' . __('Weitere Artikel', 'rrze-elements') . '</a></p>';
+            }
         }
+
+        $output = '';
+
+        $wp_query = new \WP_Query($args);
 
         if ($wp_query->have_posts()) {
 
@@ -233,7 +249,15 @@ class News
                     $output .= '</li>';
                 } else {
                     if ($columns > 0) {
-                        $output .= do_shortcode('[column]' . $this->display_news_teaser($id, $hide, $hstart, $imgfloat, $imgFirst) . '[/column]');
+                        if ($columns < 3) {
+                            $thumbnailSize = 'large';
+                        }
+                        $output .= do_shortcode('[column]' . $this->display_news_teaser($id, $hide, $hstart, $imgfloat, $imgFirst, $postCols, $thumbnailSize) . '[/column]');
+                    } elseif (!empty($postCols)) {
+                        if (array_sum($postCols) / $postCols['left'] > .3) {
+                            $thumbnailSize = 'large';
+                        }
+                        $output .= do_shortcode($this->display_news_teaser($id, $hide, $hstart, $imgfloat, $imgFirst, $postCols, $thumbnailSize));
                     } else {
                         switch (getThemeGroup(get_stylesheet())) {
                             case 'fau':
@@ -252,7 +276,7 @@ class News
                                 break;
                             case 'events':
                             default:
-                                $output .= $this->display_news_teaser($id, $hide, $hstart, $imgfloat, $imgFirst);
+                                $output .= $this->display_news_teaser($id, $hide, $hstart, $imgfloat, $imgFirst, $postCols);
                         }
                     }
                 }
@@ -278,16 +302,32 @@ class News
         return do_shortcode($output);
     }
 
-    private function display_news_teaser($id = 0, $hide = [], $hstart = 2, $imgfloat = 'float-left', $imgFirst = false) {
+    private function display_news_teaser($id = 0, $hide = [], $hstart = 2, $imgfloat = 'float-left', $imgFirst = false, $postCols = [], $thumbnailSize = 'post-thumbnail') {
         if ($id == 0) return;
 
         $hide_date = in_array('date', $hide);
         $hide_category = in_array('category', $hide);
         $hide_thumbnail = in_array('thumbnail', $hide);
+        $columns = (!empty($postCols));
+        if ($columns) {
+            $imgFirst = true;
+            $numCols = array_sum($postCols);
+        }
+        if (has_post_thumbnail($id) && ! $hide_thumbnail) {
+            $image_data = wp_get_attachment_image_src( get_post_thumbnail_id( $id ), $thumbnailSize );
+            $ratioClass = $image_data[2] > $image_data[1] ? 'ratio-portrait' : 'ratio-landscape';
+        }
 
         $output = '<article id="post-' . $id . '" class="news-item clear clearfix ' . implode(' ', get_post_class()) . ' cf">';
+        if ($columns) {
+           $output .= '[columns number="'. $numCols .'"][column span="' . $postCols['left'] . '"]';
+        }
+        // $output .= '<div class="test-container">' . get_the_post_thumbnail($id, $thumbnailSize) . '</div>';
         if (has_post_thumbnail($id) && ! $hide_thumbnail && $imgFirst) {
-            $output .= '<div class="entry-thumbnail ' . $imgfloat . '">' . get_the_post_thumbnail($id, 'post-thumbnail') . '</div>';
+            $output .= '<div class="entry-thumbnail ' . $ratioClass . ' ' . $imgfloat . '">' . get_the_post_thumbnail($id, $thumbnailSize) . '</div>';
+        }
+        if ($columns) {
+            $output .= '[/column][column span="' . $postCols['right'] . '"]';
         }
         $output .= '<header class="entry-header">';
         $output .= '<h'.$hstart.' class="entry-title"><a href="' . get_permalink() . '" rel="bookmark">' . get_the_title() . '</a></h'.$hstart.'>';
@@ -309,11 +349,23 @@ class News
         }
         $output .= '</div>';
         if (has_post_thumbnail($id) && ! $hide_thumbnail && !$imgFirst) {
-            $output .= '<div class="entry-thumbnail ' . $imgfloat . '">' . get_the_post_thumbnail($id, 'post-thumbnail') . '</div>';
+            $output .= '<div class="entry-thumbnail ' . $ratioClass . ' ' . $imgfloat . '">' . get_the_post_thumbnail($id, 'post-thumbnail') . '</div>';
         }
-        $output .= '<div class="entry-content">' . get_the_excerpt($id) . "</div>";
-        $output .= '</article>';
+        $output .= '<div class="entry-content">';
+        $abstract = get_post_meta( $id, 'abstract', true );
+        if (strlen(trim($abstract))<3) {
+            if (function_exists('fau_display_news_teaser')) {
+                $abstract = fau_custom_excerpt($id, get_theme_mod('default_anleser_excerpt_length'),false,'',true);
+            } else {
+                $output .= get_the_excerpt($id);
+            }
+        }
+        $output .= '<div class="entry-content">' . $abstract . '</div>';
 
-        return $output;
+        if ($columns) {
+            $output .= '[/column][/columns]';
+        }$output .= '</article>';
+
+        return do_shortcode($output);
     }
 }
