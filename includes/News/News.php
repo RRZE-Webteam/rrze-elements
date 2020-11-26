@@ -46,6 +46,7 @@ class News
             'divclass'	=> '',
             'hidemeta'	=> false,
             'hstart'	=> 2,
+            'hideduplicates'	=> 'false',
         ], $atts);
         $sc_atts = array_map('sanitize_text_field', $sc_atts);
 
@@ -65,6 +66,7 @@ class News
         $type = esc_attr($sc_atts['type']);
         $mode = array_map('trim', explode(",", $type));
         $thumbnailSize = 'post-thumbnail';
+        $hideDuplicates = $sc_atts['hideduplicates'] == 'true' ? true : false;
 
         $postCols = [];
         if ($columns > 0) {
@@ -160,6 +162,10 @@ class News
             $args['post__in'] = $id;
         }
 
+        if($hideDuplicates && isset($GLOBALS['a_displayedPosts']) && is_array($GLOBALS['a_displayedPosts'])) {
+        	$args['post__not_in'] = array_unique($GLOBALS['a_displayedPosts']);
+        }
+
         if ($hasThumbnail) {
             $args['meta_query'] = [
                 [
@@ -239,6 +245,7 @@ class News
                 $id = get_the_ID();
                 $title = get_the_title();
                 $permalink = get_permalink();
+                $GLOBALS['a_displayedPosts'][] = $id;
 
                 if ($display == 'list') {
                     $output .= '<li>';
