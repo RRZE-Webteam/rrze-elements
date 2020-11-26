@@ -249,7 +249,7 @@ class News
                     $output .= '</li>';
                 } else {
                     if ($columns > 0) {
-                        if ($columns < 3) {
+                        if ($columns <= 3 || $wp_query->post_count <= 3) {
                             $thumbnailSize = 'large';
                         }
                         $output .= do_shortcode('[column]' . $this->display_news_teaser($id, $hide, $hstart, $imgfloat, $imgFirst, $postCols, $thumbnailSize) . '[/column]');
