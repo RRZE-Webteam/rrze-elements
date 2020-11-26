@@ -44,9 +44,10 @@ class News
             'cat'	=> '',
             'num'	=> '',
             'divclass'	=> '',
-            'hidemeta'	=> false,
+            'hidemeta'	=> 'false',
             'hstart'	=> 2,
             'hideduplicates'	=> 'false',
+            'fau_settings'  => 'false',
         ], $atts);
         $sc_atts = array_map('sanitize_text_field', $sc_atts);
 
@@ -59,7 +60,7 @@ class News
         $imgfloat = ($sc_atts['imgfloat'] == 'right') ? 'float-right' : 'float-left';
         $hstart = intval($sc_atts['hstart']);
         $divclass = esc_attr($sc_atts['divclass']);
-        $hidemeta = $sc_atts['hidemeta'] == 'true' ? true : false;
+        $hideMeta = $sc_atts['hidemeta'] == 'true' ? true : false;
         $title = esc_attr($sc_atts['title']);
         $hasThumbnail = $sc_atts['has_thumbnail'] == 'true' ? true : false;
         $columns = absint($sc_atts['columns']);
@@ -68,9 +69,15 @@ class News
         $thumbnailSize = 'post-thumbnail';
         $hideDuplicates = $sc_atts['hideduplicates'] == 'true' ? true : false;
 
+        $borderTop = '';
+        if ($sc_atts['fau_settings'] == 'true') {
+            array_push($mode, 'img_first','ili_mode','show_more');
+            $hideMeta = true;
+            $borderTop = '1px solid #036';
+        }
+
         $postCols = [];
         if ($columns > 0) {
-            //$divclass .= ' elements-columns cols-'.$columns;
             $scColumnsOpen = '[columns number='.$columns.']';
             $scColumnsClose = '[/columns]';
         } else {
@@ -92,6 +99,9 @@ class News
 
         if (in_array('ili_mode', $mode)) {
             $divclass .= ' ili-tpl';
+        }
+        if ($borderTop != '') {
+            $divclass .= ' border-top';
         }
 
         $imgFirst = (in_array('img_first', $mode)) ? true : false;
@@ -177,7 +187,7 @@ class News
         }
 
         $hide_date = in_array('date', $hide);
-        if ($hidemeta) {
+        if ($hideMeta) {
             $hide[] = 'category';
             $hide[] = 'date';
         }
@@ -269,7 +279,7 @@ class News
                         switch (getThemeGroup(get_stylesheet())) {
                             case 'fau':
                                 if (function_exists('fau_display_news_teaser')) {
-                                    $output .= do_shortcode('[column]' . fau_display_news_teaser($id, !$hide_date, $hstart, $hidemeta) . '[/column]');
+                                    $output .= do_shortcode('[column]' . fau_display_news_teaser($id, !$hide_date, $hstart, $hideMeta) . '[/column]');
                                 } else {
                                     $output .= do_shortcode('[column]' . $this->display_news_teaser($id, $hide, $hstart, $imgfloat) . '[/column]');
                                 }
@@ -312,6 +322,7 @@ class News
     private function display_news_teaser($id = 0, $hide = [], $hstart = 2, $imgfloat = 'float-left', $imgFirst = false, $postCols = [], $thumbnailSize = 'post-thumbnail') {
         if ($id == 0) return;
 
+        $arialabelid= "aria-".$id."-".random_int(10000,30000);
         $hide_date = in_array('date', $hide);
         $hide_category = in_array('category', $hide);
         $hide_thumbnail = in_array('thumbnail', $hide);
@@ -324,24 +335,38 @@ class News
             $image_data = wp_get_attachment_image_src( get_post_thumbnail_id( $id ), $thumbnailSize );
             $ratioClass = $image_data[2] > $image_data[1] ? 'ratio-portrait' : 'ratio-landscape';
         }
+        if (function_exists('fau_create_schema_publisher')) {
+            $schemaPublisher = fau_create_schema_publisher();
+        } else {
+            $custom_logo_id = get_theme_mod( 'custom_logo' );
+            $logo = wp_get_attachment_image_url( $custom_logo_id);
+            $logo = $logo ? $logo : '';
+            $schemaPublisher = '<div itemprop="publisher" itemscope itemtype="https://schema.org/Organization"><meta itemprop="name" content="'.get_bloginfo('name').'"/><meta itemprop="logo" content="'.$logo.'"/></div>';
+        }
 
-        $output = '<article id="post-' . $id . '" class="news-item clear clearfix ' . implode(' ', get_post_class()) . ' cf">';
+        $output = '<article id="post-' . $id . '" class="news-item clear clearfix ' . implode(' ', get_post_class()) . ' cf" aria-labelledby="'.$arialabelid.'" itemscope itemtype="http://schema.org/NewsArticle">';
         if ($columns) {
            $output .= '[columns number="'. $numCols .'"][column span="' . $postCols['left'] . '"]';
         }
-        // $output .= '<div class="test-container">' . get_the_post_thumbnail($id, $thumbnailSize) . '</div>';
+
         if (has_post_thumbnail($id) && ! $hide_thumbnail && $imgFirst) {
-            $output .= '<div class="entry-thumbnail ' . $ratioClass . ' ' . $imgfloat . '">' . get_the_post_thumbnail($id, $thumbnailSize) . '</div>';
+            $output .= '<div class="entry-thumbnail ' . $ratioClass . ' ' . $imgfloat . '">' . get_the_post_thumbnail($id, $thumbnailSize)
+                . '<meta itemprop="image" content="'.get_the_post_thumbnail_url($id).'">'
+                . '</div>';
         }
         if ($columns) {
             $output .= '[/column][column span="' . $postCols['right'] . '"]';
         }
         $output .= '<header class="entry-header">';
-        $output .= '<h'.$hstart.' class="entry-title"><a href="' . get_permalink() . '" rel="bookmark">' . get_the_title() . '</a></h'.$hstart.'>';
+        $output .= '<h'.$hstart.' class="entry-title" id="'.$arialabelid.'" itemprop="headline"><a href="' . get_permalink() . '" rel="bookmark" itemprop="url">' . get_the_title() . '</a></h'.$hstart.'>';
         $output .= '</header>';
         $output .= '<div class="entry-meta">';
+        $output .= $schemaPublisher;
+        $output .= '<div itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="name" content="'.get_the_author().'"/></div>';
         if (! $hide_date) {
-            $output .= '<div class="entry-date">' . get_the_date('d.m.Y', $id) . '</div>';
+            $output .= '<div class="entry-date" itemprop="datePublished" content="'.get_the_date().'>' . get_the_date('d.m.Y', $id) . '</div>';
+        } else {
+            $output .= '<div><meta itemprop="datePublished" content="'.get_the_date().'"></div>';
         }
         if (! $hide_category) {
             $categories = get_the_category($id);
@@ -356,22 +381,34 @@ class News
         }
         $output .= '</div>';
         if (has_post_thumbnail($id) && ! $hide_thumbnail && !$imgFirst) {
-            $output .= '<div class="entry-thumbnail ' . $ratioClass . ' ' . $imgfloat . '">' . get_the_post_thumbnail($id, 'post-thumbnail') . '</div>';
+            $output .= '<div class="entry-thumbnail ' . $ratioClass . ' ' . $imgfloat . '">' . get_the_post_thumbnail($id, 'post-thumbnail')
+                . '<meta itemprop="image" content="'.get_the_post_thumbnail_url($id).'">'
+                . '</div>';
         }
-        $output .= '<div class="entry-content">';
+
+        // Content
         $abstract = get_post_meta( $id, 'abstract', true );
         if (strlen(trim($abstract))<3) {
-            if (function_exists('fau_display_news_teaser')) {
-                $abstract = fau_custom_excerpt($id, get_theme_mod('default_anleser_excerpt_length'),false,'',true);
+            if (function_exists('fau_custom_excerpt')) {
+                $abstract = fau_custom_excerpt($id, get_theme_mod('default_anleser_excerpt_length'),false,'',true, get_theme_mod('search_display_excerpt_morestring'));
+                if (function_exists('fau_create_readmore')) {
+                    $abstract .= fau_create_readmore(get_permalink(), get_the_title(), false, true);
+                }
             } else {
-                $output .= get_the_excerpt($id);
+                $abstract = get_the_excerpt($id);
+            }
+        } else {
+            if (function_exists('fau_create_readmore')) {
+                $abstract .= fau_create_readmore(get_permalink(), get_the_title(), false, true);
             }
         }
-        $output .= '<div class="entry-content">' . $abstract . '</div>';
+        $output .= '<div class="entry-content" itemprop="description">' . $abstract . '</div>';
 
         if ($columns) {
             $output .= '[/column][/columns]';
-        }$output .= '</article>';
+        }
+
+        $output .= '</article>';
 
         return do_shortcode($output);
     }

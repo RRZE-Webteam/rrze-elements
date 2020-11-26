@@ -34,12 +34,18 @@
     .section-title {
         float: left;
         padding-right: 20px;
+        padding-top: 10px;
+    }
+    &.border-top {
+        border-top: 1px solid #036;
+        padding-top: 10px;
     }
 }
 
+.rrze-elements-news p.more-posts,
 #content .rrze-elements-news p.more-posts {
     text-align: right;
-    padding: 22px 0;
+    padding: 10px 0 22px;
     hyphens: none;
 }
 
