@@ -364,9 +364,9 @@ class News
         $output .= $schemaPublisher;
         $output .= '<div itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="name" content="'.get_the_author().'"/></div>';
         if (! $hide_date) {
-            $output .= '<div class="entry-date" itemprop="datePublished" content="'.get_the_date().'>' . get_the_date('d.m.Y', $id) . '</div>';
+            $output .= '<div class="entry-date" itemprop="datePublished" content="'.get_the_date('Y-m-d').'">' . get_the_date(get_option('date_format'), $id) . '</div>';
         } else {
-            $output .= '<div><meta itemprop="datePublished" content="'.get_the_date().'"></div>';
+            $output .= '<div><meta itemprop="datePublished" content="'.get_the_date('Y-m-d').'"></div>';
         }
         if (! $hide_category) {
             $categories = get_the_category($id);

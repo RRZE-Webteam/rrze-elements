@@ -6,6 +6,16 @@
     .entry-content {
         width: 100%;
     }
+    .entry-date:before {
+        @extend .fa;
+        @extend .fa-calendar;
+        margin-right: 5px;
+    }
+    .entry-cats:before {
+        @extend .fa;
+        @extend .fa-tag;
+        margin-right: 5px;
+    }
     .float-left {
         @media screen and (min-width: 37.5em) {
             float: left;

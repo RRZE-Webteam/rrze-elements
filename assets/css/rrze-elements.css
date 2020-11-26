@@ -11,7 +11,7 @@
   font-weight: normal;
   font-style: normal;
 }
-.fa, [id^=timeline] .dates li:before, .notice:before {
+.fa, [id^=timeline] .dates li:before, .rrze-elements-news .entry-cats:before, .rrze-elements-news .entry-date:before, .notice:before {
   display: inline-block;
   font: normal normal normal 14px/1 FontAwesome;
   font-size: inherit;
@@ -92,11 +92,11 @@
   float: right;
 }
 
-.fa.fa-pull-left, [id^=timeline] .dates li.fa-pull-left:before, .fa-pull-left.notice:before {
+.fa.fa-pull-left, [id^=timeline] .dates li.fa-pull-left:before, .rrze-elements-news .fa-pull-left.entry-cats:before, .rrze-elements-news .fa-pull-left.entry-date:before, .fa-pull-left.notice:before {
   margin-right: 0.3em;
 }
 
-.fa.fa-pull-right, [id^=timeline] .dates li.fa-pull-right:before, .fa-pull-right.notice:before {
+.fa.fa-pull-right, [id^=timeline] .dates li.fa-pull-right:before, .rrze-elements-news .fa-pull-right.entry-cats:before, .rrze-elements-news .fa-pull-right.entry-date:before, .fa-pull-right.notice:before {
   margin-left: 0.3em;
 }
 
@@ -109,11 +109,11 @@
   float: left;
 }
 
-.fa.pull-left, [id^=timeline] .dates li.pull-left:before, .pull-left.notice:before {
+.fa.pull-left, [id^=timeline] .dates li.pull-left:before, .rrze-elements-news .pull-left.entry-cats:before, .rrze-elements-news .pull-left.entry-date:before, .pull-left.notice:before {
   margin-right: 0.3em;
 }
 
-.fa.pull-right, [id^=timeline] .dates li.pull-right:before, .pull-right.notice:before {
+.fa.pull-right, [id^=timeline] .dates li.pull-right:before, .rrze-elements-news .pull-right.entry-cats:before, .rrze-elements-news .pull-right.entry-date:before, .pull-right.notice:before {
   margin-left: 0.3em;
 }
 
@@ -375,7 +375,7 @@
   content: "";
 }
 
-.fa-tag:before {
+.fa-tag:before, .rrze-elements-news .entry-cats:before {
   content: "";
 }
 
@@ -648,7 +648,7 @@
   content: "";
 }
 
-.fa-calendar:before {
+.fa-calendar:before, .rrze-elements-news .entry-date:before {
   content: "";
 }
 
@@ -5099,6 +5099,12 @@ body:not(.fau-theme) .fancybox-thumbs__list a.fancybox-thumbs-active::before {
  */
 .rrze-elements-news .entry-content {
   width: 100%;
+}
+.rrze-elements-news .entry-date:before {
+  margin-right: 5px;
+}
+.rrze-elements-news .entry-cats:before {
+  margin-right: 5px;
 }
 @media screen and (min-width: 37.5em) {
   .rrze-elements-news .float-left {
