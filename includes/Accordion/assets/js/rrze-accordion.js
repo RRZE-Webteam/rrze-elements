@@ -95,7 +95,8 @@ jQuery(document).ready(function($) {
         // nur auf Seiten, auf denen ein Accordion existiert,
         // und nur, wenn der geklickte Link nicht der Accordion-Toggle-Link oder der Expand-All-Link ist
         if (($('#accordion-0').length) &&
-            (!$(this).hasClass("accordion-toggle"))) {
+            (!$(this).hasClass("accordion-toggle")) &&
+            (!$(this).hasClass("accordion-tabs-nav-toggle"))) {
             var $hash = $(this).prop("hash");
             var identifier = $hash.split('_')[0];
             var inpagenum = $hash.split('_')[1];
@@ -124,6 +125,27 @@ jQuery(document).ready(function($) {
             $($thisgroup).find('.accordion-body').slideDown();
             $($thisgroup).find('.accordion-toggle').addClass('active');
             $(this).attr("data-status", 'open').data('status', 'open').html(accordionToggle.collapse_all);
+        }
+    });
+
+    // Assistant tabs
+    $('.assistant-tabs-nav a').bind('click', function (event) {
+        event.preventDefault();
+        var pane = $(this).attr('href');
+        $(this).parents('ul').find('a').removeClass('active');
+        $(this).addClass('active');
+        $(this).parents('.assistant-tabs').find('.assistant-tab-pane').removeClass('assistant-tab-pane-active');
+        $(pane).addClass('assistant-tab-pane-active');
+    });
+
+    // Keyboard navigation for assistant tabs
+    $('.assistant-tabs-nav a').keydown('click', function (event) {
+        if (event.keyCode == 32) {
+            var pane = $(this).attr('href');
+            $(this).parents('ul').find('a').removeClass('active');
+            $(this).addClass('active');
+            $(this).parents('.assistant-tabs').find('.assistant-tab-pane').removeClass('assistant-tab-pane-active');
+            $(pane).addClass('assistant-tab-pane-active');
         }
     });
 

@@ -45,10 +45,19 @@ class Accordion
         $register = (($register == '1')||($register == 'true')) ? true : false;
 
         $output = '';
-
         $output .= '<div class="accordion" id="accordion-' . $GLOBALS['collapsibles_count'] . '">';
         if ($expand) {
-            $output .= '<div class="button-container-right"><button class="expand-all standard-btn primary-btn xsmall-btn" data-status="closed">' . __('Expand All', 'rrze-elements') . '</button></div>';
+            switch (get_post_meta(get_the_ID(), 'fauval_langcode', true)) {
+                case 'en':
+                    $expandText = 'Expand All';
+                    break;
+                case 'de':
+                    $expandText = 'Alle öffnen';
+                    break;
+                default:
+                    $expandText = __('Expand All', 'rrze-elements');
+            }
+            $output .= '<div class="button-container-right"><button class="expand-all standard-btn primary-btn xsmall-btn" data-status="closed">' . $expandText . '</button></div>';
         }
         if ($register) {
             preg_match_all('(name="(.*?)")',$content, $matches);
@@ -82,7 +91,7 @@ class Accordion
             $GLOBALS['current_collapse'] ++;
         }
 
-        $defaults = array('title' => 'Tab', 'color' => '', 'id' => '', 'load' => '', 'name' => '');
+        $defaults = array('title' => 'Tab', 'color' => '', 'id' => '', 'load' => '', 'name' => '', 'icon' => '', 'suffix' => '');
         extract(shortcode_atts($defaults, $atts));
 
         $addclass = '';
@@ -93,6 +102,8 @@ class Accordion
         $dataname = $name ? 'data-name="' . esc_attr($name) . '"' : '';
         $name = $name ? ' name="' . esc_attr($name) . '"' : '';
         $hlevel = 'h3';
+        $icon = esc_attr($icon);
+        $suffix = esc_attr($suffix);
         if ($tag == 'accordion-item') {
             $hlevel = 'h4';
         }
@@ -101,13 +112,22 @@ class Accordion
             $addclass .= " " . $load;
         }
 
+        $icon_hmtl = '';
+        if (!empty($icon)) {
+            $icon_hmtl = "<span class=\"accordion-icon fa fa-$icon\" aria-hidden=\"true\"></span> " ;
+        }
+        $suffix_hmtl = '';
+        if (!empty($suffix)) {
+            $suffix_hmtl = "<span class=\"accordion-suffix\">$suffix</span>" ;
+        }
+
         $id = intval($id) ? intval($id) : 0;
         if ($id < 1) {
             $id = $GLOBALS['current_collapse'];
         }
 
         $output = '<div class="accordion-group' . $color . '">';
-        $output .= "<$hlevel class=\"accordion-heading\"><button class=\"accordion-toggle\" data-toggle=\"collapse\" $dataname href=\"#collapse_$id\">$title</button></$hlevel>";
+        $output .= "<$hlevel class=\"accordion-heading\"><button class=\"accordion-toggle\" data-toggle=\"collapse\" $dataname href=\"#collapse_$id\">$icon_hmtl $title $suffix_hmtl</button></$hlevel>";
         $output .= '<div id="collapse_' . $id . '" class="accordion-body' . $addclass . '"' . $name . '>';
         $output .= '<div class="accordion-inner clearfix">';
 
@@ -127,21 +147,33 @@ class Accordion
      * [enqueueScripts description]
      * @return void
      */
-    public function enqueueScripts()
+    public static function enqueueScripts()
     {
         wp_register_script(
             'rrze-accordions',
-            //plugins_url('assets/js/rrze-accordion.min.js', plugin_basename(__FILE__)),
-            plugins_url('assets/js/rrze-accordion.js', plugin_basename(__FILE__)),
+            plugins_url('assets/js/rrze-accordion.min.js', plugin_basename(__FILE__)),
             ['jquery'],
             '1.0.0'
         );
+        switch (get_post_meta(get_the_ID(), 'fauval_langcode', true)) {
+            case 'en':
+                $expandText = 'Expand All';
+                $collapseText = 'Collapse All';
+                break;
+            case 'de':
+                $expandText = 'Alle öffnen';
+                $collapseText = 'Alle schließen';
+                break;
+            default:
+                $expandText = __('Expand All', 'rrze-elements');
+                $collapseText = __('Collapse All', 'rrze-elements');
+        }
         wp_localize_script(
             'rrze-accordions',
             'accordionToggle',
             [
-                'expand_all' => __('Expand All', 'rrze-elements'),
-                'collapse_all' => __('Collapse All', 'rrze-elements'),
+                'expand_all' => $expandText,
+                'collapse_all' => $collapseText,
             ]
         );
     }

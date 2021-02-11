@@ -1,0 +1,47 @@
+/*!
+ * Legal Text
+ */
+
+.legal_text, .legal-text {
+    ol {
+        counter-reset: list-ol;
+        padding: 0;
+        margin-bottom: 10px;
+        margin-left: 0;
+        li {
+            list-style-type: none;
+            display: table-row;
+            &:before {
+                counter-increment: list-ol;
+                content: "(" counter(list-ol) ")";
+                padding-right: 1em;
+                display: table-cell;
+                text-align: right;
+            }
+            ol {
+                padding: 0;
+                counter-reset: list-inner;
+                li {
+                    list-style-type: lower-alpha;
+                    &:before {
+                        counter-increment: list-inner;
+                        content: counter(list-inner, lower-alpha) ")";
+                        padding-right: 1em;
+                        display: table-cell;
+                        text-align: left;
+                    }
+                }
+            }
+        }
+    }
+    ul.dashes,
+    ul.strichpunkte {
+        padding: 0;
+        li {
+            list-style-type: none;
+            &:before {
+                content: " — ";
+            }
+        }
+    }
+}

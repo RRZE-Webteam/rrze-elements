@@ -10,6 +10,8 @@ use RRZE\Elements\Button\Button;
 use RRZE\Elements\Columns\Columns;
 use RRZE\Elements\ContentSlider\ContentSlider;
 use RRZE\Elements\LaTeX\LaTeX;
+use RRZE\Elements\LegalText\LegalText;
+use RRZE\Elements\Assistant\Assistant;
 use RRZE\Elements\News\News;
 use RRZE\Elements\Notice\Notice;
 use RRZE\Elements\PullDiv\PullDiv;
@@ -58,6 +60,8 @@ class Main
         new TimeLine();
         new ContentIndex();
         new HiddenText();
+        new LegalText();
+        new Assistant();
         $theme = wp_get_theme();
         if (in_array($theme->get('Name'), ['FAU Events', 'RRZE 2019'])) {
             new Gallery();

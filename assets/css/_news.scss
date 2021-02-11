@@ -6,6 +6,16 @@
     .entry-content {
         width: 100%;
     }
+    .entry-date:before {
+        @extend .fa;
+        @extend .fa-calendar;
+        margin-right: 5px;
+    }
+    .entry-cats:before {
+        @extend .fa;
+        @extend .fa-tag;
+        margin-right: 5px;
+    }
     .float-left {
         @media screen and (min-width: 37.5em) {
             float: left;
@@ -30,5 +40,90 @@
     }
     .entry-title {
         margin-top: 8px;
+    }
+    .section-title {
+        float: left;
+        padding-right: 20px;
+        padding-top: 10px;
+    }
+    &.border-top {
+        border-top: 1px solid #036;
+        padding-top: 10px;
+    }
+}
+
+.rrze-elements-news p.more-posts,
+#content .rrze-elements-news p.more-posts {
+    text-align: right;
+    padding: 10px 0 22px;
+    hyphens: none;
+}
+
+.rrze-elements-news .elements-columns {
+    &.cols-4 .colspan-1 {
+        @media (min-width: 480px) {
+            flex-basis: 50%;
+        }
+        @media (min-width: 730px) {
+            flex-basis: 25%;
+        }
+    }
+    .entry-title {
+        padding-top: 0px;
+        margin-top: 0;
+    }
+    .entry-content {
+        padding: 0;
+    }
+    .entry-thumbnail.float-left {
+        float: none;
+        padding-right: 0;
+    }
+    .entry-thumbnail.float-right {
+        float: none;
+        padding-left: 0;
+    }
+    .news-item {
+        position: relative;
+        .entry-thumbnail {
+            img {
+            //    width: 100%;
+            }
+        }
+    }
+}
+.rrze-elements-news:not(.ili-tpl.post-cols) .elements-columns .entry-title {
+    padding-top: 10px;
+    margin-top: 0;
+}
+
+.rrze-elements-news.ili-tpl {
+    .news-item .entry-thumbnail {
+        position: relative;
+        width: 100%;
+        -webkit-clip-path: polygon(0 5%, 100% 0, 100% 100%, 0% 100%);
+        clip-path: polygon(0 5%, 100% 0, 100% 100%, 0% 100%);
+        &.ratio-portrait {
+            -webkit-clip-path: polygon(0 2%, 100% 0, 100% 100%, 0% 100%);
+            clip-path: polygon(0 2%, 100% 0, 100% 100%, 0% 100%);
+        }
+    }
+    &:not(.post-cols) .news-item .entry-thumbnail {
+        //padding-top: 75%; /* 4:3 Aspect Ratio */
+        padding-top: 66.66%; /* 3:2 Aspect Ratio (divide 2 by 3 = 0.6666)  */
+        &.ratio-portrait {
+            //padding-top: 133.33%; /* 3:4 Aspect Ratio */
+            padding-top: 150%; /* 2:3 Aspect Ratio (divide 2 by 3 = 0.6666)  */
+        }
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            height: 100%;
+            min-width: 100%;
+            object-fit: cover;
+        }
     }
 }
