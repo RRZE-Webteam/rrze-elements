@@ -37,14 +37,12 @@ class Accordion
             $GLOBALS['collapsibles_count'] = 0;
         }
 
-        $defaults = array('expand-all-link' => 'false', 'register' => 'false', 'icon' => '', 'suffix' => '');
+        $defaults = array('expand-all-link' => 'false', 'register' => 'false');
         $args = shortcode_atts($defaults, $atts);
         $expand = esc_attr($args['expand-all-link']);
         $expand = (($expand == '1')||($expand == 'true')) ? true : false;
         $register = esc_attr($args['register']);
         $register = (($register == '1')||($register == 'true')) ? true : false;
-        $icon = esc_attr($icon);
-        $suffix = esc_attr($suffix);
 
         $output = '';
         $output .= '<div class="accordion" id="accordion-' . $GLOBALS['collapsibles_count'] . '">';
@@ -114,9 +112,11 @@ class Accordion
             $addclass .= " " . $load;
         }
 
+        $icon_hmtl = '';
         if (!empty($icon)) {
-            $icon_hmtl = "<span class=\"accordion-icon fa fa-$icon\"></span> " ;
+            $icon_hmtl = "<span class=\"accordion-icon fa fa-$icon\" aria-hidden=\"true\"></span> " ;
         }
+        $suffix_hmtl = '';
         if (!empty($suffix)) {
             $suffix_hmtl = "<span class=\"accordion-suffix\">$suffix</span>" ;
         }
