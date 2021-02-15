@@ -120,9 +120,7 @@
     .colspan-1,
     .colspan-2,
     .colspan-3 {
-        flex-basis: 100%;
-        flex-shrink: 0;
-        flex-grow: 1;
+        flex: 1;
         min-width: 200px;
         // Fix für FAU-Themes
         float: none;
