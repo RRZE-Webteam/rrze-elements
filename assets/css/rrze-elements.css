@@ -4265,9 +4265,7 @@ a.standard-btn:active {
 .elements-columns .colspan-1,
 .elements-columns .colspan-2,
 .elements-columns .colspan-3 {
-  flex-basis: 100%;
-  flex-shrink: 0;
-  flex-grow: 1;
+  flex: 1;
   min-width: 200px;
   float: none;
   margin: 0;
