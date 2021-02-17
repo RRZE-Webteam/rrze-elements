@@ -279,9 +279,9 @@ class News
                         switch (getThemeGroup(get_stylesheet())) {
                             case 'fau':
                                 if (function_exists('fau_display_news_teaser')) {
-                                    $output .= do_shortcode('[column]' . fau_display_news_teaser($id, !$hide_date, $hstart, $hideMeta) . '[/column]');
+                                    $output .= do_shortcode(fau_display_news_teaser($id, !$hide_date, $hstart, $hideMeta));
                                 } else {
-                                    $output .= do_shortcode('[column]' . $this->display_news_teaser($id, $hide, $hstart, $imgfloat) . '[/column]');
+                                    $output .= do_shortcode($this->display_news_teaser($id, $hide, $hstart, $imgfloat));
                                 }
                                 break;
                             case 'rrze':
