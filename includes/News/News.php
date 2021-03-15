@@ -48,6 +48,7 @@ class News
             'hstart'	=> 2,
             'hideduplicates'	=> 'false',
             'fau_settings'  => 'false',
+            'forcelandscape' => 'false',
         ], $atts);
         $sc_atts = array_map('sanitize_text_field', $sc_atts);
 
@@ -68,6 +69,7 @@ class News
         $mode = array_map('trim', explode(",", $type));
         $thumbnailSize = 'post-thumbnail';
         $hideDuplicates = $sc_atts['hideduplicates'] == 'true' ? true : false;
+        $forceLandscape = $sc_atts['forcelandscape'] == 'true' ? true : false;
 
         $borderTop = '';
         if ($sc_atts['fau_settings'] == 'true') {
@@ -125,13 +127,18 @@ class News
             'ignore_sticky_posts' => 1
         ];
 
+        $c_id = [];
         if ($cat != '') {
-            $c_id = [];
             $categories = array_map('trim', explode(",", $cat));
             foreach ($categories as $_c) {
-                if ($cat_id = get_cat_ID($_c)) {
-                    $c_id[] = $cat_id;
+                $cat_obj = get_category_by_slug($_c);
+                if (!$cat_obj) {
+                    // if slug not found -> try with cat name
+                    $cat_id = get_cat_ID($_c);
+                } else {
+                    $cat_id = $cat_obj->term_id;
                 }
+                $c_id[] = $cat_id;
             }
             $args['cat'] = implode(',', $c_id);
         }
@@ -256,6 +263,7 @@ class News
                 $title = get_the_title();
                 $permalink = get_permalink();
                 $GLOBALS['a_displayedPosts'][] = $id;
+                $args = [];
 
                 if ($display == 'list') {
                     $output .= '<li>';
@@ -269,31 +277,74 @@ class News
                         if ($columns <= 3 || $wp_query->post_count <= 3) {
                             $thumbnailSize = 'large';
                         }
-                        $output .= do_shortcode('[column]' . $this->display_news_teaser($id, $hide, $hstart, $imgfloat, $imgFirst, $postCols, $thumbnailSize) . '[/column]');
+                        $args = [
+                            'id' => $id,
+                            'hide' => $hide,
+                            'hstart' => $hstart,
+                            'imgfloat' => $imgfloat,
+                            'imgFirst' => $imgFirst,
+                            'postCols' => $postCols,
+                            'thumbnailSize' => $thumbnailSize,
+                            'forceLandscape' => $forceLandscape,
+                        ];
+                        $output .= do_shortcode('[column]' . $this->display_news_teaser($args) . '[/column]');
                     } elseif (!empty($postCols)) {
                         if (array_sum($postCols) / $postCols['left'] > .3) {
                             $thumbnailSize = 'large';
                         }
-                        $output .= do_shortcode($this->display_news_teaser($id, $hide, $hstart, $imgfloat, $imgFirst, $postCols, $thumbnailSize));
+                        $args = [
+                            'id' => $id,
+                            'hide' => $hide,
+                            'hstart' => $hstart,
+                            'imgfloat' => $imgfloat,
+                            'imgFirst' => $imgFirst,
+                            'postCols' => $postCols,
+                            'thumbnailSize' => $thumbnailSize,
+                            'forceLandscape' => $forceLandscape,
+                        ];
+                        $output .= do_shortcode($this->display_news_teaser($args));
                     } else {
                         switch (getThemeGroup(get_stylesheet())) {
                             case 'fau':
                                 if (function_exists('fau_display_news_teaser')) {
                                     $output .= do_shortcode(fau_display_news_teaser($id, !$hide_date, $hstart, $hideMeta));
                                 } else {
-                                    $output .= do_shortcode($this->display_news_teaser($id, $hide, $hstart, $imgfloat));
+                                    $args = [
+                                        'id' => $id,
+                                        'hide' => $hide,
+                                        'hstart' => $hstart,
+                                        'imgfloat' => $imgfloat,
+                                        'forceLandscape' => $forceLandscape,
+                                    ];
+                                    $output .= do_shortcode($this->display_news_teaser($args));
                                 }
                                 break;
                             case 'rrze':
                                 if (function_exists('rrze_display_news_teaser')) {
                                     $output .= rrze_display_news_teaser($id, $hide, $hstart, $imgfloat);
                                 } else {
-                                    $output .= $this->display_news_teaser($id, $hide, $hstart, $imgfloat);
+                                    $args = [
+                                        'id' => $id,
+                                        'hide' => $hide,
+                                        'hstart' => $hstart,
+                                        'imgfloat' => $imgfloat,
+                                        'forceLandscape' => $forceLandscape,
+                                    ];
+                                    $output .= $this->display_news_teaser($args);
                                 }
                                 break;
                             case 'events':
                             default:
-                                $output .= $this->display_news_teaser($id, $hide, $hstart, $imgfloat, $imgFirst, $postCols);
+                                $args = [
+                                    'id' => $id,
+                                    'hide' => $hide,
+                                    'hstart' => $hstart,
+                                    'imgfloat' => $imgfloat,
+                                    'imgFirst' => $imgFirst,
+                                    'postCols' => $postCols,
+                                    'forceLandscape' => $forceLandscape,
+                                ];
+                                $output .= $this->display_news_teaser($args);
                         }
                     }
                 }
@@ -319,9 +370,22 @@ class News
         return do_shortcode($output);
     }
 
-    private function display_news_teaser($id = 0, $hide = [], $hstart = 2, $imgfloat = 'float-left', $imgFirst = false, $postCols = [], $thumbnailSize = 'post-thumbnail') {
-        if ($id == 0) return;
-
+    private function display_news_teaser($argsRaw) {
+        $defaults = [
+            'id'            => 0,
+            'hide'          => [],
+            'hstart'        => 2,
+            'imgfloat'      => 'float-left',
+            'imgFirst'      => false,
+            'postCols'      => [],
+            'thumbnailSize' => 'post-thumbnail',
+            'forceLandscape'=> false,
+            ];
+        if ($argsRaw['id'] == 0) return;
+        $args = wp_parse_args($argsRaw, $defaults);
+        foreach ($args as $k => $v) {
+            ${$k} = $v;
+        }
         $arialabelid= "aria-".$id."-".random_int(10000,30000);
         $hide_date = in_array('date', $hide);
         $hide_category = in_array('category', $hide);
@@ -333,7 +397,11 @@ class News
         }
         if (has_post_thumbnail($id) && ! $hide_thumbnail) {
             $image_data = wp_get_attachment_image_src( get_post_thumbnail_id( $id ), $thumbnailSize );
-            $ratioClass = $image_data[2] > $image_data[1] ? 'ratio-portrait' : 'ratio-landscape';
+            if ($forceLandscape) {
+                $ratioClass = 'ratio-landscape';
+            } else {
+                $ratioClass = $image_data[2] > $image_data[1] ? 'ratio-portrait' : 'ratio-landscape';
+            }
         }
         if (function_exists('fau_create_schema_publisher')) {
             $schemaPublisher = fau_create_schema_publisher();
