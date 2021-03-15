@@ -239,9 +239,9 @@ class News
         $moreLink = '';
         if (in_array('show_more', $mode)) {
             if ($cat != '') {
-                $moreLink = '<p class="more-posts"><a href="'.get_category_link($c_id[0]).'">' . __('Weitere Artikel', 'rrze-elements') . '</a></p>';
+                $moreLink = '<p class="more-posts"><a class="standard-btn xsmall-btn primary-btn" href="'.get_category_link($c_id[0]).'">' . __('Weitere Artikel', 'rrze-elements') . '</a></p>';
             } elseif ($tag != '') {
-                $moreLink = '<p class="more-posts"><a href="'.get_tag_link($t_id[0]).'">' . __('Weitere Artikel', 'rrze-elements') . '</a></p>';
+                $moreLink = '<p class="more-posts"><a class="standard-btn xsmall-btn primary-btn" href="'.get_tag_link($t_id[0]).'">' . __('Weitere Artikel', 'rrze-elements') . '</a></p>';
             }
         }
 
@@ -418,7 +418,7 @@ class News
         }
 
         if (has_post_thumbnail($id) && ! $hide_thumbnail && $imgFirst) {
-            $output .= '<div class="entry-thumbnail ' . $ratioClass . ' ' . $imgfloat . '">' . get_the_post_thumbnail($id, $thumbnailSize)
+            $output .= '<div class="entry-thumbnail ' . $imgfloat . '">' . get_the_post_thumbnail($id, $thumbnailSize)
                 . '<meta itemprop="image" content="'.get_the_post_thumbnail_url($id).'">'
                 . '</div>';
         }
@@ -454,24 +454,25 @@ class News
                 . '</div>';
         }
 
-        // Content
-        $abstract = get_post_meta( $id, 'abstract', true );
-        if (strlen(trim($abstract))<3) {
-            if (function_exists('fau_custom_excerpt')) {
-                $abstract = fau_custom_excerpt($id, get_theme_mod('default_anleser_excerpt_length'),false,'',true, get_theme_mod('search_display_excerpt_morestring'));
-                if (function_exists('fau_create_readmore')) {
-                    $abstract .= fau_create_readmore(get_permalink(), get_the_title(), false, true);
-                }
-            } else {
-                $abstract = get_the_excerpt($id);
-            }
-        } else {
-            if (function_exists('fau_create_readmore')) {
-                $abstract .= fau_create_readmore(get_permalink(), get_the_title(), false, true);
-            }
-        }
-        $output .= '<div class="entry-content" itemprop="description">' . $abstract . '</div>';
-
+		if(!in_array('teaser', $hide)) {
+			// Content
+			$abstract = get_post_meta( $id, 'abstract', true );
+			if (strlen(trim($abstract))<3) {
+				if (function_exists('fau_custom_excerpt')) {
+					$abstract = fau_custom_excerpt($id, get_theme_mod('default_anleser_excerpt_length'),false,'',true, get_theme_mod('search_display_excerpt_morestring'));
+					if (function_exists('fau_create_readmore')) {
+						$abstract .= fau_create_readmore(get_permalink(), get_the_title(), false, true);
+					}
+				} else {
+					$abstract = get_the_excerpt($id);
+				}
+			} else {
+				if (function_exists('fau_create_readmore')) {
+					$abstract .= fau_create_readmore(get_permalink(), get_the_title(), false, true);
+				}
+			}
+			$output .= '<div class="entry-content" itemprop="description">' . $abstract . '</div>';
+		}
         if ($columns) {
             $output .= '[/column][/columns]';
         }
