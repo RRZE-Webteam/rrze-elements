@@ -47,8 +47,10 @@ class News
             'hidemeta'	=> 'false',
             'hstart'	=> 2,
             'hideduplicates'	=> 'false',
+            'hide_duplicates'	=> 'false',
             'fau_settings'  => 'false',
             'forcelandscape' => 'false',
+            'force_landscape' => 'false',
         ], $atts);
         $sc_atts = array_map('sanitize_text_field', $sc_atts);
 
@@ -68,8 +70,8 @@ class News
         $type = esc_attr($sc_atts['type']);
         $mode = array_map('trim', explode(",", $type));
         $thumbnailSize = 'post-thumbnail';
-        $hideDuplicates = $sc_atts['hideduplicates'] == 'true' ? true : false;
-        $forceLandscape = $sc_atts['forcelandscape'] == 'true' ? true : false;
+        $hideDuplicates = ($sc_atts['hideduplicates'] == 'true' || $sc_atts['hide_duplicates'] == 'true') ? true : false;
+        $forceLandscape = ($sc_atts['forcelandscape'] == 'true' || $sc_atts['force_landscape'] == 'true') ? true : false;
 
         $borderTop = '';
         if ($sc_atts['fau_settings'] == 'true') {
@@ -239,9 +241,9 @@ class News
         $moreLink = '';
         if (in_array('show_more', $mode)) {
             if ($cat != '') {
-                $moreLink = '<p class="more-posts"><a href="'.get_category_link($c_id[0]).'">' . __('Weitere Artikel', 'rrze-elements') . '</a></p>';
+                $moreLink = '<p class="more-posts"><a class="standard-btn xsmall-btn primary-btn" href="'.get_category_link($c_id[0]).'">' . __('Weitere Artikel', 'rrze-elements') . '</a></p>';
             } elseif ($tag != '') {
-                $moreLink = '<p class="more-posts"><a href="'.get_tag_link($t_id[0]).'">' . __('Weitere Artikel', 'rrze-elements') . '</a></p>';
+                $moreLink = '<p class="more-posts"><a class="standard-btn xsmall-btn primary-btn" href="'.get_tag_link($t_id[0]).'">' . __('Weitere Artikel', 'rrze-elements') . '</a></p>';
             }
         }
 
@@ -454,24 +456,25 @@ class News
                 . '</div>';
         }
 
-        // Content
-        $abstract = get_post_meta( $id, 'abstract', true );
-        if (strlen(trim($abstract))<3) {
-            if (function_exists('fau_custom_excerpt')) {
-                $abstract = fau_custom_excerpt($id, get_theme_mod('default_anleser_excerpt_length'),false,'',true, get_theme_mod('search_display_excerpt_morestring'));
-                if (function_exists('fau_create_readmore')) {
-                    $abstract .= fau_create_readmore(get_permalink(), get_the_title(), false, true);
-                }
-            } else {
-                $abstract = get_the_excerpt($id);
-            }
-        } else {
-            if (function_exists('fau_create_readmore')) {
-                $abstract .= fau_create_readmore(get_permalink(), get_the_title(), false, true);
-            }
-        }
-        $output .= '<div class="entry-content" itemprop="description">' . $abstract . '</div>';
-
+		if(!in_array('teaser', $hide)) {
+			// Content
+			$abstract = get_post_meta( $id, 'abstract', true );
+			if (strlen(trim($abstract))<3) {
+				if (function_exists('fau_custom_excerpt')) {
+					$abstract = fau_custom_excerpt($id, get_theme_mod('default_anleser_excerpt_length'),false,'',true, get_theme_mod('search_display_excerpt_morestring'));
+					if (function_exists('fau_create_readmore')) {
+						$abstract .= fau_create_readmore(get_permalink(), get_the_title(), false, true);
+					}
+				} else {
+					$abstract = get_the_excerpt($id);
+				}
+			} else {
+				if (function_exists('fau_create_readmore')) {
+					$abstract .= fau_create_readmore(get_permalink(), get_the_title(), false, true);
+				}
+			}
+			$output .= '<div class="entry-content" itemprop="description">' . $abstract . '</div>';
+		}
         if ($columns) {
             $output .= '[/column][/columns]';
         }
