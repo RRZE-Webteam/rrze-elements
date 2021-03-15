@@ -47,8 +47,10 @@ class News
             'hidemeta'	=> 'false',
             'hstart'	=> 2,
             'hideduplicates'	=> 'false',
+            'hide_duplicates'	=> 'false',
             'fau_settings'  => 'false',
             'forcelandscape' => 'false',
+            'force_landscape' => 'false',
         ], $atts);
         $sc_atts = array_map('sanitize_text_field', $sc_atts);
 
@@ -68,8 +70,8 @@ class News
         $type = esc_attr($sc_atts['type']);
         $mode = array_map('trim', explode(",", $type));
         $thumbnailSize = 'post-thumbnail';
-        $hideDuplicates = $sc_atts['hideduplicates'] == 'true' ? true : false;
-        $forceLandscape = $sc_atts['forcelandscape'] == 'true' ? true : false;
+        $hideDuplicates = ($sc_atts['hideduplicates'] == 'true' || $sc_atts['hide_duplicates'] == 'true') ? true : false;
+        $forceLandscape = ($sc_atts['forcelandscape'] == 'true' || $sc_atts['force_landscape'] == 'true') ? true : false;
 
         $borderTop = '';
         if ($sc_atts['fau_settings'] == 'true') {
@@ -418,7 +420,7 @@ class News
         }
 
         if (has_post_thumbnail($id) && ! $hide_thumbnail && $imgFirst) {
-            $output .= '<div class="entry-thumbnail ' . $imgfloat . '">' . get_the_post_thumbnail($id, $thumbnailSize)
+            $output .= '<div class="entry-thumbnail ' . $ratioClass . ' ' . $imgfloat . '">' . get_the_post_thumbnail($id, $thumbnailSize)
                 . '<meta itemprop="image" content="'.get_the_post_thumbnail_url($id).'">'
                 . '</div>';
         }
