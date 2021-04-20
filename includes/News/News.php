@@ -451,7 +451,7 @@ class News
         }
         $output .= '</div>';
         if (has_post_thumbnail($id) && ! $hide_thumbnail && !$imgFirst) {
-            $output .= '<div class="entry-thumbnail ' . $ratioClass . ' ' . $imgfloat . '">' . get_the_post_thumbnail($id, 'post-thumbnail')
+            $output .= '<div class="entry-thumbnail ' . $ratioClass . ' ' . $imgfloat . '">' . get_the_post_thumbnail($id, $thumbnailSize)
                 . '<meta itemprop="image" content="'.get_the_post_thumbnail_url($id).'">'
                 . '</div>';
         }
