@@ -5187,6 +5187,7 @@ body:not(.fau-theme) .fancybox-thumbs__list a.fancybox-thumbs-active::before {
   width: 100%;
   -webkit-clip-path: polygon(0 5%, 100% 0, 100% 100%, 0% 100%);
   clip-path: polygon(0 5%, 100% 0, 100% 100%, 0% 100%);
+  margin-bottom: 10px;
 }
 .rrze-elements-news.ili-tpl .news-item .entry-thumbnail.ratio-portrait {
   -webkit-clip-path: polygon(0 2%, 100% 0, 100% 100%, 0% 100%);
