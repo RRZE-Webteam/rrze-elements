@@ -3702,6 +3702,7 @@ aside .gallery-slider-thumbs .flex-control-nav li {
 #content .startpage-sidebar .content-slider.flexslider .slides .teaserregion,
 #content aside .content-slider.flexslider .slides .teaserregion {
   width: 100%;
+  max-width: inherit;
   padding: 3px 0 0;
 }
 @media (min-width: 480px) {
