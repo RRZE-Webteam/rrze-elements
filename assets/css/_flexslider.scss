@@ -610,6 +610,10 @@ aside .content-slider.flexslider,
     }
 }
 
+.fau-theme .widget .content-slider.flexslider li::before {
+    content:none;
+}
+
 #content .sidebar-inline + .content-inline .content-slider.flexslider {
     clear: right;
     //margin-right: 267px;

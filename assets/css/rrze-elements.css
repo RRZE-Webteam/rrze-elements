@@ -3680,6 +3680,10 @@ aside .gallery-slider-thumbs .flex-control-nav li {
   }
 }
 
+.fau-theme .widget .content-slider.flexslider li::before {
+  content: none;
+}
+
 #content .sidebar-inline + .content-inline .content-slider.flexslider {
   clear: right;
 }
