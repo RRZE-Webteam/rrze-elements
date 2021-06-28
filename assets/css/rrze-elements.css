@@ -5827,6 +5827,21 @@ main aside.align-right {
   display: table-cell;
   text-align: left;
 }
+.legal_text ol li ul, .legal-text ol li ul {
+  counter-reset: list-inner;
+}
+.legal_text ol li ul li, .legal-text ol li ul li {
+  list-style-type: circle;
+  display: list-item;
+  padding-bottom: 0;
+}
+.legal_text ol li ul li:before, .legal-text ol li ul li:before {
+  counter-increment: none;
+  content: none;
+  padding-right: 1em;
+  display: table-cell;
+  text-align: right;
+}
 .legal_text ul.dashes,
 .legal_text ul.strichpunkte, .legal-text ul.dashes,
 .legal-text ul.strichpunkte {

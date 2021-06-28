@@ -32,6 +32,22 @@
                     }
                 }
             }
+            ul {
+                counter-reset: list-inner;
+                li {
+                    list-style-type: circle;
+                    display: list-item;
+                    padding-bottom: 0;
+                    &:before {
+                        counter-increment: none;
+                        content: none;
+                        padding-right: 1em;
+                        display: table-cell;
+                        text-align: right;
+                    }
+
+                }
+            }
         }
     }
     ul.dashes,
