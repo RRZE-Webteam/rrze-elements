@@ -3524,6 +3524,13 @@ aside .gallery-slider-thumbs .flex-control-nav li {
   background: #666;
   background: rgba(0, 0, 0, 0.7);
 }
+.content-slider .flex-control-nav li a.flex-active,
+.gallery-slider .flex-control-nav li a.flex-active,
+.gallery-slider-thumbs .flex-control-nav li a.flex-active {
+  background: #1559A6;
+  background: #1559a6;
+  cursor: default;
+}
 .content-slider .flex-control-thumbs,
 .gallery-slider .flex-control-thumbs,
 .gallery-slider-thumbs .flex-control-thumbs {

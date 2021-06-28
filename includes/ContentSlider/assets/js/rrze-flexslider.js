@@ -10,9 +10,11 @@ jQuery(document).ready(function($) {
         animationLoop: true,
         itemWidth: 300,
         itemMargin: 5,
-        pausePlay: true
+        pausePlay: true,
+         start: function(){$(".flexslider").flexslider(object_name.start)}
     });
     $('.flexslider:not(carousel)').flexslider({
-        pausePlay: true
+        pausePlay: true,
+        start:function(){$(".flexslider").flexslider(object_name.start)}
     });
 });
