@@ -50,7 +50,8 @@ class ContentSlider
                 'link' => '1',
                 'img_width' => '',
                 'img_height' => '300',
-                'format' => ''
+                'format' => '',
+                'start' => '',
             ], $atts, 'content-slider'));
 
             $id         = sanitize_text_field($id);
@@ -81,7 +82,7 @@ class ContentSlider
             $num  = sanitize_text_field($number);
             $link = filter_var($link, FILTER_VALIDATE_BOOLEAN);
             $format  = sanitize_text_field($format);
-            //$format  = (sanitize_text_field($format) == 'carousel' ? 'carousel' : 'no-carousel');
+            $start = ($start == 'pause' ? 'pause' : '');
 
             $args = [
                 'post_type'           => $type,
@@ -178,7 +179,10 @@ class ContentSlider
             wp_reset_postdata();
         }
 
-
+        $localizeScript = array(
+            'start' => $start,
+        );
+        wp_localize_script( 'rrze-flexslider', 'object_name', $localizeScript );
 
         wp_enqueue_style('fontawesome');
         wp_enqueue_style('rrze-elements');

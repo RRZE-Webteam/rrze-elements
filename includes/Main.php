@@ -21,6 +21,7 @@ use RRZE\Elements\Lightbox\Lightbox;
 use RRZE\Elements\TinyMCE\TinyMCEButtons;
 use RRZE\Elements\HiddenText\HiddenText;
 use RRZE\Elements\Gallery\Gallery;
+use RRZE\Elements\Symbols\Symbols;
 
 /**
  * [Main description]
@@ -62,6 +63,8 @@ class Main
         new HiddenText();
         new LegalText();
         new Assistant();
+	new Symbols();
+	
         $theme = wp_get_theme();
         if (in_array($theme->get('Name'), ['FAU Events', 'RRZE 2019'])) {
             new Gallery();
@@ -80,7 +83,7 @@ class Main
 
         wp_register_style(
             'rrze-elements',
-            plugins_url('assets/css/rrze-elements.min.css', plugin_basename($this->pluginFile))
+            plugins_url('assets/css/rrze-elements.css', plugin_basename($this->pluginFile))
         );
     }
 }

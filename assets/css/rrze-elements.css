@@ -3524,6 +3524,13 @@ aside .gallery-slider-thumbs .flex-control-nav li {
   background: #666;
   background: rgba(0, 0, 0, 0.7);
 }
+.content-slider .flex-control-nav li a.flex-active,
+.gallery-slider .flex-control-nav li a.flex-active,
+.gallery-slider-thumbs .flex-control-nav li a.flex-active {
+  background: #1559A6;
+  background: #1559a6;
+  cursor: default;
+}
 .content-slider .flex-control-thumbs,
 .gallery-slider .flex-control-thumbs,
 .gallery-slider-thumbs .flex-control-thumbs {
@@ -3769,6 +3776,9 @@ button.expand-all.standard-btn {
 .accordion .accordion-suffix {
   font-weight: bold;
 }
+.accordion .accordion-icon.fa, .accordion [id^=timeline] .dates li.accordion-icon:before, [id^=timeline] .dates .accordion li.accordion-icon:before, .accordion .rrze-elements-news .accordion-icon.entry-cats:before, .rrze-elements-news .accordion .accordion-icon.entry-cats:before, .accordion .rrze-elements-news .accordion-icon.entry-date:before, .rrze-elements-news .accordion .accordion-icon.entry-date:before, .accordion .accordion-icon.notice:before {
+  margin-right: 3px;
+}
 
 @media print {
   .accordion {
@@ -3986,10 +3996,6 @@ a.standard-btn {
   text-align: center;
   font-weight: normal;
   text-decoration: none !important;
-  -webkit-transition: 0.2s background ease;
-  -moz-transition: 0.2s background ease;
-  -o-transition: 0.2s background ease;
-  -ms-transition: 0.2s background ease;
   transition: 0.2s background ease;
   border: 1px solid transparent;
 }
@@ -4769,7 +4775,7 @@ body:not(.fau-theme) .fancybox-caption {
 }
 @supports (padding: max(0px)) {
   body:not(.fau-theme) .fancybox-caption {
-    padding: 75px max(44px, env(safe-area-inset-right)) max(25px, env(safe-area-inset-bottom)) max(44px, env(safe-area-inset-left));
+    padding: 75px 44px 25px 44p;
   }
 }
 body:not(.fau-theme) .fancybox-caption--separate {
@@ -4909,8 +4915,8 @@ body:not(.fau-theme) .fancybox-fx-tube.fancybox-slide--current {
   }
   @supports (padding: max(0px)) {
     body:not(.fau-theme) .fancybox-caption {
-      padding-left: max(12px, env(safe-area-inset-left));
-      padding-right: max(12px, env(safe-area-inset-right));
+      padding-left: 12px;
+      padding-right: 12px;
     }
   }
 }
@@ -5828,6 +5834,21 @@ main aside.align-right {
   display: table-cell;
   text-align: left;
 }
+.legal_text ol li ul, .legal-text ol li ul {
+  counter-reset: list-inner;
+}
+.legal_text ol li ul li, .legal-text ol li ul li {
+  list-style-type: circle;
+  display: list-item;
+  padding-bottom: 0;
+}
+.legal_text ol li ul li:before, .legal-text ol li ul li:before {
+  counter-increment: none;
+  content: none;
+  padding-right: 1em;
+  display: table-cell;
+  text-align: right;
+}
 .legal_text ul.dashes,
 .legal_text ul.strichpunkte, .legal-text ul.dashes,
 .legal-text ul.strichpunkte {
@@ -5906,6 +5927,32 @@ ul.assistant-tabs-nav li:last-child {
     padding-bottom: 0;
     margin-bottom: 0;
   }
+}
+/*
+* Symbole, wie bspw. Erfüllt- oder NIcht Erfüllt-Haken
+*/
+.symbol-check,
+.symbol-success {
+  width: 16px;
+  max-width: 16px;
+  display: inline-block;
+  height: 16px;
+  padding-left: 16px;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-image: url("data:image/svg+xml,%3Csvg  xmlns='http://www.w3.org/2000/svg' viewBox='0 0 122.88 102.97'%3E%3Cg%3E%3Cpath fill='%2310a64a' d='M4.82,69.68c-14.89-16,8-39.87,24.52-24.76,5.83,5.32,12.22,11,18.11,16.27L92.81,5.46c15.79-16.33,40.72,7.65,25.13,24.07l-57,68A17.49,17.49,0,0,1,48.26,103a16.94,16.94,0,0,1-11.58-4.39c-9.74-9.1-21.74-20.32-31.86-28.9Z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
+}
+
+.symbol-miss,
+.symbol-fail {
+  width: 16px;
+  max-width: 16px;
+  display: inline-block;
+  height: 16px;
+  padding-left: 16px;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-image: url("data:image/svg+xml,%3Csvg  xmlns='http://www.w3.org/2000/svg' viewBox='0 0 122.88 122.88'%3E%3Cg%3E%3Cpath fill='%23FF4141' d='M1.63,97.99l36.55-36.55L1.63,24.89c-2.17-2.17-2.17-5.73,0-7.9L16.99,1.63c2.17-2.17,5.73-2.17,7.9,0 l36.55,36.55L97.99,1.63c2.17-2.17,5.73-2.17,7.9,0l15.36,15.36c2.17,2.17,2.17,5.73,0,7.9L84.7,61.44l36.55,36.55 c2.17,2.17,2.17,5.73,0,7.9l-15.36,15.36c-2.17,2.17-5.73,2.17-7.9,0L61.44,84.7l-36.55,36.55c-2.17,2.17-5.73,2.17-7.9,0 L1.63,105.89C-0.54,103.72-0.54,100.16,1.63,97.99L1.63,97.99z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
 }
 
 /*# sourceMappingURL=rrze-elements.css.map */

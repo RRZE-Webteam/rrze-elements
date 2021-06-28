@@ -264,6 +264,10 @@ class News
                 $id = get_the_ID();
                 $title = get_the_title();
                 $permalink = get_permalink();
+                $externalLink = get_post_meta($id, 'external_link', true);
+                if (filter_var($externalLink, FILTER_VALIDATE_URL) !== false) {
+                    $permalink = $externalLink;
+                }
                 $GLOBALS['a_displayedPosts'][] = $id;
                 $args = [];
 
@@ -397,6 +401,11 @@ class News
             $imgFirst = true;
             $numCols = array_sum($postCols);
         }
+        $permalink = get_permalink();
+        $externalLink = get_post_meta($id, 'external_link', true);
+        if (filter_var($externalLink, FILTER_VALIDATE_URL) !== false) {
+            $permalink = $externalLink;
+        }
         if (has_post_thumbnail($id) && ! $hide_thumbnail) {
             $image_data = wp_get_attachment_image_src( get_post_thumbnail_id( $id ), $thumbnailSize );
             if ($forceLandscape) {
@@ -428,7 +437,7 @@ class News
             $output .= '[/column][column span="' . $postCols['right'] . '"]';
         }
         $output .= '<header class="entry-header">';
-        $output .= '<h'.$hstart.' class="entry-title" id="'.$arialabelid.'" itemprop="headline"><a href="' . get_permalink() . '" rel="bookmark" itemprop="url">' . get_the_title() . '</a></h'.$hstart.'>';
+        $output .= '<h'.$hstart.' class="entry-title" id="'.$arialabelid.'" itemprop="headline"><a href="' . $permalink . '" rel="bookmark" itemprop="url">' . get_the_title() . '</a></h'.$hstart.'>';
         $output .= '</header>';
         $output .= '<div class="entry-meta">';
         $output .= $schemaPublisher;
@@ -463,14 +472,14 @@ class News
 				if (function_exists('fau_custom_excerpt')) {
 					$abstract = fau_custom_excerpt($id, get_theme_mod('default_anleser_excerpt_length'),false,'',true, get_theme_mod('search_display_excerpt_morestring'));
 					if (function_exists('fau_create_readmore')) {
-						$abstract .= fau_create_readmore(get_permalink(), get_the_title(), false, true);
+						$abstract .= fau_create_readmore($permalink, get_the_title(), false, true);
 					}
 				} else {
 					$abstract = get_the_excerpt($id);
 				}
 			} else {
 				if (function_exists('fau_create_readmore')) {
-					$abstract .= fau_create_readmore(get_permalink(), get_the_title(), false, true);
+					$abstract .= fau_create_readmore($permalink, get_the_title(), false, true);
 				}
 			}
 			$output .= '<div class="entry-content" itemprop="description">' . $abstract . '</div>';
