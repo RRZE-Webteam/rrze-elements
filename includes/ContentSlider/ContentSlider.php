@@ -51,7 +51,7 @@ class ContentSlider
                 'img_width' => '',
                 'img_height' => '300',
                 'format' => '',
-                'start' => 'play',
+                'start' => '',
             ], $atts, 'content-slider'));
 
             $id         = sanitize_text_field($id);
