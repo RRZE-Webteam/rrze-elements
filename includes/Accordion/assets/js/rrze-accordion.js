@@ -3,6 +3,8 @@
  * RRZE Webteam
  */
 
+const { __, _x, _n, sprintf } = wp.i18n;
+
 jQuery(document).ready(function($) {
     // Close Accordions on start, except first
     $('.accordion-body').not(".accordion-body.open").not('.accordion-body.stayopen').hide();
@@ -12,7 +14,8 @@ jQuery(document).ready(function($) {
             var items = $(this).find(".accordion-group");
             var open = $(this).find(".accordion-body.open");
             if (items.length == open.length) {
-                $(this).find('button.expand-all').attr("data-status", 'open').data('status', 'open').html(accordionToggle.collapse_all);
+                $(this).find('button.expand-all').attr("data-status", 'open').data('status', 'open').html(__('Collapse All', 'rrze-elements'));
+                //$(this).find('button.expand-all').attr("data-status", 'open').data('status', 'open').html(accordionToggle.collapse_all);
                 //console.log("items = " + items.length + " open = " + open.length);
             }
         }
@@ -120,11 +123,11 @@ jQuery(document).ready(function($) {
         if ($(this).data('status') === 'open') {
             $($thisgroup).find('.accordion-body').slideUp();
             $($thisgroup).find('.accordion-toggle').removeClass('active');
-            $(this).attr("data-status", 'closed').data('status', 'closed').html(accordionToggle.expand_all);
+            $(this).attr("data-status", 'closed').data('status', 'closed').html(__('Expand All', 'rrze-elements'));
         } else {
             $($thisgroup).find('.accordion-body').slideDown();
             $($thisgroup).find('.accordion-toggle').addClass('active');
-            $(this).attr("data-status", 'open').data('status', 'open').html(accordionToggle.collapse_all);
+            $(this).attr("data-status", 'open').data('status', 'open').html(__('Collapse All', 'rrze-elements'));
         }
     });
 

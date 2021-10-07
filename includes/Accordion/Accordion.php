@@ -151,30 +151,11 @@ class Accordion
     {
         wp_register_script(
             'rrze-accordions',
-            plugins_url('assets/js/rrze-accordion.min.js', plugin_basename(__FILE__)),
+            //plugins_url('assets/js/rrze-accordion.min.js', plugin_basename(__FILE__)),
+            plugins_url('assets/js/rrze-accordion.js', plugin_basename(__FILE__)),
             ['jquery'],
             '1.0.0'
         );
-        switch (get_post_meta(get_the_ID(), 'fauval_langcode', true)) {
-            case 'en':
-                $expandText = 'Expand All';
-                $collapseText = 'Collapse All';
-                break;
-            case 'de':
-                $expandText = 'Alle öffnen';
-                $collapseText = 'Alle schließen';
-                break;
-            default:
-                $expandText = __('Expand All', 'rrze-elements');
-                $collapseText = __('Collapse All', 'rrze-elements');
-        }
-        wp_localize_script(
-            'rrze-accordions',
-            'accordionToggle',
-            [
-                'expand_all' => $expandText,
-                'collapse_all' => $collapseText,
-            ]
-        );
+        wp_set_script_translations('rrze-accordions', 'rrze-elements');
     }
 }
