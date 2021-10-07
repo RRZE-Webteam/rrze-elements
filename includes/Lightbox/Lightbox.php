@@ -58,7 +58,9 @@ class Lightbox
         if ($entries->length) {
             $content .= '<script type="text/javascript"> 
             jQuery(document).ready(function($) {
-                $("a.lightbox").fancybox();
+                $("a.lightbox").fancybox(
+                    "cyclic": true,
+                );
             });
             </script>';
             wp_enqueue_style('rrze-elements');

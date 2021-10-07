@@ -2,12 +2,13 @@
  * Lightbox
  */
 
-body:not(.fau-theme).compensate-for-scrollbar {
+body:not(.fau-theme).compensate-for-scrollbar,
+body.rrze-expo.fau-theme.compensate-for-scrollbar {
   overflow: hidden;
 }
 
-body:not(.fau-theme) {
-
+body:not(.fau-theme),
+body.rrze-expo.fau-theme {
   .fancybox-active {
     height: auto;
   }
