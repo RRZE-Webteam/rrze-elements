@@ -5556,12 +5556,12 @@ main aside.align-right {
   margin-bottom: 5px;
 }
 [id^=timeline] h1 {
-  font-size: 18px;
-  line-height: 20px;
+  font-size: 1.2rem;
+  line-height: 1.5;
 }
 [id^=timeline] h2 {
-  font-size: 14px;
-  line-height: 16px;
+  font-size: 1rem;
+  line-height: 1.5;
 }
 @media screen and (min-width: 45em) {
   [id^=timeline] .dates {
@@ -5591,8 +5591,7 @@ main aside.align-right {
   }
 }
 [id^=timeline] .dates a {
-  font-size: 18px;
-  line-height: 18px;
+  font-size: 1.2rem;
   padding-bottom: 10px;
   text-decoration: none;
   opacity: 0.7;
@@ -5605,8 +5604,7 @@ main aside.align-right {
 }
 @media screen and (min-width: 45em) {
   [id^=timeline] .dates a {
-    font-size: 24px;
-    line-height: 24px;
+    font-size: 1.5rem;
   }
 }
 [id^=timeline] .dates a:hover, [id^=timeline] .dates a.selected {
@@ -5614,13 +5612,11 @@ main aside.align-right {
   text-decoration: none;
 }
 [id^=timeline] .dates a.selected {
-  font-size: 24px;
-  line-height: 24px;
+  font-size: 1.5rem;
 }
 @media screen and (min-width: 45em) {
   [id^=timeline] .dates a.selected {
-    font-size: 38px;
-    line-height: 38px;
+    font-size: 2rem;
   }
 }
 [id^=timeline] .issues {
@@ -5697,13 +5693,13 @@ main aside.align-right {
   padding-bottom: 8px;
 }
 [id^=timeline] .issues li h1 {
-  font-size: 24px;
-  line-height: 30px;
+  font-size: 1.5rem;
+  line-height: 1.5;
   padding-bottom: 10px;
 }
 [id^=timeline] .issues li h2 {
-  font-size: 20px;
-  line-height: 24px;
+  font-size: 1.25rem;
+  line-height: 1.5;
 }
 @media screen and (min-width: 45em) {
   [id^=timeline] .issues li h1, [id^=timeline] .issues li h2, [id^=timeline] .issues li h3, [id^=timeline] .issues li h4, [id^=timeline] .issues li h5, [id^=timeline] .issues li h6 {
@@ -5711,9 +5707,9 @@ main aside.align-right {
   }
 }
 [id^=timeline] .issues li p:not(.wp-caption-text) {
-  font-size: 14px;
+  font-size: 1rem;
   font-weight: normal;
-  line-height: 22px;
+  line-height: 1.5;
 }
 @media screen and (min-width: 45em) {
   [id^=timeline] .issues li p:not(.wp-caption-text) {
