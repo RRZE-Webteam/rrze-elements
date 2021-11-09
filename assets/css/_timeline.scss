@@ -29,13 +29,13 @@
     }
 
     h1 {
-        font-size: 18px;
-        line-height: 20px;
+        font-size: 1.2rem;
+        line-height: 1.5;
     }
 
     h2 {
-        font-size: 14px;
-        line-height: 16px;
+        font-size: 1rem;
+        line-height: 1.5;
     }
 
     .dates {
@@ -67,8 +67,7 @@
         }
 
         a {
-            font-size: 18px;
-            line-height: 18px;
+            font-size: 1.2rem;
             padding-bottom: 10px;
             text-decoration: none;
             opacity: 0.7;
@@ -79,8 +78,7 @@
             -ms-transition: 0.5s;
             transition: 0.5s;
             @media screen and (min-width: 45em) {
-                font-size: 24px;
-                line-height: 24px;
+                font-size: 1.5rem;
             }
 
             &:hover,
@@ -90,11 +88,9 @@
             }
 
             &.selected {
-                font-size: 24px;
-                line-height: 24px;
+                font-size: 1.5rem;
                 @media screen and (min-width: 45em) {
-                    font-size: 38px;
-                    line-height: 38px;
+                    font-size: 2rem;
                 }
             }
         }
@@ -168,13 +164,13 @@
                 padding-bottom: 8px;
             }
             h1 {
-                font-size: 24px;
-                line-height: 30px;
+                font-size: 1.5rem;
+                line-height: 1.5;
                 padding-bottom: 10px;
             }
             h2 {
-                font-size: 20px;
-                line-height: 24px;
+                font-size: 1.25rem;
+                line-height: 1.5;
             }
             h1, h2, h3, h4, h5, h6 {
                 @media screen and (min-width: 45em) {
@@ -182,9 +178,9 @@
                 }
             }
             p:not(.wp-caption-text) {
-                font-size: 14px;
+                font-size: 1rem;
                 font-weight: normal;
-                line-height: 22px;
+                line-height: 1.5;
                 //text-shadow: #000 1px 1px 2px;
                 @media screen and (min-width: 45em) {
                     margin-left: 70px;
