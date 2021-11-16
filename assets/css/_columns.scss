@@ -13,9 +13,11 @@
     margin-bottom: 30px;
     font-size: 16px;
     font-size: 1rem;
+    line-height: 1.5;
     p {
         font-size: 16px;
         font-size: 1rem;
+        line-height: 1.5;
     }
     @media screen and (min-width: 48em) {
         float: left;
@@ -94,6 +96,7 @@
     margin-bottom: 20px;
     font-size: 16px;
     font-size: 1rem;
+    line-height: 1.5;
     @media screen and (max-width: 37.5em) {
         grid-template-columns: 1fr !important;
     }
@@ -103,6 +106,7 @@
     p {
         font-size: 16px;
         font-size: 1rem;
+        line-height: 1.5;
     }
 }
 

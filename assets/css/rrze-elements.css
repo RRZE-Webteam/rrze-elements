@@ -3130,6 +3130,7 @@ Functions and Mixins
   flex-basis: 10%;
   flex-grow: 1;
   font-size: 0.9em;
+  line-height: 1.5;
 }
 .content-slider.flexslider.carousel .slides .post-categories a,
 #content .content-slider.flexslider.carousel .slides .post-categories a {
@@ -3977,6 +3978,7 @@ h4.accordion-heading {
 
 .alert.alert-danger p {
   font-size: 1rem;
+  line-height: 1.5;
 }
 
 /*!
@@ -3993,6 +3995,7 @@ a.standard-btn {
   color: #fff;
   font-size: 16px;
   font-size: 1rem;
+  line-height: 1.5;
   text-align: center;
   font-weight: normal;
   text-decoration: none !important;
@@ -4016,6 +4019,7 @@ a.standard-btn.xsmall-btn {
   padding: 5px 10px;
   font-size: 14px;
   font-size: 0.875rem;
+  line-height: 1.5;
 }
 button.standard-btn.small-btn,
 a.standard-btn.small-btn {
@@ -4026,12 +4030,14 @@ a.standard-btn.large-btn {
   padding: 14px 20px 13px;
   font-size: 23px;
   font-size: 1.4375rem;
+  line-height: 1.5;
 }
 button.standard-btn.xlarge-btn,
 a.standard-btn.xlarge-btn {
   padding: 18px 30px 17px;
   font-size: 25px;
   font-size: 1.5625rem;
+  line-height: 1.5;
 }
 button.standard-btn.primary-btn, button.standard-btn.blue-btn,
 a.standard-btn.primary-btn,
@@ -4151,6 +4157,7 @@ a.standard-btn:active {
   margin-bottom: 30px;
   font-size: 16px;
   font-size: 1rem;
+  line-height: 1.5;
 }
 .two-columns-one p,
 .three-columns-one p,
@@ -4160,6 +4167,7 @@ a.standard-btn:active {
 .four-columns-three p {
   font-size: 16px;
   font-size: 1rem;
+  line-height: 1.5;
 }
 @media screen and (min-width: 48em) {
   .two-columns-one,
@@ -4246,6 +4254,7 @@ a.standard-btn:active {
   margin-bottom: 20px;
   font-size: 16px;
   font-size: 1rem;
+  line-height: 1.5;
 }
 @media screen and (max-width: 37.5em) {
   .columns-grid {
@@ -4260,6 +4269,7 @@ a.standard-btn:active {
 .columns-grid p {
   font-size: 16px;
   font-size: 1rem;
+  line-height: 1.5;
 }
 
 .elements-columns {
@@ -5605,6 +5615,7 @@ main aside.align-right {
 @media screen and (min-width: 45em) {
   [id^=timeline] .dates a {
     font-size: 1.5rem;
+    line-height: 1.5;
   }
 }
 [id^=timeline] .dates a:hover, [id^=timeline] .dates a.selected {
