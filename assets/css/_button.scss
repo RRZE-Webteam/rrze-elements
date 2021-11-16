@@ -13,6 +13,7 @@ a.standard-btn {
     color: #fff;
     font-size: 16px;
     font-size: 1rem;
+    line-height: 1.5;
     text-align: center;
     font-weight: normal;
     text-decoration: none !important;
@@ -38,6 +39,7 @@ a.standard-btn {
         padding: 5px 10px;
         font-size: 14px;
         font-size: 0.875rem;
+        line-height: 1.5;
     }
     &.small-btn {
         padding: 7px 12px 5px;
@@ -46,11 +48,13 @@ a.standard-btn {
         padding: 14px 20px 13px;
         font-size: 23px;
         font-size: 1.4375rem;
+        line-height: 1.5;
     }
     &.xlarge-btn {
         padding: 18px 30px 17px;
         font-size: 25px;
         font-size: 1.5625rem;
+        line-height: 1.5;
     }
     &.primary-btn, &.blue-btn {
         background: $primary;
