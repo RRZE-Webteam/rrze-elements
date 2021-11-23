@@ -46,7 +46,8 @@ class Notice
     public function shortcodeNotice($atts, $content = '', $tag)
     {
         extract(shortcode_atts([
-            'title' => ''
+            'title' => '',
+            'hstart' => '3'
         ], $atts));
 
         $tag_array = explode('-', $tag);
@@ -57,10 +58,11 @@ class Notice
             $type = $tag_array[0];
         }
         $class = ($title == '' ? ' no-title' : '');
+        $hstart = intval($hstart);
 
         $output = '<div class="notice notice-' . $type . $class . '">';
         if (isset($title) && $title != '') {
-            $output .= '<h3>' . $title . '</h3>';
+            $output .= "<h$hstart>" . $title . "</h$hstart>";
         }
         $output .= '<p>' . do_shortcode($content) . '</p></div>';
 
