@@ -3824,7 +3824,7 @@ h4.accordion-heading {
   position: relative;
   top: -3px;
 }
-.notice h3 {
+.notice h1, .notice h2, .notice h3, .notice h4, .notice h5, .notice h6 {
   margin-bottom: 0;
   padding-top: 0;
 }
@@ -3844,8 +3844,13 @@ h4.accordion-heading {
 .notice-attention:before {
   color: #a71c18;
 }
-.notice-alert h3,
-.notice-attention h3 {
+.notice-alert h1, .notice-alert h2, .notice-alert h3, .notice-alert h4, .notice-alert h5, .notice-alert h6,
+.notice-attention h1,
+.notice-attention h2,
+.notice-attention h3,
+.notice-attention h4,
+.notice-attention h5,
+.notice-attention h6 {
   color: #a71c18;
 }
 .notice-alert.no-title p,
@@ -3857,7 +3862,7 @@ h4.accordion-heading {
 .notice-hinweis:before {
   color: #00458C;
 }
-.notice-hinweis h3 {
+.notice-hinweis h1, .notice-hinweis h2, .notice-hinweis h3, .notice-hinweis h4, .notice-hinweis h5, .notice-hinweis h6 {
   color: #00458C;
 }
 .notice-hinweis.no-title p {
@@ -3868,7 +3873,7 @@ h4.accordion-heading {
 .notice-baustelle:before {
   color: #4B4A56;
 }
-.notice-baustelle h3 {
+.notice-baustelle h1, .notice-baustelle h2, .notice-baustelle h3, .notice-baustelle h4, .notice-baustelle h5, .notice-baustelle h6 {
   color: #4B4A56;
 }
 .notice-baustelle.no-title p {
@@ -3891,7 +3896,7 @@ h4.accordion-heading {
 .notice-tipp:before {
   color: orange;
 }
-.notice-tipp h3 {
+.notice-tipp h1, .notice-tipp h2, .notice-tipp h3, .notice-tipp h4, .notice-tipp h5, .notice-tipp h6 {
   color: #4B4A56;
 }
 .notice-tipp.no-title p {
