@@ -36,16 +36,24 @@ class Accordion
         } else {
             $GLOBALS['collapsibles_count'] = 0;
         }
+        $GLOBALS['collapsibles_id'] = $GLOBALS['collapsibles_count'];
 
-        $defaults = array('expand-all-link' => 'false', 'register' => 'false');
+        $defaults = array('expand-all-link' => 'false', 'register' => 'false', 'hstart' => '');
         $args = shortcode_atts($defaults, $atts);
         $expand = esc_attr($args['expand-all-link']);
         $expand = (($expand == '1')||($expand == 'true')) ? true : false;
         $register = esc_attr($args['register']);
         $register = (($register == '1')||($register == 'true')) ? true : false;
-
-        $output = '';
-        $output .= '<div class="accordion" id="accordion-' . $GLOBALS['collapsibles_count'] . '">';
+        if ($args['hstart'] != '') {
+            $hstart = intval($args['hstart']);
+        } else {
+            $hstart = 2;
+        }
+        if (($hstart < 1) || ($hstart > 6)) {
+            $hstart = 2;
+        }
+        $GLOBALS['collapsibles_hstart'][$GLOBALS['collapsibles_id']] = $hstart;
+        $output = '<div class="accordion" id="accordion-' . $GLOBALS['collapsibles_count'] . '">';
         if ($expand) {
             switch (get_post_meta(get_the_ID(), 'fauval_langcode', true)) {
                 case 'en':
@@ -74,6 +82,10 @@ class Accordion
         $output .= do_shortcode($content);
         $output .= '</div>';
 
+        if (isset($GLOBALS['collapsibles_id'])) {
+            $GLOBALS['collapsibles_id'] --;
+        }
+
         return $output;
     }
 
@@ -83,12 +95,15 @@ class Accordion
      * @param  string $content [description]
      * @return string          [description]
      */
-    public function shortcodeCollapse($atts, $content = '', $tag)
+    public function shortcodeCollapse($atts, $content, $tag)
     {
         if (!isset($GLOBALS['current_collapse'])) {
             $GLOBALS['current_collapse'] = 0;
         } else {
             $GLOBALS['current_collapse'] ++;
+        }
+        if (!isset($GLOBALS['collapsibles_count'])) {
+            $GLOBALS['collapsibles_count'] = 0;
         }
 
         $defaults = array('title' => 'Tab', 'color' => '', 'id' => '', 'load' => '', 'name' => '', 'icon' => '', 'suffix' => '');
@@ -96,17 +111,20 @@ class Accordion
 
         $addclass = '';
 
+        if (!isset($GLOBALS['collapsibles_id'])) {
+            $GLOBALS['collapsibles_id'] = $GLOBALS['collapsibles_count'];
+        }
+        $GLOBALS['collapsibles_hstart'] = [];
+
+        $title = esc_attr($title);
         $title = esc_attr($title);
         $color = $color ? ' ' . esc_attr($color) : '';
         $load = $load ? ' ' . esc_attr($load) : '';
         $dataname = $name ? 'data-name="' . esc_attr($name) . '"' : '';
         $name = $name ? ' name="' . esc_attr($name) . '"' : '';
-        $hlevel = 'h3';
+        $hlevel = 'h'.($GLOBALS['collapsibles_hstart'][$GLOBALS['collapsibles_id']] ?? '2');
         $icon = esc_attr($icon);
         $suffix = esc_attr($suffix);
-        if ($tag == 'accordion-item') {
-            $hlevel = 'h4';
-        }
 
         if (!empty($load)) {
             $addclass .= " " . $load;

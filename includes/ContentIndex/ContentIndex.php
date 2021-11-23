@@ -74,7 +74,8 @@ class ContentIndex
             'accordion-color' => '',
             'register' => '0',
             'prefix' => '',
-            'expand-all-link' => '0'
+            'expand-all-link' => '0',
+            'hstart' => '2'
                         ];
         $sc_args = shortcode_atts($defaults, $atts);
         $show = (post_type_exists(sanitize_text_field($sc_args['show']))) ? sanitize_text_field($sc_args['show']) : 'page_tag';
@@ -88,6 +89,9 @@ class ContentIndex
         $register = ($sc_args['register'] == '1') ? true : false;
         $prefix = ($sc_args['prefix'] != '') ? sanitize_title($sc_args['prefix']) . '_' : '';
         $expand = ($sc_args['expand-all-link'] == '1') ? '1' : '0';
+        $hstart = intval($sc_args['hstart']);
+        $hsecond = $hstart + 1;
+        $list_categories_ordered = [];
 
         // Query Args
         $args = [
@@ -152,6 +156,9 @@ class ContentIndex
                 $pages[$_post->ID]['excerpt'] = $_post->post_excerpt;
                 if ($page_cats) {
                     foreach ($page_cats as $pc) {
+                        if (is_array($pc) && array_key_exists('invalid_taxonomy', $pc)) {
+                            return $pc['invalid_taxonomy'][0];
+                        }
                         $pages[$_post->ID]['cats'][] = $pc->slug;
                     }
                 }
@@ -184,7 +191,7 @@ class ContentIndex
             foreach ($list_categories_ordered as $index => $group) {
                 $shortcode_data = '';
                 if ($register) {
-                    $output .= '<h2><a name="' . $prefix . $index . '"></a>' . $index . '</h2>';
+                    $output .= '<h'.$hstart.'><a name="' . $prefix . $index . '"></a>' . $index . '</h'.$hstart.'>';
                 }
 
                 foreach ($group as $cat) {
@@ -202,7 +209,7 @@ class ContentIndex
 
                     if (strlen($page_list) > 0) {
                         if ($display == 'list') {
-                            $output .= '<h3>' . $cat->name . '</h3>' . $page_list;
+                            $output .= '<h'.$hsecond.'>' . $cat->name . '</h'.$hsecond.'>' . $page_list;
                         } else {
                             $collapse = sprintf('[collapse title="%1$s" color="%2$s"]%3$s[/collapse]', $cat->name, $accordion_color, $page_list);
                             $shortcode_data .= do_shortcode($collapse);
@@ -210,7 +217,7 @@ class ContentIndex
                     }
                 }
                 if ($display != 'list') {
-                    $collapsibles = sprintf('[collapsibles expand-all-link="%1$s"]%2$s[/collapsibles]', $expand, $shortcode_data);
+                    $collapsibles = sprintf('[collapsibles expand-all-link="%1$s" hstart="%3$s"]%2$s[/collapsibles]', $expand, $shortcode_data, $hstart);
                     $output .= do_shortcode($collapsibles);
                 }
             }
