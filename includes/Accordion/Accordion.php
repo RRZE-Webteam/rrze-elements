@@ -114,7 +114,6 @@ class Accordion
         if (!isset($GLOBALS['collapsibles_id'])) {
             $GLOBALS['collapsibles_id'] = $GLOBALS['collapsibles_count'];
         }
-        $GLOBALS['collapsibles_hstart'] = [];
 
         $title = esc_attr($title);
         $title = esc_attr($title);
