@@ -4011,6 +4011,11 @@ a.standard-btn {
   transition: 0.2s background ease;
   border: 1px solid transparent;
 }
+button.standard-btn span,
+a.standard-btn span {
+  background-color: inherit;
+  color: inherit;
+}
 
 .post .entry-content button.standard-btn,
 .post .entry-content a.standard-btn, .page .entry-content button.standard-btn,

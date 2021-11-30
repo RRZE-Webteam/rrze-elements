@@ -19,6 +19,10 @@ a.standard-btn {
     text-decoration: none !important;
     transition: 0.2s background ease;
     border: 1px solid transparent;
+    span {
+        background-color: inherit;
+        color: inherit;
+    }
 }
 
 .post, .page {
