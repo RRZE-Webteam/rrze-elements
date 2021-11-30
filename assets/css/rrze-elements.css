@@ -4292,6 +4292,11 @@ a.standard-btn:active {
   width: calc(100% + 20px);
   margin: 0 -10px;
 }
+.elements-columns * {
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+}
 .elements-columns .colspan-1,
 .elements-columns .colspan-2,
 .elements-columns .colspan-3 {
