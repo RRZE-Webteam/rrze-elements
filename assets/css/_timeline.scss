@@ -113,6 +113,7 @@
             @media screen and (min-width: 45em) {
                 max-width: 800px;
                 //  height: 350px;
+                padding: 0 70px;
             }
             &.selected img {
                 -webkit-transform: scale(1.0,1.0);
@@ -146,7 +147,7 @@
             .wp-caption {
                 margin: 10px auto 0;
                 @media screen and (min-width: 45em) {
-                    margin: 10px 30px 10px 70px;
+                    margin: 10px 30px 10px 0;
                 }
             }
             .alignleft {
@@ -174,9 +175,9 @@
                 line-height: 1.5;
             }
             h1, h2, h3, h4, h5, h6 {
-                @media screen and (min-width: 45em) {
+                /*@media screen and (min-width: 45em) {
                     margin: 0 70px;
-                }
+                }*/
             }
             p:not(.wp-caption-text) {
                 font-size: 1rem;
@@ -184,14 +185,14 @@
                 line-height: 1.5;
                 //text-shadow: #000 1px 1px 2px;
                 @media screen and (min-width: 45em) {
-                    margin-left: 70px;
-                    margin-right: 70px;
+                    //margin-left: 70px;
+                    //margin-right: 70px;
                     margin-bottom: 10px;
                 }
             }
             .rrze-video {
                 @media screen and (min-width: 45em) {
-                    margin: 0 70px;
+                    //margin: 0 70px;
                 }
                 img {
                     margin: 0;

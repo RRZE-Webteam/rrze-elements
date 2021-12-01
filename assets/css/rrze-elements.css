@@ -5665,6 +5665,7 @@ main aside.align-right {
 @media screen and (min-width: 45em) {
   [id^=timeline] .issues li {
     max-width: 800px;
+    padding: 0 70px;
   }
 }
 [id^=timeline] .issues li.selected img {
@@ -5700,7 +5701,7 @@ main aside.align-right {
 }
 @media screen and (min-width: 45em) {
   [id^=timeline] .issues li .wp-caption {
-    margin: 10px 30px 10px 70px;
+    margin: 10px 30px 10px 0;
   }
 }
 [id^=timeline] .issues li .alignleft {
@@ -5731,10 +5732,10 @@ main aside.align-right {
   font-size: 1.25rem;
   line-height: 1.5;
 }
-@media screen and (min-width: 45em) {
-  [id^=timeline] .issues li h1, [id^=timeline] .issues li h2, [id^=timeline] .issues li h3, [id^=timeline] .issues li h4, [id^=timeline] .issues li h5, [id^=timeline] .issues li h6 {
-    margin: 0 70px;
-  }
+[id^=timeline] .issues li h1, [id^=timeline] .issues li h2, [id^=timeline] .issues li h3, [id^=timeline] .issues li h4, [id^=timeline] .issues li h5, [id^=timeline] .issues li h6 {
+  /*@media screen and (min-width: 45em) {
+      margin: 0 70px;
+  }*/
 }
 [id^=timeline] .issues li p:not(.wp-caption-text) {
   font-size: 1rem;
@@ -5743,14 +5744,7 @@ main aside.align-right {
 }
 @media screen and (min-width: 45em) {
   [id^=timeline] .issues li p:not(.wp-caption-text) {
-    margin-left: 70px;
-    margin-right: 70px;
     margin-bottom: 10px;
-  }
-}
-@media screen and (min-width: 45em) {
-  [id^=timeline] .issues li .rrze-video {
-    margin: 0 70px;
   }
 }
 [id^=timeline] .issues li .rrze-video img {
