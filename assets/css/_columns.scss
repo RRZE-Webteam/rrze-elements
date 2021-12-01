@@ -121,6 +121,12 @@
     width: calc(100% + 20px);
     margin: 0 -10px;
 
+    * {
+        -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+        hyphens: auto;
+    }
+
     .colspan-1,
     .colspan-2,
     .colspan-3 {

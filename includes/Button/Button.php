@@ -34,6 +34,7 @@ class Button
             'width' => '',
             'style' => '',
             'font' => '',
+            'title' => '',
         ], $atts));
 
         $style = (in_array($style, ['success', 'info', 'warning', 'danger', 'primary'])) ? ' ' . $style . '-btn' : ' primary-btn';
@@ -57,6 +58,7 @@ class Button
         $target = ($target == 'blank') ? ' target="_blank"' : '';
         $link = esc_url($link);
         $font = ($font == 'dark') ? ' color: #1a1a1a;' : '';
+        $title = $title != '' ? ' title="' . sanitize_text_field($title) . '"' : '';
         $width = trim($width);
         $width_full = '';
         $width_px = '';
@@ -72,7 +74,7 @@ class Button
             $style = '';
         }
 
-        $output = '<a' . $target . ' class="standard-btn' . $color_name . $size . $width_full . $style . '" href="' . $link . '" style="' . $font . $color_hex . $width_px . $border_color . '"><span>' . do_shortcode($content) . '</span></a>';
+        $output = '<a' . $target . $title . ' class="standard-btn' . $color_name . $size . $width_full . $style . '" href="' . $link . '" style="' . $font . $color_hex . $width_px . $border_color . '"><span>' . do_shortcode($content) . '</span></a>';
 
         wp_enqueue_style('fontawesome');
         wp_enqueue_style('rrze-elements');

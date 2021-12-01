@@ -78,7 +78,7 @@ jQuery.fn.timelinr = function (options) {
 
             // set positions!
             if (settings.orientation == 'horizontal') {
-                jQuery(settings.issuesDiv).find("li").width(widthContainer);
+                jQuery(settings.issuesDiv).find("li").outerWidth(widthContainer);
                 jQuery(settings.issuesDiv).width(widthIssue * howManyIssues);
                 jQuery(settings.datesDiv).width(widthDate * howManyDates).css('marginLeft', widthContainer / 2 - widthDate / 2);
                 var defaultPositionDates = parseInt(jQuery(settings.datesDiv).css('marginLeft').substring(0, jQuery(settings.datesDiv).css('marginLeft').indexOf('px')));
@@ -143,7 +143,6 @@ jQuery.fn.timelinr = function (options) {
                 // insert hrefs
                 var prevHref = jQuery(settings.datesDiv + ' li').eq(currentIndex - 1).find('a').attr('href');
                 var nextHref = jQuery(settings.datesDiv + ' li').eq(currentIndex + 1).find('a').attr('href');
-                //console.log(currentIndex, prevHref,nextHref);
                 jQuery(settings.prevButton).attr('href',prevHref);
                 jQuery(settings.nextButton).attr('href',nextHref);
             });
@@ -166,7 +165,6 @@ jQuery.fn.timelinr = function (options) {
                         if (!jQuery(settings.issuesDiv).is(':animated')) {
                             // bugixed from 0.9.52: now the dates gets centered when there's too much dates.
                             jQuery(settings.datesDiv + ' li').eq(currentIndex + 1).find('a').trigger('click');
-                            //console.log(currentIndex, prevHref, nextHref)
                             jQuery(settings.prevButton).attr('href',prevHref);
                             jQuery(settings.nextButton).attr('href',nextHref);
                         }
@@ -228,7 +226,6 @@ jQuery.fn.timelinr = function (options) {
                         if (!jQuery(settings.issuesDiv).is(':animated')) {
                             // bugixed from 0.9.54: now the dates gets centered when there's too much dates.
                             jQuery(settings.datesDiv + ' li').eq(currentIndex - 1).find('a').trigger('click');
-                            //console.log(currentIndex, prevHref, nextHref)
                             jQuery(settings.prevButton).attr('href',prevHref);
                             jQuery(settings.nextButton).attr('href',nextHref);
                         }
@@ -350,13 +347,11 @@ function updateSize() {
         }
         var thisHeight = parseInt(jQuery(this).css('height'));
         minHeight=(minHeight>=thisHeight?minHeight:thisHeight);
-        //console.log(thisHeight);
     });
-    //console.log(jQuery(settings.datesDiv).height());
     jQuery(settings.issuesDiv +' li').css('height',(+minHeight + +50)+'px');
     if (settings.orientation == 'vertical') {
         jQuery(settings.containerDiv).css('height',(+minHeight + +50)+'px');
     } else {
-        jQuery(settings.containerDiv).css('height',(+minHeight + +10 +jQuery(settings.datesDiv).height())+'px');
+        jQuery(settings.containerDiv).css('height',(+minHeight + +60 + jQuery(settings.datesDiv).find('li').height())+'px');
     }
 }

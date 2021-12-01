@@ -4011,6 +4011,11 @@ a.standard-btn {
   transition: 0.2s background ease;
   border: 1px solid transparent;
 }
+button.standard-btn span,
+a.standard-btn span {
+  background-color: inherit;
+  color: inherit;
+}
 
 .post .entry-content button.standard-btn,
 .post .entry-content a.standard-btn, .page .entry-content button.standard-btn,
@@ -4291,6 +4296,11 @@ a.standard-btn:active {
   flex-wrap: wrap;
   width: calc(100% + 20px);
   margin: 0 -10px;
+}
+.elements-columns * {
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
 }
 .elements-columns .colspan-1,
 .elements-columns .colspan-2,
@@ -5655,6 +5665,7 @@ main aside.align-right {
 @media screen and (min-width: 45em) {
   [id^=timeline] .issues li {
     max-width: 800px;
+    padding: 0 70px;
   }
 }
 [id^=timeline] .issues li.selected img {
@@ -5690,7 +5701,7 @@ main aside.align-right {
 }
 @media screen and (min-width: 45em) {
   [id^=timeline] .issues li .wp-caption {
-    margin: 10px 30px 10px 70px;
+    margin: 10px 30px 10px 0;
   }
 }
 [id^=timeline] .issues li .alignleft {
@@ -5721,10 +5732,10 @@ main aside.align-right {
   font-size: 1.25rem;
   line-height: 1.5;
 }
-@media screen and (min-width: 45em) {
-  [id^=timeline] .issues li h1, [id^=timeline] .issues li h2, [id^=timeline] .issues li h3, [id^=timeline] .issues li h4, [id^=timeline] .issues li h5, [id^=timeline] .issues li h6 {
-    margin: 0 70px;
-  }
+[id^=timeline] .issues li h1, [id^=timeline] .issues li h2, [id^=timeline] .issues li h3, [id^=timeline] .issues li h4, [id^=timeline] .issues li h5, [id^=timeline] .issues li h6 {
+  /*@media screen and (min-width: 45em) {
+      margin: 0 70px;
+  }*/
 }
 [id^=timeline] .issues li p:not(.wp-caption-text) {
   font-size: 1rem;
@@ -5733,14 +5744,7 @@ main aside.align-right {
 }
 @media screen and (min-width: 45em) {
   [id^=timeline] .issues li p:not(.wp-caption-text) {
-    margin-left: 70px;
-    margin-right: 70px;
     margin-bottom: 10px;
-  }
-}
-@media screen and (min-width: 45em) {
-  [id^=timeline] .issues li .rrze-video {
-    margin: 0 70px;
   }
 }
 [id^=timeline] .issues li .rrze-video img {
