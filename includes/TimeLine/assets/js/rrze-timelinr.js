@@ -22,7 +22,7 @@ jQuery.fn.timelinr = function (options) {
         issuesDiv: options.containerDiv + ' .issues', // value: any HTML tag or #id, default to #issues
         issuesSelectedClass: 'selected', // value: any class, default to selected
         issuesSpeed: 'normal', // value: integer between 100 and 1000 (recommended) or 'slow', 'normal' or 'fast'; default to fast
-        issuesTransparency: 0.2, // value: integer between 0 and 1 (recommended), default to 0.2
+        issuesTransparency: 1, // value: integer between 0 and 1 (recommended), default to 0.2
         issuesTransparencySpeed: 500, // value: integer between 100 and 1000 (recommended), default to 500 (normal)
         prevButton: options.containerDiv + ' .prev', // value: any HTML tag or #id, default to #prev
         nextButton: options.containerDiv + ' .next', // value: any HTML tag or #id, default to #next
@@ -49,7 +49,8 @@ jQuery.fn.timelinr = function (options) {
             }
         });
         dates_content += "</ul>";
-        jQuery(timeline).prepend(dates_content);
+        //jQuery(timeline).prepend(dates_content);
+        jQuery(dates_content).insertBefore("div.dotted-line");
 
         // Checks if required elements exist on page before initializing timelinr | improvement since 0.9.55
         if (jQuery(settings.datesDiv).length > 0 && jQuery(settings.issuesDiv).length > 0) {
@@ -268,6 +269,16 @@ jQuery.fn.timelinr = function (options) {
                     }
                 }
             });
+            // Go to first/last slide
+            jQuery('a.to-start').click(function (event) {
+                event.preventDefault();
+                jQuery(settings.datesDiv + ' li:first-child a').click();
+            });
+            jQuery('a.to-end').click(function (event) {
+                event.preventDefault();
+                jQuery(settings.datesDiv + ' li:last-child a').click();
+            });
+
             // keyboard navigation, added since 0.9.1
             if (settings.arrowKeys == 'true') {
                 if (settings.orientation == 'horizontal') {
@@ -304,7 +315,8 @@ jQuery.fn.timelinr = function (options) {
                 var intervalId = setInterval("autoPlay()", settings.autoPlayPause);
             }
             // Play/Pause Button, added by RRZE Webteam
-            jQuery("a.toggle-autoplay").click(function () {
+            jQuery("a.toggle-autoplay").click(function (event) {
+                event.preventDefault();
                 var htmlPlay = "<i class=\"fa fa-play\" aria-hidden=\"true\"></i>" + "<span class=\"sr-only\">Play</span>";
                 var htmlPause = "<i class=\"fa fa-pause\" aria-hidden=\"true\"></i>" + "<span class=\"sr-only\">Pause</span>";
                 if (jQuery(this).data("toggle") === "pause") {

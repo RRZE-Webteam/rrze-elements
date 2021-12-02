@@ -6,11 +6,12 @@
     max-width: 100%;
     overflow-x: hidden;
     position: relative;
+    padding-top: 32px;
     @media screen and (min-width: 45em) {
         max-width: 800px;
         //height: 350px;
         overflow: hidden;
-        margin: 100px auto;
+        margin: 68px auto 100px;
         background-position-y: 45px
     }
     .dotted-line {
@@ -207,7 +208,7 @@
         height: 50px;
         width: 50px;
         position: absolute;
-        top: 0;
+        top: 32px;
         @media screen and (min-width: 45em) {
             height: 100%;
             width: 100px;
@@ -308,7 +309,7 @@
                 padding-bottom: 50px;
                 h1, h2, h3, h4, h5, h6, p {
                     margin: 0 10px 10px;
-                    @media screen and (min-width: 45em) {
+                    @media screen and (min-width: 48rem) {
                         margin: 10px 20px;
                     }
                 }
@@ -353,6 +354,24 @@
             i {
                 vertical-align: top;
             }
+        }
+    }
+    .timeline-nav {
+        font-size: 20px;
+        position: relative;
+        top: -32px;
+        .toggle-autoplay {
+            display: inline-block;
+            margin: 0 .5em 0 0;
+            float: right;
+        }
+        .to-start {
+            display: inline-block;
+            margin: 0 .25em 0 .5em;
+        }
+        .to-end {
+            display: inline-block;
+            margin: 0 .5em 0 .25em;
         }
     }
 }

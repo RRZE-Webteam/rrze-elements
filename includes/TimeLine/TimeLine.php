@@ -29,30 +29,46 @@ class TimeLine
      */
     public function shortcodeTimeline($atts, $content = '')
     {
-        extract(shortcode_atts([
+        $defaults = [
             'orientation' => 'horizontal',
-            'speed' => 'normal',
+            'speed' => 'slow',
             'startat' => 1,
             'autoplay' => '0',
-            'autoplaypause' => 3000,
+            'autoplaypause' => 5000,
             'fixedsize' => '1',
-            'datewidth' => 'normal'
-        ], $atts));
-
-        $autoplay = filter_var($autoplay, FILTER_VALIDATE_BOOLEAN);
+            'datewidth' => 'normal',
+            'start-end' => 'false',
+        ];
+        $args = shortcode_atts($defaults, $atts);
+        $autoplay = filter_var($args['autoplay'], FILTER_VALIDATE_BOOLEAN);
         $autoplay_text = $autoplay ? 'true' : 'false';
-        $fixedsize = $fixedsize == '1' ? 'true' : 'false';
-        $datewidth = $datewidth == 'large' ? 'large' : 'normal';
+        $autoplaypause = intval($args['autoplaypause']);
+        $fixedsize = $args['fixedsize'] == '1' ? 'true' : 'false';
+        $datewidth = $args['datewidth'] == 'large' ? 'large' : 'normal';
+        $speed = esc_attr($args['speed']);
+        $startat = intval($args['startat']);
+        $orientation = esc_attr($args['orientation']);
+        $startend = filter_var($args['start-end'], FILTER_VALIDATE_BOOLEAN);
         static $timelinr_instance;
         $timelinr_instance++;
 
         $output = '';
-        $output .= "<div id=\"timeline-" . $timelinr_instance . "\" class=\"$orientation date-$datewidth\"><div class=\"dotted-line\"></div><ul class=\"issues\">";
-        $output .= do_shortcode($content);
-        $output .= "</ul>";
+        $output .= "<div id=\"timeline-" . $timelinr_instance . "\" class=\"$orientation date-$datewidth\">";
+        if ($autoplay || $startend) {
+            $output .= '<div class="timeline-nav">';
+            if ($startend) {
+                $output .= "<a href=\"#\" class=\"to-start\" data-toggle=\"pause\" title=\"Zum ersten Eintrag springen\"><i class=\"fa fa-step-backward\" aria-hidden=\"true\"></i><span class=\"sr-only\">Zum ersten Eintrag springen</span></a> <a href=\"#\" class=\"to-end\" data-toggle=\"pause\"><i class=\"fa fa-step-forward\" aria-hidden=\"true\"></i><span class=\"sr-only\">Zum letzten Eintrag springen</span></a>";
+            }
+            if ($autoplay) {
+                $output .= "<a href=\"#\" class=\"toggle-autoplay\" data-toggle=\"pause\"><i class=\"fa fa-pause\" aria-hidden=\"true\"></i><span class=\"sr-only\">Pause</span></a> ";
+            }
+            $output .= '</div>';
+        }
+        $output .= "<div class=\"dotted-line\"></div>";
+        $output .= "<ul class=\"issues\">" . do_shortcode($content) . "</ul>";
 
         if ($orientation == 'horizontal') {
-            $output .= "<div class=\"grad_left\"><a href=\"#\" class=\"prev\"><i class=\"fa fa-angle-left\"></i><span class=\"sr-only\">Previous</span></a></div>" .
+            $output .= "<div class=\"grad_left\"></div>" .
                     "<div class=\"grad_right\"></div>";
             $output .= "<div><a href=\"#\" class=\"prev\"><i class=\"fa fa-angle-left\"></i><span class=\"sr-only\">Previous</span></a></div>"
                     . "<div><a href=\"#\" class=\"next\"><i class=\"fa fa-angle-right\"></i><span class=\"sr-only\">Next</span></a></div>";
@@ -61,10 +77,6 @@ class TimeLine
                     "<div class=\"grad_bottom\"></div>";
             $output .= "<a href=\"#\" class=\"next\"><i class=\"fa fa-angle-down\"></i><span class=\"sr-only\">Next</span></a>" .
                     "<a href=\"#\" class=\"prev\"><i class=\"fa fa-angle-up\"></i><span class=\"sr-only\">Previous</span></a>";
-        }
-
-        if ($autoplay) {
-            $output .= "<a href=\"#\" class=\"toggle-autoplay\" data-toggle=\"pause\"><i class=\"fa fa-pause\" aria-hidden=\"true\"></i><span class=\"sr-only\">Pause</span></a>";
         }
 
         $output .= "</div>";
