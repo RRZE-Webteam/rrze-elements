@@ -5563,12 +5563,13 @@ main aside.align-right {
   max-width: 100%;
   overflow-x: hidden;
   position: relative;
+  padding-top: 32px;
 }
 @media screen and (min-width: 45em) {
   [id^=timeline] {
     max-width: 800px;
     overflow: hidden;
-    margin: 100px auto;
+    margin: 68px auto 100px;
     background-position-y: 45px;
   }
 }
@@ -5756,7 +5757,7 @@ main aside.align-right {
   height: 50px;
   width: 50px;
   position: absolute;
-  top: 0;
+  top: 32px;
 }
 @media screen and (min-width: 45em) {
   [id^=timeline] .grad_left,
@@ -5871,7 +5872,7 @@ main aside.align-right {
 [id^=timeline].vertical .issues li h1, [id^=timeline].vertical .issues li h2, [id^=timeline].vertical .issues li h3, [id^=timeline].vertical .issues li h4, [id^=timeline].vertical .issues li h5, [id^=timeline].vertical .issues li h6, [id^=timeline].vertical .issues li p {
   margin: 0 10px 10px;
 }
-@media screen and (min-width: 45em) {
+@media screen and (min-width: 48rem) {
   [id^=timeline].vertical .issues li h1, [id^=timeline].vertical .issues li h2, [id^=timeline].vertical .issues li h3, [id^=timeline].vertical .issues li h4, [id^=timeline].vertical .issues li h5, [id^=timeline].vertical .issues li h6, [id^=timeline].vertical .issues li p {
     margin: 10px 20px;
   }
@@ -5915,6 +5916,24 @@ main aside.align-right {
 }
 [id^=timeline].vertical .prev i {
   vertical-align: top;
+}
+[id^=timeline] .timeline-nav {
+  font-size: 20px;
+  position: relative;
+  top: -32px;
+}
+[id^=timeline] .timeline-nav .toggle-autoplay {
+  display: inline-block;
+  margin: 0 0.5em 0 0;
+  float: right;
+}
+[id^=timeline] .timeline-nav .to-start {
+  display: inline-block;
+  margin: 0 0.25em 0 0.5em;
+}
+[id^=timeline] .timeline-nav .to-end {
+  display: inline-block;
+  margin: 0 0.5em 0 0.25em;
 }
 
 .date-large .dates li {
