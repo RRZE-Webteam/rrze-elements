@@ -18,7 +18,8 @@
             letter-spacing: 0.03em;
         }
         a {
-            color: darken(#fff, 20%);
+            color: darken(#fff, 10%);
+            text-decoration-color: inherit;
             &:hover, &:focus, &:active{
                 color: #fff;
             }

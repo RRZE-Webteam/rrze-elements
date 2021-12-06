@@ -3946,7 +3946,8 @@ h4.accordion-heading {
   letter-spacing: 0.03em;
 }
 .alert.light a {
-  color: #cccccc;
+  color: #e6e6e6;
+  text-decoration-color: inherit;
 }
 .alert.light a:hover, .alert.light a:focus, .alert.light a:active {
   color: #fff;
