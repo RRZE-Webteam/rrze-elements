@@ -3103,6 +3103,7 @@ Functions and Mixins
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  width: auto;
 }
 .content-slider.flexslider.carousel .slides .posted-on,
 #content .content-slider.flexslider.carousel .slides .posted-on {
