@@ -11,7 +11,7 @@
   font-weight: normal;
   font-style: normal;
 }
-.fa, [id^=timeline] .dates li:before, .rrze-elements-news .entry-cats:before, .rrze-elements-news .entry-date:before, .notice:before {
+.fa, [id^=timeline] .dates li:before, .rrze-elements-news .entry-cats:before, .rrze-elements-news .entry-date:before, .notice:before, .fau-theme .accordion-toggle:before {
   display: inline-block;
   font: normal normal normal 14px/1 FontAwesome;
   font-size: inherit;
@@ -92,11 +92,11 @@
   float: right;
 }
 
-.fa.fa-pull-left, [id^=timeline] .dates li.fa-pull-left:before, .rrze-elements-news .fa-pull-left.entry-cats:before, .rrze-elements-news .fa-pull-left.entry-date:before, .fa-pull-left.notice:before {
+.fa.fa-pull-left, [id^=timeline] .dates li.fa-pull-left:before, .rrze-elements-news .fa-pull-left.entry-cats:before, .rrze-elements-news .fa-pull-left.entry-date:before, .fa-pull-left.notice:before, .fau-theme .fa-pull-left.accordion-toggle:before {
   margin-right: 0.3em;
 }
 
-.fa.fa-pull-right, [id^=timeline] .dates li.fa-pull-right:before, .rrze-elements-news .fa-pull-right.entry-cats:before, .rrze-elements-news .fa-pull-right.entry-date:before, .fa-pull-right.notice:before {
+.fa.fa-pull-right, [id^=timeline] .dates li.fa-pull-right:before, .rrze-elements-news .fa-pull-right.entry-cats:before, .rrze-elements-news .fa-pull-right.entry-date:before, .fa-pull-right.notice:before, .fau-theme .fa-pull-right.accordion-toggle:before {
   margin-left: 0.3em;
 }
 
@@ -109,11 +109,11 @@
   float: left;
 }
 
-.fa.pull-left, [id^=timeline] .dates li.pull-left:before, .rrze-elements-news .pull-left.entry-cats:before, .rrze-elements-news .pull-left.entry-date:before, .pull-left.notice:before {
+.fa.pull-left, [id^=timeline] .dates li.pull-left:before, .rrze-elements-news .pull-left.entry-cats:before, .rrze-elements-news .pull-left.entry-date:before, .pull-left.notice:before, .fau-theme .pull-left.accordion-toggle:before {
   margin-right: 0.3em;
 }
 
-.fa.pull-right, [id^=timeline] .dates li.pull-right:before, .rrze-elements-news .pull-right.entry-cats:before, .rrze-elements-news .pull-right.entry-date:before, .pull-right.notice:before {
+.fa.pull-right, [id^=timeline] .dates li.pull-right:before, .rrze-elements-news .pull-right.entry-cats:before, .rrze-elements-news .pull-right.entry-date:before, .pull-right.notice:before, .fau-theme .pull-right.accordion-toggle:before {
   margin-left: 0.3em;
 }
 
@@ -976,11 +976,11 @@
   content: "\f0d6";
 }
 
-.fa-caret-down:before {
+.fa-caret-down:before, .fau-theme .accordion-toggle:before {
   content: "\f0d7";
 }
 
-.fa-caret-up:before {
+.fa-caret-up:before, .fau-theme .accordion-toggle.active:before {
   content: "\f0d8";
 }
 
@@ -3803,7 +3803,7 @@ button.expand-all.standard-btn {
 .accordion .accordion-suffix {
   font-weight: bold;
 }
-.accordion .accordion-icon.fa, .accordion [id^=timeline] .dates li.accordion-icon:before, [id^=timeline] .dates .accordion li.accordion-icon:before, .accordion .rrze-elements-news .accordion-icon.entry-cats:before, .rrze-elements-news .accordion .accordion-icon.entry-cats:before, .accordion .rrze-elements-news .accordion-icon.entry-date:before, .rrze-elements-news .accordion .accordion-icon.entry-date:before, .accordion .accordion-icon.notice:before {
+.accordion .accordion-icon.fa, .accordion [id^=timeline] .dates li.accordion-icon:before, [id^=timeline] .dates .accordion li.accordion-icon:before, .accordion .rrze-elements-news .accordion-icon.entry-cats:before, .rrze-elements-news .accordion .accordion-icon.entry-cats:before, .accordion .rrze-elements-news .accordion-icon.entry-date:before, .rrze-elements-news .accordion .accordion-icon.entry-date:before, .accordion .accordion-icon.notice:before, .accordion .fau-theme .accordion-icon.accordion-toggle:before, .fau-theme .accordion .accordion-icon.accordion-toggle:before {
   margin-right: 3px;
 }
 .accordion .accordion-group {
@@ -3981,6 +3981,14 @@ button.expand-all.standard-btn {
 .fau-theme .accordion-toggle {
   border-radius: 4px;
   background-clip: padding-box;
+}
+.fau-theme .accordion-toggle:before {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+.fau-theme .accordion-toggle.active:before {
+  top: 8px;
 }
 .fau-theme .accordion-body .accordion-inner {
   background-color: #f5f7f9;
