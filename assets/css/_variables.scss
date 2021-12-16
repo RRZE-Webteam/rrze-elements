@@ -2,6 +2,28 @@
 // Konstanten fuer das Design
 //-----------------------------------------------------------------------------------*/
 
+/*
+    --color-zentral-ci-hell: #04316a;
+    --color-zentral-ci-hell-kontrast: #fff;
+    --color-phil-ci-hell: #fdb735;
+    --color-phil-ci-hell-kontrast: #000;
+    --color-med-ci-hell: #18b4f1;
+    --color-med-ci-hell-kontrast: #000;
+    --color-nat-ci-hell: #7bb725;
+    --color-nat-ci-hell-kontrast: #000;
+    --color-rw-ci-hell: #c50f3c;
+    --color-rw-ci-hell-kontrast: #fff;
+    --color-tf-ci-hell: #8c9fb1;
+    --color-tf-ci-hell-kontrast: #000;
+
+    --color-primary-ci-hell
+    --color-primary-ci-hell-kontrast
+    --color-button-text
+    --color-button-bg
+    --color-button-hover-text
+    --color-button-hover-bg
+*/
+
 $page: #fff;
 $header: #636071;
 $text: #393944;
@@ -32,9 +54,16 @@ $secondary: #5a6268;
 
 // FAU Colors
 $colorPhilFak:	    #A36B0D;
+$colorPhilFakDunkler:	    #805000;
 $colorRwFak:	    #8d1429;
+$colorRwFakDunkler:	    #690013;
 $colorMedFak:	    #0381A2;
+$colorMedFakDunkler:	    #026480;
 $colorNatFak:	    #048767;
+$colorNatFakDunkler:    #006e53;
 $colorTechFak:	    #6E7881;
+$colorTechFakDunkler:	    #53606b;
 $colorZUV:	    #003366;
+$colorZUVDunkler:	    #24598f;
 $colorDefault:	    #003366;
+$colorDefaultDunkler:	    #24598f;
