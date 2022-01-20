@@ -60,7 +60,9 @@ button.expand-all.standard-btn {
     }
     .accordion-toggle {
         display: block;
-        border-left: 10px solid var(--color-primary-ci-hell);
+        //border-left: 10px solid var(--color-primary-ci-hell, $colorDefault);
+        border-left-width: 10px;
+        border-left-style: solid;
         background: var(--color-ContentBorders, #d2ddeb);
         color:  var(--color-Text, #444);
         font-size: 1rem;
@@ -76,7 +78,7 @@ button.expand-all.standard-btn {
         }
         &.active:hover,
         &.active:focus {
-            border-color: var(--color-primary-dunkler, $colorDefaultDunkler);
+            //border-color: var(--color-primary-dunkler, $colorDefaultDunkler);
             background-color: var(--color-primary-dunkler, $colorDefaultDunkler);
             color: var(--color-primary-ci-hell-kontrast, #fff);
         }
@@ -89,13 +91,13 @@ button.expand-all.standard-btn {
         &:focus,
         &.active {
             background-color: var(--color-phil-ci-hell, $colorPhilFak);
-            color: var(--color-phil-ci-hell-kontrast, #444);
+            color: var(--color-phil-ci-hell-kontrast, #fff);
         }
         &.active:hover,
         &.active:focus {
-            border-color: var(--color-phil-dunkler, $colorDefaultDunkler);
-            background-color: var(--color-phil-dunkler, $colorDefaultDunkler);
-            color: var(--color-phil-ci-hell-kontrast, #444);
+            border-color: var(--color-phil-dunkler, $colorPhilFakDunkler);
+            background-color: var(--color-phil-dunkler, $colorPhilFakDunkler);
+            color: var(--color-phil-ci-hell-kontrast, #fff);
         }
     }
     .rw .accordion-heading .accordion-toggle,
@@ -110,8 +112,8 @@ button.expand-all.standard-btn {
         }
         &.active:hover,
         &.active:focus {
-            border-color: var(--color-rw-dunkler, $colorDefaultDunkler);
-            background-color: var(--color-rw-dunkler, $colorDefaultDunkler);
+            border-color: var(--color-rw-dunkler, $colorRwFakDunkler);
+            background-color: var(--color-rw-dunkler, $colorRwFakDunkler);
             color: var(--color-rw-ci-hell-kontrast, #fff);
         }
     }
@@ -123,7 +125,7 @@ button.expand-all.standard-btn {
         &:focus,
         &.active {
             background-color: var(--color-med-ci-hell, $colorMedFak);
-            color: var(--color-med-ci-hell-kontrast, #444);
+            color: var(--color-med-ci-hell-kontrast, #fff);
         }
         &.active:hover,
         &.active:focus {
@@ -145,7 +147,7 @@ button.expand-all.standard-btn {
         &.active:hover,
         &.active:focus {
             border-color: var(--color-nat-dunkler, $colorNatFakDunkler);
-            background-color: var(--color-nat-dunkler);
+            background-color: var(--color-nat-dunkler, $colorNatFakDunkler);
             color: var(--color-nat-ci-dunkel-kontrast, #fff);
         }
     }
@@ -161,8 +163,8 @@ button.expand-all.standard-btn {
         }
         &.active:hover,
         &.active:focus {
-            border-color: var(--color-tf-dunkler, $colorNatFakDunkler);
-            background-color: var(--color-tf-dunkler);
+            border-color: var(--color-tf-dunkler, $colorTechFakDunkler);
+            background-color: var(--color-tf-dunkler, $colorTechFakDunkler);
             color: var(--color-tf-ci-dunkel-kontrast, #fff);
         }
     }
@@ -177,8 +179,8 @@ button.expand-all.standard-btn {
         }
         &.active:hover,
         &.active:focus {
-            border-color: var(--color-zentral-dunkler, $colorNatFakDunkler);
-            background-color: var(--color-zentral-dunkler);
+            border-color: var(--color-zentral-dunkler, $colorDefaultDunkler);
+            background-color: var(--color-zentral-dunkler, $colorDefaultDunkler);
             color: var(--color-zentral-ci-hell-kontrast, #fff);
         }
     }

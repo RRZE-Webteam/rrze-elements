@@ -3812,7 +3812,8 @@ button.expand-all.standard-btn {
 }
 .accordion .accordion-toggle {
   display: block;
-  border-left: 10px solid var(--color-primary-ci-hell);
+  border-left-width: 10px;
+  border-left-style: solid;
   background: var(--color-ContentBorders, #d2ddeb);
   color: var(--color-Text, #444);
   font-size: 1rem;
@@ -3826,7 +3827,6 @@ button.expand-all.standard-btn {
   color: var(--color-primary-ci-hell-kontrast, #fff);
 }
 .accordion .accordion-toggle.active:hover, .accordion .accordion-toggle.active:focus {
-  border-color: var(--color-primary-dunkler, #24598f);
   background-color: var(--color-primary-dunkler, #24598f);
   color: var(--color-primary-ci-hell-kontrast, #fff);
 }
@@ -3843,16 +3843,16 @@ button.expand-all.standard-btn {
 .accordion .gold .accordion-heading .accordion-toggle:focus,
 .accordion .gold .accordion-heading .accordion-toggle.active {
   background-color: var(--color-phil-ci-hell, #A36B0D);
-  color: var(--color-phil-ci-hell-kontrast, #444);
+  color: var(--color-phil-ci-hell-kontrast, #fff);
 }
 .accordion .phil .accordion-heading .accordion-toggle.active:hover, .accordion .phil .accordion-heading .accordion-toggle.active:focus,
 .accordion .philfak .accordion-heading .accordion-toggle.active:hover,
 .accordion .philfak .accordion-heading .accordion-toggle.active:focus,
 .accordion .gold .accordion-heading .accordion-toggle.active:hover,
 .accordion .gold .accordion-heading .accordion-toggle.active:focus {
-  border-color: var(--color-phil-dunkler, #24598f);
-  background-color: var(--color-phil-dunkler, #24598f);
-  color: var(--color-phil-ci-hell-kontrast, #444);
+  border-color: var(--color-phil-dunkler, #805000);
+  background-color: var(--color-phil-dunkler, #805000);
+  color: var(--color-phil-ci-hell-kontrast, #fff);
 }
 .accordion .rw .accordion-heading .accordion-toggle,
 .accordion .rwfak .accordion-heading .accordion-toggle,
@@ -3874,8 +3874,8 @@ button.expand-all.standard-btn {
 .accordion .rwfak .accordion-heading .accordion-toggle.active:focus,
 .accordion .red .accordion-heading .accordion-toggle.active:hover,
 .accordion .red .accordion-heading .accordion-toggle.active:focus {
-  border-color: var(--color-rw-dunkler, #24598f);
-  background-color: var(--color-rw-dunkler, #24598f);
+  border-color: var(--color-rw-dunkler, #690013);
+  background-color: var(--color-rw-dunkler, #690013);
   color: var(--color-rw-ci-hell-kontrast, #fff);
 }
 .accordion .med .accordion-heading .accordion-toggle,
@@ -3891,7 +3891,7 @@ button.expand-all.standard-btn {
 .accordion .blue .accordion-heading .accordion-toggle:focus,
 .accordion .blue .accordion-heading .accordion-toggle.active {
   background-color: var(--color-med-ci-hell, #0381A2);
-  color: var(--color-med-ci-hell-kontrast, #444);
+  color: var(--color-med-ci-hell-kontrast, #fff);
 }
 .accordion .med .accordion-heading .accordion-toggle.active:hover, .accordion .med .accordion-heading .accordion-toggle.active:focus,
 .accordion .medfak .accordion-heading .accordion-toggle.active:hover,
@@ -3923,7 +3923,7 @@ button.expand-all.standard-btn {
 .accordion .green .accordion-heading .accordion-toggle.active:hover,
 .accordion .green .accordion-heading .accordion-toggle.active:focus {
   border-color: var(--color-nat-dunkler, #006e53);
-  background-color: var(--color-nat-dunkler);
+  background-color: var(--color-nat-dunkler, #006e53);
   color: var(--color-nat-ci-dunkel-kontrast, #fff);
 }
 .accordion .tf .accordion-heading .accordion-toggle,
@@ -3946,8 +3946,8 @@ button.expand-all.standard-btn {
 .accordion .techfak .accordion-heading .accordion-toggle.active:focus,
 .accordion .grey .accordion-heading .accordion-toggle.active:hover,
 .accordion .grey .accordion-heading .accordion-toggle.active:focus {
-  border-color: var(--color-tf-dunkler, #006e53);
-  background-color: var(--color-tf-dunkler);
+  border-color: var(--color-tf-dunkler, #53606b);
+  background-color: var(--color-tf-dunkler, #53606b);
   color: var(--color-tf-ci-dunkel-kontrast, #fff);
 }
 .accordion .fau .accordion-heading .accordion-toggle,
@@ -3964,8 +3964,8 @@ button.expand-all.standard-btn {
 .accordion .fau .accordion-heading .accordion-toggle.active:hover, .accordion .fau .accordion-heading .accordion-toggle.active:focus,
 .accordion .default .accordion-heading .accordion-toggle.active:hover,
 .accordion .default .accordion-heading .accordion-toggle.active:focus {
-  border-color: var(--color-zentral-dunkler, #006e53);
-  background-color: var(--color-zentral-dunkler);
+  border-color: var(--color-zentral-dunkler, #24598f);
+  background-color: var(--color-zentral-dunkler, #24598f);
   color: var(--color-zentral-ci-hell-kontrast, #fff);
 }
 .accordion .accordion-body {

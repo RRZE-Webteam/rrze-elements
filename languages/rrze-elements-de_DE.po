@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: RRZE Elements\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-17 15:15+0000\n"
-"PO-Revision-Date: 2019-05-17 15:17+0000\n"
+"PO-Revision-Date: 2022-01-20 16:46+0000\n"
 "Last-Translator: RRZE Webteam <webmaster@fau.de>\n"
 "Language-Team: Deutsch\n"
 "Language: de_DE\n"
@@ -21,42 +21,45 @@ msgstr ""
 "X-Poedit-SearchPath-1: ..\n"
 "X-Loco-Version: 2.2.2; wp-5.2"
 
-#: rrze-elements.php:68
-#, php-format
-msgid ""
-"The server is running PHP version %1$s. The Plugin requires at least PHP "
-"version %2$s."
-msgstr ""
-"Auf dem Server läuft PHP Version %1$s. Das Plugin benötigt mindestens PHP "
-"Version %2$s."
+#. Description of the plugin
+msgid "Advanced design elements for WordPress websites."
+msgstr "Erweiterte Gestaltungselemente für WordPress-Websites."
 
-#: rrze-elements.php:70
-#, php-format
-msgid ""
-"The server is running WordPress version %1$s. The Plugin requires at least "
-"WordPress version %2$s."
-msgstr ""
-"The server is running WordPress version %1$s. The Plugin requires at least "
-"WordPress version %2$s."
-
-#: includes/Accordion/Accordion.php:50 includes/Accordion/Accordion.php:123
-msgid "Expand All"
-msgstr "Alle öffnen"
-
-#: includes/Accordion/Accordion.php:124
-msgid "Collapse All"
-msgstr "Alle schließen"
-
-#: includes/ContentIndex/ContentIndex.php:238
+#: includes/ContentIndex/ContentIndex.php:250
 msgid "Category"
 msgstr "Kategorie"
 
-#: includes/News/News.php:168
-#, php-format
-msgid "View all posts in %s"
-msgstr "Alle Beiträge in %s anzeigen"
+#: includes/Accordion/assets/js/rrze-accordion.js:17
+#: includes/Accordion/assets/js/rrze-accordion.js:130
+msgid "Collapse All"
+msgstr "Alle schließen"
 
-#: includes/News/News.php:192
+#: includes/Symbols/Symbols.php:23
+msgid "Erfüllt"
+msgstr "Erfüllt"
+
+#: includes/Accordion/Accordion.php:68
+#: includes/Accordion/assets/js/rrze-accordion.js:126
+msgid "Expand All"
+msgstr "Alle öffnen"
+
+#. Author URI of the plugin
+msgid "https://blogs.fau.de/webworking/"
+msgstr "https://blogs.fau.de/webworking/"
+
+#. URI of the plugin
+msgid "https://github.com/RRZE-Webteam/rrze-elements"
+msgstr "https://github.com/RRZE-Webteam/rrze-elements"
+
+#: includes/News/News.php:244 includes/News/News.php:246
+msgid "More news"
+msgstr "Weitere Artikel"
+
+#: includes/Symbols/Symbols.php:48
+msgid "Nicht erfüllt"
+msgstr "Nicht erfüllt"
+
+#: includes/News/News.php:368
 msgid "No posts found."
 msgstr "Keine Beiträge gefunden."
 
@@ -69,18 +72,29 @@ msgstr ""
 msgid "RRZE Elements"
 msgstr "RRZE Elements"
 
-#. Description of the plugin
-msgid "Advanced design elements for WordPress websites."
-msgstr "Erweiterte Gestaltungselemente für WordPress-Websites."
-
-#. URI of the plugin
-msgid "https://github.com/RRZE-Webteam/rrze-elements"
-msgstr "https://github.com/RRZE-Webteam/rrze-elements"
-
 #. Author of the plugin
 msgid "RRZE Webteam"
 msgstr "RRZE-Webteam"
 
-#. Author URI of the plugin
-msgid "https://blogs.fau.de/webworking/"
-msgstr "https://blogs.fau.de/webworking/"
+#: rrze-elements.php:70
+#, php-format
+msgid ""
+"The server is running PHP version %1$s. The Plugin requires at least PHP "
+"version %2$s."
+msgstr ""
+"Auf dem Server läuft PHP Version %1$s. Das Plugin benötigt mindestens PHP "
+"Version %2$s."
+
+#: rrze-elements.php:72
+#, php-format
+msgid ""
+"The server is running WordPress version %1$s. The Plugin requires at least "
+"WordPress version %2$s."
+msgstr ""
+"The server is running WordPress version %1$s. The Plugin requires at least "
+"WordPress version %2$s."
+
+#: includes/News/News.php:459
+#, php-format
+msgid "View all posts in %s"
+msgstr "Alle Beiträge in %s anzeigen"

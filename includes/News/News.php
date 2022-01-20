@@ -241,9 +241,9 @@ class News
         $moreLink = '';
         if (in_array('show_more', $mode)) {
             if ($cat != '') {
-                $moreLink = '<p class="more-posts"><a class="standard-btn xsmall-btn primary-btn" href="'.get_category_link($c_id[0]).'">' . __('Weitere Artikel', 'rrze-elements') . '</a></p>';
+                $moreLink = '<p class="more-posts"><a class="standard-btn xsmall-btn primary-btn" href="'.get_category_link($c_id[0]).'">' . __('More news', 'rrze-elements') . '</a></p>';
             } elseif ($tag != '') {
-                $moreLink = '<p class="more-posts"><a class="standard-btn xsmall-btn primary-btn" href="'.get_tag_link($t_id[0]).'">' . __('Weitere Artikel', 'rrze-elements') . '</a></p>';
+                $moreLink = '<p class="more-posts"><a class="standard-btn xsmall-btn primary-btn" href="'.get_tag_link($t_id[0]).'">' . __('More news', 'rrze-elements') . '</a></p>';
             }
         }
 
