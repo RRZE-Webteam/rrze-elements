@@ -54,6 +54,175 @@ button.expand-all.standard-btn {
     .accordion-icon.fa {
         margin-right: 3px;
     }
+    .accordion-group {
+        border: none;
+        margin-bottom: 5px;
+    }
+    .accordion-toggle {
+        display: block;
+        //border-left: 10px solid var(--color-primary-ci-hell, $colorDefault);
+        border-left-width: 10px;
+        border-left-style: solid;
+        background: var(--color-ContentBorders, #d2ddeb);
+        color:  var(--color-Text, #444);
+        font-size: 1rem;
+        text-decoration: none;
+        padding: 8px 35px 8px 10px;
+        position: relative;
+        &:hover,
+        &:focus,
+        &.active {
+            text-decoration: none;
+            background-color: var(--color-primary-ci-hell, $colorDefault);
+            color: var(--color-primary-ci-hell-kontrast, #fff);
+        }
+        &.active:hover,
+        &.active:focus {
+            //border-color: var(--color-primary-dunkler, $colorDefaultDunkler);
+            background-color: var(--color-primary-dunkler, $colorDefaultDunkler);
+            color: var(--color-primary-ci-hell-kontrast, #fff);
+        }
+    }
+    .phil .accordion-heading .accordion-toggle,
+    .philfak .accordion-heading .accordion-toggle,
+    .gold .accordion-heading .accordion-toggle {
+        border-color: var(--color-phil-ci-hell, $colorPhilFak);
+        &:hover,
+        &:focus,
+        &.active {
+            background-color: var(--color-phil-ci-hell, $colorPhilFak);
+            color: var(--color-phil-ci-hell-kontrast, #fff);
+        }
+        &.active:hover,
+        &.active:focus {
+            border-color: var(--color-phil-dunkler, $colorPhilFakDunkler);
+            background-color: var(--color-phil-dunkler, $colorPhilFakDunkler);
+            color: var(--color-phil-ci-hell-kontrast, #fff);
+        }
+    }
+    .rw .accordion-heading .accordion-toggle,
+    .rwfak .accordion-heading .accordion-toggle,
+    .red .accordion-heading .accordion-toggle {
+        border-color: var(--color-rw-ci-hell, $colorRwFak);
+        &:hover,
+        &:focus,
+        &.active {
+            background-color: var(--color-rw-ci-hell, $colorRwFak);
+            color: var(--color-rw-ci-hell-kontrast, #fff);
+        }
+        &.active:hover,
+        &.active:focus {
+            border-color: var(--color-rw-dunkler, $colorRwFakDunkler);
+            background-color: var(--color-rw-dunkler, $colorRwFakDunkler);
+            color: var(--color-rw-ci-hell-kontrast, #fff);
+        }
+    }
+    .med .accordion-heading .accordion-toggle,
+    .medfak .accordion-heading .accordion-toggle,
+    .blue .accordion-heading .accordion-toggle {
+        border-color: var(--color-med-ci-hell, $colorMedFak);
+        &:hover,
+        &:focus,
+        &.active {
+            background-color: var(--color-med-ci-hell, $colorMedFak);
+            color: var(--color-med-ci-hell-kontrast, #fff);
+        }
+        &.active:hover,
+        &.active:focus {
+            border-color: var(--color-med-dunkler, $colorMedFakDunkler);
+            background-color: var(--color-med-dunkler, $colorMedFakDunkler);
+            color: var(--color-med-ci-dunkel-kontrast, #fff);
+        }
+    }
+    .nat .accordion-heading .accordion-toggle,
+    .natfak .accordion-heading .accordion-toggle,
+    .green .accordion-heading .accordion-toggle {
+        border-color: var(--color-nat-ci-hell, $colorNatFak);
+        &:hover,
+        &:focus,
+        &.active {
+            background-color: var(--color-nat-ci-hell, $colorNatFak);
+            color: var(--color-nat-ci-hell-kontrast, #fff);
+        }
+        &.active:hover,
+        &.active:focus {
+            border-color: var(--color-nat-dunkler, $colorNatFakDunkler);
+            background-color: var(--color-nat-dunkler, $colorNatFakDunkler);
+            color: var(--color-nat-ci-dunkel-kontrast, #fff);
+        }
+    }
+    .tf .accordion-heading .accordion-toggle,
+    .techfak .accordion-heading .accordion-toggle,
+    .grey .accordion-heading .accordion-toggle {
+        border-color: var(--color-tf-ci-hell, $colorTechFak);
+        &:hover,
+        &:focus,
+        &.active {
+            background-color: var(--color-tf-ci-hell, $colorTechFak);
+            color: var(--color-tf-ci-dunkel-kontrast, #fff);
+        }
+        &.active:hover,
+        &.active:focus {
+            border-color: var(--color-tf-dunkler, $colorTechFakDunkler);
+            background-color: var(--color-tf-dunkler, $colorTechFakDunkler);
+            color: var(--color-tf-ci-dunkel-kontrast, #fff);
+        }
+    }
+    .fau .accordion-heading .accordion-toggle,
+    .default .accordion-heading .accordion-toggle {
+        border-color: var(--color-zentral-ci-hell, $colorDefault);
+        &:hover,
+        &:focus,
+        &.active {
+            background-color: var(--color-zentral-ci-hell, $colorDefault);
+            color: var(--color-zentral-ci-hell-kontrast, #fff);
+        }
+        &.active:hover,
+        &.active:focus {
+            border-color: var(--color-zentral-dunkler, $colorDefaultDunkler);
+            background-color: var(--color-zentral-dunkler, $colorDefaultDunkler);
+            color: var(--color-zentral-ci-hell-kontrast, #fff);
+        }
+    }
+
+    .accordion-body {
+        display: block; // none;
+        overflow: hidden;
+
+        .accordion-inner {
+            @extend .clearfix;
+            border: none;
+            background-color: #fff;
+            padding: 15px 20px;
+        }
+    }
+}
+
+.fau-theme {
+    .accordion-heading .accordion-toggle {
+    }
+    .accordion-toggle {
+        @include border-radius(4px);
+        &:before {
+            @extend .fa;
+            @extend .fa-caret-down;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+        &.active {
+            &:before {
+                @extend .fa-caret-up;
+                top: 8px;
+            }
+        }
+    }
+    .accordion-body {
+        .accordion-inner {
+            background-color: #f5f7f9;
+            @include border-bottom-radius(4px);
+        }
+    }
 }
 
 @media print {

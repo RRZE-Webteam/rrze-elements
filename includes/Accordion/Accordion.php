@@ -21,6 +21,8 @@ class Accordion
         add_shortcode('accordion-item', [$this, 'shortcodeCollapse']);
 
         add_action('wp_enqueue_scripts', [$this, 'enqueueScripts']);
+        add_action('wp_enqueue_scripts', [$this, 'enqueueScriptTranslations'], 100);
+
     }
 
     /**
@@ -164,8 +166,7 @@ class Accordion
      * [enqueueScripts description]
      * @return void
      */
-    public static function enqueueScripts()
-    {
+    public static function enqueueScripts() {
         wp_register_script(
             'rrze-accordions',
             //plugins_url('assets/js/rrze-accordion.min.js', plugin_basename(__FILE__)),
@@ -173,6 +174,10 @@ class Accordion
             ['jquery'],
             '1.0.0'
         );
-        wp_set_script_translations('rrze-accordions', 'rrze-elements');
+    }
+
+    public static function enqueueScriptTranslations()
+    {
+       wp_set_script_translations('rrze-accordions', 'rrze-elements');
     }
 }

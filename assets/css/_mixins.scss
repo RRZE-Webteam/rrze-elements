@@ -11,3 +11,31 @@ Functions and Mixins
     font-size: px2rem($font-size, $base-font-size);
     line-height: ($line / $base-font-size) + rem;
 }
+
+@mixin border-radius($radius) {
+    border-radius: $radius;
+    background-clip: padding-box;
+}
+@mixin border-top-radius($radius) {
+    border-top-right-radius: $radius;
+    border-top-left-radius: $radius;
+    background-clip: padding-box;
+}
+
+@mixin border-right-radius($radius) {
+    border-bottom-right-radius: $radius;
+    border-top-right-radius: $radius;
+    background-clip: padding-box;
+}
+
+@mixin border-bottom-radius($radius) {
+    border-bottom-right-radius: $radius;
+    border-bottom-left-radius: $radius;
+    background-clip: padding-box;
+}
+
+@mixin border-left-radius($radius) {
+    border-bottom-left-radius: $radius;
+    border-top-left-radius: $radius;
+    background-clip: padding-box;
+}
