@@ -43,7 +43,7 @@ class Notice
      * @param  string $tag     [description]
      * @return string          [description]
      */
-    public function shortcodeNotice($atts, $content = '', $tag)
+    public function shortcodeNotice($atts, $content = '', $tag = '')
     {
         extract(shortcode_atts([
             'title' => '',

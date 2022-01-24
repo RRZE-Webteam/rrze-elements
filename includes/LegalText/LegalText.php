@@ -24,7 +24,7 @@ class LegalText
      * @param  string $tag     [description]
      * @return string          [description]
      */
-    public function legalText($atts, $content = '', $tag)
+    public function legalText($atts, $content = '', $tag = '')
     {
         wp_enqueue_style('rrze-elements');
         return '<div class="legal-text">' . $content . '</div>';
