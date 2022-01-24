@@ -25,7 +25,7 @@ class PullDiv
      * @param  string $tag     [description]
      * @return string          [description]
      */
-    public function shortcodePullLeftRight($atts, $content = '', $tag)
+    public function shortcodePullLeftRight($atts, $content = '', $tag = '')
     {
         $atts = shortcode_atts( [
             'title' => '',

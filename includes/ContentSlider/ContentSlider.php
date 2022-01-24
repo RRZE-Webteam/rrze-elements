@@ -30,7 +30,7 @@ class ContentSlider
      * @param  string $tag     [description]
      * @return string          [description]
      */
-    public function shortcodeContentSlider($atts, $content='', $tag)
+    public function shortcodeContentSlider($atts, $content = '', $tag = '')
     {
         global $post;
         $output = '';

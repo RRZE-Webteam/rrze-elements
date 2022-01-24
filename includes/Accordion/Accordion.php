@@ -31,7 +31,7 @@ class Accordion
      * @param  string $content [description]
      * @return string          [description]
      */
-    public function shortcodeCollapsibles($atts, $content = '', $tag)
+    public function shortcodeCollapsibles($atts, $content = '', $tag = '')
     {
         if (isset($GLOBALS['collapsibles_count'])) {
             $GLOBALS['collapsibles_count'] ++;
