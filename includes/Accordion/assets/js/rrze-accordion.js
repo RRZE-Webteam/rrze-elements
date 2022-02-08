@@ -19,7 +19,6 @@ jQuery(document).ready(function($) {
                 //console.log("items = " + items.length + " open = " + open.length);
             }
         }
-
     });
 
     $('.accordion-toggle').bind('click', function(event) {
@@ -50,12 +49,15 @@ jQuery(document).ready(function($) {
     });
 
     function toggleAccordion($accordion) {
+        console.log('test5');
         var $thisgroup = $($accordion).closest('.accordion-group');
         var $othergroups = $($accordion).closest('.accordion').find('.accordion-group').not($thisgroup);
         $($othergroups).children('.accordion-heading').children(' .accordion-toggle').removeClass('active');
         $($othergroups).children('.accordion-body').not('.accordion-body.stayopen').not('.accordion-body.open').slideUp();
         $($thisgroup).children('.accordion-heading').children('.accordion-toggle').toggleClass('active');
         $($thisgroup).children('.accordion-body').slideToggle();
+        // refresh Slick Gallery
+        $($thisgroup).find("div.slick-slider").slick("refresh");
     }
 
     function openAnchorAccordion($target) {
