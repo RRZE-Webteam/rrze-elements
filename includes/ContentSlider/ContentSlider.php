@@ -179,10 +179,12 @@ class ContentSlider
             wp_reset_postdata();
         }
 
-        $localizeScript = array(
-            'start' => $start,
-        );
-        wp_localize_script( 'rrze-flexslider', 'object_name', $localizeScript );
+        if (isset($start)) {
+            $localizeScript = array(
+                'start' => $start,
+            );
+            wp_localize_script('rrze-flexslider', 'object_name', $localizeScript);
+        }
 
         wp_enqueue_style('fontawesome');
         wp_enqueue_style('rrze-elements');
