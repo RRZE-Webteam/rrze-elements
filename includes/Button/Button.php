@@ -57,7 +57,16 @@ class Button
         $size = ($size) ? ' ' . $size . '-btn' : '';
         $target = ($target == 'blank') ? ' target="_blank"' : '';
         $link = esc_url($link);
-        $font = ($font == 'dark') ? ' color: #1a1a1a;' : '';
+        switch ($font) {
+            case 'dark':
+                $fontColor = ' color: #1a1a1a;';
+                break;
+            case 'light':
+                $fontColor = ' color: #fff;';
+                break;
+            default:
+                $fontColor = '';
+        }
         $title = $title != '' ? ' title="' . sanitize_text_field($title) . '"' : '';
         $width = trim($width);
         $width_full = '';
@@ -70,11 +79,11 @@ class Button
             $width = $width . 'px';
         }
 
-        if ('' != $color || '' != $font) {
+        if ('' != $color || '' != $fontColor) {
             $style = '';
         }
 
-        $output = '<a' . $target . $title . ' class="standard-btn' . $color_name . $size . $width_full . $style . '" href="' . $link . '" style="' . $font . $color_hex . $width_px . $border_color . '"><span>' . do_shortcode($content) . '</span></a>';
+        $output = '<a' . $target . $title . ' class="standard-btn' . $color_name . $size . $width_full . $style . '" href="' . $link . '" style="' . $fontColor . $color_hex . $width_px . $border_color . '"><span>' . do_shortcode($content) . '</span></a>';
 
         wp_enqueue_style('fontawesome');
         wp_enqueue_style('rrze-elements');

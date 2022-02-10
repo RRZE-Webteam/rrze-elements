@@ -9,8 +9,8 @@ a.standard-btn {
     padding: 10px 18px;
     overflow: hidden;
     cursor: pointer;
-    background: $primary;
-    color: #fff;
+    background: var(--color-primary-ci-hell, $primary);
+    color: var(--color-button-text, #fff);
     font-size: 16px;
     font-size: 1rem;
     line-height: 1.5;
@@ -25,17 +25,17 @@ a.standard-btn {
     }
 }
 
-.post, .page {
+/*.post, .page {
     .entry-content {
         button.standard-btn,
         a.standard-btn {
-            color: #fff;
+            color: var(--color-button-text, #fff);
             &:hover {
-                color: #fff;
+                color: var(--color-button-text, #fff);
             }
         }
     }
-}
+}*/
 
 button.standard-btn,
 a.standard-btn {
@@ -60,7 +60,16 @@ a.standard-btn {
         font-size: 1.5625rem;
         line-height: 1.5;
     }
-    &.primary-btn, &.blue-btn {
+    &.primary-btn {
+        background: var(--color-primary-ci-hell, $primary);
+        color: var(--color-primary-ci-hell-kontrast, #fff);
+        border-color: darken($primary, 5%);
+        &:hover, &:focus, &:active {
+            background: var(--color-button-hover-bg, darken($primary, 10%));
+            color: var(--color-button-hover-text, #fff);
+        }
+    }
+    &.blue-btn {
         background: $primary;
         border-color: darken($primary, 5%);
         &:hover, &:focus, &:active {
