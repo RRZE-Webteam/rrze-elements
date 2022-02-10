@@ -37,7 +37,7 @@ class Button
             'title' => '',
         ], $atts));
 
-        $style = (in_array($style, ['success', 'info', 'warning', 'danger', 'primary'])) ? ' ' . $style . '-btn' : ' primary-btn';
+        $style = (in_array($style, ['success', 'info', 'warning', 'danger', 'primary', 'ghost'])) ? ' ' . $style . '-btn' : ' primary-btn';
         $color_hex = '';
         $color_name = '';
 
