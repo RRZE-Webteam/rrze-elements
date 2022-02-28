@@ -56,7 +56,10 @@ jQuery(document).ready(function($) {
         $($thisgroup).children('.accordion-heading').children('.accordion-toggle').toggleClass('active');
         $($thisgroup).children('.accordion-body').slideToggle();
         // refresh Slick Gallery
-        $($thisgroup).find("div.slick-slider").slick("refresh");
+        let $slick = $($thisgroup).find("div.slick-slider");
+            if ($slick.length < 0) {
+                $slick.slick("refresh");
+            }
     }
 
     function openAnchorAccordion($target) {

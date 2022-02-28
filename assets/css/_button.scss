@@ -112,8 +112,22 @@ a.standard-btn {
     }
     &.black-btn {
         background: $text;
+        color: #fff;
         &:hover, &:focus, &:active {
             background: darken($text, 12%);
+            color: #fff;
+        }
+    }
+    &.ghost-btn {
+        background: transparent;
+        color: var(--color-Text, $text);
+        border: 1px solid var(--color-ContentBorders, #dfe6ec);
+        &:hover, &:focus, &:active {
+            color: var(--color-ghostbutton-hover-text, #fff);
+            background: var(--color-ghostbutton-hover-bg, $primary);
+        }
+        .fau-events & {
+            border-width: 2px;
         }
     }
     &.full-btn {
