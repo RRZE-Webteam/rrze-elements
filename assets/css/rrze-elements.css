@@ -4553,16 +4553,11 @@ a.standard-btn:active {
 .elements-columns .colspan-1,
 .elements-columns .colspan-2,
 .elements-columns .colspan-3 {
-  flex: 1;
-  min-width: 200px;
+  flex: 220px 1 0;
+  min-width: 220px;
   float: none;
   margin: 0;
   padding: 0 10px 1.5em;
-}
-.fau-theme .elements-columns .colspan-1,
-.fau-theme .elements-columns .colspan-2,
-.fau-theme .elements-columns .colspan-3 {
-  min-width: 180px;
 }
 @media (min-width: 480px) {
   .elements-columns.cols-2 .colspan-1 {
