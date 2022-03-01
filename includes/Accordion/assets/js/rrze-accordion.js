@@ -101,7 +101,7 @@ jQuery(document).ready(function($) {
     $('a:not(.prev, .next)').click(function(e) { // prev und next wegen Konflikt mit Timeline ausgeschlossen
         // nur auf Seiten, auf denen ein Accordion existiert,
         // und nur, wenn der geklickte Link nicht der Accordion-Toggle-Link oder der Expand-All-Link ist
-        if (($('#accordion-0').length) &&
+        if (($('[id^=accordion-]').length) &&
             (!$(this).hasClass("accordion-toggle")) &&
             (!$(this).hasClass("accordion-tabs-nav-toggle"))) {
             var $hash = $(this).prop("hash");
