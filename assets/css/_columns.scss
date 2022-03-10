@@ -130,15 +130,12 @@
     .colspan-1,
     .colspan-2,
     .colspan-3 {
-        flex: 1;
-        min-width: 200px;
+        flex: 220px 1 0;
+        min-width: 220px;
         // Fix für FAU-Themes
         float: none;
         margin: 0;
         padding: 0 10px 1.5em;
-        .fau-theme & {
-            min-width: 180px;
-        }
     }
 
     @media (min-width: 480px) {
