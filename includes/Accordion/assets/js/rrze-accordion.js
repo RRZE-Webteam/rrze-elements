@@ -21,7 +21,7 @@ jQuery(document).ready(function($) {
         }
     });
 
-    $('.accordion-toggle').bind('click', function(event) {
+    $('.accordion-toggle').bind('mousedown', function(event) {
         event.preventDefault();
         var $accordion = $(this).attr('href');
         var $name = $(this).data('name');
