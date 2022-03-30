@@ -69,6 +69,19 @@ button.expand-all.standard-btn {
         text-decoration: none;
         padding: 8px 35px 8px 10px;
         position: relative;
+        &:before {
+            @extend .fa;
+            @extend .fa-caret-down;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+        &.active {
+            &:before {
+                @extend .fa-caret-up;
+                top: 8px;
+            }
+        }
         &:hover,
         &:focus,
         &.active {
@@ -92,13 +105,13 @@ button.expand-all.standard-btn {
         &.active {
             border-color: var(--color-phil-ci-hell, $colorPhilFak);
             background-color: var(--color-phil-ci-hell, $colorPhilFak);
-            color: var(--color-phil-ci-hell-kontrast, #fff);
+            color: var(--color-phil-ci-hell-kontrast, #000);
         }
         &.active:hover,
         &.active:focus {
             border-color: var(--color-phil-dunkler, $colorPhilFakDunkler);
             background-color: var(--color-phil-dunkler, $colorPhilFakDunkler);
-            color: var(--color-phil-ci-hell-kontrast, #fff);
+            color: var(--color-phil-ci-hell-kontrast, #000);
         }
     }
     .rw .accordion-heading .accordion-toggle,
@@ -128,7 +141,7 @@ button.expand-all.standard-btn {
         &.active {
             border-color: var(--color-med-ci-hell, $colorMedFak);
             background-color: var(--color-med-ci-hell, $colorMedFak);
-            color: var(--color-med-ci-hell-kontrast, #fff);
+            color: var(--color-med-ci-hell-kontrast, #000);
         }
         &.active:hover,
         &.active:focus {
@@ -143,10 +156,11 @@ button.expand-all.standard-btn {
         border-color: var(--color-nat-ci-hell, $colorNatFak);
         &:hover,
         &:focus,
-        &.active {
+        &.active,
+        &.active:focus {
             border-color: var(--color-nat-ci-hell, $colorNatFak);
             background-color: var(--color-nat-ci-hell, $colorNatFak);
-            color: var(--color-nat-ci-hell-kontrast, #fff);
+            color: var(--color-nat-ci-hell-kontrast, #000);
         }
         &.active:hover,
         &.active:focus {
@@ -164,7 +178,7 @@ button.expand-all.standard-btn {
         &.active {
             border-color: var(--color-tf-ci-hell, $colorTechFak);
             background-color: var(--color-tf-ci-hell, $colorTechFak);
-            color: var(--color-tf-ci-dunkel-kontrast, #fff);
+            color: var(--color-tf-ci-dunkel-kontrast, #000);
         }
         &.active:hover,
         &.active:focus {
@@ -209,19 +223,6 @@ button.expand-all.standard-btn {
     }
     .accordion-toggle {
         @include border-radius(4px);
-        &:before {
-            @extend .fa;
-            @extend .fa-caret-down;
-            position: absolute;
-            top: 10px;
-            right: 10px;
-        }
-        &.active {
-            &:before {
-                @extend .fa-caret-up;
-                top: 8px;
-            }
-        }
     }
     .accordion-body {
         .accordion-inner {
