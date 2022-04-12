@@ -230,6 +230,11 @@ button.expand-all.standard-btn {
             @include border-bottom-radius(4px);
         }
     }
+    .accordion-group .accordion-body .accordion-inner {
+        .accordion-inner {
+            background-color: darken(#f5f7f9, 4%);
+        }
+    }
 }
 
 @media print {
