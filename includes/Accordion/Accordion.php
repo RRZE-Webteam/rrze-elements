@@ -146,7 +146,7 @@ class Accordion
         }
 
         $output = '<div class="accordion-group' . $color . '">';
-        $output .= "<$hlevel class=\"accordion-heading\"><button class=\"accordion-toggle\" data-toggle=\"collapse\" $dataname href=\"#collapse_$id\">$icon_hmtl $title $suffix_hmtl</button></$hlevel>";
+        $output .= "<$hlevel class=\"accordion-heading\"><span class=\"read-mode-only\">$title $suffix_hmtl</span><button class=\"accordion-toggle\" data-toggle=\"collapse\" $dataname href=\"#collapse_$id\">$icon_hmtl $title $suffix_hmtl</button></$hlevel>";
         $output .= '<div id="collapse_' . $id . '" class="accordion-body' . $addclass . '"' . $name . '>';
         $output .= '<div class="accordion-inner clearfix">';
 
