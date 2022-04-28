@@ -604,6 +604,11 @@ aside .content-slider.flexslider,
                 //width: 100%;
             }
         }
+        .teaserregion {
+            @media (min-width: 768px) {
+                min-width: 50%;
+            }
+        }
     }
 }
 
