@@ -83,7 +83,9 @@ class Main
 
         wp_register_style(
             'rrze-elements',
-            plugins_url('assets/css/rrze-elements.css', plugin_basename($this->pluginFile))
+            plugins_url('assets/css/rrze-elements.css', plugin_basename($this->pluginFile)),
+            [],
+            RRZE_ELEMENTS_VERSION
         );
     }
 }
