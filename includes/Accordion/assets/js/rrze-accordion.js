@@ -13,8 +13,8 @@ jQuery(document).ready(function($) {
     })
     $('.accordion').each(function() {
         if ($(this).find('button.expand-all').length > 0) {
-            let items = $(this).find(".accordion-group");
-            let open = $(this).find(".accordion-body.open");
+            var items = $(this).find(".accordion-group");
+            var open = $(this).find(".accordion-body.open");
             if (items.length == open.length) {
                 $(this).find('button.expand-all').attr("data-status", 'open').data('status', 'open').html(__('Collapse All', 'rrze-elements'));
                 //$(this).find('button.expand-all').attr("data-status", 'open').data('status', 'open').html(accordionToggle.collapse_all);
@@ -25,8 +25,8 @@ jQuery(document).ready(function($) {
 
     $('.accordion-toggle').bind('mousedown', function(event) {
         event.preventDefault();
-        let $accordion = $(this).attr('href');
-        let $name = $(this).data('name');
+        var $accordion = $(this).attr('href');
+        var $name = $(this).data('name');
         toggleAccordion($accordion);
         // Put name attribute in URL path if available, else href
         if (typeof($name) !== 'undefined') {
@@ -39,8 +39,8 @@ jQuery(document).ready(function($) {
     // Keyboard navigation for accordions
     $('.accordion-toggle').keydown(function(event) {
         if (event.keyCode == 32) {
-            let $accordion = $(this).attr('href');
-            let $name = $(this).data('name');
+            var $accordion = $(this).attr('href');
+            var $name = $(this).data('name');
             toggleAccordion($accordion);
             if (typeof($name) !== 'undefined') {
                 window.history.replaceState(null, null, '#' + $name);
@@ -51,14 +51,14 @@ jQuery(document).ready(function($) {
     });
 
     function toggleAccordion($accordion) {
-        let $thisgroup = $($accordion).closest('.accordion-group');
-        let $othergroups = $($accordion).closest('.accordion').find('.accordion-group').not($thisgroup);
+        var $thisgroup = $($accordion).closest('.accordion-group');
+        var $othergroups = $($accordion).closest('.accordion').find('.accordion-group').not($thisgroup);
         $($othergroups).children('.accordion-heading').children(' .accordion-toggle').removeClass('active');
         $($othergroups).children('.accordion-body').not('.accordion-body.stayopen').slideUp();
         $($thisgroup).children('.accordion-heading').children('.accordion-toggle').toggleClass('active');
         $($thisgroup).children('.accordion-body').slideToggle();
         // refresh Slick Gallery
-        let $slick = $($thisgroup).find("div.slick-slider");
+        var $slick = $($thisgroup).find("div.slick-slider");
             if ($slick.length < 0) {
                 $slick.slick("refresh");
             }
@@ -66,8 +66,8 @@ jQuery(document).ready(function($) {
 
     function openAnchorAccordion($target) {
         if ($target.closest('.accordion').parent().closest('.accordion-group')) {
-            let $thisgroup = $($target).closest('.accordion-group');
-            let $othergroups = $($target).closest('.accordion').find('.accordion-group').not($thisgroup);
+            var $thisgroup = $($target).closest('.accordion-group');
+            var $othergroups = $($target).closest('.accordion').find('.accordion-group').not($thisgroup);
             $($othergroups).find('.accordion-toggle').removeClass('active');
             $($othergroups).find('.accordion-body').not('.accordion-body.stayopen').slideUp();
             $($thisgroup).find('.accordion-toggle:first').not('.active').addClass('active');
@@ -76,24 +76,24 @@ jQuery(document).ready(function($) {
             $($thisgroup).parents('.accordion-group').find('.accordion-toggle:first').not('.active').addClass('active');
             $($thisgroup).parents('.accordion-body').slideDown();
         }
-        let offset = $target.offset();
-        let $scrolloffset = offset.top - 300;
+        var offset = $target.offset();
+        var $scrolloffset = offset.top - 300;
         $('html,body').animate({
             scrollTop: $scrolloffset
         }, 'slow');
     }
 
     if (window.location.hash) {
-        let identifier = window.location.hash.split('_')[0];
-        let inpagenum = window.location.hash.split('_')[1];
+        var identifier = window.location.hash.split('_')[0];
+        var inpagenum = window.location.hash.split('_')[1];
         if (identifier == '#collapse') {
             if ($.isNumeric(inpagenum)) {
-                let $findid = 'collapse_' + inpagenum;
-                let $target = $('body').find('#' + $findid);
+                var $findid = 'collapse_' + inpagenum;
+                var $target = $('body').find('#' + $findid);
             }
         } else {
-            let $findname = window.location.hash.replace('\#', '');
-            let $target = $('body').find('div[name=' + $findname + ']');
+            var $findname = window.location.hash.replace('\#', '');
+            var $target = $('body').find('div[name=' + $findname + ']');
         }
         if ($target.length > 0) {
             openAnchorAccordion($target);
@@ -106,17 +106,17 @@ jQuery(document).ready(function($) {
         if (($('[id^=accordion-]').length) &&
             (!$(this).hasClass("accordion-toggle")) &&
             (!$(this).hasClass("accordion-tabs-nav-toggle"))) {
-            let $hash = $(this).prop("hash");
-            let identifier = $hash.split('_')[0];
-            let inpagenum = $hash.split('_')[1];
+            var $hash = $(this).prop("hash");
+            var identifier = $hash.split('_')[0];
+            var inpagenum = $hash.split('_')[1];
             if (identifier == '#collapse') {
                 if ($.isNumeric(inpagenum)) {
-                    let $findid = 'collapse_' + inpagenum;
-                    let $target = $('body').find('#' + $findid);
+                    var $findid = 'collapse_' + inpagenum;
+                    var $target = $('body').find('#' + $findid);
                 }
             } else {
-                let $findname = identifier.replace('\#', '');
-                let $target = $('body').find('div[name=' + $findname + ']');
+                var $findname = identifier.replace('\#', '');
+                var $target = $('body').find('div[name=' + $findname + ']');
             }
             if ($target) {
                 openAnchorAccordion($target);
@@ -125,7 +125,7 @@ jQuery(document).ready(function($) {
     });
 
     $('.expand-all').click(function(e) {
-        let $thisgroup = $(this).closest('.accordion');
+        var $thisgroup = $(this).closest('.accordion');
         if ($(this).data('status') === 'open') {
             $($thisgroup).find('.accordion-body').slideUp();
             $($thisgroup).find('.accordion-toggle').removeClass('active');
@@ -140,7 +140,7 @@ jQuery(document).ready(function($) {
     // Assistant tabs
     $('.assistant-tabs-nav a').bind('click', function (event) {
         event.preventDefault();
-        let pane = $(this).attr('href');
+        var pane = $(this).attr('href');
         $(this).parents('ul').find('a').removeClass('active');
         $(this).addClass('active');
         $(this).parents('.assistant-tabs').find('.assistant-tab-pane').removeClass('assistant-tab-pane-active');
@@ -150,7 +150,7 @@ jQuery(document).ready(function($) {
     // Keyboard navigation for assistant tabs
     $('.assistant-tabs-nav a').keydown('click', function (event) {
         if (event.keyCode == 32) {
-            let pane = $(this).attr('href');
+            var pane = $(this).attr('href');
             $(this).parents('ul').find('a').removeClass('active');
             $(this).addClass('active');
             $(this).parents('.assistant-tabs').find('.assistant-tab-pane').removeClass('assistant-tab-pane-active');
