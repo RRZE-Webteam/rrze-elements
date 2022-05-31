@@ -66,6 +66,11 @@
     .slides .wp-caption img {
         max-width: 100%;
     }
+    .slides .person-thumb img {
+        max-width: 100%;
+        height: inherit;
+        width: inherit;
+    }
 }
 
 .content-slider.flexslider.carousel,
@@ -257,7 +262,10 @@ html[xmlns] .slides {
         margin-bottom: 0;
     }
     .carousel li { margin-right: 5px; }
-    .flex-direction-nav li {list-style-type: none;}
+    .flex-direction-nav li {
+        list-style-type: none;
+        padding: 0;
+    }
 
     h2 {
         border-bottom: 1px solid #ccc;
