@@ -51,6 +51,7 @@ class News
             'fau_settings'  => 'false',
             'forcelandscape' => 'false',
             'force_landscape' => 'false',
+            'sticky_only' => 'false'
         ], $atts);
         $sc_atts = array_map('sanitize_text_field', $sc_atts);
 
@@ -72,6 +73,7 @@ class News
         $thumbnailSize = 'post-thumbnail';
         $hideDuplicates = ($sc_atts['hideduplicates'] == 'true' || $sc_atts['hide_duplicates'] == 'true') ? true : false;
         $forceLandscape = ($sc_atts['forcelandscape'] == 'true' || $sc_atts['force_landscape'] == 'true') ? true : false;
+        $stickyOnly = ($sc_atts['sticky_only'] == 'true' || $sc_atts['sticky_only'] == 'true') ? true : false;
 
         $borderTop = '';
         if ($sc_atts['fau_settings'] == 'true') {
@@ -128,6 +130,9 @@ class News
             'posts_per_page' => $num,
             'ignore_sticky_posts' => 1
         ];
+        if ($stickyOnly === true) {
+            $args['post__in'] = get_option( 'sticky_posts' );
+        }
 
         $c_id = [];
         if ($cat != '') {
