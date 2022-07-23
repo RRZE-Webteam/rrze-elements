@@ -297,6 +297,7 @@ class News
                             'postCols' => $postCols,
                             'thumbnailSize' => $thumbnailSize,
                             'forceLandscape' => $forceLandscape,
+                            'showContent' => (in_array('show_content', $mode) ? true : false),
                         ];
                         $output .= do_shortcode('[column]' . $this->display_news_teaser($args) . '[/column]');
                     } elseif (!empty($postCols)) {
@@ -312,6 +313,7 @@ class News
                             'postCols' => $postCols,
                             'thumbnailSize' => $thumbnailSize,
                             'forceLandscape' => $forceLandscape,
+                            'showContent' => (in_array('show_content', $mode) ? true : false),
                         ];
                         $output .= do_shortcode($this->display_news_teaser($args));
                     } else {
@@ -326,6 +328,7 @@ class News
                                         'hstart' => $hstart,
                                         'imgfloat' => $imgfloat,
                                         'forceLandscape' => $forceLandscape,
+                                        'showContent' => (in_array('show_content', $mode) ? true : false),
                                     ];
                                     $output .= do_shortcode($this->display_news_teaser($args));
                                 }
@@ -340,6 +343,7 @@ class News
                                         'hstart' => $hstart,
                                         'imgfloat' => $imgfloat,
                                         'forceLandscape' => $forceLandscape,
+                                        'showContent' => (in_array('show_content', $mode) ? true : false),
                                     ];
                                     $output .= $this->display_news_teaser($args);
                                 }
@@ -354,6 +358,7 @@ class News
                                     'imgFirst' => $imgFirst,
                                     'postCols' => $postCols,
                                     'forceLandscape' => $forceLandscape,
+                                    'showContent' => (in_array('show_content', $mode) ? true : false),
                                 ];
                                 $output .= $this->display_news_teaser($args);
                         }
@@ -475,21 +480,25 @@ class News
 
 		if(!in_array('teaser', $hide)) {
 			// Content
-			$abstract = get_post_meta( $id, 'abstract', true );
-			if (strlen(trim($abstract))<3) {
-				if (function_exists('fau_custom_excerpt')) {
-					$abstract = fau_custom_excerpt($id, get_theme_mod('default_anleser_excerpt_length'),false,'',true, get_theme_mod('search_display_excerpt_morestring'));
-					if (function_exists('fau_create_readmore')) {
-						$abstract .= fau_create_readmore($permalink, get_the_title(), false, true);
-					}
-				} else {
-					$abstract = get_the_excerpt($id);
-				}
-			} else {
-				if (function_exists('fau_create_readmore')) {
-					$abstract .= fau_create_readmore($permalink, get_the_title(), false, true);
-				}
-			}
+            if ($args['showContent'] == true) {
+                $abstract = get_the_content(null, false, $id);
+            } else {
+                $abstract = get_post_meta( $id, 'abstract', true );
+                if (strlen(trim($abstract))<3) {
+                    if (function_exists('fau_custom_excerpt')) {
+                        $abstract = fau_custom_excerpt($id, get_theme_mod('default_anleser_excerpt_length'),false,'',true, get_theme_mod('search_display_excerpt_morestring'));
+                        if (function_exists('fau_create_readmore')) {
+                            $abstract .= fau_create_readmore($permalink, get_the_title(), false, true);
+                        }
+                    } else {
+                        $abstract = get_the_excerpt($id);
+                    }
+                } else {
+                    if (function_exists('fau_create_readmore')) {
+                        $abstract .= fau_create_readmore($permalink, get_the_title(), false, true);
+                    }
+                }
+            }
 			$output .= '<div class="entry-content" itemprop="description">' . $abstract . '</div>';
 		}
         if ($columns) {
