@@ -137,3 +137,17 @@
             color: $medium-blue;
         }
     }
+
+    .notice-thumbs-up {
+    @extend .fa-thumbs-up !optional;
+    &::before {
+        color: $green;
+    }
+}
+    .notice-thumbs-down {
+    @extend .fa-thumbs-down !optional;
+    &::before {
+        color: $red;
+    }
+}
+    
