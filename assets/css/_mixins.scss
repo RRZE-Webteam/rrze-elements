@@ -5,11 +5,9 @@ Functions and Mixins
 @function px2rem($font-size, $base-font-size: 16) {
   @return $font-size / $base-font-size + rem;
 }
-@mixin px2rem($font-size, $line: $font-size * 1.4, $base-font-size: 16) {
-    font-size: $font-size + px; // für den IE8
-    line-height: ($line) + px;
+@mixin px2rem($font-size, $line: 1.5, $base-font-size: 16) {
     font-size: px2rem($font-size, $base-font-size);
-    line-height: ($line / $base-font-size) + rem;
+    line-height: $line;
 }
 
 @mixin border-radius($radius) {

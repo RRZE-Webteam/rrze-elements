@@ -26,6 +26,8 @@ class Notice
         add_shortcode('notice-audio', [$this, 'shortcodeNotice']);
         add_shortcode('notice-download', [$this, 'shortcodeNotice']);
         add_shortcode('notice-faubox', [$this, 'shortcodeNotice']);
+        add_shortcode('notice-thumbs-up', [$this, 'shortcodeNotice']);
+        add_shortcode('notice-thumbs-down', [$this, 'shortcodeNotice']);
         /* Für die Abwärtskompatibilität der bereits in FAU-Einrichtungen
          * abwärtskompatiblen Shortcodes noch folgendes: */
         add_shortcode('attention', [$this, 'shortcodeNotice']);
@@ -50,7 +52,7 @@ class Notice
             'hstart' => '3'
         ], $atts));
 
-        $tag_array = explode('-', $tag);
+        $tag_array = explode('-', $tag, 2);
 
         if (count($tag_array) > 1) {
             $type = $tag_array[1];

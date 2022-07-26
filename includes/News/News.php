@@ -51,6 +51,7 @@ class News
             'fau_settings'  => 'false',
             'forcelandscape' => 'false',
             'force_landscape' => 'false',
+            'sticky_only' => 'false'
         ], $atts);
         $sc_atts = array_map('sanitize_text_field', $sc_atts);
 
@@ -72,6 +73,7 @@ class News
         $thumbnailSize = 'post-thumbnail';
         $hideDuplicates = ($sc_atts['hideduplicates'] == 'true' || $sc_atts['hide_duplicates'] == 'true') ? true : false;
         $forceLandscape = ($sc_atts['forcelandscape'] == 'true' || $sc_atts['force_landscape'] == 'true') ? true : false;
+        $stickyOnly = ($sc_atts['sticky_only'] == 'true' || $sc_atts['sticky_only'] == 'true') ? true : false;
 
         $borderTop = '';
         if ($sc_atts['fau_settings'] == 'true') {
@@ -128,6 +130,9 @@ class News
             'posts_per_page' => $num,
             'ignore_sticky_posts' => 1
         ];
+        if ($stickyOnly === true) {
+            $args['post__in'] = get_option( 'sticky_posts' );
+        }
 
         $c_id = [];
         if ($cat != '') {
@@ -292,6 +297,7 @@ class News
                             'postCols' => $postCols,
                             'thumbnailSize' => $thumbnailSize,
                             'forceLandscape' => $forceLandscape,
+                            'showContent' => (in_array('show_content', $mode) ? true : false),
                         ];
                         $output .= do_shortcode('[column]' . $this->display_news_teaser($args) . '[/column]');
                     } elseif (!empty($postCols)) {
@@ -307,6 +313,7 @@ class News
                             'postCols' => $postCols,
                             'thumbnailSize' => $thumbnailSize,
                             'forceLandscape' => $forceLandscape,
+                            'showContent' => (in_array('show_content', $mode) ? true : false),
                         ];
                         $output .= do_shortcode($this->display_news_teaser($args));
                     } else {
@@ -321,6 +328,7 @@ class News
                                         'hstart' => $hstart,
                                         'imgfloat' => $imgfloat,
                                         'forceLandscape' => $forceLandscape,
+                                        'showContent' => (in_array('show_content', $mode) ? true : false),
                                     ];
                                     $output .= do_shortcode($this->display_news_teaser($args));
                                 }
@@ -335,6 +343,7 @@ class News
                                         'hstart' => $hstart,
                                         'imgfloat' => $imgfloat,
                                         'forceLandscape' => $forceLandscape,
+                                        'showContent' => (in_array('show_content', $mode) ? true : false),
                                     ];
                                     $output .= $this->display_news_teaser($args);
                                 }
@@ -349,6 +358,7 @@ class News
                                     'imgFirst' => $imgFirst,
                                     'postCols' => $postCols,
                                     'forceLandscape' => $forceLandscape,
+                                    'showContent' => (in_array('show_content', $mode) ? true : false),
                                 ];
                                 $output .= $this->display_news_teaser($args);
                         }
@@ -470,21 +480,25 @@ class News
 
 		if(!in_array('teaser', $hide)) {
 			// Content
-			$abstract = get_post_meta( $id, 'abstract', true );
-			if (strlen(trim($abstract))<3) {
-				if (function_exists('fau_custom_excerpt')) {
-					$abstract = fau_custom_excerpt($id, get_theme_mod('default_anleser_excerpt_length'),false,'',true, get_theme_mod('search_display_excerpt_morestring'));
-					if (function_exists('fau_create_readmore')) {
-						$abstract .= fau_create_readmore($permalink, get_the_title(), false, true);
-					}
-				} else {
-					$abstract = get_the_excerpt($id);
-				}
-			} else {
-				if (function_exists('fau_create_readmore')) {
-					$abstract .= fau_create_readmore($permalink, get_the_title(), false, true);
-				}
-			}
+            if ($args['showContent'] == true) {
+                $abstract = get_the_content(null, false, $id);
+            } else {
+                $abstract = get_post_meta( $id, 'abstract', true );
+                if (strlen(trim($abstract))<3) {
+                    if (function_exists('fau_custom_excerpt')) {
+                        $abstract = fau_custom_excerpt($id, get_theme_mod('default_anleser_excerpt_length'),false,'',true, get_theme_mod('search_display_excerpt_morestring'));
+                        if (function_exists('fau_create_readmore')) {
+                            $abstract .= fau_create_readmore($permalink, get_the_title(), false, true);
+                        }
+                    } else {
+                        $abstract = get_the_excerpt($id);
+                    }
+                } else {
+                    if (function_exists('fau_create_readmore')) {
+                        $abstract .= fau_create_readmore($permalink, get_the_title(), false, true);
+                    }
+                }
+            }
 			$output .= '<div class="entry-content" itemprop="description">' . $abstract . '</div>';
 		}
         if ($columns) {
