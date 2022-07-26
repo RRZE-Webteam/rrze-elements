@@ -35,7 +35,7 @@ class Icon {
 			// Hex Colors
 			$inlineCSS = 'style="color: '.$args['color'].';"';
 		}
-		$output = '<i class="fa fa-'.$args['icon'].' ' . $styleParams . '" ' . $inlineCSS . 'aria-hidden="true" ></i>';
+		$output = '<i class="rrze-elements-icon fa fa-'.$args['icon'].' ' . $styleParams . '" ' . $inlineCSS . 'aria-hidden="true" ></i>';
 
 		wp_enqueue_style('fontawesome');
 		wp_enqueue_style('rrze-elements');
