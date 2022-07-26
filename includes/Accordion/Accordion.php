@@ -172,7 +172,7 @@ class Accordion
             plugins_url('assets/js/rrze-accordion.min.js', plugin_basename(__FILE__)),
             //plugins_url('assets/js/rrze-accordion.js', plugin_basename(__FILE__)),
             ['jquery', 'wp-i18n'],
-            '1.22.12'
+            '1.22.13'
         );
     }
 
