@@ -32,7 +32,7 @@ class Alert
             'font' => 'dark'
         ], $atts));
 
-        $style = (in_array($style, array('success', 'info', 'warning', 'danger'))) ? ' alert-' . $style : '';
+        $style = (in_array($style, array('success', 'info', 'warning', 'danger', 'example'))) ? ' alert-' . $style : '';
         $font = ($font == 'light') ? ' light' : '';
         $color = ((substr($color, 0, 1) == '#') && (in_array(strlen($color), [4, 7]))) ? 'background-color:' . $color . ';' : '';
         $border_color = ((substr($border_color, 0, 1) == '#') && (in_array(strlen($border_color), [4, 7]))) ? ' border:1px solid' . $border_color . ';' : '';
@@ -40,8 +40,11 @@ class Alert
         if ('' != $color || '' != $border_color || '' != $font) {
             $style = '';
         }
-
-        $output = '<div class="alert clearfix clear' . $style . $font . '" style="' . $color . $border_color . '">' . do_shortcode(($content)) . '</div>';
+		if (str_contains($style, 'example') !== false ) {
+			$output = '<div style="overflow: hidden;"><div class="example">' . do_shortcode(($content)) . '</div></div>';
+		} else {
+			$output = '<div class="alert clearfix clear' . $style . $font . '" style="' . $color . $border_color . '">' . do_shortcode(($content)) . '</div>';
+		}
 
         wp_enqueue_style('fontawesome');
         wp_enqueue_style('rrze-elements');
