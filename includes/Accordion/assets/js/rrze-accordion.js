@@ -17,8 +17,6 @@ jQuery(document).ready(function($) {
             var open = $(this).find(".accordion-body.open");
             if (items.length == open.length) {
                 $(this).find('button.expand-all').attr("data-status", 'open').data('status', 'open').html(__('Collapse All', 'rrze-elements'));
-                //$(this).find('button.expand-all').attr("data-status", 'open').data('status', 'open').html(accordionToggle.collapse_all);
-                //console.log("items = " + items.length + " open = " + open.length);
             }
         }
     });

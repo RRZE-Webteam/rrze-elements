@@ -1,0 +1,9 @@
+.elements-textcolumns {
+    column-gap: 2em;
+    padding-bottom: 1em;
+    figure {
+        -webkit-column-break-inside: avoid;
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+}

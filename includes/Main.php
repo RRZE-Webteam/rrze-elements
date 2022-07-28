@@ -15,6 +15,7 @@ use RRZE\Elements\Assistant\Assistant;
 use RRZE\Elements\News\News;
 use RRZE\Elements\Notice\Notice;
 use RRZE\Elements\PullDiv\PullDiv;
+//use RRZE\Elements\TextColumns\TextColumns;
 use RRZE\Elements\TimeLine\TimeLine;
 use RRZE\Elements\ContentIndex\ContentIndex;
 use RRZE\Elements\Lightbox\Lightbox;
@@ -50,7 +51,7 @@ class Main
 
         new TinyMCEButtons();
         new Lightbox();
-        new Accordion();
+        new Accordion($this->pluginFile);
         new Alert();
         new Button();
         new Columns();
@@ -66,7 +67,8 @@ class Main
         new Assistant();
 		new Symbols();
 		new Icon();
-	
+		//new TextColumns();
+
         $theme = wp_get_theme();
         if (in_array($theme->get('Name'), ['FAU Events', 'RRZE 2019'])) {
             new Gallery();

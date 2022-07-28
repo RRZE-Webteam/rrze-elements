@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RRZE Elements\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-20 16:29+0000\n"
+"POT-Creation-Date: 2022-01-20 16:45+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: \n"
 "Language-Team: RRZE-Webteam <webmaster@rrze.fau.de>\n"
@@ -29,11 +29,17 @@ msgstr ""
 msgid "Category"
 msgstr ""
 
+#: includes/Accordion/assets/js/rrze-accordion.js:17
+#: includes/Accordion/assets/js/rrze-accordion.js:130
+msgid "Collapse All"
+msgstr ""
+
 #: includes/Symbols/Symbols.php:23
 msgid "Erfüllt"
 msgstr ""
 
-#: includes/Accordion/Accordion.php:66
+#: includes/Accordion/Accordion.php:68
+#: includes/Accordion/assets/js/rrze-accordion.js:126
 msgid "Expand All"
 msgstr ""
 
@@ -43,6 +49,10 @@ msgstr ""
 
 #. URI of the plugin
 msgid "https://github.com/RRZE-Webteam/rrze-elements"
+msgstr ""
+
+#: includes/News/News.php:244 includes/News/News.php:246
+msgid "More news"
 msgstr ""
 
 #: includes/Symbols/Symbols.php:48
@@ -82,8 +92,4 @@ msgstr ""
 #: includes/News/News.php:459
 #, php-format
 msgid "View all posts in %s"
-msgstr ""
-
-#: includes/News/News.php:244 includes/News/News.php:246
-msgid "Weitere Artikel"
 msgstr ""

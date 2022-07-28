@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RRZE Elements\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-20 16:45+0000\n"
+"POT-Creation-Date: 2022-07-28 08:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: \n"
 "Language-Team: RRZE-Webteam <webmaster@rrze.fau.de>\n"
@@ -29,17 +29,11 @@ msgstr ""
 msgid "Category"
 msgstr ""
 
-#: includes/Accordion/assets/js/rrze-accordion.js:17
-#: includes/Accordion/assets/js/rrze-accordion.js:130
-msgid "Collapse All"
-msgstr ""
-
 #: includes/Symbols/Symbols.php:23
 msgid "Erfüllt"
 msgstr ""
 
 #: includes/Accordion/Accordion.php:68
-#: includes/Accordion/assets/js/rrze-accordion.js:126
 msgid "Expand All"
 msgstr ""
 
@@ -51,7 +45,8 @@ msgstr ""
 msgid "https://github.com/RRZE-Webteam/rrze-elements"
 msgstr ""
 
-#: includes/News/News.php:244 includes/News/News.php:246
+#: includes/News/News.php:249 includes/News/News.php:251
+#: includes/News/News.php:251
 msgid "More news"
 msgstr ""
 
@@ -59,7 +54,7 @@ msgstr ""
 msgid "Nicht erfüllt"
 msgstr ""
 
-#: includes/News/News.php:368
+#: includes/News/News.php:378
 msgid "No posts found."
 msgstr ""
 
@@ -75,21 +70,21 @@ msgstr ""
 msgid "RRZE Webteam"
 msgstr ""
 
-#: rrze-elements.php:70
+#: rrze-elements.php:71
 #, php-format
 msgid ""
 "The server is running PHP version %1$s. The Plugin requires at least PHP "
 "version %2$s."
 msgstr ""
 
-#: rrze-elements.php:72
+#: rrze-elements.php:73
 #, php-format
 msgid ""
 "The server is running WordPress version %1$s. The Plugin requires at least "
 "WordPress version %2$s."
 msgstr ""
 
-#: includes/News/News.php:459
+#: includes/News/News.php:469
 #, php-format
 msgid "View all posts in %s"
 msgstr ""
