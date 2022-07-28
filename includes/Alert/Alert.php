@@ -29,21 +29,31 @@ class Alert
             'style' => '',
             'color' => '',
             'border_color' => '',
-            'font' => 'dark'
+            'font' => 'dark',
+            'title' => '',
         ], $atts));
 
         $style = (in_array($style, array('success', 'info', 'warning', 'danger', 'example'))) ? ' alert-' . $style : '';
         $font = ($font == 'light') ? ' light' : '';
         $color = ((substr($color, 0, 1) == '#') && (in_array(strlen($color), [4, 7]))) ? 'background-color:' . $color . ';' : '';
         $border_color = ((substr($border_color, 0, 1) == '#') && (in_array(strlen($border_color), [4, 7]))) ? ' border:1px solid' . $border_color . ';' : '';
+		$isExample = str_contains($style, 'example');
+		$titleTag = '';
 
         if ('' != $color || '' != $border_color || '' != $font) {
             $style = '';
         }
-		if (str_contains($style, 'example') !== false ) {
-			$output = '<div style="overflow: hidden;"><div class="example">' . do_shortcode(($content)) . '</div></div>';
-		} else {
-			$output = '<div class="alert clearfix clear' . $style . $font . '" style="' . $color . $border_color . '">' . do_shortcode(($content)) . '</div>';
+
+	    $output = '';
+		if ($isExample) {
+			if ($title != '') {
+				$titleTag = ' title="' . esc_attr($title) . '"';
+			}
+			$output .= '<div style="overflow: hidden;">';
+		}
+		$output .= '<div class="alert clearfix clear' . $style . $font . '" style="' . $color . $border_color . '" ' . $titleTag . '>' . do_shortcode(($content)) . '</div>';
+	    if ($isExample) {
+		    $output .= '</div>';
 		}
 
         wp_enqueue_style('fontawesome');
