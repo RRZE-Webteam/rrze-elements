@@ -50,7 +50,7 @@ class Main
 
         new TinyMCEButtons();
         new Lightbox();
-        new Accordion();
+        new Accordion($this->pluginFile);
         new Alert();
         new Button();
         new Columns();

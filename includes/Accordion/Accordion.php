@@ -9,10 +9,12 @@ defined('ABSPATH') || exit;
  */
 class Accordion
 {
-    /**
+	protected $pluginFile;
+
+	/**
      * [__construct description]
      */
-    public function __construct()
+    public function __construct($pluginFile)
     {
         add_shortcode('collapsibles', [$this, 'shortcodeCollapsibles']);
         add_shortcode('accordion', [$this, 'shortcodeCollapsibles']);
@@ -23,6 +25,7 @@ class Accordion
         add_action('wp_enqueue_scripts', [$this, 'enqueueScripts']);
         add_action('wp_enqueue_scripts', [$this, 'enqueueScriptTranslations'], 100);
 
+		$this->pluginFile = $pluginFile;
     }
 
     /**
@@ -176,8 +179,8 @@ class Accordion
         );
     }
 
-    public static function enqueueScriptTranslations()
+    public function enqueueScriptTranslations()
     {
-       wp_set_script_translations('rrze-accordions', 'rrze-elements');
+		wp_set_script_translations('rrze-accordions', 'rrze-elements',plugin_dir_path( $this->pluginFile ) . 'languages/');
     }
 }
