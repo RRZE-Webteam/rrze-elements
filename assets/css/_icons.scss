@@ -4,13 +4,20 @@ a {
         border-radius: 50%;
         color: var(--color-button-bg, #1f4c7a);
 }
-    &:has(i.fa.rrze-elements-icon) {
-        box-shadow: none; // fix für FAU-Themes
-    }
+    //&:has(i.fa.rrze-elements-icon) {
+        //box-shadow: none; // fix für FAU-Themes
+    //}
 }
 a:hover, a:focus, a:active {
     & > i.fa.rrze-elements-icon {
         background-color: var(--color-button-bg, #1f4c7a);
         color: var(--color-button-text, #ffffff);
     }
+}
+
+a.icon,
+a.icon:hover,
+a.icon:focus,
+a.icon:active {
+    box-shadow: none; // fix für FAU-Themes
 }
