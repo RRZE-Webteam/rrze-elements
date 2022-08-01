@@ -1,9 +1,23 @@
 .elements-textcolumns {
-    column-gap: 2em;
+    column-gap: 1.5em;
     padding-bottom: 1em;
+    > * {
+        margin-top: 0;
+    }
+    p {
+        text-align: justify; hyphens:auto;
+        orphans: 3;
+        widows: 3;
+    }
     figure {
-        -webkit-column-break-inside: avoid;
-        page-break-inside: avoid;
         break-inside: avoid;
+        page-break-inside: avoid;
+    }
+    &.font-light {
+        * {
+            color: #fff;
+            letter-spacing: .02em;
+        }
     }
 }
+

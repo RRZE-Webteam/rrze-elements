@@ -15,16 +15,43 @@ class TextColumns {
 		$defaults = array(
 			'number' => '2',
 			'width' => '240',
-			'rule' => 'true'
-			//'rule'
+			'rule' => 'true',
+			'rule-color' => 'var(--color-ContentBorders, #C3C3CB)',
+			'background-color' => '',
+			'border-color' => '',
+			'font' => 'dark',
 		);
 		$args = shortcode_atts($defaults, $atts);
 		$count = absint($args['number']);
 		$width = absint($args['width']);
-		$rule = $args['rule'] == 'true' ? ' column-rule: 1px solid var(--color-TextLight, #C3C3CB);' : '';
+		$ruleColor = esc_attr($args['rule-color']);
+		$backgroundColor = esc_attr($args['background-color']);
+		$borderColor = esc_attr($args['border-color']);
+
+		$css = [
+			"column-count: $count;",
+			"column-width: $width\px;",
+		];
+		if ($args['rule'] == 'true') {
+			$css[] = "column-rule: 1px solid $ruleColor;";
+		}
+		if ($backgroundColor != '') {
+			$css[] = "background-color: $backgroundColor;";
+		}
+		if ($borderColor != '') {
+			$css[] = "border: 1px solid $borderColor;";
+		}
+		if ($backgroundColor != '' || $borderColor != '') {
+			$css[] = 'padding: .8em;';
+		}
+		if ($args['font'] == 'light') {
+			$class = 'font-light';
+		} else {
+			$class = '';
+		}
 
 		wp_enqueue_style('rrze-elements');
-		return '<div class="elements-textcolumns" style="column-count: '.$count.'; column-width: '.$width.'px;'.$rule.'">' . do_shortcode(($content)) . '</div>';
+		return '<div class="elements-textcolumns '.$class.'" style="' . implode(' ', $css) . '">' . do_shortcode(($content)) . '</div>';
 	}
 
 }

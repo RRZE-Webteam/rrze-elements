@@ -15,7 +15,7 @@ use RRZE\Elements\Assistant\Assistant;
 use RRZE\Elements\News\News;
 use RRZE\Elements\Notice\Notice;
 use RRZE\Elements\PullDiv\PullDiv;
-//use RRZE\Elements\TextColumns\TextColumns;
+use RRZE\Elements\TextColumns\TextColumns;
 use RRZE\Elements\TimeLine\TimeLine;
 use RRZE\Elements\ContentIndex\ContentIndex;
 use RRZE\Elements\Lightbox\Lightbox;
@@ -67,7 +67,7 @@ class Main
         new Assistant();
 		new Symbols();
 		new Icon();
-		//new TextColumns();
+		new TextColumns();
 
         $theme = wp_get_theme();
         if (in_array($theme->get('Name'), ['FAU Events', 'RRZE 2019'])) {
