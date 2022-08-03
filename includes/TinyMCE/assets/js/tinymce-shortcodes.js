@@ -140,7 +140,7 @@
             ]
         });
         menuItems.push({
-            text: 'Mehrspaltige Inhalte',
+            text: 'Mehrspaltige Inhalte (früher: Mehrspaltiger Text)',
             menu: [{
                     type: 'menuitem',
                     text: 'Zwei Spalten: 1/2 - 1/2',
