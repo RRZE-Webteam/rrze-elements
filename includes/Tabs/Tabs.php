@@ -42,7 +42,7 @@ class Tabs
 	    preg_match_all('(title="(.*?)")',$content, $matches);
 	    $titles = array_filter($matches[1], function($value) { return $value !== ''; });
 	    if (!empty($titles)) {
-		    $output .= '<ul role="tablist" class="tablist clear clearfix">';
+		    $output .= '<ul role="tablist" class="tablist clear clearfix hide-in-print">';
 			$tabIndex = 'aria-selected="true"';
 		    foreach ($titles as $title) {
 				$slug = sanitize_title($title);
@@ -121,7 +121,8 @@ class Tabs
 
 		$slug = sanitize_title($title);
 		$output = '<section role="tabpanel" id="section_'.$slug.'" aria-labelledby="tab_'.$slug.'">';
-		$output .= do_shortcode($content);
+	    $output .= '<h1 class="print-only">'.$title.'</h1>';
+	    $output .= do_shortcode($content);
 		$output .= '</section>';
 
         wp_enqueue_style('fontawesome');
