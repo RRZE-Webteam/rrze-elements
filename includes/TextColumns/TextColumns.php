@@ -20,6 +20,7 @@ class TextColumns {
 			'background-color' => '',
 			'border-color' => '',
 			'font' => 'dark',
+			'style' => '',
 		);
 		$args = shortcode_atts($defaults, $atts);
 		$count = absint($args['number']);
@@ -27,6 +28,7 @@ class TextColumns {
 		$ruleColor = esc_attr($args['rule-color']);
 		$backgroundColor = esc_attr($args['background-color']);
 		$borderColor = esc_attr($args['border-color']);
+		$style = (in_array($args['style'], array('success', 'info', 'warning', 'danger', 'example'))) ? ' alert-' . $args['style'] : '';
 
 		$css = [
 			"column-count: $count;",
@@ -49,9 +51,12 @@ class TextColumns {
 		} else {
 			$class = '';
 		}
+		if (in_array($args['style'], array('success', 'info', 'warning', 'danger', 'example'))) {
+			$class .= ' alert alert-' . $args['style'];
+		}
 
 		wp_enqueue_style('rrze-elements');
-		return '<div class="elements-textcolumns '.$class.'" style="' . implode(' ', $css) . '">' . do_shortcode(($content)) . '</div>';
+		return '<div class="elements-textcolumns '.$class.'" ' . 'style="' . implode(' ', $css) . '">' . do_shortcode($content) . '</div>';
 	}
 
 }

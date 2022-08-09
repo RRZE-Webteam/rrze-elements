@@ -50,6 +50,7 @@
             @media (min-width: 550px) {
                 border: 1px solid;
                 background: #fff;
+                border-color: var(--color-primary-ci-hell, #04316a);
                 border-bottom-color: #fff;
                 color: unset;
             }
@@ -75,6 +76,9 @@
             padding: 0;
             position: relative;
             top: 1px;
+            @supports (-webkit-hyphens:none) { // Safari hack
+                top: 1.5px;
+            }
         }
     }
     [role="tabpanel"] {

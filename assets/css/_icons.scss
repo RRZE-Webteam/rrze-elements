@@ -1,15 +1,15 @@
-a {
-    & > i.fa.rrze-elements-icon {
+svg.rrze-elements-icon {
+    vertical-align: baseline;
+    box-shadow: none;
+    position: relative;
+    top: 1px;
+    a > & {
         padding: .2em .2em .15em;
-        border-radius: 50%;
+        border-radius: 50% !important   ;
         color: var(--color-button-bg, #1f4c7a);
-}
-    //&:has(i.fa.rrze-elements-icon) {
-        //box-shadow: none; // fix für FAU-Themes
-    //}
-}
-a:hover, a:focus, a:active {
-    & > i.fa.rrze-elements-icon {
+        box-shadow: none;
+    }
+    a:hover > &, a:focus > &, a:active > & {
         background-color: var(--color-button-bg, #1f4c7a);
         color: var(--color-button-text, #ffffff);
     }

@@ -67,7 +67,7 @@ class Main
         new LegalText();
         new Assistant();
 		new Symbols();
-		new Icon();
+		new Icon($this->pluginFile);
 		new TextColumns();
 		new Tabs();
 
