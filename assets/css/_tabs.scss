@@ -21,18 +21,10 @@
             padding: 0;
         }
         a {
-            border: 1px solid var(--color-submenu-currentlevel-bg, #ced9e7);
-            border-bottom-color: var(--color-primary-ci-hell, #04316a);
-            background-color: var(--color-submenu-currentlevel-bg, #ced9e7);
-            color: var(--color-submenu-currentlevel-text, #000);
             transition: none;
             box-shadow: none;
             text-decoration: none;
             padding: .25em;
-            &:hover, &:focus, &:active {
-                color: inherit;
-                border-color: var(--color-primary-ci-hell, #04316a);
-            }
             @media (min-width: 550px) {
                 text-decoration: none;
                 padding: 0.5rem 1em;
@@ -40,31 +32,11 @@
                 border-top-right-radius: 4px;
             }
         }
-        li + li a {
-            //border-top: 0;
-        }
         [aria-selected] {
             font-weight: bold;
-            background: var(--color-primary-ci-hell, #04316a);
-            color: var(--color-primary-ci-hell-kontrast, #fff);
             @media (min-width: 550px) {
                 border: 1px solid;
-                background: #fff;
-                border-color: var(--color-primary-ci-hell, #04316a);
-                border-bottom-color: #fff;
-                color: unset;
             }
-            &:hover, &:focus, &:active {
-                background: var(--color-primary-ci-hell, #04316a);
-                color: var(--color-primary-ci-hell-kontrast, #fff);
-                border-bottom-color: var(--color-primary-ci-hell, #04316a);
-                @media (min-width: 550px) {
-                    background: #fff;
-                    border-bottom-color: #fff;
-                    color: unset;
-                }
-            }
-
             &::after {
                 //content: '\0020⬅';
                 @media (min-width: 550px) {
@@ -82,19 +54,14 @@
         }
     }
     [role="tabpanel"] {
-        border: 1px solid var(--color-primary-ci-hell, #04316a);
         padding: 1.5rem;
         border-top: 0;
         overflow: hidden;
-        @media (min-width: 550px) {
-            border-top: 1px solid var(--color-primary-ci-hell, #04316a);
-        }
         * + * {
             margin-top: 0.75rem;
         }
         @media print {
             display: block;
-            border-top: 1px solid var(--color-primary-ci-hell, #04316a);
             margin-bottom: 10px;
             h1 {
                 margin-top: 0 !important;
@@ -110,6 +77,64 @@
     .hide-in-print {
         @media print {
             display: none !important;
+        }
+    }
+}
+
+$colors: "primary", "zentral", "phil", "med", "nat", "rw", "tf";
+@each $color in $colors {
+    .rrze-elements-tabs.#{$color} {
+        [role="tablist"] {
+            a {
+                border: 1px solid var(--color-#{$color}-ci-hell2, #cfe0d8);
+                border-bottom-color: var(--color-#{$color}-ci-hell, #7bb725);
+                background-color: var(--color-#{$color}-ci-hell2, #cfe0d8);
+                color: var(--color-#{$color}-ci-hell2-kontrast, #000);
+                &:hover, &:focus, &:active {
+                    color: inherit;
+                    border-color: var(--color-#{$color}-ci-hell, #04316a);
+                }
+                @media (min-width: 550px) {
+                    border-top: 1px solid var(--color-#{$color}-ci-hell2, #cfe0d8);
+                    &:hover, &:focus, &:active {
+                        color: inherit;
+                        border-color: var(--color-#{$color}-ci-hell, #7bb725);
+                    }
+                }
+            }
+            [aria-selected] {
+                background: var(--color-#{$color}-ci-hell, #7bb725);
+                color: var(--color-#{$color}-ci-hell-kontrast, #000);
+                border-color: var(--color-#{$color}-ci-hell, #7bb725);
+                @media (min-width: 550px) {
+                    border: 1px solid;
+                    background: #fff;
+                    border-color: var(--color-#{$color}-ci-hell, #7bb725);
+                    border-bottom-color: #fff;
+                    color: unset;
+                }
+                &:hover, &:focus, &:active {
+                    background: var(--color-#{$color}-ci-hell, #7bb725);
+                    color: var(--color-#{$color}-ci-hell-kontrast, #fff);
+                    border-bottom-color: var(--color-#{$color}-ci-hell, #04316a);
+                    @media (min-width: 550px) {
+                        background: #fff;
+                        border-bottom-color: #fff;
+                        color: unset;
+                    }
+                }
+
+            }
+        }
+        [role="tabpanel"] {
+            border: 1px solid var(--color-#{$color}-ci-hell, #7bb725);
+            border-top: 0;
+            @media (min-width: 550px) {
+                border-top: 1px solid var(--color-#{$color}-ci-hell, #04316a);
+            }
+            @media print {
+                border-top: 1px solid var(--color-primary-ci-hell, #04316a);
+            }
         }
     }
 }

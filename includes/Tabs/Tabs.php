@@ -35,9 +35,16 @@ class Tabs
         }
         $GLOBALS['tabs_id'] = $GLOBALS['tabs_count'];
 
-        //$defaults = [];
-        //$args = shortcode_atts($defaults, $atts);
-        $output = '<div class="rrze-elements-tabs">';
+        $defaults = [
+			'color' => 'primary',
+        ];
+        $args = shortcode_atts($defaults, $atts);
+		$color = in_array($args['color'], ['primary', 'fau', 'zuv', 'phil', 'nat', 'med', 'rw', 'tf']) ? $args['color'] : '';
+		if ($color == 'fau' || $color == 'zuv') {
+			$color = 'zentral';
+	    }
+
+		$output = '<div class="rrze-elements-tabs ' . $color . '">';
 
 	    preg_match_all('(title="(.*?)")',$content, $matches);
 	    $titles = array_filter($matches[1], function($value) { return $value !== ''; });
