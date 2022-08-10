@@ -46,14 +46,21 @@ class Tabs
 
 		$output = '<div class="rrze-elements-tabs ' . $color . '">';
 
-	    preg_match_all('(title="(.*?)")',$content, $matches);
-	    $titles = array_filter($matches[1], function($value) { return $value !== ''; });
-	    if (!empty($titles)) {
-		    $output .= '<ul role="tablist" class="tablist clear clearfix hide-in-print">';
+	    preg_match_all('(title="(.*?)")',$content, $matchesTitles);
+	    $titles = array_filter($matchesTitles[1], function($value) { return $value !== ''; });
+	    preg_match_all('(icon="(.*?)")',$content, $matchesIcons);
+	    $icons = array_filter($matchesIcons[1], function($value) { return $value !== ''; });
+		if (!empty($titles)) {
+		    $output .= '<ul class="tablist clear clearfix hide-in-print">';
 			$tabIndex = 'aria-selected="true"';
-		    foreach ($titles as $title) {
+		    foreach ($titles as $i => $title) {
 				$slug = sanitize_title($title);
-			    $output .= '<li role="presentation"><a role="tab" '. $tabIndex .' href="#'.$slug.'" id="tab_'.$slug.'">' . $title . '</a></li>';
+				if ($icons[$i] != '') {
+					$icon = do_shortcode('[icon icon="'.$icons[$i].'"]');
+				} else {
+					$icon = '';
+				}
+			    $output .= '<li role="presentation"><a role="tab" '. $tabIndex .' href="#'.$slug.'" id="tab_'.$slug.'">' /*. $icon*/ . $title . '</a></li>';
 		        $tabIndex = 'tabindex="-1"';
 			}
 		    $output .= '</ul>';
@@ -108,11 +115,11 @@ class Tabs
             $addclass .= " " . $load;
         }
 
-        $icon_hmtl = '';
-        if (!empty($icon)) {
-            $icon_hmtl = "<span class=\"accordion-icon fa fa-$icon\" aria-hidden=\"true\"></span> " ;
-        }
-        $suffix_hmtl = '';
+	    $icon_html = '';
+	    if (!empty($icon)) {
+		    $icon_html .= do_shortcode('[icon icon="'.$icon.'"] ');
+	    }
+	    $suffix_hmtl = '';
         if (!empty($suffix)) {
             $suffix_hmtl = "<span class=\"accordion-suffix\">$suffix</span>" ;
         }
@@ -128,7 +135,7 @@ class Tabs
 
 		$slug = sanitize_title($title);
 		$output = '<section role="tabpanel" id="section_'.$slug.'" aria-labelledby="tab_'.$slug.'">';
-	    $output .= '<h1 class="print-only">'.$title.'</h1>';
+	    $output .= '<h1 class="print-only">'.$icon_html . $title. '</h1>';
 	    $output .= do_shortcode($content);
 		$output .= '</section>';
 

@@ -134,9 +134,9 @@ class Accordion
             $addclass .= " " . $load;
         }
 
-        $icon_hmtl = '';
+        $icon_html = '';
         if (!empty($icon)) {
-            $icon_hmtl = "<span class=\"accordion-icon fa fa-$icon\" aria-hidden=\"true\"></span> " ;
+            $icon_html .= do_shortcode('[icon icon="'.$icon.'"]');
         }
         $suffix_hmtl = '';
         if (!empty($suffix)) {
@@ -149,7 +149,7 @@ class Accordion
         }
 
         $output = '<div class="accordion-group' . $color . '">';
-        $output .= "<$hlevel class=\"accordion-heading\"><span class=\"read-mode-only\">$title $suffix_hmtl</span><button class=\"accordion-toggle\" data-toggle=\"collapse\" $dataname href=\"#collapse_$id\">$icon_hmtl $title $suffix_hmtl</button></$hlevel>";
+        $output .= "<$hlevel class=\"accordion-heading\"><span class=\"read-mode-only\">$title $suffix_hmtl</span><button class=\"accordion-toggle\" data-toggle=\"collapse\" $dataname href=\"#collapse_$id\">$icon_html $title $suffix_hmtl</button></$hlevel>";
         $output .= '<div id="collapse_' . $id . '" class="accordion-body' . $addclass . '"' . $name . '>';
         $output .= '<div class="accordion-inner clearfix">';
 

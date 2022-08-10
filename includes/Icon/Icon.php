@@ -32,6 +32,12 @@ class Icon {
 		}
 		$path = plugin_dir_path( $this->pluginFile ) . 'assets/svg/';
 		$file = $path . $subset . '/' . $icon . '.svg';
+		if (!file_exists($file) && str_contains($icon, '-')) {
+			// For backwards compatibility In prior versions circle-user icon was named user-circle :-)
+			$iconParts = explode('-', $icon, 2);
+			$icon = $iconParts[1].'-'.$iconParts[0];
+			$file = $path . $subset . '/' . $icon . '.svg';
+		}
 		if (!file_exists($file)) {
 			return '<span style="background-color: var(--color-Negative, #a71c18); color: var(--color-Negative-Kontrast, #ffffff); padding: 0 5px;">' . __('Icon not found.', 'rrze-elements') . '</span>';
 		}
