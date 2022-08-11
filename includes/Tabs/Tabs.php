@@ -46,25 +46,34 @@ class Tabs
 
 		$output = '<div class="rrze-elements-tabs ' . $color . '">';
 
-	    preg_match_all('(title="(.*?)")',$content, $matchesTitles);
-	    $titles = array_filter($matchesTitles[1], function($value) { return $value !== ''; });
-	    preg_match_all('(icon="(.*?)")',$content, $matchesIcons);
-	    $icons = array_filter($matchesIcons[1], function($value) { return $value !== ''; });
-		if (!empty($titles)) {
-		    $output .= '<ul class="tablist clear clearfix hide-in-print">';
-			$tabIndex = 'aria-selected="true"';
-		    foreach ($titles as $i => $title) {
-				$slug = sanitize_title($title);
-				if ($icons[$i] != '') {
-					$icon = do_shortcode('[icon icon="'.$icons[$i].'"]');
-				} else {
-					$icon = '';
-				}
-			    $output .= '<li role="presentation"><a role="tab" '. $tabIndex .' href="#'.$slug.'" id="tab_'.$slug.'">' /*. $icon*/ . $title . '</a></li>';
-		        $tabIndex = 'tabindex="-1"';
-			}
-		    $output .= '</ul>';
+	    preg_match_all('(\[tab(.*?)\])',$content, $matchesTabs);
+		$matchesTitles = [];
+	    $matchesIcons = [];
+	    $matchesSuffix = [];
+		foreach ($matchesTabs[1] as $i => $tab) {
+			preg_match('(title="(.*?)")',$tab, $matchesTitles[$i]);
+			preg_match('(icon="(.*?)")',$tab, $matchesIcons[$i]);
+			preg_match('(suffix="(.*?)")',$tab, $matchesSuffix[$i]);
+		}
+	    $output .= '<ul class="tablist clear clearfix hide-in-print">';
+	    $tabIndex = 'aria-selected="true"';
+	    foreach ( $matchesTitles as $i => $matchesTitle ) {
+		    $title = $matchesTitle[1];
+		    $slug = sanitize_title($title);
+		    if (isset($matchesIcons[$i][1]) && $matchesIcons[$i][1] != '') {
+			    $icon = do_shortcode('[icon icon="'.$matchesIcons[$i][1].'"]');
+		    } else {
+			    $icon = '';
+		    }
+		    if (isset($matchesSuffix[$i][1]) && $matchesSuffix[$i][1] != '') {
+				$suffix = '<span class="tab-suffix">' . $matchesSuffix[$i][1] . '</span>';
+		    } else {
+			    $suffix = '';
+		    }
+		    $output .= '<li role="presentation"><a role="tab" '. $tabIndex .' href="#'.$slug.'" id="tab_'.$slug.'">' . $icon . $title . $suffix . '</a></li>';
+		    $tabIndex = 'tabindex="-1"';
 	    }
+	    $output .= '</ul>';
 
         $output .= do_shortcode($content);
         $output .= '</div>';
@@ -156,7 +165,7 @@ class Tabs
             //plugins_url('assets/js/rrze-tabs.min.js', plugin_basename(__FILE__)),
             plugins_url('assets/js/rrze-tabs.js', plugin_basename(__FILE__)),
             ['jquery'],
-            '1.23.1'
+            '1.24.0'
         );
     }
 }

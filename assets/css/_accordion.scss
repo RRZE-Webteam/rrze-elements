@@ -266,3 +266,7 @@ button.expand-all.standard-btn {
 .read-mode-only {
     display: none;
 }
+
+.admin-bar #content main .accordion-body:target {
+    padding-top: 0;
+}
