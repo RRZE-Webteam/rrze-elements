@@ -1,0 +1,95 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: RRZE Elements\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-05-17 15:15+0000\n"
+"PO-Revision-Date: 2022-07-28 08:25+0000\n"
+"Last-Translator: RRZE Webteam <webmaster@fau.de>\n"
+"Language-Team: Deutsch\n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
+"_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_ex:1,2c;"
+"esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: ..\n"
+"X-Loco-Version: 2.2.2; wp-5.2"
+
+#. Description of the plugin
+msgid "Advanced design elements for WordPress websites."
+msgstr "Erweiterte Gestaltungselemente für WordPress-Websites."
+
+#: includes/ContentIndex/ContentIndex.php:250
+msgid "Category"
+msgstr "Kategorie"
+
+#: includes/Symbols/Symbols.php:23
+msgid "Erfüllt"
+msgstr "Erfüllt"
+
+#: includes/Accordion/Accordion.php:68
+msgid "Expand All"
+msgstr "Alle öffnen"
+
+#. Author URI of the plugin
+msgid "https://blogs.fau.de/webworking/"
+msgstr "https://blogs.fau.de/webworking/"
+
+#. URI of the plugin
+msgid "https://github.com/RRZE-Webteam/rrze-elements"
+msgstr "https://github.com/RRZE-Webteam/rrze-elements"
+
+#: includes/News/News.php:249 includes/News/News.php:251
+#: includes/News/News.php:251
+msgid "More news"
+msgstr "Weitere Artikel"
+
+#: includes/Symbols/Symbols.php:48
+msgid "Nicht erfüllt"
+msgstr "Nicht erfüllt"
+
+#: includes/News/News.php:378
+msgid "No posts found."
+msgstr "Keine Beiträge gefunden."
+
+#: includes/HiddenText/HiddenText.php:39
+msgid "Please use a valid date format: Y-m-d H:i:s."
+msgstr ""
+"Ungültiges Datumsformat. Bitte verwenden Sie ein Datum im Format Y-m-d H:i:s."
+
+#. Name of the plugin
+msgid "RRZE Elements"
+msgstr "RRZE Elements"
+
+#. Author of the plugin
+msgid "RRZE Webteam"
+msgstr "RRZE-Webteam"
+
+#: rrze-elements.php:71
+#, php-format
+msgid ""
+"The server is running PHP version %1$s. The Plugin requires at least PHP "
+"version %2$s."
+msgstr ""
+"Auf dem Server läuft PHP Version %1$s. Das Plugin benötigt mindestens PHP "
+"Version %2$s."
+
+#: rrze-elements.php:73
+#, php-format
+msgid ""
+"The server is running WordPress version %1$s. The Plugin requires at least "
+"WordPress version %2$s."
+msgstr ""
+"The server is running WordPress version %1$s. The Plugin requires at least "
+"WordPress version %2$s."
+
+#: includes/News/News.php:469
+#, php-format
+msgid "View all posts in %s"
+msgstr "Alle Beiträge in %s anzeigen"

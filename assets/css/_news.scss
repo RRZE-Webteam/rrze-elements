@@ -7,13 +7,11 @@
         width: 100%;
     }
     .entry-date:before {
-        @extend .fa;
-        @extend .fa-calendar;
+        content: url('assets/svg/solid/calendar.svg');
         margin-right: 5px;
     }
     .entry-cats:before {
-        @extend .fa;
-        @extend .fa-tag;
+        content: url('assets/svg/solid/tag.svg');
         margin-right: 5px;
     }
     .float-left {

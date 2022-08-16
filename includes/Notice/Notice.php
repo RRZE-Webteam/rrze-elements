@@ -61,9 +61,61 @@ class Notice
         }
         $class = ($title == '' ? ' no-title' : '');
         $hstart = intval($hstart);
+		switch ($type) {
+			case 'baustelle':
+				$icon = 'wrench';
+				$alt = __('Tools', 'rrze-elements');
+				break;
+			case 'question':
+				$icon = 'circle-question';
+				$alt = __('Question', 'rrze-elements');
+				break;
+			case 'minus':
+				$icon = 'circle-minus';
+				$alt = __('Minus', 'rrze-elements');
+				break;
+			case 'plus':
+				$icon = 'circle-plus';
+				$alt = __('Plus', 'rrze-elements');
+				break;
+			case 'tipp':
+				$icon = 'regular lightbulb';
+				$alt = __('Tipp', 'rrze-elements');
+				break;
+			case 'download':
+				$icon = 'download';
+				$alt = __('Download', 'rrze-elements');
+				break;
+			case 'faubox':
+				$icon = 'cloud-arrow-down';
+				$alt = __('Cloud', 'rrze-elements');
+				break;
+			case 'audio':
+				$icon = 'volume-high';
+				$alt = __('Audio', 'rrze-elements');
+				break;
+			case 'video':
+				$icon = 'video';
+				$alt = __('Video', 'rrze-elements');
+				break;
+			case 'thumbs-up':
+				$icon = 'thumbs-up';
+				$alt = __('Thumbs up', 'rrze-elements');
+				break;
+			case 'thumbs-down':
+				$icon = 'thumbs-down';
+				$alt = __('Thumbs down', 'rrze-elements');
+				break;
+			case 'alert':
+			case 'attention':
+			default:
+				$icon = 'solid circle-exclamation';
+				$alt = __('Exclamation mark', 'rrze-elements');
+		}
 
         $output = '<div class="notice notice-' . $type . $class . '">';
-        if (isset($title) && $title != '') {
+	    $output .= do_shortcode('[icon icon="'.$icon.'" style="2x" alt="' . $alt . '"]');
+	    if (isset($title) && $title != '') {
             $output .= "<h$hstart>" . $title . "</h$hstart>";
         }
         $output .= '<p>' . do_shortcode($content) . '</p></div>';

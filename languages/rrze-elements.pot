@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RRZE Elements\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-28 08:25+0000\n"
+"POT-Creation-Date: 2022-08-15 12:37+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: \n"
 "Language-Team: RRZE-Webteam <webmaster@rrze.fau.de>\n"
@@ -25,15 +25,31 @@ msgstr ""
 msgid "Advanced design elements for WordPress websites."
 msgstr ""
 
+#: includes/Notice/Notice.php:95
+msgid "Audio"
+msgstr ""
+
 #: includes/ContentIndex/ContentIndex.php:250
 msgid "Category"
+msgstr ""
+
+#: includes/Notice/Notice.php:91
+msgid "Cloud"
+msgstr ""
+
+#: includes/Notice/Notice.php:87
+msgid "Download"
 msgstr ""
 
 #: includes/Symbols/Symbols.php:23
 msgid "Erfüllt"
 msgstr ""
 
-#: includes/Accordion/Accordion.php:68
+#: includes/Notice/Notice.php:113
+msgid "Exclamation mark"
+msgstr ""
+
+#: includes/Accordion/Accordion.php:71
 msgid "Expand All"
 msgstr ""
 
@@ -43,6 +59,14 @@ msgstr ""
 
 #. URI of the plugin
 msgid "https://github.com/RRZE-Webteam/rrze-elements"
+msgstr ""
+
+#: includes/Icon/Icon.php:42
+msgid "Icon not found."
+msgstr ""
+
+#: includes/Notice/Notice.php:75
+msgid "Minus"
 msgstr ""
 
 #: includes/News/News.php:249 includes/News/News.php:251
@@ -60,6 +84,14 @@ msgstr ""
 
 #: includes/HiddenText/HiddenText.php:39
 msgid "Please use a valid date format: Y-m-d H:i:s."
+msgstr ""
+
+#: includes/Notice/Notice.php:79
+msgid "Plus"
+msgstr ""
+
+#: includes/Notice/Notice.php:71
+msgid "Question"
 msgstr ""
 
 #. Name of the plugin
@@ -82,6 +114,26 @@ msgstr ""
 msgid ""
 "The server is running WordPress version %1$s. The Plugin requires at least "
 "WordPress version %2$s."
+msgstr ""
+
+#: includes/Notice/Notice.php:107
+msgid "Thumbs down"
+msgstr ""
+
+#: includes/Notice/Notice.php:103
+msgid "Thumbs up"
+msgstr ""
+
+#: includes/Notice/Notice.php:83
+msgid "Tipp"
+msgstr ""
+
+#: includes/Notice/Notice.php:67
+msgid "Tools"
+msgstr ""
+
+#: includes/Notice/Notice.php:99
+msgid "Video"
 msgstr ""
 
 #: includes/News/News.php:469

@@ -57,10 +57,10 @@ class TimeLine
         if ($autoplay || $startend) {
             $output .= '<div class="timeline-nav">';
             if ($startend) {
-                $output .= "<a href=\"#\" class=\"to-start\" data-toggle=\"pause\" title=\"Zum ersten Eintrag springen\"><i class=\"fa fa-step-backward\" aria-hidden=\"true\"></i><span class=\"sr-only\">Zum ersten Eintrag springen</span></a> <a href=\"#\" class=\"to-end\" data-toggle=\"pause\"><i class=\"fa fa-step-forward\" aria-hidden=\"true\"></i><span class=\"sr-only\">Zum letzten Eintrag springen</span></a>";
+                $output .= "<a href=\"#\" class=\"to-start\" data-toggle=\"pause\" title=\"Zum ersten Eintrag springen\">". do_shortcode('[icon icon="step-backward"]') . "<span class=\"sr-only\">Zum ersten Eintrag springen</span></a> <a href=\"#\" class=\"to-end\" data-toggle=\"pause\">". do_shortcode('[icon icon="step-forward"]') . "<span class=\"sr-only\">Zum letzten Eintrag springen</span></a>";
             }
             if ($autoplay) {
-                $output .= "<a href=\"#\" class=\"toggle-autoplay\" data-toggle=\"pause\"><i class=\"fa fa-pause\" aria-hidden=\"true\"></i><span class=\"sr-only\">Pause</span></a> ";
+                $output .= "<a href=\"#\" class=\"toggle-autoplay\" data-toggle=\"pause\">". do_shortcode('[icon icon="pause"]') . "<span class=\"sr-only\">Pause</span></a> ";
             }
             $output .= '</div>';
         }
@@ -70,13 +70,13 @@ class TimeLine
         if ($orientation == 'horizontal') {
             $output .= "<div class=\"grad_left\"></div>" .
                     "<div class=\"grad_right\"></div>";
-            $output .= "<div><a href=\"#\" class=\"prev\"><i class=\"fa fa-angle-left\"></i><span class=\"sr-only\">Previous</span></a></div>"
-                    . "<div><a href=\"#\" class=\"next\"><i class=\"fa fa-angle-right\"></i><span class=\"sr-only\">Next</span></a></div>";
+            $output .= "<div><a href=\"#\" class=\"prev\">". do_shortcode('[icon icon="angle-left"]') . "<span class=\"sr-only\">Previous</span></a></div>"
+                    . "<div><a href=\"#\" class=\"next\">". do_shortcode('[icon icon="angle-right"]') . "<span class=\"sr-only\">Next</span></a></div>";
         } else {
             $output .= "<div class=\"grad_top\"></div>" .
                     "<div class=\"grad_bottom\"></div>";
-            $output .= "<a href=\"#\" class=\"next\"><i class=\"fa fa-angle-down\"></i><span class=\"sr-only\">Next</span></a>" .
-                    "<a href=\"#\" class=\"prev\"><i class=\"fa fa-angle-up\"></i><span class=\"sr-only\">Previous</span></a>";
+            $output .= "<a href=\"#\" class=\"next\">". do_shortcode('[icon icon="angle-down"]') . "<span class=\"sr-only\">Next</span></a>" .
+                    "<a href=\"#\" class=\"prev\">". do_shortcode('[icon icon="angle-up"]') . "<span class=\"sr-only\">Previous</span></a>";
         }
 
         $output .= "</div>";

@@ -123,78 +123,92 @@
                         editor.insertContent('[notice-video title=""]Hier der Text[/notice-video]');
                     }
                 },
+                {
+                    type: 'menuitem',
+                    text: 'Thumbs Up',
+                    onclick: function() {
+                        editor.insertContent('[notice-thumbs-up title=""]Hier der Text[/notice-thumbs-up]');
+                    }
+                },
+                {
+                    type: 'menuitem',
+                    text: 'Thumbs Down',
+                    onclick: function() {
+                        editor.insertContent('[notice-thumbs-down title=""]Hier der Text[/notice-thumbs-down]');
+                    }
+                },
             ]
         });
         menuItems.push({
-            text: 'Mehrspaltiger Text',
+            text: 'Mehrspaltige Inhalte (früher: Mehrspaltiger Text)',
             menu: [{
                     type: 'menuitem',
                     text: 'Zwei Spalten: 1/2 - 1/2',
                     onclick: function() {
-                        editor.insertContent('[two_columns_one]<br>Text der ersten Spalte<br>[/two_columns_one]<br>[two_columns_one_last]<br>Text der zweiten Spalte<br>[/two_columns_one_last]<br>[divider]<br>');
+                        editor.insertContent('<p>[columns]</p><p>[column]</p><p>Text der ersten Spalte</p><p>[/column]</p><p>[column]</p><p>Text der zweiten Spalte</p><p>[/column]</p><p>[/columns]</p>');
                     }
                 },
                 {
                     type: 'menuitem',
                     text: 'Zwei Spalten: 1/3 - 2/3',
                     onclick: function() {
-                        editor.insertContent('[three_columns_one]<br>Text der ersten Spalte<br>[/three_columns_one]<br>[three_columns_two_last]<br>Text der zweiten (breiten)  Spalte<br>[/three_columns_two_last]<br>[divider]<br>');
+                        editor.insertContent('<p>[columns number="3"]</p><p>[column span="1"]</p><p>Text der ersten Spalte</p><p>[/column]</p><p>[column span="2"]</p><p>Text der zweiten Spalte</p><p>[/column]</p><p>[/columns]</p>');
                     }
                 },
                 {
                     type: 'menuitem',
                     text: 'Zwei Spalten: 2/3 - 1/3',
                     onclick: function() {
-                        editor.insertContent('[three_columns_two]<br>Text der ersten (breiten)  Spalte<br>[/three_columns_two]<br>[three_columns_one_last]<br>Text der zweiten Spalte<br>[/three_columns_one_last]<br>[divider]<br>');
+                        editor.insertContent('<p>[columns number="3"]</p><p>[column span="2"]</p><p>Text der ersten Spalte</p><p>[/column]</p><p>[column span="1"]</p><p>Text der zweiten Spalte</p><p>[/column]</p><p>[/columns]</p>');
                     }
                 },
                 {
                     type: 'menuitem',
                     text: 'Zwei Spalten: 1/4 - 3/4',
                     onclick: function() {
-                        editor.insertContent('[four_columns_one]<br>Text der ersten Spalte<br>[/four_columns_one]<br>[four_columns_three_last]<br>Text der zweiten (breiten) Spalte<br>[/four_columns_three_last]<br>[divider]<br>');
+                        editor.insertContent('<p>[columns number="4"]</p><p>[column span="1"]</p><p>Text der ersten Spalte</p><p>[/column]</p><p>[column span="3"]</p><p>Text der zweiten Spalte</p><p>[/column]</p><p>[/columns]</p>');
                     }
                 },
                 {
                     type: 'menuitem',
                     text: 'Zwei Spalten: 3/4 - 1/4',
                     onclick: function() {
-                        editor.insertContent('[four_columns_three]<br>Text der ersten (breiten)  Spalte<br>[/four_columns_three]<br>[four_columns_one_last]<br>Text der zweiten Spalte<br>[/four_columns_one_last]<br>[divider]<br>');
+                        editor.insertContent('<p>[columns number="4"]</p><p>[column span="3"]</p><p>Text der ersten Spalte</p><p>[/column]</p><p>[column span="1"]</p><p>Text der zweiten Spalte</p><p>[/column]</p><p>[/columns]</p>');
                     }
                 },
                 {
                     type: 'menuitem',
                     text: 'Drei Spalten: 1/3 - 1/3 - 1/3',
                     onclick: function() {
-                        editor.insertContent('[three_columns_one]<br>Text der ersten Spalte<br>[/three_columns_one]<br>[three_columns_one]<br>Text der zweiten Spalte<br>[/three_columns_one]<br>[three_columns_one_last]<br>Text der dritten Spalte<br>[/three_columns_one_last]<br>[divider]<br>');
+                        editor.insertContent('<p>[columns number="3"]</p><p>[column]</p><p>Text der ersten Spalte</p><p>[/column]</p><p>[column]</p><p>Text der zweiten Spalte</p><p>[/column]</p><p>[column]</p><p>Text der dritten Spalte</p><p>[/column]</p><p>[/columns]</p>');
                     }
                 },
                 {
                     type: 'menuitem',
                     text: 'Drei Spalten: 2/4 - 1/4 - 1/4',
                     onclick: function() {
-                        editor.insertContent('[four_columns_two]<br>Text der ersten (breiten) Spalte<br>[/four_columns_two]<br>[four_columns_one]<br>Text der zweiten Spalte<br>[/four_columns_one]<br>[four_columns_one_last]<br>Text der dritten Spalte<br>[/four_columns_one_last]<br>[divider]<br>');
+                        editor.insertContent('<p>[columns number="4"]</p><p>[column span="2"]</p><p>Text der ersten Spalte</p><p>[/column]</p><p>[column span="1"]</p><p>Text der zweiten Spalte</p><p>[/column]</p><p>[column span="1"]</p><p>Text der dritten Spalte</p><p>[/column]</p><p>[/columns]</p>');
                     }
                 },
                 {
                     type: 'menuitem',
                     text: 'Drei Spalten: 1/4 - 2/4 - 1/4',
                     onclick: function() {
-                        editor.insertContent('[four_columns_one]<br>Text der ersten Spalte<br>[/four_columns_one]<br>[four_columns_two]<br>Text der zweiten (breiten) Spalte<br>[/four_columns_two]<br>[four_columns_one_last]<br>Text der dritten Spalte<br>[/four_columns_one_last]<br>[divider]<br>');
+                        editor.insertContent('<p>[columns number="4"]</p><p>[column span="1"]</p><p>Text der ersten Spalte</p><p>[/column]</p><p>[column span="2"]</p><p>Text der zweiten Spalte</p><p>[/column]</p><p>[column span="1"]</p><p>Text der dritten Spalte</p><p>[/column]</p><p>[/columns]</p>');
                     }
                 },
                 {
                     type: 'menuitem',
                     text: 'Drei Spalten: 1/4 - 1/4 - 2/4',
                     onclick: function() {
-                        editor.insertContent('[four_columns_one]<br>Text der ersten Spalte<br>[/four_columns_one]<br>[four_columns_one]<br>Text der zweiten Spalte<br>[/four_columns_one]<br>[four_columns_two_last]<br>Text der dritten (breiten) Spalte<br>[/four_columns_two_last]<br>[divider]<br>');
+                        editor.insertContent('<p>[columns number="4"]</p><p>[column span="1"]</p><p>Text der ersten Spalte</p><p>[/column]</p><p>[column span="1"]</p><p>Text der zweiten Spalte</p><p>[/column]</p><p>[column span="2"]</p><p>Text der dritten Spalte</p><p>[/column]</p><p>[/columns]</p>');
                     }
                 },
                 {
                     type: 'menuitem',
                     text: 'Vier Spalten: 1/4 - 1/4 - 1/4 - 1/4',
                     onclick: function() {
-                        editor.insertContent('[four_columns_one]<br>Text der ersten Spalte<br>[/four_columns_one]<br>[four_columns_one]<br>Text der zweiten Spalte<br>[/four_columns_one]<br>[four_columns_one]<br>Text der dritten Spalte<br>[/four_columns_one]<br>[four_columns_one_last]<br>Text der vierten Spalte<br>[/four_columns_one_last]<br>[divider]<br>');
+                        editor.insertContent('<p>[columns number="4"]</p><p>[column]</p><p>Text der ersten Spalte</p><p>[/column]</p><p>[column]</p><p>Text der zweiten Spalte</p><p>[/column]</p><p>[column]</p><p>Text der dritten Spalte</p><p>[/column]</p><p>[column]</p><p>Text der vierten Spalte</p><p>[/column]</p><p>[/columns]</p>');
                     }
                 }
             ]
@@ -223,6 +237,31 @@
             onclick: function() {
                 editor.insertContent('[timeline]<br>[timeline-item name="name1"]<br>Hier der Text<br>[/timeline-item]<br>[timeline-item name="name2"]<br>Hier der Text<br>[/timeline-item]<br>[timeline-item name="name3"]<br>Hier der Text<br>[/timeline-item]<br>[/timeline]');
             }
+        });
+        menuItems.push({
+            type: 'menuitem',
+            text: 'Text',
+            onclick: function() {
+                editor.insertContent('[icon icon="pencil" style=""]');
+            }
+        });
+        menuItems.push({
+            text: 'Mehrspaltiger Text',
+            menu: [{
+                type: 'menuitem',
+                text: 'Standard',
+                onclick: function() {
+                    editor.insertContent('<p>[text-columns]</p><p>Hier der Text</p><p>[/text-columns]</p>');
+                }
+            },
+            {
+                type: 'menuitem',
+                text: 'Eigenes Layout',
+                onclick: function() {
+                    editor.insertContent('<p>[text-columns number="3" width="300" rule="false" border-color="#004a9f" background-color="#ced9e7"]</p><p>Hier der Text</p><p>[/text-columns]</p>');
+                }
+            },
+            ]
         });
 
         editor.addMenuItem('insertShortcodesRrzeElements', {

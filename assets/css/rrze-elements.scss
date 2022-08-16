@@ -1,6 +1,3 @@
-// Font Awesome
-@import "font-awesome";
-
 // Konstanten fuer das Design
 @import "variables";
 
@@ -12,6 +9,9 @@
 
 // Accordion
 @import "accordion";
+
+//Tabs
+@import "tabs";
 
 // Absatzklassen
 @import "absatzklassen";
@@ -59,4 +59,4 @@
 @import "icons";
 
 //Text-Columns (Fließtext in Spalten)
-//@import "textcolumns";
+@import "textcolumns";

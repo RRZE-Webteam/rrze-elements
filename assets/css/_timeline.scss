@@ -236,16 +236,27 @@
         opacity: 0;
         display: block;
         position: absolute;
-        top: 30%;
+        top: 43%;
         font-size: 70px;
-        width: 25px;
-        height: 38px;
+        width: 27px;
+        height: 44px;
         vertical-align: top;
         @media screen and (min-width: 45em) {
             opacity: .9;
         }
         &.disabled {
             opacity: 0.2;
+        }
+        & > svg.rrze-elements-icon {
+            padding: 0;
+            border: 0;
+            border-radius: 0;
+        }
+        &:hover, &:focus, &:active {
+            & > svg.rrze-elements-icon {
+                color: var(--color-button-hover-bg, #666);
+                background-color: transparent;
+            }
         }
     }
     .next {
@@ -366,6 +377,17 @@
             display: inline-block;
             margin: 0 .5em 0 0;
             float: right;
+            & > svg.rrze-elements-icon {
+                padding: 0;
+                border: 0;
+                border-radius: 0 !important;
+            }
+            &:hover, &:focus, &:active {
+                & > svg.rrze-elements-icon {
+                    color: var(--color-button-hover-bg, #666);
+                    background-color: transparent;
+                }
+            }
         }
         .to-start {
             display: inline-block;
