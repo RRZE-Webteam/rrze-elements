@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: RRZE Elements\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-17 15:15+0000\n"
-"PO-Revision-Date: 2022-08-15 12:38+0000\n"
+"PO-Revision-Date: 2022-08-15 12:34+0000\n"
 "Last-Translator: RRZE Webteam <webmaster@fau.de>\n"
 "Language-Team: Deutsch\n"
 "Language: de_DE\n"
@@ -27,7 +27,7 @@ msgstr "Erweiterte Gestaltungselemente für WordPress-Websites."
 
 #: includes/Notice/Notice.php:95
 msgid "Audio"
-msgstr "Audio"
+msgstr ""
 
 #: includes/ContentIndex/ContentIndex.php:250
 msgid "Category"
@@ -35,11 +35,11 @@ msgstr "Kategorie"
 
 #: includes/Notice/Notice.php:91
 msgid "Cloud"
-msgstr "Cloud"
+msgstr ""
 
 #: includes/Notice/Notice.php:87
 msgid "Download"
-msgstr "Download"
+msgstr ""
 
 #: includes/Symbols/Symbols.php:23
 msgid "Erfüllt"
@@ -47,7 +47,7 @@ msgstr "Erfüllt"
 
 #: includes/Notice/Notice.php:113
 msgid "Exclamation mark"
-msgstr "Ausrufezeichen"
+msgstr ""
 
 #: includes/Accordion/Accordion.php:71
 msgid "Expand All"
@@ -63,11 +63,11 @@ msgstr "https://github.com/RRZE-Webteam/rrze-elements"
 
 #: includes/Icon/Icon.php:42
 msgid "Icon not found."
-msgstr "Icon nicht gefunden."
+msgstr ""
 
 #: includes/Notice/Notice.php:75
 msgid "Minus"
-msgstr "Minus"
+msgstr ""
 
 #: includes/News/News.php:249 includes/News/News.php:251
 #: includes/News/News.php:251
@@ -89,11 +89,11 @@ msgstr ""
 
 #: includes/Notice/Notice.php:79
 msgid "Plus"
-msgstr "Plus"
+msgstr ""
 
 #: includes/Notice/Notice.php:71
 msgid "Question"
-msgstr "Frage"
+msgstr ""
 
 #. Name of the plugin
 msgid "RRZE Elements"
@@ -123,25 +123,25 @@ msgstr ""
 
 #: includes/Notice/Notice.php:107
 msgid "Thumbs down"
-msgstr "Daumen runter"
+msgstr ""
 
 #: includes/Notice/Notice.php:103
 msgid "Thumbs up"
-msgstr "Daumen hoch"
+msgstr ""
 
 #: includes/Notice/Notice.php:83
 msgid "Tipp"
-msgstr "Tipp"
-
-#: includes/Notice/Notice.php:67
-msgid "Tools"
-msgstr "Werkzeug"
+msgstr ""
 
 #: includes/Notice/Notice.php:99
 msgid "Video"
-msgstr "Video"
+msgstr ""
 
 #: includes/News/News.php:469
 #, php-format
 msgid "View all posts in %s"
 msgstr "Alle Beiträge in %s anzeigen"
+
+#: includes/Notice/Notice.php:67
+msgid "Wrench"
+msgstr ""

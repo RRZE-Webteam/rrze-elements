@@ -51,9 +51,6 @@ button.expand-all.standard-btn {
     .accordion-suffix {
         font-weight: bold;
     }
-    .accordion-icon.fa {
-        margin-right: 3px;
-    }
     .accordion-group {
         border: none;
         margin-bottom: 5px;
@@ -70,15 +67,14 @@ button.expand-all.standard-btn {
         padding: 8px 35px 8px 10px;
         position: relative;
         &:before {
-            @extend .fa;
-            @extend .fa-caret-down;
+            content: url('assets/svg/solid/caret-down.svg');
             position: absolute;
             top: 10px;
             right: 10px;
         }
         &.active {
             &:before {
-                @extend .fa-caret-up;
+                content: url('assets/svg/solid/caret-up.svg');
                 top: 8px;
             }
         }
@@ -94,6 +90,9 @@ button.expand-all.standard-btn {
             border-color: var(--color-primary-dunkler, $colorDefaultDunkler);
             background-color: var(--color-primary-dunkler, $colorDefaultDunkler);
             color: var(--color-primary-ci-hell-kontrast, #fff);
+        }
+        svg.rrze-elements-icon {
+            margin-right: 3px;
         }
     }
     .phil .accordion-heading .accordion-toggle,

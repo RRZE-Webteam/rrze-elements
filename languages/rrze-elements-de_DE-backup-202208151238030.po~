@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: RRZE Elements\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-17 15:15+0000\n"
-"PO-Revision-Date: 2022-08-15 12:38+0000\n"
+"PO-Revision-Date: 2022-08-15 12:36+0000\n"
 "Last-Translator: RRZE Webteam <webmaster@fau.de>\n"
 "Language-Team: Deutsch\n"
 "Language: de_DE\n"
@@ -133,10 +133,6 @@ msgstr "Daumen hoch"
 msgid "Tipp"
 msgstr "Tipp"
 
-#: includes/Notice/Notice.php:67
-msgid "Tools"
-msgstr "Werkzeug"
-
 #: includes/Notice/Notice.php:99
 msgid "Video"
 msgstr "Video"
@@ -145,3 +141,7 @@ msgstr "Video"
 #, php-format
 msgid "View all posts in %s"
 msgstr "Alle Beiträge in %s anzeigen"
+
+#: includes/Notice/Notice.php:67
+msgid "Wrench"
+msgstr "Baustelle"

@@ -5,17 +5,8 @@
     .notice {
         display: block;
         margin: 20px 0;
-        padding-left: 36px;
-        &:before {
-            @extend .fa !optional;
-            @extend .fa-2x !optional;
-            min-width: 24px;
-            padding-right: 8px;
-            margin-left: -36px;
-            float: left;
-            position: relative;
-            top: -3px;
-        }
+        padding-left: 40px;
+        position: relative;
         h1, h2, h3, h4, h5, h6 {
             margin-bottom: 0;
             padding-top: 0;
@@ -31,14 +22,19 @@
             padding-top: 0;
             padding-bottom: 0;
         }
+        svg.rrze-elements-icon {
+            position: absolute;
+            top: 0;
+            left: 0;
+            max-width: 30px;
+        }
     }
 
 
     .notice-alert,
     .notice-attention {
-        @extend .fa-exclamation-circle !optional;
-        &:before {
-            color: $red;
+        svg.rrze-elements-icon {
+            fill: $red !important;
         }
         h1, h2, h3, h4, h5, h6 {
             color: $red;
@@ -50,9 +46,8 @@
     }
 
     .notice-hinweis {
-        @extend .fa-exclamation-circle !optional;
-        &:before {
-            color: $text-blue;
+        svg.rrze-elements-icon {
+            fill: $text-blue !important;
         }
         h1, h2, h3, h4, h5, h6 {
             color: $text-blue;
@@ -64,9 +59,8 @@
     }
 
     .notice-baustelle {
-        @extend .fa-wrench !optional;
-        &:before {
-            color: $dark-grey;
+        svg.rrze-elements-icon {
+            fill: $dark-grey !important;
         }
         h1, h2, h3, h4, h5, h6 {
             color: $dark-grey;
@@ -78,29 +72,25 @@
     }
 
     .notice-question {
-        @extend .fa-question-circle !optional;
-        &:before {
-            color: $medium-blue;
+        svg.rrze-elements-icon {
+            fill: $medium-blue !important;
         }
     }
 
     .notice-minus {
-        @extend .fa-minus-circle !optional;
-        &:before {
-            color: $red;
+        svg.rrze-elements-icon {
+            fill: $red !important;
         }
     }
 
     .notice-plus {
-        @extend .fa-plus-circle !optional;
-        &:before {
-            color: $green;
+        svg.rrze-elements-icon {
+            fill: $green !important;
         }
     }
     .notice-tipp {
-        @extend .fa-lightbulb-o !optional;
-        &:before {
-            color: orange;
+        svg.rrze-elements-icon {
+            fill: orange !important;
         }
         h1, h2, h3, h4, h5, h6 {
             color: $dark-grey;
@@ -111,43 +101,37 @@
         }
     }
     .notice-download {
-        @extend .fa-download !optional;
-        &:before {
-            color: $medium-blue;
+        svg.rrze-elements-icon {
+            fill: $medium-blue !important;
         }
     }
 
     .notice-faubox {
-        @extend .fa-cloud-download !optional;
-        &:before {
-            color: $medium-blue;
+        svg.rrze-elements-icon {
+            fill: $medium-blue !important;
         }
     }
 
     .notice-audio {
-        @extend .fa-volume-up !optional;
-        &:before {
-            color: $medium-blue;
+        svg.rrze-elements-icon {
+            fill: $medium-blue !important;
         }
     }
  
     .notice-video {
-        @extend .fa-youtube-play !optional;
-        &::before {
-            color: $medium-blue;
+        svg.rrze-elements-icon {
+            fill: $medium-blue !important;
         }
     }
 
     .notice-thumbs-up {
-    @extend .fa-thumbs-up !optional;
-    &::before {
-        color: $green;
+        svg.rrze-elements-icon {
+            fill: $green !important;
     }
 }
     .notice-thumbs-down {
-    @extend .fa-thumbs-down !optional;
-    &::before {
-        color: $red;
+        svg.rrze-elements-icon {
+            fill: $red !important;
     }
 }
     
