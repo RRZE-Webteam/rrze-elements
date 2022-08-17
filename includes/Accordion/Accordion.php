@@ -2,7 +2,9 @@
 
 namespace RRZE\Elements\Accordion;
 
-defined('ABSPATH') || exit;
+use const RRZE\Elements\RRZE_ELEMENTS_VERSION;
+
+defined( 'ABSPATH') || exit;
 
 /**
  * [Accordion description]
@@ -175,7 +177,7 @@ class Accordion
             plugins_url('assets/js/rrze-accordion.min.js', plugin_basename(__FILE__)),
             //plugins_url('assets/js/rrze-accordion.js', plugin_basename(__FILE__)),
             ['jquery', 'wp-i18n'],
-            '1.24.0'
+            RRZE_ELEMENTS_VERSION
         );
     }
 

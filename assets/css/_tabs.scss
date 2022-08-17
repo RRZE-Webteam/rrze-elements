@@ -39,6 +39,8 @@
                 margin-right: .4em;
             }
             &:hover, &:focus, &:active {
+                box-shadow: none;
+                text-decoration: none;
                 > svg.rrze-elements-icon {
                     background-color: unset;
                 }
