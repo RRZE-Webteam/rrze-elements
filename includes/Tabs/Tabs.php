@@ -2,7 +2,9 @@
 
 namespace RRZE\Elements\Tabs;
 
-defined('ABSPATH') || exit;
+use const RRZE\Elements\RRZE_ELEMENTS_VERSION;
+
+defined( 'ABSPATH') || exit;
 
 /**
  * [Tabs description]
@@ -162,10 +164,10 @@ class Tabs
     public static function enqueueScripts() {
         wp_register_script(
             'rrze-tabs',
-            //plugins_url('assets/js/rrze-tabs.min.js', plugin_basename(__FILE__)),
-            plugins_url('assets/js/rrze-tabs.js', plugin_basename(__FILE__)),
+            plugins_url('assets/js/rrze-tabs.min.js', plugin_basename(__FILE__)),
+            //plugins_url('assets/js/rrze-tabs.js', plugin_basename(__FILE__)),
             ['jquery'],
-            '1.24.0'
+            RRZE_ELEMENTS_VERSION
         );
     }
 }
