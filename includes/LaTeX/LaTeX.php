@@ -5,18 +5,18 @@ namespace RRZE\Elements\LaTeX;
 defined('ABSPATH') || exit;
 
 /**
- * [LaTeX description]
+ * LaTeX Shortcode.
  */
 class LaTeX
 {
     /**
-     * [KATEX_VERSION description]
+     * KaTeX version
      * @var string
      */
-    const KATEX_VERSION = '0.15.3';
-    
+    const KATEX_VERSION = '0.16.0';
+
     /**
-     * [__construct description]
+     * Constructor
      */
     public function __construct()
     {
@@ -26,10 +26,10 @@ class LaTeX
     }
 
     /**
-     * [shortcodeLatex description]
-     * @param  array $atts    [description]
-     * @param  string $content [description]
-     * @return string          [description]
+     * Shortcode callback.
+     * @param  array $atts Attributes
+     * @param  string $content Content
+     * @return string
      */
     public function shortcodeLatex($atts, $content = '')
     {
@@ -55,20 +55,20 @@ class LaTeX
     }
 
     /**
-     * [enqueueScripts description]
+     * Enqueue scripts and styles.
      * @return void
      */
     public function enqueueScripts()
     {
         wp_register_style(
             'katex',
-            plugins_url('assets/katex/' . static::KATEX_VERSION .'/katex.min.css', plugin_basename(__FILE__)),
+            plugins_url('assets/katex/' . static::KATEX_VERSION . '/katex.min.css', plugin_basename(__FILE__)),
             false,
             static::KATEX_VERSION
         );
         wp_register_script(
             'katex',
-            plugins_url('assets/katex/' . static::KATEX_VERSION .'/katex.min.js', plugin_basename(__FILE__)),
+            plugins_url('assets/katex/' . static::KATEX_VERSION . '/katex.min.js', plugin_basename(__FILE__)),
             [],
             static::KATEX_VERSION,
             true
@@ -76,7 +76,7 @@ class LaTeX
     }
 
     /**
-     * [katexScript description]
+     * KaTeX initial script.
      * @return void
      */
     public function katexScript()
@@ -86,9 +86,9 @@ class LaTeX
     }
 
     /**
-     * [katexExemptWpTexturize description]
-     * @param  array $shortcodes [description]
-     * @return array             [description]
+     * No texturize for latex shortcode.
+     * @param  array $shortcodes Shortcodes
+     * @return array
      */
     public function katexExemptWpTexturize($shortcodes)
     {
