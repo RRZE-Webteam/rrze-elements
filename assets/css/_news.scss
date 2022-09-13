@@ -7,12 +7,10 @@
         width: 100%;
     }
     .entry-date:before {
-        content: url('assets/svg/solid/calendar.svg');
-        margin-right: 5px;
+        @include svg-content('calendar', 'regular');
     }
     .entry-cats:before {
-        content: url('assets/svg/solid/tag.svg');
-        margin-right: 5px;
+        @include svg-content('tag', 'solid');
     }
     .float-left {
         @media screen and (min-width: 37.5em) {

@@ -37,3 +37,12 @@ Functions and Mixins
     border-top-left-radius: $radius;
     background-clip: padding-box;
 }
+
+@mixin svg-content($svg, $subset: 'solid') {
+    content: url("../svg/#{$subset}/#{$svg}.svg");
+    display: inline-block;
+    width: 1em;
+    margin-right: 5px;
+    position: relative;
+    top: 2px;
+}
