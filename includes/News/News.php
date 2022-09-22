@@ -394,7 +394,7 @@ class News
             'imgfloat'      => 'float-left',
             'imgFirst'      => false,
             'postCols'      => [],
-            'thumbnailSize' => 'post-thumbnail',
+            'thumbnailSize' => 'large',
             'forceLandscape'=> false,
             ];
         if ($argsRaw['id'] == 0) return;
