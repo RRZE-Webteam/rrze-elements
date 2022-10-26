@@ -89,6 +89,9 @@
         }
     }
 }
+.slick-slide[role=tabpanel] {
+    padding: 0;
+}
 .print-only {
     display: none;
     @media print {
