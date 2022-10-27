@@ -73,36 +73,34 @@
             }
         }
     }
-}
-[role="tabpanel"] {
-    padding: 1.5rem;
-    border-top: 0;
-    overflow: hidden;
-    & > * + * {
-        margin-top: 0.75rem;
+    [role="tabpanel"] {
+        padding: 1.5rem;
+        border-top: 0;
+        overflow: hidden;
+        & > * + * {
+            margin-top: 0.75rem;
+        }
+        @media print {
+            display: block;
+            margin-bottom: 10px;
+            h1 {
+                margin-top: 0 !important;
+            }
+        }
     }
-    @media print {
-        display: block;
-        margin-bottom: 10px;
-        h1 {
-            margin-top: 0 !important;
+    .print-only {
+        display: none;
+        @media print {
+            display: block;
+        }
+    }
+    .hide-in-print {
+        @media print {
+            display: none !important;
         }
     }
 }
-.slick-slide[role=tabpanel] {
-    padding: 0;
-}
-.print-only {
-    display: none;
-    @media print {
-        display: block;
-    }
-}
-.hide-in-print {
-    @media print {
-        display: none !important;
-    }
-}
+
 
 $colors: "primary", "zentral", "phil", "med", "nat", "rw", "tf";
 @each $color in $colors {
