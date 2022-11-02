@@ -15,6 +15,7 @@ class Alert
     public function __construct()
     {
         add_shortcode('alert', [$this, 'shortcodeAlert']);
+        add_shortcode('inner_alert', [$this, 'shortcodeAlert']);
     }
 
     /**
