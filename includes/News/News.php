@@ -70,7 +70,7 @@ class News
         $columns = absint($sc_atts['columns']);
         $type = esc_attr($sc_atts['type']);
         $mode = array_map('trim', explode(",", $type));
-        $thumbnailSize = 'post-thumbnail';
+        $thumbnailSize = 'large';
         $hideDuplicates = ($sc_atts['hideduplicates'] == 'true' || $sc_atts['hide_duplicates'] == 'true') ? true : false;
         $forceLandscape = ($sc_atts['forcelandscape'] == 'true' || $sc_atts['force_landscape'] == 'true') ? true : false;
         $stickyOnly = ($sc_atts['sticky_only'] == 'true' || $sc_atts['sticky_only'] == 'true') ? true : false;
