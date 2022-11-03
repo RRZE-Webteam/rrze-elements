@@ -49,6 +49,9 @@ class Lightbox
         if (!in_array(strtolower($current_theme->stylesheet), $allowed_themes)) {
             return $content;
         }
+		if (empty($content)) {
+			return $content;
+		}
 
         $dom = new DOMDocument();
         @$dom->loadHTML($content);
