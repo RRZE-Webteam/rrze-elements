@@ -11,7 +11,7 @@ class Symbols {
 
     public function __construct()  {
 	add_shortcode('success', [$this, 'shortcode_ok']);
-        add_shortcode('ok', [$this, 'shortcode_ok']);
+    add_shortcode('ok', [$this, 'shortcode_ok']);
 	add_shortcode('miss', [$this, 'shortcode_miss']);
 	add_shortcode('fail', [$this, 'shortcode_miss']);
     }

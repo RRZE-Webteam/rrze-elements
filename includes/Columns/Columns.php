@@ -54,7 +54,7 @@ class Columns
         $defaults = array(
             'span' => '1',
         );
-        $spans =['1', '2', '3'];
+        $spans = ['1', '2', '3'];
         $args = shortcode_atts($defaults, $atts);
         $class = 'colspan-' . (in_array($args['span'], $spans) ? $args['span'] : $defaults['span']);
 
