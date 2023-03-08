@@ -86,6 +86,7 @@ a.standard-btn {
     &.info-btn {
         background: $info;
         border-color: darken($info, 5%);
+        color: #000000;
         &:hover, &:focus, &:active {
             background: darken($info, 12%);
         }
@@ -93,6 +94,7 @@ a.standard-btn {
     &.warning-btn, &.yellow-btn {
         background: $warning;
         border-color: darken($warning, 5%);
+        color: #000000;
         &:hover, &:focus, &:active {
             background: darken($warning, 12%);
         }
