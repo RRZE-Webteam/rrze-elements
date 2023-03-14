@@ -181,8 +181,14 @@ class Accordion
         );
     }
 
-    public function enqueueScriptTranslations()
-    {
-		wp_set_script_translations('rrze-accordions', 'rrze-elements',plugin_dir_path( $this->pluginFile ) . 'languages/');
+    public function enqueueScriptTranslations() {
+        self::console_log(wp_set_script_translations('rrze-accordions', 'rrze-elements',plugin_dir_path( $this->pluginFile ) . 'languages/'));
+    }
+
+    public static function console_log($msg = '', $tsStart = 0) {
+        if (isset($_GET['elements_debug'])) {
+            //$msg .= ' execTime: ' . sprintf('%.2f', microtime(true) - $tsStart) . ' s';
+            echo '<script>console.log(' . json_encode($msg, JSON_HEX_TAG) . ');</script>';
+        }
     }
 }
