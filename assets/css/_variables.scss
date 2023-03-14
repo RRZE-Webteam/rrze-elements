@@ -26,7 +26,7 @@
 
 $page: #fff;
 $header: #636071;
-$text: #393944;
+$text: #212529;
 $border: #C3C3CB;
 $medium-blue: #005CAE;
 $text-blue: #00458C;
@@ -40,17 +40,17 @@ $green: #00905A;
 $red: #a71c18;
 
 // Bootstrap Colors
-$primary: #286090;
+$primary: #245783;
 $primary-light:#d9edf7;
-$success: #5cb85c;
+$success: #115c39;
 $sucess-light:#dff0d8;
-$info:#5bc0de;
+$info:#0dcaf0;
 $info-light:#d9edf7;
-$warning:#f0ad4e;
+$warning:#ffc107;
 $warning-light:#fcf8e3;
-$danger:#d9534f;
+$danger:#921925;
 $danger-light:#fcf8e3;
-$secondary: #5a6268;
+$secondary: #4c5359;
 
 // FAU Colors
 $colorPhilFak:          #FDB735;
@@ -67,3 +67,13 @@ $colorZUV:              #04316A;
 $colorZUVDunkler:       #004A9F;
 $colorDefault:          #04316A;
 $colorDefaultDunkler:   #004A9F;
+
+$colormaps : (
+    zentral: ("basis": #04316A, "basis-kontrast": #fff,"heller": #8fb1ef, "hellste": #dde5f0, "dunkler": #004A9F, "dunkler-kontrast": #fff, "dunkelste": #041E42, "dunkelste-kontrast": #fff, "ci-hell": #04316A, "ci-hell-kontrast": #fff, "ci-hell2": #CED9E7, "ci-hell2-kontrast": #000),
+    primary: ("basis": #04316A, "basis-kontrast": #fff,"heller": #8fb1ef, "hellste": #dde5f0, "dunkler": #004A9F, "dunkler-kontrast": #fff, "dunkelste": #041E42, "dunkelste-kontrast": #fff, "ci-hell": #04316A, "ci-hell-kontrast": #fff, "ci-hell2": #CED9E7, "ci-hell2-kontrast": #000),
+    phil: ("basis": #963B2F, "basis-kontrast": #fff,"heller": #d9c689, "hellste": #f3eedf, "dunkler": #e87722, "dunkler-kontrast": #000, "dunkelste": #963B2F, "dunkelste-kontrast": #fff,  "ci-hell": #FDB735, "ci-hell-kontrast": #000, "ci-hell2": #F4E8CB, "ci-hell2-kontrast": #000),
+    med: ("basis": #005287,"basis-kontrast": #fff, "heller": #bfd6f5, "hellste": #eaf3fc, "dunkler": #005287, "dunkler-kontrast": #fff, "dunkelste": #003E61, "dunkelste-kontrast": #fff,  "ci-hell": #18B4F1, "ci-hell-kontrast": #000, "ci-hell2": #B9D9EC, "ci-hell2-kontrast": #000),
+    nat: ("basis": #266141, "basis-kontrast": #fff,"heller": #aacfbd, "hellste": #e5efea, "dunkler": #266141, "dunkler-kontrast": #fff, "dunkelste": #14462D, "dunkelste-kontrast": #fff,  "ci-hell": #7BB725, "ci-hell-kontrast": #000, "ci-hell2": #CFE0D8, "ci-hell2-kontrast": #000),
+    rw: ("basis": #971B2F, "basis-kontrast": #fff,"heller": #c5ac94, "hellste": #F2DED1, "dunkler": #971B2F, "dunkler-kontrast": #fff, "dunkelste": #662938, "dunkelste-kontrast": #fff,  "ci-hell": #C50F3C, "ci-hell-kontrast": #fff, "ci-hell2": #F2DED1, "ci-hell2-kontrast": #000),
+    tf: ("basis": #2F586E, "basis-kontrast": #fff,"heller": #d2d5d7, "hellste": #ebecee, "dunkler": #2F586E, "dunkler-kontrast": #fff, "dunkelste": #204251, "dunkelste-kontrast": #fff,  "ci-hell": #8C9FB1, "ci-hell-kontrast": #000, "ci-hell2": #D3DDE6, "ci-hell2-kontrast": #000),
+)

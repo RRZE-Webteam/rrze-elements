@@ -1,81 +1,136 @@
-/**
- * RRZE Tabs
- * RRZE Webteam
+/*
+ *   This content is licensed according to the W3C Software License at
+ *   https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
+ *
+ *   File:   tabs-manual.js
+ *
+ *   Desc:   Tablist widget that implements ARIA Authoring Practices
  */
 
-(function() {
-    // Get relevant elements and collections
-    const tabbed = document.querySelectorAll('.rrze-elements-tabs');
-    let i;
-    for (i = 0; i < tabbed.length; ++i) {
-        const tablist = tabbed[i].querySelector('ul');
-        const tabs = tablist.querySelectorAll('a');
-        const panels = tabbed[i].querySelectorAll('[id^="section"]');
+'use strict';
 
-        // The tab switching function
-        const switchTab = (oldTab, newTab) => {
-            newTab.focus();
-            // Make the active tab focusable by the user (Tab key)
-            newTab.removeAttribute('tabindex');
-            // Set the selected state
-            newTab.setAttribute('aria-selected', 'true');
-            oldTab.removeAttribute('aria-selected');
-            oldTab.setAttribute('tabindex', '-1');
-            // Get the indices of the new and old tabs to find the correct
-            // tab panels to show and hide
-            let index = Array.prototype.indexOf.call(tabs, newTab);
-            let oldIndex = Array.prototype.indexOf.call(tabs, oldTab);
-            panels[oldIndex].hidden = true;
-            panels[index].hidden = false;
+class TabsManual {
+    constructor(groupNode) {
+        this.tablistNode = groupNode;
+
+        this.tabs = [];
+
+        this.firstTab = null;
+        this.lastTab = null;
+
+        this.tabs = Array.from(this.tablistNode.querySelectorAll('[role=tab]'));
+        this.tabpanels = [];
+
+        for (var i = 0; i < this.tabs.length; i += 1) {
+            var tab = this.tabs[i];
+            var tabpanel = document.getElementById(tab.getAttribute('aria-controls'));
+
+            tab.tabIndex = -1;
+            tab.setAttribute('aria-selected', 'false');
+            this.tabpanels.push(tabpanel);
+
+            tab.addEventListener('keydown', this.onKeydown.bind(this));
+            tab.addEventListener('click', this.onClick.bind(this));
+
+            if (!this.firstTab) {
+                this.firstTab = tab;
+            }
+            this.lastTab = tab;
         }
 
-        // Add the tablist role to the first <ul> in the .tabbed[i] container
-        tablist.setAttribute('role', 'tablist');
-
-        // Add semantics are remove user focusability for each tab
-        Array.prototype.forEach.call(tabs, (tab, i) => {
-            tab.setAttribute('role', 'tab');
-            tab.setAttribute('id', 'tab' + (i + 1));
-            tab.setAttribute('tabindex', '-1');
-            tab.parentNode.setAttribute('role', 'presentation');
-
-            // Handle clicking of tabs for mouse users
-            tab.addEventListener('click', e => {
-                e.preventDefault();
-                let currentTab = tablist.querySelector('[aria-selected]');
-                if (e.currentTarget !== currentTab) {
-                    switchTab(currentTab, e.currentTarget);
-                }
-            });
-
-            // Handle keydown events for keyboard users
-            tab.addEventListener('keydown', e => {
-                // Get the index of the current tab in the tabs node list
-                let index = Array.prototype.indexOf.call(tabs, e.currentTarget);
-                // Work out which key the user is pressing and
-                // Calculate the new tab's index where appropriate
-                let dir = e.which === 37 ? index - 1 : e.which === 39 ? index + 1 : e.which === 40 ? 'down' : null;
-                if (dir !== null) {
-                    e.preventDefault();
-                    // If the down key is pressed, move focus to the open panel,
-                    // otherwise switch to the adjacent tab
-                    dir === 'down' ? panels[i].focus() : tabs[dir] ? switchTab(e.currentTarget, tabs[dir]) : void 0;
-                }
-            });
-        });
-
-        // Add tab panel semantics and hide them all
-        Array.prototype.forEach.call(panels, (panel, i) => {
-            panel.setAttribute('role', 'tabpanel');
-            panel.setAttribute('tabindex', '-1');
-            let id = panel.getAttribute('id');
-            panel.setAttribute('aria-labelledby', tabs[i].id);
-            panel.hidden = true;
-        });
-
-        // Initially activate the first tab and reveal the first tab panel
-        tabs[0].removeAttribute('tabindex');
-        tabs[0].setAttribute('aria-selected', 'true');
-        panels[0].hidden = false;
+        this.setSelectedTab(this.firstTab);
     }
-})();
+
+    setSelectedTab(currentTab) {
+        for (var i = 0; i < this.tabs.length; i += 1) {
+            var tab = this.tabs[i];
+            if (currentTab === tab) {
+                tab.setAttribute('aria-selected', 'true');
+                tab.removeAttribute('tabindex');
+                this.tabpanels[i].classList.remove('is-hidden');
+            } else {
+                tab.setAttribute('aria-selected', 'false');
+                tab.tabIndex = -1;
+                this.tabpanels[i].classList.add('is-hidden');
+            }
+        }
+    }
+
+    moveFocusToTab(currentTab) {
+        currentTab.focus();
+    }
+
+    moveFocusToPreviousTab(currentTab) {
+        var index;
+
+        if (currentTab === this.firstTab) {
+            this.moveFocusToTab(this.lastTab);
+        } else {
+            index = this.tabs.indexOf(currentTab);
+            this.moveFocusToTab(this.tabs[index - 1]);
+        }
+    }
+
+    moveFocusToNextTab(currentTab) {
+        var index;
+
+        if (currentTab === this.lastTab) {
+            this.moveFocusToTab(this.firstTab);
+        } else {
+            index = this.tabs.indexOf(currentTab);
+            this.moveFocusToTab(this.tabs[index + 1]);
+        }
+    }
+
+    /* EVENT HANDLERS */
+
+    onKeydown(event) {
+        var tgt = event.currentTarget,
+            flag = false;
+
+        switch (event.key) {
+            case 'ArrowLeft':
+                this.moveFocusToPreviousTab(tgt);
+                flag = true;
+                break;
+
+            case 'ArrowRight':
+                this.moveFocusToNextTab(tgt);
+                flag = true;
+                break;
+
+            case 'Home':
+                this.moveFocusToTab(this.firstTab);
+                flag = true;
+                break;
+
+            case 'End':
+                this.moveFocusToTab(this.lastTab);
+                flag = true;
+                break;
+
+            default:
+                break;
+        }
+
+        if (flag) {
+            event.stopPropagation();
+            event.preventDefault();
+        }
+    }
+
+    // Since this example uses buttons for the tabs, the click onr also is activated
+    // with the space and enter keys
+    onClick(event) {
+        this.setSelectedTab(event.currentTarget);
+    }
+}
+
+// Initialize tablist
+
+window.addEventListener('load', function () {
+    var tablists = document.querySelectorAll('[role=tablist].manual');
+    for (var i = 0; i < tablists.length; i++) {
+        new TabsManual(tablists[i]);
+    }
+});

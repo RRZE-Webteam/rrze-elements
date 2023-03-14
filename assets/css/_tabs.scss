@@ -1,4 +1,6 @@
 .rrze-elements-tabs {
+    margin-bottom: 1em;
+    /*
     * {
         color: inherit;
         //margin: 0;
@@ -88,17 +90,102 @@
             }
         }
     }
-    .print-only {
-        display: none;
-        @media print {
-            display: block;
+    */
+
+    [role="tablist"] {
+        //min-width: 550px;
+    }
+
+    [role="tab"],
+    [role="tab"]:focus,
+    [role="tab"]:hover {
+        position: relative;
+        z-index: 2;
+        //margin: 0;
+        //margin-top: 4px;
+        padding: 2px 6px;
+        overflow: visible;
+        outline: none;
+        //font-weight: bold;
+    }
+
+    [role="tab"] {
+        margin-right: 5px;
+        &[aria-selected="true"] {
+            font-weight: bold;
+            /*padding: 2px 2px 4px;
+            margin-top: 0;
+            border-width: 2px;
+            border-top-width: 6px;
+            border-top-color: rgb(36 116 214);
+            border-bottom-color: hsl(220deg 43% 99%);
+            background: hsl(220deg 43% 99%);*/
+        }
+
+        /*&[aria-selected="false"] {
+            border-bottom: 1px solid hsl(219deg 1% 72%);
+        }*/
+        display: block;
+        width: 100%;
+        border-radius: 0;
+        font-size: 1rem;
+        text-align: left;
+        @media (min-width: 550px) {
+            display: inline-block;
+            width: auto;
+            border-radius: 5px 5px 0 0;
+            //padding: 0.5rem 1em;
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+            top: 1px;
+        }
+        span.focus {
+            display: inline-block;
+            margin: 2px;
+            padding: 4px 6px;
+            & > svg.rrze-elements-icon {
+                padding: 0;
+                border-radius: 0 !important;
+                color: unset;
+                margin-right: .4em;
+                max-width: 2em;
+            }
+            .tab-suffix {
+                display: inline-block;
+                margin-left: .4em;
+                font-weight: bold;
+            }
+        }
+
+        &:hover, &:focus, &:active {
+            span.focus {
+                //padding: 2px 4px;
+                //border: 2px solid rgb(36 116 214);
+                //border-radius: 3px;
+            }
+        }
+
+    }
+
+    [role="tabpanel"] {
+        padding: 1rem;
+        min-height: 10em;
+        overflow: auto;
+        @media (min-width: 550px) {
+            //border-radius: 0 0 5px 5px;
+        }
+        &.is-hidden {
+            display: none;
+        }
+
+        p {
+            //margin: 0;
+        }
+        figure:first-child {
+            margin-top: 0;
         }
     }
-    .hide-in-print {
-        @media print {
-            display: none !important;
-        }
-    }
+
 }
 
 
@@ -106,38 +193,38 @@ $colors: "primary", "zentral", "phil", "med", "nat", "rw", "tf";
 @each $color in $colors {
     .rrze-elements-tabs.#{$color} {
         [role="tablist"] {
-            a {
-                border: 1px solid var(--color-#{$color}-ci-hell2, #cfe0d8);
-                border-bottom-color: var(--color-#{$color}-ci-hell, #7bb725);
-                background-color: var(--color-#{$color}-ci-hell2, #cfe0d8);
-                color: var(--color-#{$color}-ci-hell2-kontrast, #000);
+            button {
+                border: 1px solid var(--color-#{$color}-ci-hell2, map-get($colormaps, $color, "ci-hell2"));
+                border-bottom-color: var(--color-#{$color}-ci-hell, map-get($colormaps, $color, "ci-hell"));
+                background-color: var(--color-#{$color}-ci-hell2, map-get($colormaps, $color, "ci-hell2"));
+                color: var(--color-#{$color}-ci-hell2-kontrast, map-get($colormaps, $color, "ci-hell2-kontrast"));
                 &:hover, &:focus, &:active {
                     color: inherit;
-                    border-color: var(--color-#{$color}-ci-hell, #04316a);
+                    border-color: var(--color-#{$color}-ci-hell, map-get($colormaps, $color, "ci-hell"));
                 }
                 @media (min-width: 550px) {
-                    border-top: 1px solid var(--color-#{$color}-ci-hell2, #cfe0d8);
+                    border-top: 1px solid var(--color-#{$color}-ci-hell2, map-get($colormaps, $color, "ci-hell2"));
                     &:hover, &:focus, &:active {
                         color: inherit;
-                        border-color: var(--color-#{$color}-ci-hell, #7bb725);
+                        border-color: var(--color-#{$color}-ci-hell, map-get($colormaps, $color, "ci-hell"));
                     }
                 }
             }
-            [aria-selected] {
-                background: var(--color-#{$color}-ci-hell, #7bb725);
-                color: var(--color-#{$color}-ci-hell-kontrast, #000);
-                border-color: var(--color-#{$color}-ci-hell, #7bb725);
+            [aria-selected="true"] {
+                background: var(--color-#{$color}-ci-hell, map-get($colormaps, $color, "ci-hell"));
+                color: var(--color-#{$color}-ci-hell-kontrast, map-get($colormaps, $color, "ci-hell-kontrast"));
+                border-color: var(--color-#{$color}-ci-hell, map-get($colormaps, $color, "ci-hell"));
                 @media (min-width: 550px) {
                     border: 1px solid;
                     background: #fff;
-                    border-color: var(--color-#{$color}-ci-hell, #7bb725);
+                    border-color: var(--color-#{$color}-ci-hell, map-get($colormaps, $color, "ci-hell"));
                     border-bottom-color: #fff;
                     color: unset;
                 }
                 &:hover, &:focus, &:active {
-                    background: var(--color-#{$color}-ci-hell, #7bb725);
-                    color: var(--color-#{$color}-ci-hell-kontrast, #fff);
-                    border-bottom-color: var(--color-#{$color}-ci-hell, #04316a);
+                    background: var(--color-#{$color}-ci-hell, map-get($colormaps, $color, "ci-hell"));
+                    color: var(--color-#{$color}-ci-hell-kontrast, map-get($colormaps, $color, "ci-hell-kontrast"));
+                    border-bottom-color: var(--color-#{$color}-ci-hell, map-get($colormaps, $color, "ci-hell"));
                     @media (min-width: 550px) {
                         background: #fff;
                         border-bottom-color: #fff;
@@ -148,14 +235,26 @@ $colors: "primary", "zentral", "phil", "med", "nat", "rw", "tf";
             }
         }
         [role="tabpanel"] {
-            border: 1px solid var(--color-#{$color}-ci-hell, #7bb725);
+            border: 1px solid var(--color-#{$color}-ci-hell, map-get($colormaps, $color, "ci-hell"));
             border-top: 0;
             @media (min-width: 550px) {
-                border-top: 1px solid var(--color-#{$color}-ci-hell, #04316a);
+                border-top: 1px solid var(--color-#{$color}-ci-hell, map-get($colormaps, $color, "ci-hell"));
             }
             @media print {
-                border-top: 1px solid var(--color-primary-ci-hell, #04316a);
+                border-top: 1px solid var(--color-primary-ci-hell, map-get($colormaps, $color, "ci-hell"));
             }
+        }
+    }
+
+    .print-only {
+        display: none;
+        @media print {
+            display: block;
+        }
+    }
+    .hide-in-print {
+        @media print {
+            display: none !important;
         }
     }
 }

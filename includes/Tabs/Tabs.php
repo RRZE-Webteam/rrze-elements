@@ -23,7 +23,7 @@ class Tabs
     }
 
     /**
-     * [shortcodeCollapsibles description]
+     * [shortcodeTabs description]
      * @param  array $atts    [description]
      * @param  string $content [description]
      * @return string          [description]
@@ -38,46 +38,50 @@ class Tabs
         $GLOBALS['tabs_id'] = $GLOBALS['tabs_count'];
 
         $defaults = [
-			'color' => 'primary',
+            'color' => 'primary',
+            'hstart' => '2',
         ];
         $args = shortcode_atts($defaults, $atts);
-		$color = in_array($args['color'], ['primary', 'fau', 'zuv', 'phil', 'nat', 'med', 'rw', 'tf']) ? $args['color'] : '';
-		if ($color == 'fau' || $color == 'zuv') {
-			$color = 'zentral';
-	    }
+        $color = in_array($args['color'], ['primary', 'fau', 'zuv', 'phil', 'nat', 'med', 'rw', 'tf']) ? $args['color'] : '';
+        if ($color == 'fau' || $color == 'zuv') {
+            $color = 'zentral';
+        }
+        $GLOBALS['tabs_hstart'] = is_numeric($args['hstart']) ? $args['hstart'] : $defaults['hstart'];
 
-		$output = '<div class="rrze-elements-tabs ' . $color . '">';
+        $output = '<div class="rrze-elements-tabs ' . $color . '">';
 
-	    preg_match_all('(\[tab(.*?)\])',$content, $matchesTabs);
-		$matchesTitles = [];
-	    $matchesIcons = [];
-	    $matchesSuffix = [];
-		foreach ($matchesTabs[1] as $i => $tab) {
-			preg_match('(title="(.*?)")',$tab, $matchesTitles[$i]);
-			preg_match('(icon="(.*?)")',$tab, $matchesIcons[$i]);
-			preg_match('(suffix="(.*?)")',$tab, $matchesSuffix[$i]);
-		}
-	    $output .= '<ul class="tablist clear clearfix hide-in-print">';
-	    $tabIndex = 'aria-selected="true"';
-	    foreach ( $matchesTitles as $i => $matchesTitle ) {
-		    $title = $matchesTitle[1];
-		    $slug = sanitize_title($title);
-		    if (isset($matchesIcons[$i][1]) && $matchesIcons[$i][1] != '') {
-			    $icon = do_shortcode('[icon icon="'.$matchesIcons[$i][1].'"]');
-		    } else {
-			    $icon = '';
-		    }
-		    if (isset($matchesSuffix[$i][1]) && $matchesSuffix[$i][1] != '') {
-				$suffix = '<span class="tab-suffix">' . $matchesSuffix[$i][1] . '</span>';
-		    } else {
-			    $suffix = '';
-		    }
-		    $output .= '<li role="presentation"><a role="tab" '. $tabIndex .' href="#'.$slug.'" id="tab_'.$slug.'">' . $icon . $title . $suffix . '</a></li>';
-		    $tabIndex = 'tabindex="-1"';
-	    }
-	    $output .= '</ul>';
+        preg_match_all('(\[tab(.*?)\])',$content, $matchesTabs);
+        $matchesTitles = [];
+        $matchesIcons = [];
+        $matchesSuffix = [];
+        foreach ($matchesTabs[1] as $i => $tab) {
+            preg_match('(title="(.*?)")',$tab, $matchesTitles[$i]);
+            preg_match('(icon="(.*?)")',$tab, $matchesIcons[$i]);
+            preg_match('(suffix="(.*?)")',$tab, $matchesSuffix[$i]);
+        }
+
+        $output .= '<div role="tablist" class="manual">';
+        foreach ( $matchesTitles as $i => $matchesTitle ) {
+            $title = $matchesTitle[1];
+            $slug = sanitize_title($title);
+            if (isset($matchesIcons[$i][1]) && $matchesIcons[$i][1] != '') {
+                $icon = do_shortcode('[icon icon="'.$matchesIcons[$i][1].'"]');
+            } else {
+                $icon = '';
+            }
+            if (isset($matchesSuffix[$i][1]) && $matchesSuffix[$i][1] != '') {
+                $suffix = '<span class="tab-suffix">' . $matchesSuffix[$i][1] . '</span>';
+            } else {
+                $suffix = '';
+            }
+            $output .= '<button id="tab_'.$slug.'" type="button" role="tab" aria-selected="true" aria-controls="tabpanel_'.$slug.'">'
+                . '<span class="focus">' . $icon . $title . $suffix . '</span>'
+                . '</button>';
+        }
+        $output .= '</div>';
 
         $output .= do_shortcode($content);
+
         $output .= '</div>';
 
         if (isset($GLOBALS['tabs_id'])) {
@@ -88,11 +92,12 @@ class Tabs
     }
 
     /**
-     * [shortcodeCollapse description]
+     * [shortcodeTab description]
      * @param  array $atts    [description]
      * @param  string $content [description]
      * @return string          [description]
      */
+
     public function shortcodeTab($atts, $content, $tag)
     {
         if (!isset($GLOBALS['current_tab'])) {
@@ -126,11 +131,11 @@ class Tabs
             $addclass .= " " . $load;
         }
 
-	    $icon_html = '';
-	    if (!empty($icon)) {
-		    $icon_html .= do_shortcode('[icon icon="'.$icon.'"] ');
-	    }
-	    $suffix_hmtl = '';
+        $icon_html = '';
+        if (!empty($icon)) {
+            $icon_html .= do_shortcode('[icon icon="'.$icon.'"] ');
+        }
+        $suffix_hmtl = '';
         if (!empty($suffix)) {
             $suffix_hmtl = "<span class=\"accordion-suffix\">$suffix</span>" ;
         }
@@ -140,15 +145,15 @@ class Tabs
             $id = $GLOBALS['current_tab'];
         }
 
-	    if ($GLOBALS['current_tab'] == 0) {
+        if ($GLOBALS['current_tab'] == 0) {
 
-	    }
+        }
 
-		$slug = sanitize_title($title);
-		$output = '<section role="tabpanel" id="section_'.$slug.'" aria-labelledby="tab_'.$slug.'">';
-	    $output .= '<h1 class="print-only">'.$icon_html . $title. '</h1>';
-	    $output .= do_shortcode($content);
-		$output .= '</section>';
+        $slug = sanitize_title($title);
+        $output = '<div id="tabpanel_'.$slug.'" role="tabpanel" aria-labelledby="tab_'.$slug.'">';
+        $output .= '<h' . $GLOBALS['tabs_hstart'] . ' class="print-only">'.$icon_html . $title. '</h' . $GLOBALS['tabs_hstart'] . '>';
+        $output .= do_shortcode($content);
+        $output .= '</div>';
 
         wp_enqueue_style('fontawesome');
         wp_enqueue_style('rrze-elements');

@@ -51,7 +51,8 @@ class News
             'fau_settings'  => 'false',
             'forcelandscape' => 'false',
             'force_landscape' => 'false',
-            'sticky_only' => 'false'
+            'sticky_only' => 'false',
+            'teaser_length' => '0',
         ], $atts);
         $sc_atts = array_map('sanitize_text_field', $sc_atts);
 
@@ -74,6 +75,7 @@ class News
         $hideDuplicates = ($sc_atts['hideduplicates'] == 'true' || $sc_atts['hide_duplicates'] == 'true') ? true : false;
         $forceLandscape = ($sc_atts['forcelandscape'] == 'true' || $sc_atts['force_landscape'] == 'true') ? true : false;
         $stickyOnly = ($sc_atts['sticky_only'] == 'true' || $sc_atts['sticky_only'] == 'true') ? true : false;
+        $teaserLength = absint($sc_atts['teaser_length']);
 
         $borderTop = '';
         if ($sc_atts['fau_settings'] == 'true') {
@@ -335,7 +337,8 @@ class News
                                 break;
                             case 'rrze':
                                 if (function_exists('rrze_display_news_teaser')) {
-                                    $output .= rrze_display_news_teaser($id, $hide, $hstart, $imgfloat);
+                                    $hide[] = 'caption';
+                                    $output .= rrze_display_news_teaser($id, $hide, 1, $imgfloat, $teaserLength);
                                 } else {
                                     $args = [
                                         'id' => $id,
