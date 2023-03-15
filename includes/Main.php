@@ -25,6 +25,7 @@ use RRZE\Elements\Gallery\Gallery;
 use RRZE\Elements\Symbols\Symbols;
 use RRZE\Elements\Icon\Icon;
 use RRZE\Elements\Tabs\Tabs;
+use RRZE\Elements\Table\Table;
 
 /**
  * [Main description]
@@ -70,6 +71,7 @@ class Main
 		new Icon($this->pluginFile);
 		new TextColumns();
 		new Tabs();
+        new Table();
 
         $theme = wp_get_theme();
         if (in_array($theme->get('Name'), ['FAU Events', 'RRZE 2019'])) {
