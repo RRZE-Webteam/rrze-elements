@@ -1,0 +1,29 @@
+table.sorttable,
+table.sorttable {
+    th {
+        cursor: pointer;
+        &:after {
+            @include svg-content('sort', 'solid');
+            margin-left: .5em;
+            width: .5em;
+        }
+    }
+    .tablesorter-header-inner {
+        display: inline-block;
+    }
+}
+
+table.filtertable {
+    .filtered {
+        display: none;
+    }
+    .tablesorter-filter-row {
+        background-color: var(--color-ContentRegions, $bg-grey);
+        td {
+            padding: 5px;
+        }
+        input {
+            padding: 3px;
+        }
+    }
+}
