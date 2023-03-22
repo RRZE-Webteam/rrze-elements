@@ -13,7 +13,7 @@ class LaTeX
      * KaTeX version
      * @var string
      */
-    const KATEX_VERSION = '0.16.3';
+    const KATEX_VERSION = '0.16.4';
 
     /**
      * Constructor
