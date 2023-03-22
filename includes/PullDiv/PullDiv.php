@@ -16,6 +16,7 @@ class PullDiv
     {
         add_shortcode('pull-left', [$this, 'shortcodePullLeftRight']);
         add_shortcode('pull-right', [$this, 'shortcodePullLeftRight']);
+        add_shortcode('limit-width', [$this, 'shortcodeLimitWidth']);
     }
 
     /**
@@ -42,6 +43,30 @@ class PullDiv
         $output = '<aside class="pull-' . $type . $textalign . '">';
         $output .= $atts['title'] ? '<h1>' . $atts['title'] . '</h1>' : '';
         $output .= '<p>' . do_shortcode($content) . '</p></aside>' . $clearafter;
+
+        wp_enqueue_style('rrze-elements');
+        return $output;
+    }
+
+    public function shortcodeLimitWidth($atts, $content = '', $tag = '') {
+        $atts = shortcode_atts([
+            'width' => '60ch',
+            'align' => 'center',
+        ], $atts);
+        array_walk($atts, 'sanitize_text_field');
+        switch ($atts['align']) {
+            case 'left':
+                $margin = 'margin-right: auto;';
+                break;
+            case 'right':
+                $margin = 'margin-left: auto;';
+                break;
+            case 'center':
+            default:
+                $margin = 'margin: 0 auto;';
+        }
+
+        $output = '<div style="min-width: 260px; max-width: min(' . $atts['width'] . ', 100%); ' . $margin . '">' . do_shortcode($content) . '</div>';
 
         wp_enqueue_style('rrze-elements');
         return $output;
