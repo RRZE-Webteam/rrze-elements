@@ -48,7 +48,7 @@ class Tabs
         }
         $GLOBALS['tabs_hstart'] = is_numeric($args['hstart']) ? $args['hstart'] : $defaults['hstart'];
 
-        $output = '<div class="rrze-elements-tabs ' . $color . '">';
+        $output = '<div class="rrze-elements-tabs ' . $color . '" id="tabs-' . $GLOBALS['tabs_id'] . '">';
 
         preg_match_all('(\[tab(.*?)\])',$content, $matchesTabs);
         $matchesTitles = [];
@@ -74,7 +74,7 @@ class Tabs
             } else {
                 $suffix = '';
             }
-            $output .= '<button id="tab_'.$slug.'" type="button" role="tab" aria-selected="true" aria-controls="tabpanel_'.$slug.'">'
+            $output .= '<button id="tab-'.$GLOBALS['tabs_id'] . '_' . $slug.'" type="button" role="tab" aria-selected="true" aria-controls="tab-'.$GLOBALS['tabs_id'] . '_tabpanel_'.$slug.'">'
                 . '<span class="focus">' . $icon . $title . $suffix . '</span>'
                 . '</button>';
         }
@@ -109,7 +109,14 @@ class Tabs
             $GLOBALS['tabs_count'] = 0;
         }
 
-        $defaults = array('title' => 'Tab '.$GLOBALS['tabs_count'], 'color' => '', 'id' => '', 'load' => '', 'name' => '', 'icon' => '', 'suffix' => '');
+        $defaults = array(
+            'title' => 'Tab '.$GLOBALS['tabs_count'],
+            'color' => '',
+            'id' => '',
+            'load' => '',
+            'name' => '',
+            'icon' => '',
+            'suffix' => '');
         extract(shortcode_atts($defaults, $atts));
 
         $addclass = '';
@@ -150,7 +157,7 @@ class Tabs
         }
 
         $slug = sanitize_title($title);
-        $output = '<div id="tabpanel_'.$slug.'" role="tabpanel" aria-labelledby="tab_'.$slug.'">';
+        $output = '<div id="tab-'.$GLOBALS['tabs_id'] . '_tabpanel_'.$slug.'" role="tabpanel" aria-labelledby="tab-'.$GLOBALS['tabs_id'] . '_' . $slug.'">';
         $output .= '<h' . $GLOBALS['tabs_hstart'] . ' class="print-only">'.$icon_html . $title. '</h' . $GLOBALS['tabs_hstart'] . '>';
         $output .= do_shortcode($content);
         $output .= '</div>';
