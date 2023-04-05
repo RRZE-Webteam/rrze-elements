@@ -25,6 +25,8 @@ a.icon:active {
 ul[class^="rrze-elements-icon-list-"] {
     li {
         list-style-type:none;
+        position: relative;
+        left: -1em;
         &:before {
             content: "";
             display: inline-block;
