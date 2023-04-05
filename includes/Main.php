@@ -93,7 +93,7 @@ class Main
             'rrze-elements',
             plugins_url('assets/css/rrze-elements.css', plugin_basename($this->pluginFile)),
             [],
-            '1.24.12'
+            '1.24.13'
         );
     }
 }
