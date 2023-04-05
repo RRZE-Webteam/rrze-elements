@@ -85,7 +85,8 @@ class Icon {
 
         $svg = self::getIcon($args['icon']);
         if ($svg == '') {
-            return '<div class="alert danger clearfix clear">' . __('Icon not found.', 'rrze-elements') . '</div>' . $content;
+            wp_enqueue_style('rrze-elements');
+            return '<div class="alert alert-danger clearfix clear">' . __('Icon not found.', 'rrze-elements') . '</div>' . $content;
         }
 
         $svgMod = str_replace('<path', '<path fill="'.urlencode($args['color']).'"', $svg);
