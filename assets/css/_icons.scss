@@ -21,3 +21,20 @@ a.icon:focus,
 a.icon:active {
     box-shadow: none; // fix für FAU-Themes
 }
+
+ul[class^="rrze-elements-icon-list-"] {
+    li {
+        list-style-type:none;
+        position: relative;
+        left: -1em;
+        &:before {
+            content: "";
+            display: inline-block;
+            margin-right: .3em;
+            height: .75em;
+            width: .75em;
+            background-size: .75em .75em;
+            background-repeat: no-repeat;
+        }
+    }
+}
