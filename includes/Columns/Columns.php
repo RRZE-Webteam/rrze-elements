@@ -43,22 +43,57 @@ class Columns
         wp_enqueue_style('rrze-elements');
         $defaults = array(
             'number' => '',
+            'valign' => '',
         );
         $args = shortcode_atts($defaults, $atts);
         $columns = absint($args['number']);
         $colClass = $columns > 0 ? 'cols-'.$columns : '';
-        return '<div class="elements-columns '.$colClass.'">' . do_shortcode(($content)) . '</div>';
+        switch ($args['valign']) {
+            case 'top':
+                $valign = 'style="align-items: flex-start"';
+                break;
+            case 'bottom':
+                $valign = 'style="align-items: flex-end"';
+                break;
+            case 'center':
+            case 'middle':
+                $valign = 'style="align-items: center"';
+                break;
+            case 'stretch':
+                $valign = 'style="align-items: stretch"';
+                break;
+            default:
+                $valign = '';
+        }
+        return '<div class="elements-columns '.$colClass.'" ' . $valign . '>' . do_shortcode(($content)) . '</div>';
     }
 
     public function shortcodeColumn($atts, $content = null){
         $defaults = array(
             'span' => '1',
+            'valign' => '',
         );
         $spans = ['1', '2', '3'];
         $args = shortcode_atts($defaults, $atts);
         $class = 'colspan-' . (in_array($args['span'], $spans) ? $args['span'] : $defaults['span']);
-
-        return "<div class=\"column $class\">" . do_shortcode(($content)) . '</div>';
+        switch ($args['valign']) {
+            case 'top':
+                $style = 'style="align-self: flex-start"';
+                break;
+            case 'bottom':
+                $style = 'style="align-self: flex-end"';
+                break;
+            case 'center':
+            case 'middle':
+                $style = 'style="align-self: center"';
+                break;
+            case 'stretch':
+                $style = 'style="align-self: stretch"';
+                break;
+            default:
+                $style = '';
+        }
+        return "<div class=\"column $class\" $style>" . do_shortcode(($content)) . '</div>';
     }
 
 
