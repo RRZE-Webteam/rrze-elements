@@ -4,6 +4,8 @@ namespace RRZE\Elements\Button;
 
 defined('ABSPATH') || exit;
 
+use function RRZE\Elements\Config\calculateContrastColor;
+
 /**
  * [Button description]
  */
@@ -46,11 +48,13 @@ class Button
         $style = (in_array($atts['style'], ['success', 'info', 'warning', 'danger', 'primary', 'ghost'])) ? ' ' . $atts['style'] . '-btn' : ' primary-btn';
         $color_hex = '';
         $color_name = '';
+        $fontColor = '';
 
         if ((substr($atts['color'], 0, 1) == '#') && (in_array(strlen($atts['color']), [4, 7]))) {
             $color_name = '';
             $color_hex = 'background-color:' . $atts['color'] . ';';
             $style = 'X';
+            $fontColor = ' color: ' . calculateContrastColor($atts['color']) . ';';
         }
 
         if (in_array($atts['color'], ['red', 'yellow', 'blue', 'green', 'grey', 'black'])) {
@@ -58,21 +62,12 @@ class Button
             $style = 'Y';
         }
 
-        $border_color = ((substr($atts['border_color'], 0, 1) == '#') && (in_array(strlen($atts['border_color']), [4, 7]))) ? ' border:1px solid' . $atts['border_color'] . ';' : '';
+        $border_color = ((substr($atts['border_color'], 0, 1) == '#') && (in_array(strlen($atts['border_color']), [4, 7]))) ? ' border:1px solid ' . $atts['border_color'] . ';' : '';
 
         $size = ($atts['size']) ? ' ' . $atts['size'] . '-btn' : '';
         $target = ($atts['target'] == 'blank') ? ' target="_blank"' : '';
         $link = esc_url($atts['link']);
-        switch ($atts['font']) {
-            case 'dark':
-                $fontColor = ' color: #1a1a1a;';
-                break;
-            case 'light':
-                $fontColor = ' color: #fff;';
-                break;
-            default:
-                $fontColor = '';
-        }
+
         $title = $atts['title'] != '' ? ' title="' . sanitize_text_field($atts['title']) . '"' : '';
         $width = trim($atts['width']);
         $width_full = '';

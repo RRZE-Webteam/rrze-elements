@@ -29,3 +29,21 @@ function getThemeGroup($value = '') {
     }
     return false;
 }
+
+/*-----------------------------------------------------------------------------------*/
+/* Calculate Contrast Color
+/*-----------------------------------------------------------------------------------*/
+function calculateContrastColor( $color ) {
+    $color = str_replace( '#', '', $color );
+    $r = hexdec( substr( $color, 0, 2 ) );
+    $g = hexdec( substr( $color, 2, 2 ) );
+    $b = hexdec( substr( $color, 4, 2 ) );
+    $d = '#000';
+    // Counting the perceptive luminance - human eye favors green color...
+    $luminance = ( 0.299 * $r + 0.587 * $g + 0.114 * $b ) / 255;
+    if ( $luminance < 0.5 ) {
+        $d = '#fff';
+    }
+
+    return $d;
+}
