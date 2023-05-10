@@ -39,6 +39,12 @@ a.standard-btn {
 
 button.standard-btn,
 a.standard-btn {
+    &.font-light {
+        color: #fff;
+    }
+    &.font-dark {
+        color: #000;
+    }
     &.xsmall-btn {
         padding: 5px 10px;
         font-size: 14px;
