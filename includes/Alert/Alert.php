@@ -2,6 +2,8 @@
 
 namespace RRZE\Elements\Alert;
 
+use function RRZE\Elements\Config\calculateContrastColor;
+
 defined('ABSPATH') || exit;
 
 /**
@@ -34,25 +36,34 @@ class Alert
             'title' => '',
         ], $atts));
 
-        $style = (in_array($style, array('success', 'info', 'warning', 'danger', 'example'))) ? ' alert-' . $style : '';
-        $font = ($font == 'light') ? ' light' : '';
-        $color = ((substr($color, 0, 1) == '#') && (in_array(strlen($color), [4, 7]))) ? 'background-color:' . $color . ';' : '';
-        $border_color = ((substr($border_color, 0, 1) == '#') && (in_array(strlen($border_color), [4, 7]))) ? ' border:1px solid' . $border_color . ';' : '';
-		$isExample = str_contains($style, 'example');
-		$titleTag = '';
+        $classesArr = ['alert', 'clearfix', 'clear'];
+        $stylesArr = [];
 
-        if ('' != $color || '' != $border_color || '' != $font) {
-            $style = '';
+        if (in_array($style, array('success', 'info', 'warning', 'danger', 'example'))) {
+            $classesArr[] = 'alert-' . $style;
+        } else {
+            if ((substr($color, 0, 1) == '#') && (in_array(strlen($color), [4, 7]))) {
+                $stylesArr[] = 'background-color:' . $color;
+                if (calculateContrastColor($color) == '#ffffff') {
+                    $classesArr[] = 'font-light';
+                }
+            }
+            if ((substr($border_color, 0, 1) == '#') && (in_array(strlen($border_color), [4, 7]))) {
+                $stylesArr[] = ' border:1px solid' . $border_color;
+            }
         }
 
-	    $output = '';
+        $isExample = str_contains($style, 'example');
+		$titleTag = '';
+
+        $output = '';
 		if ($isExample) {
 			if ($title != '') {
 				$titleTag = ' title="' . esc_attr($title) . '"';
 			}
 			$output .= '<div style="overflow: hidden;">';
 		}
-		$output .= '<div class="alert clearfix clear' . $style . $font . '" style="' . $color . $border_color . '" ' . $titleTag . '>' . do_shortcode(($content)) . '</div>';
+		$output .= '<div class="' . implode(' ', $classesArr) . '" style="' . implode('; ', $stylesArr) . '" ' . $titleTag . '>' . do_shortcode(($content)) . '</div>';
 	    if ($isExample) {
 		    $output .= '</div>';
 		}
