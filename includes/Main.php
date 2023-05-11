@@ -9,6 +9,7 @@ use RRZE\Elements\Alert\Alert;
 use RRZE\Elements\Button\Button;
 use RRZE\Elements\Columns\Columns;
 use RRZE\Elements\ContentSlider\ContentSlider;
+use RRZE\Elements\CTA\CTA;
 use RRZE\Elements\LaTeX\LaTeX;
 use RRZE\Elements\LegalText\LegalText;
 use RRZE\Elements\Assistant\Assistant;
@@ -72,6 +73,7 @@ class Main
 		new TextColumns();
 		new Tabs();
         new Table();
+        new CTA($this->pluginFile);
 
         $theme = wp_get_theme();
         if (in_array($theme->get('Name'), ['FAU Events', 'RRZE 2019'])) {
