@@ -31,7 +31,7 @@ class CTA {
             'button' => '',
             'url' => '',
             'icon' => '',
-            'graphics' => '',
+            'background' => '',
             'image' => '',
         ], $atts);
         $title = sanitize_text_field($atts['title']);
@@ -45,13 +45,12 @@ class CTA {
         } else {
             $iconOut = '';
         }
-        $graphics = in_array($atts['graphics'], ['1', '2', '3', '4']) ? $atts['graphics'] : false;
-        if (strlen($graphics) < 2) {
-            $graphics = '0'.$graphics;
-        }
+        $bgClass = is_numeric($atts['background']) ? ' bg-'.$atts['background'] : '';
         $image = sanitize_url($atts['image']);
         $imageID = attachment_url_to_postid($image); // returns 0 on failure
-        $output = '<div class="rrze-elements-cta"><div class="cta-content">';
+        $wrapperClass = $imageID != '0' ? ' has-image' : ' no-image';
+
+        $output = '<div class="rrze-elements-cta' . $wrapperClass . $bgClass . '"><div class="cta-content' . '">';
         if ($title != '') {
             $output .= '<span class="cta-title">' . $title . '</span>';
         }
@@ -62,9 +61,7 @@ class CTA {
         if ($imageID != '0') {
             $output .= '<div class="cta-image">' . wp_get_attachment_image($imageID, 'large') . '</div>';
         }
-        $output .= '<div class="cta-button-container"><a href="' . $url . '" class="cta-button">' . $button . $iconOut . '</a></div>';
-
-        // TODO: Sinuskurven
+        $output .= '<div class="cta-button-container"><a href="' . $url . '" class="btn cta-button">' . $button . $iconOut . '</a></div>';
 
         $output .= '</div>';
         return $output;

@@ -1,7 +1,17 @@
 .rrze-elements-cta {
     position: relative;
-    background: var(--color-zentral-primary, #04316a);
+    margin: 2em 0;
     color: #fff;
+    background-color: var(--color-zentral-primary, #04316a);
+    $backgrounds: '1', '2';
+    @each $background in $backgrounds {
+        &.bg-#{$background} {
+            background-image: url("../svg/cta/FAU-Sinuskurven-0#{$background}.svg");
+            background-position: bottom 50% left;
+            background-size: 100%;
+            background-repeat: no-repeat;
+        }
+    }
     @media screen and (min-width: 992px) {
         display: flex;
         justify-content: space-between;
@@ -19,6 +29,7 @@
             display: block;
             font-size: 1.8em;
             line-height: 1.5;
+            font-weight: bold;
             @media screen and (min-width: 992px) {
                 font-size: 2em;
             }
@@ -27,6 +38,7 @@
             display: block;
             font-size: 1.1em;
             line-height: 1.5;
+            margin-top: .25em;
             @media screen and (min-width: 992px) {
                 font-size: 1.3em;
             }
@@ -52,6 +64,7 @@
         text-decoration: none;
         color: var(--color-Text);
         font-weight: bold;
+        border-radius: 0;
         &:hover, &:focus, &:active {
             box-shadow: inset 0 -3.2em 0 var(--color-zentral-dunkler, #1f4c7a);
             text-decoration: none;
@@ -62,11 +75,13 @@
             top: -.15em;
             padding-bottom: 0;
             padding-right: 0;
+            border-radius: 0 !important;
         }
         @media screen and (min-width: 992px) {
             position: relative;
             right: 15%;
             padding: .5em 2em .25em;
+            max-width: 80%;
         }
     }
     .cta-image {
@@ -79,8 +94,37 @@
         @media screen and (min-width: 992px) {
             display: block;
             width: 25%;
-            //max-width: 200px;
+            min-width: 200px;
         }
 
     }
+    &.no-image {
+        .cta-button {
+            @media screen and (min-width: 992px) {
+                right: 0;
+            }
+        }
+        .cta-content {
+            @media screen and (min-width: 992px) {
+                padding-right: 4em;
+                min-height: 320px;
+            }
+            @media screen and (min-width: 1200px) {
+                padding-right: 4em;
+                min-height: 360px;
+            }
+        }
+        .cta-button-container {
+            @media screen and (min-width: 992px) {
+                padding-right: 4em;
+                padding-left: 4em;
+            }
+        }
+        @each $background in $backgrounds {
+            &.bg-#{$background} {
+                background-position: left bottom;
+            }
+        }
+    }
+
 }
