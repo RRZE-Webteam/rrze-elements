@@ -97,12 +97,6 @@
     .news-item .entry-thumbnail {
         position: relative;
         width: 100%;
-        -webkit-clip-path: polygon(0 5%, 100% 0, 100% 100%, 0% 100%);
-        clip-path: polygon(0 5%, 100% 0, 100% 100%, 0% 100%);
-        &.ratio-portrait {
-            -webkit-clip-path: polygon(0 2%, 100% 0, 100% 100%, 0% 100%);
-            clip-path: polygon(0 2%, 100% 0, 100% 100%, 0% 100%);
-        }
         margin-bottom: 10px;
     }
     &:not(.post-cols) .news-item .entry-thumbnail {
