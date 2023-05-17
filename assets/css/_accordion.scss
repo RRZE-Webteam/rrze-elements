@@ -225,7 +225,7 @@ button.expand-all.standard-btn {
     .accordion-heading .accordion-toggle {
     }
     .accordion-toggle {
-        @include border-radius(4px);
+        @include border-radius(var(--border-radius, 4px));
     }
     .accordion-body {
         .accordion-inner {

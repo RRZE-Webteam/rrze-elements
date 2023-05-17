@@ -69,7 +69,7 @@
     background: #fff;
     overflow: initial;
     border: 1px dashed var(--color-TextLight, $medium-grey);
-    border-radius: 3px;
+    border-radius: var(--border-radius, 3px);
     &:after {
         background: #fff;
         border: 1px dashed var(--color-TextLight, $medium-grey);
