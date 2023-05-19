@@ -47,8 +47,8 @@ class Main
     {
         $this->pluginFile = $pluginFile;
 
-        remove_filter('the_content', 'wpautop');
-        add_filter('the_content', 'wpautop', 12);
+   //     remove_filter('the_content', 'wpautop');
+   //     add_filter('the_content', 'wpautop', 12);
 
         add_action('wp_enqueue_scripts', [$this, 'enqueueScripts']);
 
