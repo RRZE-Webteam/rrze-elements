@@ -12,6 +12,9 @@ svg.rrze-elements-icon {
     a:hover > &, a:focus > &, a:active > & {
         background-color: var(--color-button-bg, #1f4c7a);
         color: var(--color-button-text, #ffffff);
+        .rrze-2019 & {
+            background-color: #00458C;
+        }
     }
 }
 
