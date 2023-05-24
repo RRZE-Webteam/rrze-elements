@@ -139,6 +139,9 @@
         .entry-content {
             min-width: 0;
         }
+        .limit-width {
+            min-width: 0;
+        }
     }
 
     @media (min-width: 480px) {

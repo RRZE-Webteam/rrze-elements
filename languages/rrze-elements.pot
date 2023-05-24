@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RRZE Elements\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-15 12:37+0000\n"
+"POT-Creation-Date: 2023-05-24 10:15+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: \n"
 "Language-Team: RRZE-Webteam <webmaster@rrze.fau.de>\n"
@@ -20,6 +20,13 @@ msgstr ""
 "X-Generator: Loco https://localise.biz/\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPath-1: .."
+
+#: includes/CTA/CTA.php:26
+#, php-format
+msgid ""
+"%1$sURL missing.%2$s Please provide the %3$surl%4$s attribute in your CTA "
+"shortcode."
+msgstr ""
 
 #. Description of the plugin
 msgid "Advanced design elements for WordPress websites."
@@ -49,8 +56,12 @@ msgstr ""
 msgid "Exclamation mark"
 msgstr ""
 
-#: includes/Accordion/Accordion.php:71
+#: includes/Accordion/Accordion.php:73
 msgid "Expand All"
+msgstr ""
+
+#: includes/CTA/CTA.php:76
+msgid "Find"
 msgstr ""
 
 #. Author URI of the plugin
@@ -61,7 +72,7 @@ msgstr ""
 msgid "https://github.com/RRZE-Webteam/rrze-elements"
 msgstr ""
 
-#: includes/Icon/Icon.php:42
+#: includes/Icon/Icon.php:22 includes/Icon/Icon.php:89
 msgid "Icon not found."
 msgstr ""
 
@@ -69,8 +80,8 @@ msgstr ""
 msgid "Minus"
 msgstr ""
 
-#: includes/News/News.php:249 includes/News/News.php:251
-#: includes/News/News.php:251
+#: includes/News/News.php:251 includes/News/News.php:253
+#: includes/News/News.php:253
 msgid "More news"
 msgstr ""
 
@@ -78,8 +89,13 @@ msgstr ""
 msgid "Nicht erfüllt"
 msgstr ""
 
-#: includes/News/News.php:378
+#: includes/News/News.php:381
 msgid "No posts found."
+msgstr ""
+
+#: includes/CTA/CTA.php:72
+#, php-format
+msgid "Please enter the search term for searching on %s"
 msgstr ""
 
 #: includes/HiddenText/HiddenText.php:39
@@ -100,6 +116,15 @@ msgstr ""
 
 #. Author of the plugin
 msgid "RRZE Webteam"
+msgstr ""
+
+#: includes/CTA/CTA.php:74
+msgid "Search for..."
+msgstr ""
+
+#: includes/CTA/CTA.php:71
+#, php-format
+msgid "Search on %s"
 msgstr ""
 
 #: rrze-elements.php:71
@@ -136,7 +161,7 @@ msgstr ""
 msgid "Video"
 msgstr ""
 
-#: includes/News/News.php:469
+#: includes/News/News.php:472
 #, php-format
 msgid "View all posts in %s"
 msgstr ""

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: RRZE Elements\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-17 15:15+0000\n"
-"PO-Revision-Date: 2022-07-28 08:25+0000\n"
+"PO-Revision-Date: 2023-05-24 10:15+0000\n"
 "Last-Translator: RRZE Webteam <webmaster@fau.de>\n"
 "Language-Team: Deutsch\n"
 "Language: de_DE\n"
@@ -21,21 +21,48 @@ msgstr ""
 "X-Poedit-SearchPath-1: ..\n"
 "X-Loco-Version: 2.2.2; wp-5.2"
 
+#: includes/CTA/CTA.php:26
+#, php-format
+msgid ""
+"%1$sURL missing.%2$s Please provide the %3$surl%4$s attribute in your CTA "
+"shortcode."
+msgstr ""
+
 #. Description of the plugin
 msgid "Advanced design elements for WordPress websites."
 msgstr "Erweiterte Gestaltungselemente für WordPress-Websites."
+
+#: includes/Notice/Notice.php:95
+msgid "Audio"
+msgstr "Audio"
 
 #: includes/ContentIndex/ContentIndex.php:250
 msgid "Category"
 msgstr "Kategorie"
 
+#: includes/Notice/Notice.php:91
+msgid "Cloud"
+msgstr "Cloud"
+
+#: includes/Notice/Notice.php:87
+msgid "Download"
+msgstr "Download"
+
 #: includes/Symbols/Symbols.php:23
 msgid "Erfüllt"
 msgstr "Erfüllt"
 
-#: includes/Accordion/Accordion.php:68
+#: includes/Notice/Notice.php:113
+msgid "Exclamation mark"
+msgstr "Ausrufezeichen"
+
+#: includes/Accordion/Accordion.php:73
 msgid "Expand All"
 msgstr "Alle öffnen"
+
+#: includes/CTA/CTA.php:76
+msgid "Find"
+msgstr ""
 
 #. Author URI of the plugin
 msgid "https://blogs.fau.de/webworking/"
@@ -45,8 +72,16 @@ msgstr "https://blogs.fau.de/webworking/"
 msgid "https://github.com/RRZE-Webteam/rrze-elements"
 msgstr "https://github.com/RRZE-Webteam/rrze-elements"
 
-#: includes/News/News.php:249 includes/News/News.php:251
-#: includes/News/News.php:251
+#: includes/Icon/Icon.php:22 includes/Icon/Icon.php:89
+msgid "Icon not found."
+msgstr "Icon nicht gefunden."
+
+#: includes/Notice/Notice.php:75
+msgid "Minus"
+msgstr "Minus"
+
+#: includes/News/News.php:251 includes/News/News.php:253
+#: includes/News/News.php:253
 msgid "More news"
 msgstr "Weitere Artikel"
 
@@ -54,14 +89,27 @@ msgstr "Weitere Artikel"
 msgid "Nicht erfüllt"
 msgstr "Nicht erfüllt"
 
-#: includes/News/News.php:378
+#: includes/News/News.php:381
 msgid "No posts found."
 msgstr "Keine Beiträge gefunden."
+
+#: includes/CTA/CTA.php:72
+#, php-format
+msgid "Please enter the search term for searching on %s"
+msgstr ""
 
 #: includes/HiddenText/HiddenText.php:39
 msgid "Please use a valid date format: Y-m-d H:i:s."
 msgstr ""
 "Ungültiges Datumsformat. Bitte verwenden Sie ein Datum im Format Y-m-d H:i:s."
+
+#: includes/Notice/Notice.php:79
+msgid "Plus"
+msgstr "Plus"
+
+#: includes/Notice/Notice.php:71
+msgid "Question"
+msgstr "Frage"
 
 #. Name of the plugin
 msgid "RRZE Elements"
@@ -70,6 +118,15 @@ msgstr "RRZE Elements"
 #. Author of the plugin
 msgid "RRZE Webteam"
 msgstr "RRZE-Webteam"
+
+#: includes/CTA/CTA.php:74
+msgid "Search for..."
+msgstr ""
+
+#: includes/CTA/CTA.php:71
+#, php-format
+msgid "Search on %s"
+msgstr ""
 
 #: rrze-elements.php:71
 #, php-format
@@ -89,7 +146,27 @@ msgstr ""
 "The server is running WordPress version %1$s. The Plugin requires at least "
 "WordPress version %2$s."
 
-#: includes/News/News.php:469
+#: includes/Notice/Notice.php:107
+msgid "Thumbs down"
+msgstr "Daumen runter"
+
+#: includes/Notice/Notice.php:103
+msgid "Thumbs up"
+msgstr "Daumen hoch"
+
+#: includes/Notice/Notice.php:83
+msgid "Tipp"
+msgstr "Tipp"
+
+#: includes/Notice/Notice.php:67
+msgid "Tools"
+msgstr "Werkzeug"
+
+#: includes/Notice/Notice.php:99
+msgid "Video"
+msgstr "Video"
+
+#: includes/News/News.php:472
 #, php-format
 msgid "View all posts in %s"
 msgstr "Alle Beiträge in %s anzeigen"

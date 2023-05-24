@@ -72,7 +72,8 @@ class CTA {
                 . '<label for="cta_search_' . $rand . '">' . sprintf(__('Please enter the search term for searching on %s', 'rrze-elements'), $url) . ':</label>'
                 . '<meta itemprop="target" content="' . trailingslashit($url) . '?s={s}">'
                 . '<input itemprop="query-input" id="' . $rand . '" type="text" value="" name="s" placeholder="' . __('Search for...', 'rrze-elements') . '" required>'
-                . '<input type="submit" enterkeyhint="search" value="' . __('Find', 'rrze-elements') . '">'
+                //.  do_shortcode('[icon icon="magnifying-glass"]')
+                . '<button type="submit" enterkeyhint="search" value="">'.do_shortcode('[icon icon="magnifying-glass" color="#1f4c7a" style="2x"]').'<span class="sr-only">' . __('Find', 'rrze-elements') . '</span></button>'
                 . '</form>'
                 . '</div>';
         } else {

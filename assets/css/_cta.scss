@@ -121,16 +121,40 @@
             width: clamp(20ch,50ch,100%);
         }
         input[type="text"],
-        input[type="submit"] {
+        input[type="submit"],
+        button[type="submit"] {
             border-radius: 0;
             border: none;
             font-size: 1rem;
             height: 3em;
             margin: 0;
         }
-        input[type="submit"] {
+        input[type="text"] {
+            background-color: #fff;
+        }
+        input[type="submit"],
+        button[type="submit"] {
+            position: relative;
             padding-left: 1em;
             padding-right: 1em;
+            background-color: #fff;
+            color: var(--color-Text, #222222);
+            .rrze-2019 & {
+                color: #393944;
+            }
+            svg {
+                top: 0;
+            }
+            &:hover, &:focus, &.active {
+                background-color: var(--color-button-bg, #004a9f);
+                color: #fff;
+                svg {
+                    fill: #fff !important;
+                }
+                .rrze-2019 & {
+                    background-color: #00458c;
+                }
+            }
         }
     }
     .cta-image {
