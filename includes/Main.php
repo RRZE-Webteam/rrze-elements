@@ -27,6 +27,7 @@ use RRZE\Elements\Symbols\Symbols;
 use RRZE\Elements\Icon\Icon;
 use RRZE\Elements\Tabs\Tabs;
 use RRZE\Elements\Table\Table;
+use function RRZE\Elements\Config\getThemeGroup;
 
 /**
  * [Main description]
@@ -47,8 +48,10 @@ class Main
     {
         $this->pluginFile = $pluginFile;
 
-        remove_filter('the_content', 'wpautop');
-        add_filter('the_content', 'wpautop', 12);
+        if (getThemeGroup(get_stylesheet()) != 'fau') {
+            remove_filter('the_content', 'wpautop');
+            add_filter('the_content', 'wpautop', 12);
+        }
 
         add_action('wp_enqueue_scripts', [$this, 'enqueueScripts']);
 
@@ -95,7 +98,7 @@ class Main
             'rrze-elements',
             plugins_url('assets/css/rrze-elements.css', plugin_basename($this->pluginFile)),
             [],
-            '1.25.1'
+            RRZE_ELEMENTS_VERSION
         );
     }
 }

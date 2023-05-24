@@ -38,6 +38,15 @@ Functions and Mixins
     background-clip: padding-box;
 }
 
+@mixin hideout() {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
 @mixin svg-content($svg, $subset: 'solid') {
     content: url("../svg/#{$subset}/#{$svg}.svg");
     display: inline-block;

@@ -22,8 +22,8 @@ class CTA {
     }
 
     public function shortcodeCTA($atts, $content = '') {
-        if (!isset($atts['button']) || $atts['button'] == '' || !isset($atts['url']) || $atts['url'] == '') {
-            return do_shortcode('[alert style="danger"]' . sprintf(__('%1$sButton text and URL missing.%2$s Please provide the %3$sbutton%4$s and %3$surl%4$s attributes in your CTA shortcode.', 'rrze-elements'), '<strong>', '</strong>', '<code>', '</code>') . '[/alert]');
+        if (/*!isset($atts['button']) || $atts['button'] == '' || */!isset($atts['url']) || $atts['url'] == '') {
+            return do_shortcode('[alert style="danger"]' . sprintf(__('%1$sURL missing.%2$s Please provide the %3$surl%4$s attribute in your CTA shortcode.', 'rrze-elements'), '<strong>', '</strong>', '<code>', '</code>') . '[/alert]');
         }
         $atts = shortcode_atts([
             'title' => '',
@@ -33,6 +33,8 @@ class CTA {
             'icon' => '',
             'background' => '',
             'image' => '',
+            'search' => '',
+            'style' => ''
         ], $atts);
         $title = sanitize_text_field($atts['title']);
         $subtitle = sanitize_text_field($atts['subtitle']);
@@ -45,12 +47,14 @@ class CTA {
         } else {
             $iconOut = '';
         }
-        $bgClass = is_numeric($atts['background']) ? ' bg-'.$atts['background'] : '';
+        $styleClass = $atts['style'] == 'small' ? ' style-'.$atts['style'] : '';
+        $bgClass = in_array($atts['background'], ['1', 'rrze']) ? ' bg-'.$atts['background'] : '';
         $image = sanitize_url($atts['image']);
         $imageID = attachment_url_to_postid($image); // returns 0 on failure
         $wrapperClass = $imageID != '0' ? ' has-image' : ' no-image';
+        $isSearch = in_array($atts['search'], ['1', 'true', 'ja']);
 
-        $output = '<div class="rrze-elements-cta' . $wrapperClass . $bgClass . '"><div class="cta-content' . '">';
+        $output = '<div class="rrze-elements-cta' . $wrapperClass . $bgClass . $styleClass . '"><div class="cta-content' . '">';
         if ($title != '') {
             $output .= '<span class="cta-title">' . $title . '</span>';
         }
@@ -61,7 +65,20 @@ class CTA {
         if ($imageID != '0') {
             $output .= '<div class="cta-image">' . wp_get_attachment_image($imageID, 'large') . '</div>';
         }
-        $output .= '<div class="cta-button-container"><a href="' . $url . '" class="btn cta-button">' . $button . $iconOut . '</a></div>';
+        if ($isSearch) {
+            $rand = random_int(0, 999999);
+            $output .= '<div class="cta-search-container">'
+                . '<form itemprop="potentialAction" itemscope="" itemtype="https://schema.org/SearchAction" role="search" aria-label="' . sprintf(__('Search on %s', 'rrze-elements'), $url) . '" method="get" class="cta-search searchform" action="' . trailingslashit($url) . '">'
+                . '<label for="cta_search_' . $rand . '">' . sprintf(__('Please enter the search term for searching on %s', 'rrze-elements'), $url) . ':</label>'
+                . '<meta itemprop="target" content="' . trailingslashit($url) . '?s={s}">'
+                . '<input itemprop="query-input" id="' . $rand . '" type="text" value="" name="s" placeholder="' . __('Search for...', 'rrze-elements') . '" required>'
+                //.  do_shortcode('[icon icon="magnifying-glass"]')
+                . '<button type="submit" enterkeyhint="search" value="">'.do_shortcode('[icon icon="magnifying-glass" color="#1f4c7a" style="2x"]').'<span class="sr-only">' . __('Find', 'rrze-elements') . '</span></button>'
+                . '</form>'
+                . '</div>';
+        } else {
+            $output .= '<div class="cta-button-container"><a href="' . $url . '" class="btn cta-button">' . $button . $iconOut . '</a></div>';
+        }
 
         $output .= '</div>';
         return $output;

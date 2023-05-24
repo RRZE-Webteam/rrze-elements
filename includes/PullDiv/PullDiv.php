@@ -66,7 +66,7 @@ class PullDiv
                 $margin = 'margin: 0 auto;';
         }
 
-        $output = '<div style="min-width: 260px; max-width: min(' . $atts['width'] . ', 100%); ' . $margin . '">' . do_shortcode($content) . '</div>';
+        $output = '<div class="limit-width" style="max-width: min(' . $atts['width'] . ', 100%); ' . $margin . '">' . do_shortcode($content) . '</div>';
 
         wp_enqueue_style('rrze-elements');
         return $output;
