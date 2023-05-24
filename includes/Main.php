@@ -98,7 +98,7 @@ class Main
             'rrze-elements',
             plugins_url('assets/css/rrze-elements.css', plugin_basename($this->pluginFile)),
             [],
-            '1.25.1'
+            RRZE_ELEMENTS_VERSION
         );
     }
 }
