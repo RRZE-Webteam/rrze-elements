@@ -40,7 +40,7 @@ class ContentSlider
                     . do_shortcode($content)
                     . '</ul></div>';
         } else {
-            extract(shortcode_atts([
+            $atts = shortcode_atts([
                 "id" => '',
                 "type" => 'post',
                 "number" => '-1',
@@ -52,20 +52,21 @@ class ContentSlider
                 'img_height' => '300',
                 'format' => '',
                 'start' => '',
-            ], $atts, 'content-slider'));
+                'hide' => '',
+            ], $atts);
 
-            $id         = sanitize_text_field($id);
+            $id         = sanitize_text_field($atts['id']);
             $ids        = explode(",", $id);
             $ids        = array_map('trim', $ids);
-            $type       = (in_array(sanitize_text_field($type), array(
+            $type       = (in_array(sanitize_text_field($atts['type']), array(
                 'post',
                 'page',
                 'speaker',
                 'talk'
-            ))) ? sanitize_text_field($type) : '';
-            $orderby    = sanitize_text_field($orderby);
-            $img_width  = (is_numeric($img_width) ? $img_width . 'px' : '');
-            $img_height = (is_numeric($img_height) ? $img_height . 'px' : '');
+            ))) ? sanitize_text_field($atts['type']) : '';
+            $orderby    = sanitize_text_field($atts['orderby']);
+            $img_width  = (is_numeric($atts['img_width']) ? $atts['img_width'] . 'px' : '');
+            $img_height = (is_numeric($atts['img_height']) ? $atts['img_height'] . 'px' : '');
             if ($img_width != '' && $img_height == '') {
                 $img_height = 'auto';
             }
@@ -77,12 +78,13 @@ class ContentSlider
             }
             $img_style = ($img_width != '' || $img_height != '') ? ' width:' . $img_width . '; height:' . $img_height . '; object-fit: cover;' : '';
 
-            $cat  = sanitize_text_field($category);
-            $tag  = sanitize_text_field($tag);
-            $num  = sanitize_text_field($number);
-            $link = filter_var($link, FILTER_VALIDATE_BOOLEAN);
-            $format  = sanitize_text_field($format);
-            $start = ($start == 'pause' ? 'pause' : '');
+            $cat  = sanitize_text_field($atts['category']);
+            $tag  = sanitize_text_field($atts['tag']);
+            $num  = sanitize_text_field($atts['number']);
+            $link = filter_var($atts['link'], FILTER_VALIDATE_BOOLEAN);
+            $format  = sanitize_text_field($atts['format']);
+            $start = ($atts['start'] == 'pause' ? 'pause' : '');
+            $hide = array_map('trim', explode(",", $atts['hide']));
 
             $args = [
                 'post_type'           => $type,
@@ -153,11 +155,15 @@ class ContentSlider
                             $image = '<img src="' . $default_image . '" alt="" width="480" height="320">';
                         }
                         $output .= '<div class="image-container">'. $link_open . $image . $link_close . '</div>'
-                            . '<div class="content-container">'
-                            . '<p class="posted-on">' . get_the_date() . '</p>'
-                            . '<h2>' . $link_open . get_the_title() . $link_close . '</h2>'
-                            . '<div class="post-categories cat-links news-meta-categories">' . get_the_category_list(' | ') . '</div>'
-                            . '</div>';
+                            . '<div class="content-container">';
+                        if (!in_array('date', $hide)) {
+                            $output .= '<p class="posted-on">' . get_the_date() . '</p>';
+                        }
+                        $output .= '<h2>' . $link_open . get_the_title() . $link_close . '</h2>';
+                        if (!in_array('category', $hide)) {
+                            $output .= '<div class="post-categories cat-links news-meta-categories">' . get_the_category_list(' | ') . '</div>';
+                        }
+                        $output .= '</div>';
                     } else {
                         if (function_exists('fau_display_news_teaser')) {
                             $output .= fau_display_news_teaser($id);
