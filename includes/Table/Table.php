@@ -12,15 +12,18 @@ defined( 'ABSPATH') || exit;
 class Table {
 
     public function __construct() {
-        add_shortcode('tablescript', [$this, 'shortcodeTablescript']);
         add_action('wp_enqueue_scripts', [$this, 'enqueueScripts']);
+        add_filter( 'the_content', [$this, 'includeTablescript'] );
     }
 
-    public function shortcodeTablescript($atts, $content = '', $tag = '') {
-        wp_enqueue_script('rrze-tables');
-        $script = 'jQuery(function($) { $("table.sorttable").tablesorter(); $("table.filtertable").tablesorter({widgets: ["filter"], filter_columnAnyMatch: true, }); }); ';
-        wp_add_inline_script('rrze-tables', $script, 'after' );
-        wp_enqueue_style('rrze-elements');
+    public function includeTablescript($content) {
+        if (strpos($content, '<table ') !== false) {
+            wp_enqueue_script('rrze-tables');
+            $script = 'jQuery(function($) { $("table.sorttable").tablesorter(); $("table.filtertable").tablesorter({widgets: ["filter"], filter_columnAnyMatch: true, }); }); ';
+            wp_add_inline_script('rrze-tables', $script, 'after' );
+            wp_enqueue_style('rrze-elements');
+        }
+        return $content;
     }
 
     public static function enqueueScripts() {
