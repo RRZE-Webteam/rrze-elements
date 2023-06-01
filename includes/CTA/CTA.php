@@ -22,7 +22,7 @@ class CTA {
     }
 
     public function shortcodeCTA($atts, $content = '') {
-        if (/*!isset($atts['button']) || $atts['button'] == '' || */!isset($atts['url']) || $atts['url'] == '') {
+        if ((!isset($atts['search']) || $atts['search'] == '') && (!isset($atts['url']) || $atts['url'] == '')) {
             return do_shortcode('[alert style="danger"]' . sprintf(__('%1$sURL missing.%2$s Please provide the %3$surl%4$s attribute in your CTA shortcode.', 'rrze-elements'), '<strong>', '</strong>', '<code>', '</code>') . '[/alert]');
         }
         $atts = shortcode_atts([
@@ -75,6 +75,7 @@ class CTA {
         }
         if ($search !== false) {
             if ($search == 1) $search = 's';
+            if ($url == '') $url = get_site_url();
             $rand = random_int(0, 999999);
             $output .= '<div class="cta-search-container">'
                 . '<form itemprop="potentialAction" itemscope="" itemtype="https://schema.org/SearchAction" role="search" aria-label="' . sprintf(__('Search on %s', 'rrze-elements'), $url) . '" method="get" class="cta-search searchform" action="' . trailingslashit($url) . '">'
