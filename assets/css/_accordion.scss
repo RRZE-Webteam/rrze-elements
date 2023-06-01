@@ -219,7 +219,7 @@ button.expand-all.standard-btn {
             padding: 15px 20px;
             .alert.font-light & {
                 color: var(--color-Text, #222);
-                p {
+                p, li, a, span {
                     color: var(--color-Text, #222);
                 }
             }
