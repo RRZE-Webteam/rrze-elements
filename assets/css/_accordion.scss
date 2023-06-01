@@ -88,12 +88,23 @@ button.expand-all.standard-btn {
             text-decoration: none;
             background-color: var(--color-primary-ci-hell, $colorDefault);
             color: var(--color-primary-ci-hell-kontrast, #fff);
+            .alert.font-light &  {
+                * {
+                    color: var(--color-primary-ci-hell-kontrast, #fff);
+                }
+            }
+
         }
         &.active:hover,
         &.active:focus {
             border-color: var(--color-primary-dunkler, $colorDefaultDunkler);
             background-color: var(--color-primary-dunkler, $colorDefaultDunkler);
             color: var(--color-primary-ci-hell-kontrast, #fff);
+        }
+        .alert.font-light &  {
+            * {
+                color: var(--color-Text, #444);
+            }
         }
         svg.rrze-elements-icon {
             margin-right: 3px;
