@@ -217,6 +217,12 @@ button.expand-all.standard-btn {
             border: none;
             background-color: #fff;
             padding: 15px 20px;
+            .alert.font-light & {
+                color: var(--color-Text, #222);
+                p {
+                    color: var(--color-Text, #222);
+                }
+            }
         }
     }
 }
