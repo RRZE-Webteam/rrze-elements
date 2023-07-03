@@ -26,7 +26,14 @@ class LegalText
      */
     public function legalText($atts, $content = '', $tag = '')
     {
+        $atts = shortcode_atts([
+            'brackets' => '',
+        ], $atts);
+        $classes = ['legal-text'];
+        if ($atts['brackets'] == 'square') {
+            $classes[] = 'square-brackets';
+        }
         wp_enqueue_style('rrze-elements');
-        return '<div class="legal-text">' . $content . '</div>';
+        return '<div class="' . implode(' ', $classes) . '">' . $content . '</div>';
     }
 }
