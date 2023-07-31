@@ -111,6 +111,7 @@
 
     [role="tab"] {
         margin-right: 5px;
+        margin-bottom: 0;
         &[aria-selected="true"] {
             font-weight: bold;
             /*padding: 2px 2px 4px;
