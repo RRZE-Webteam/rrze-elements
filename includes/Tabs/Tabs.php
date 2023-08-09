@@ -88,7 +88,7 @@ class Tabs
             $GLOBALS['tabs_id'] --;
         }
 
-        return $output;
+        return wpautop($output);
     }
 
     /**
