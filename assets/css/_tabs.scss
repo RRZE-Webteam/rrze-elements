@@ -110,7 +110,7 @@
     }
 
     [role="tab"] {
-        margin-right: 5px;
+        margin: 0 5px 0 0;
         &[aria-selected="true"] {
             font-weight: bold;
             /*padding: 2px 2px 4px;
@@ -130,6 +130,7 @@
         border-radius: 0;
         font-size: 1rem;
         text-align: left;
+        cursor: pointer;
         @media (min-width: 550px) {
             display: inline-block;
             width: auto;
@@ -156,15 +157,6 @@
                 font-weight: bold;
             }
         }
-
-        &:hover, &:focus, &:active {
-            span.focus {
-                //padding: 2px 4px;
-                //border: 2px solid rgb(36 116 214);
-                //border-radius: 3px;
-            }
-        }
-
     }
 
     [role="tabpanel"] {
@@ -204,10 +196,18 @@ $colors: "primary", "zentral", "phil", "med", "nat", "rw", "tf";
                 }
                 @media (min-width: 550px) {
                     border-top: 1px solid var(--color-#{$color}-ci-hell2, map-get($colormaps, $color, "ci-hell2"));
-                    &:hover, &:focus, &:active {
+                    &:hover, &:active {
                         color: inherit;
                         border-color: var(--color-#{$color}-ci-hell, map-get($colormaps, $color, "ci-hell"));
                     }
+                    &:focus {
+                        & > span.focus {
+                            padding: 2px 4px;
+                            border: 2px solid var(--color-#{$color}-dunkler, map-get($colormaps, $color, "dunkler"));
+                            border-radius: 3px;
+                        }
+                    }
+
                 }
             }
             [aria-selected="true"] {
@@ -231,7 +231,6 @@ $colors: "primary", "zentral", "phil", "med", "nat", "rw", "tf";
                         color: unset;
                     }
                 }
-
             }
         }
         [role="tabpanel"] {

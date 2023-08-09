@@ -36,22 +36,22 @@
         padding-bottom: 0; // für FAU-Themes
     }
 }
-.alert-success, .alert-success * {
+.alert-success, .alert-success *:not(code, pre) {
     color: #315f31;
     background-color: #dff0d8;
     border-color: #d6e9c6;
 }
-.alert-info, .alert-info * {
+.alert-info, .alert-info *:not(code, pre) {
     color: #245269  ;
     background-color: #d9edf7;
     border-color: #bce8f1;
 }
-.alert-warning, .alert-warning * {
+.alert-warning, .alert-warning *:not(code, pre) {
     color: #66512c;
     background-color: #fcf8e3;
     border-color: #faebcc;
 }
-.alert-danger, .alert-danger * {
+.alert-danger, .alert-danger *:not(code, pre) {
     color: #78302f;
     background-color: #f2dede;
     border-color: #ebccd1;

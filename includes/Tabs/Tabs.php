@@ -75,7 +75,7 @@ class Tabs
                 $suffix = '';
             }
             $output .= '<button id="tab-'.$GLOBALS['tabs_id'] . '_' . $slug.'" type="button" role="tab" aria-selected="true" aria-controls="tab-'.$GLOBALS['tabs_id'] . '_tabpanel_'.$slug.'">'
-                . '<span class="focus">' . $icon . $title . $suffix . '</span>'
+                . '<span class="focus" tabindex="-1">' . $icon . $title . $suffix . '</span>'
                 . '</button>';
         }
         $output .= '</div>';
@@ -88,7 +88,7 @@ class Tabs
             $GLOBALS['tabs_id'] --;
         }
 
-        return $output;
+        return wpautop($output);
     }
 
     /**
