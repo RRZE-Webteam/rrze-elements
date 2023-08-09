@@ -65,7 +65,7 @@ class Columns
             default:
                 $valign = '';
         }
-        return wpautop('<div class="elements-columns '.$colClass.'" ' . $valign . '>' . do_shortcode(($content)) . '</div>');
+        return '<div class="elements-columns '.$colClass.'" ' . $valign . '>' . do_shortcode(($content)) . '</div>';
     }
 
     public function shortcodeColumn($atts, $content = null){
@@ -117,7 +117,7 @@ class Columns
         });
         $cols = 'grid-template-columns: ' . implode(' ', $grid) . ';';
         return '<div class="columns-grid" style="' . $cols . '">'
-                . do_shortcode(wpautop($content))
+                . do_shortcode(($content))
                 . '</div>';
     }
 
@@ -130,7 +130,7 @@ class Columns
     public function shortcodeGridCell($atts, $content = null)
     {
         wp_enqueue_style('rrze-elements');
-        return '<div class="column-grid">' . do_shortcode(wpautop($content)) . '</div>';
+        return '<div class="column-grid">' . do_shortcode(($content)) . '</div>';
     }
 
     /**
@@ -143,7 +143,7 @@ class Columns
     public function shortcodeTwoColumnsOne($atts, $content = null)
     {
         wp_enqueue_style('rrze-elements');
-        return '<div class="two-columns-one">' . do_shortcode(wpautop($content)) . '</div>';
+        return '<div class="two-columns-one">' . do_shortcode(($content)) . '</div>';
     }
 
     /**
@@ -156,7 +156,7 @@ class Columns
     public function shortcodeTwoColumnsOneLast($atts, $content = null)
     {
         wp_enqueue_style('rrze-elements');
-        return '<div class="two-columns-one last">' . do_shortcode(wpautop($content)) . '</div>';
+        return '<div class="two-columns-one last">' . do_shortcode(($content)) . '</div>';
     }
 
     /**
@@ -169,7 +169,7 @@ class Columns
     public function shortcodeThreeColumnsOne($atts, $content = null)
     {
         wp_enqueue_style('rrze-elements');
-        return '<div class="three-columns-one">' . do_shortcode(wpautop($content)) . '</div>';
+        return '<div class="three-columns-one">' . do_shortcode(($content)) . '</div>';
     }
 
     /**
@@ -182,7 +182,7 @@ class Columns
     public function shortcodeThreeColumnsOneLast($atts, $content = null)
     {
         wp_enqueue_style('rrze-elements');
-        return '<div class="three-columns-one last">' . do_shortcode(wpautop($content)) . '</div>';
+        return '<div class="three-columns-one last">' . do_shortcode(($content)) . '</div>';
     }
 
     /**
@@ -195,7 +195,7 @@ class Columns
     public function shortcodeThreeColumnsTwo($atts, $content = null)
     {
         wp_enqueue_style('rrze-elements');
-        return '<div class="three-columns-two">' . do_shortcode(wpautop($content)) . '</div>';
+        return '<div class="three-columns-two">' . do_shortcode(($content)) . '</div>';
     }
 
     /**
@@ -208,7 +208,7 @@ class Columns
     public function shortcodeThreeColumnsTwoLast($atts, $content = null)
     {
         wp_enqueue_style('rrze-elements');
-        return '<div class="three-columns-two last">' . do_shortcode(wpautop($content)) . '</div>';
+        return '<div class="three-columns-two last">' . do_shortcode(($content)) . '</div>';
     }
 
     /**
@@ -221,7 +221,7 @@ class Columns
     public function shortcodeFourColumnsOne($atts, $content = null)
     {
         wp_enqueue_style('rrze-elements');
-        return '<div class="four-columns-one">' . do_shortcode(wpautop($content)) . '</div>';
+        return '<div class="four-columns-one">' . do_shortcode(($content)) . '</div>';
     }
 
     /**
@@ -234,7 +234,7 @@ class Columns
     public function shortcodeFourColumnsOneLast($atts, $content = null)
     {
         wp_enqueue_style('rrze-elements');
-        return '<div class="four-columns-one last">' . do_shortcode(wpautop($content)) . '</div>';
+        return '<div class="four-columns-one last">' . do_shortcode(($content)) . '</div>';
     }
 
     /**
@@ -247,7 +247,7 @@ class Columns
     public function shortcodeFourColumnsTwo($atts, $content = null)
     {
         wp_enqueue_style('rrze-elements');
-        return '<div class="four-columns-two">' . do_shortcode(wpautop($content)) . '</div>';
+        return '<div class="four-columns-two">' . do_shortcode(($content)) . '</div>';
     }
 
     /**
@@ -260,7 +260,7 @@ class Columns
     public function shortcodeFourColumnsTwoLast($atts, $content = null)
     {
         wp_enqueue_style('rrze-elements');
-        return '<div class="four-columns-two last">' . do_shortcode(wpautop($content)) . '</div>';
+        return '<div class="four-columns-two last">' . do_shortcode(($content)) . '</div>';
     }
 
     /**
@@ -273,7 +273,7 @@ class Columns
     public function shortcodeFourColumnsThree($atts, $content = null)
     {
         wp_enqueue_style('rrze-elements');
-        return '<div class="four-columns-three">' . do_shortcode(wpautop($content)) . '</div>';
+        return '<div class="four-columns-three">' . do_shortcode(($content)) . '</div>';
     }
 
     /**
@@ -286,7 +286,7 @@ class Columns
     public function shortcodeFourColumnsThreeLast($atts, $content = null)
     {
         wp_enqueue_style('rrze-elements');
-        return '<div class="four-columns-three last">' . do_shortcode(wpautop($content)) . '</div>';
+        return '<div class="four-columns-three last">' . do_shortcode(($content)) . '</div>';
     }
 
     /**
