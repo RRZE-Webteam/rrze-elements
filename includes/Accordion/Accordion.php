@@ -93,7 +93,7 @@ class Accordion
             $GLOBALS['collapsibles_id'] --;
         }
 
-        return $output;
+        return wpautop($output);
     }
 
     /**

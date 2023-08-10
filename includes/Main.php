@@ -48,9 +48,10 @@ class Main
     {
         $this->pluginFile = $pluginFile;
 
-        remove_filter('the_content', 'wpautop');
+        //remove_filter('the_content', 'wpautop');
 
         add_action('wp_enqueue_scripts', [$this, 'enqueueScripts']);
+        add_filter( 'the_content', 'shortcode_unautop');
 
         new TinyMCEButtons();
         new Lightbox();
@@ -82,7 +83,7 @@ class Main
     }
 
     function __destruct() {
-        add_filter('the_content', 'wpautop');
+        //add_filter('the_content', 'wpautop');
     }
 
     /**
