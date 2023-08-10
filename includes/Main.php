@@ -49,7 +49,6 @@ class Main
         $this->pluginFile = $pluginFile;
 
         remove_filter('the_content', 'wpautop');
-        add_filter('the_content', 'wpautop', 12);
 
         add_action('wp_enqueue_scripts', [$this, 'enqueueScripts']);
 
@@ -80,6 +79,10 @@ class Main
         if (in_array($theme->get('Name'), ['FAU Events', 'RRZE 2019'])) {
             new Gallery();
         }
+    }
+
+    function __destruct() {
+        add_filter('the_content', 'wpautop');
     }
 
     /**
