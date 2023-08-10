@@ -130,7 +130,7 @@ class Columns
     public function shortcodeGridCell($atts, $content = null)
     {
         wp_enqueue_style('rrze-elements');
-        return '<div class="column-grid">' . do_shortcode(wpautop($content)) . '</div>';
+        return wpautop('<div class="column-grid">' . do_shortcode(wpautop($content)) . '</div>');
     }
 
     /**
