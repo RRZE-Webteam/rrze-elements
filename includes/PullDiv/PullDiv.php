@@ -42,7 +42,7 @@ class PullDiv
         $clearafter = $atts['clearafter'] == 'true' ? '<div style="clear: both;"></div>' : '';
         $output = '<aside class="pull-' . $type . $textalign . '">';
         $output .= $atts['title'] ? '<h1>' . $atts['title'] . '</h1>' : '';
-        $output .= '<p>' . do_shortcode($content) . '</p></aside>' . $clearafter;
+        $output .= '<p>' . do_shortcode(wpautop($content)) . '</p></aside>' . $clearafter;
 
         wp_enqueue_style('rrze-elements');
         return $output;
@@ -69,6 +69,6 @@ class PullDiv
         $output = '<div class="limit-width" style="max-width: min(' . $atts['width'] . ', 100%); ' . $margin . '">' . do_shortcode($content) . '</div>';
 
         wp_enqueue_style('rrze-elements');
-        return $output;
+        return wpautop($output);
     }
 }

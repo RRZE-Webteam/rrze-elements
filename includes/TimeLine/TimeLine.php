@@ -95,7 +95,7 @@ class TimeLine
             echo '<script type="text/javascript">' . $config . '</script>';
         });
 
-        return $output;
+        return wpautop($output);
     }
 
     /**

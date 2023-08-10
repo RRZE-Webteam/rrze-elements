@@ -113,16 +113,16 @@ class Notice
 				$alt = __('Exclamation mark', 'rrze-elements');
 		}
 
-        $output = '<div class="notice notice-' . $type . $class . '">';
-	    $output .= do_shortcode('[icon icon="'.$icon.'" style="2x" alt="' . $alt . '"]');
+        $output = '<div class="notice notice-' . $type . $class . '">'
+            . wpautop(do_shortcode('[icon icon="'.$icon.'" style="2x" alt="' . $alt . '"]'));
 	    if (isset($title) && $title != '') {
             $output .= "<h$hstart>" . $title . "</h$hstart>";
         }
-        $output .= '<p>' . do_shortcode($content) . '</p></div>';
+        $output .= '<p>' . wpautop(do_shortcode($content)) . '</p></div>';
 
         wp_enqueue_style('fontawesome');
         wp_enqueue_style('rrze-elements');
 
-        return $output;
+        return wpautop($output);
     }
 }

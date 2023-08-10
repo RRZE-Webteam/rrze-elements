@@ -63,7 +63,7 @@ class Alert
 			}
 			$output .= '<div style="overflow: hidden;">';
 		}
-		$output .= '<div class="' . implode(' ', $classesArr) . '" style="' . implode('; ', $stylesArr) . '" ' . $titleTag . '>' . do_shortcode(($content)) . '</div>';
+		$output .= '<div class="' . implode(' ', $classesArr) . '" style="' . implode('; ', $stylesArr) . '" ' . $titleTag . '>' . do_shortcode(wpautop($content)) . '</div>';
 	    if ($isExample) {
 		    $output .= '</div>';
 		}
@@ -71,6 +71,6 @@ class Alert
         wp_enqueue_style('fontawesome');
         wp_enqueue_style('rrze-elements');
 
-        return $output;
+        return wpautop($output);
     }
 }
