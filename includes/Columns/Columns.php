@@ -117,7 +117,7 @@ class Columns
         });
         $cols = 'grid-template-columns: ' . implode(' ', $grid) . ';';
         return wpautop('<div class="columns-grid" style="' . $cols . '">'
-                . do_shortcode(($content))
+                . do_shortcode(wpautop($content))
                 . '</div>');
     }
 
