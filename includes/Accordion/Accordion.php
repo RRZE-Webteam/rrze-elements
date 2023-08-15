@@ -122,8 +122,7 @@ class Accordion
             $GLOBALS['collapsibles_id'] = $GLOBALS['collapsibles_count'];
         }
 
-        $title = esc_attr($title);
-        $title = esc_attr($title);
+        $title = strip_tags($title, ['<br>', '<br />']);
         $color = $color ? ' ' . esc_attr($color) : '';
         $load = $load ? ' ' . esc_attr($load) : '';
         $dataname = $name ? 'data-name="' . esc_attr($name) . '"' : '';
@@ -155,7 +154,7 @@ class Accordion
         $output .= '<div id="collapse_' . $id . '" class="accordion-body' . $addclass . '"' . $name . '>';
         $output .= '<div class="accordion-inner clearfix">';
 
-        $output .= do_shortcode($content);
+        $output .= wpautop(do_shortcode($content), false);
 
         $output .= '</div></div>';  // .accordion-inner & .accordion-body
         $output .= '</div>';        // . accordion-group

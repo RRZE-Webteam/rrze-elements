@@ -47,6 +47,8 @@ class Notice
      */
     public function shortcodeNotice($atts, $content = '', $tag = '')
     {
+        $content = shortcode_unautop(trim($content));
+
         extract(shortcode_atts([
             'title' => '',
             'hstart' => '3'
@@ -113,8 +115,8 @@ class Notice
 				$alt = __('Exclamation mark', 'rrze-elements');
 		}
 
-        $output = '<div class="notice notice-' . $type . $class . '">'
-            . wpautop(do_shortcode('[icon icon="'.$icon.'" style="2x" alt="' . $alt . '"]'));
+        $output = '<div class="notice notice-' . $type . $class . '"><div>'
+            . do_shortcode('[icon icon="'.$icon.'" style="2x" alt="' . $alt . '"]') . '</div>';
 	    if (isset($title) && $title != '') {
             $output .= "<h$hstart>" . $title . "</h$hstart>";
         }
@@ -123,6 +125,6 @@ class Notice
         wp_enqueue_style('fontawesome');
         wp_enqueue_style('rrze-elements');
 
-        return wpautop($output);
+        return $output;
     }
 }

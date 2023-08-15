@@ -29,6 +29,8 @@ class TimeLine
      */
     public function shortcodeTimeline($atts, $content = '')
     {
+        $content = shortcode_unautop(trim($content));
+
         $defaults = [
             'orientation' => 'horizontal',
             'speed' => 'slow',
@@ -106,13 +108,15 @@ class TimeLine
      */
     public function shortcodeTimelineItem($atts, $content = '')
     {
+        $content = shortcode_unautop(trim($content));
+
         extract(shortcode_atts([
             'name' => ''
         ], $atts));
 
         $output = '';
         $output .= "<li data-date=" . $name . " name=" . sanitize_title($name) . ">";
-        $output .= do_shortcode($content);
+        $output .= wpautop(do_shortcode($content));
         $output .= "</li>";
 
         wp_enqueue_style('fontawesome');
