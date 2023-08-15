@@ -34,6 +34,7 @@ class ContentSlider
     {
         global $post;
         $output = '';
+        $content = shortcode_unautop(trim($content));
 
         if ($tag == 'text-slider') {
             $output .= '<div class="content-slider flexslider clear clearfix"><ul class="slides">'
@@ -208,13 +209,14 @@ class ContentSlider
      */
     public function shortcodeTextSliderItem($atts, $content = '')
     {
+        $content = shortcode_unautop(trim($content));
         extract(shortcode_atts([
             'name' => ''
         ], $atts));
 
         $output = '';
         $output .= "<li>";
-        $output .= do_shortcode($content);
+        $output .= wpautop(do_shortcode($content));
         $output .= "</li>";
 
         return $output;
