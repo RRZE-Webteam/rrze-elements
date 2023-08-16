@@ -85,7 +85,9 @@ class Accordion
                 $output .= '</ul>';
             }
         }
-
+        if (str_starts_with($content, '</p>')) {
+            $content = substr($content, 4);
+        }
         $output .= do_shortcode($content);
         $output .= '</div>';
 
