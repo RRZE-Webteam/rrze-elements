@@ -70,6 +70,7 @@ class Columns
     }
 
     public function shortcodeColumn($atts, $content = null){
+        $content = shortcode_unautop(trim($content));
         $defaults = array(
             'span' => '1',
             'valign' => '',
