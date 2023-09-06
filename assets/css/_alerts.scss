@@ -8,7 +8,8 @@
     font-weight: normal;
     background-color: #e9edf2;
     overflow: hidden;
-    strong {
+    color: #000;
+    p, strong {
         color: inherit;
     }
     &.font-light  {
@@ -19,10 +20,11 @@
             letter-spacing: 0.03em;
         }
         a {
-            color: darken(#fff, 10%);
+            color: #fff;
             text-decoration-color: inherit;
             &:hover, &:focus, &:active{
-                color: #fff;
+                color: darken(#fff, 10%);
+
             }
         }
     }
