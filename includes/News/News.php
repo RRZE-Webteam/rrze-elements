@@ -156,8 +156,8 @@ class News
             $t_id = [];
             $tags = array_map('trim', explode(",", $tag));
             foreach ($tags as $_t) {
-                if ($term_id = get_term_by('name', $_t, 'post_tag')->term_id) {
-                    $t_id[] = $term_id;
+                if ($term = get_term_by('name', $_t, 'post_tag')) {
+                    $t_id[] = $term->term_id;
                 }
             }
             $args['tag__in'] = implode(',', $t_id);
@@ -322,7 +322,7 @@ class News
                         switch (getThemeGroup(get_stylesheet())) {
                             case 'fau':
                                 if (function_exists('fau_display_news_teaser')) {
-                                    $output .= do_shortcode(fau_display_news_teaser($id, !$hide_date, $hstart, $hideMeta));
+                                    $output .= do_shortcode(fau_display_news_teaser($id, !$hide_date, $hstart, $hideMeta, true));
                                 } else {
                                     $args = [
                                         'id' => $id,
