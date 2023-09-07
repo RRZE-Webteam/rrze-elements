@@ -11,9 +11,9 @@ defined( 'ABSPATH') || exit;
  */
 class Accordion
 {
-	protected $pluginFile;
+    protected $pluginFile;
 
-	/**
+    /**
      * [__construct description]
      */
     public function __construct($pluginFile)
@@ -27,7 +27,7 @@ class Accordion
         add_action('wp_enqueue_scripts', [$this, 'enqueueScripts']);
         add_action('wp_enqueue_scripts', [$this, 'enqueueScriptTranslations'], 100);
 
-		$this->pluginFile = $pluginFile;
+        $this->pluginFile = $pluginFile;
     }
 
     /**
@@ -88,14 +88,14 @@ class Accordion
         if (str_starts_with($content, '</p>')) {
             $content = substr($content, 4);
         }
-        $output .= do_shortcode($content);
+        $output .= do_shortcode(shortcode_unautop($content));
         $output .= '</div>';
 
         if (isset($GLOBALS['collapsibles_id'])) {
             $GLOBALS['collapsibles_id'] --;
         }
 
-        return wpautop($output);
+        return $output;
     }
 
     /**
@@ -156,7 +156,8 @@ class Accordion
         $output .= '<div id="collapse_' . $id . '" class="accordion-body' . $addclass . '"' . $name . '>';
         $output .= '<div class="accordion-inner clearfix">';
 
-        $output .= wpautop(do_shortcode($content), false);
+
+        $output .= do_shortcode(shortcode_unautop($content));
 
         $output .= '</div></div>';  // .accordion-inner & .accordion-body
         $output .= '</div>';        // . accordion-group
