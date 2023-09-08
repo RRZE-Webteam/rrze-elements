@@ -1,7 +1,7 @@
 <?php
 
 namespace RRZE\Elements\LegalText;
-
+use RRZE\Elements\Helper;
 defined('ABSPATH') || exit;
 
 /**
@@ -34,6 +34,7 @@ class LegalText
             $classes[] = 'square-brackets';
         }
         wp_enqueue_style('rrze-elements');
-        return '<div class="' . implode(' ', $classes) . '">' . $content . '</div>';
+        
+        return '<div class="' . implode(' ', $classes) . '">' . do_shortcode(shortcode_unautop($content)) . '</div>';
     }
 }

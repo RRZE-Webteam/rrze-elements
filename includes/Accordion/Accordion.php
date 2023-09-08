@@ -3,6 +3,7 @@
 namespace RRZE\Elements\Accordion;
 
 use const RRZE\Elements\RRZE_ELEMENTS_VERSION;
+use RRZE\Elements\Helper;
 
 defined( 'ABSPATH') || exit;
 
@@ -95,7 +96,7 @@ class Accordion
             $GLOBALS['collapsibles_id'] --;
         }
 
-        return $output;
+        return wpautop($output, false);
     }
 
     /**
@@ -166,7 +167,7 @@ class Accordion
         wp_enqueue_style('rrze-elements');
         wp_enqueue_script('rrze-accordions');
 
-        return $output;
+        return wpautop($output, false);
     }
 
     /**
