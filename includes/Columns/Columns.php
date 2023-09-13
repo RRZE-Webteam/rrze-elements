@@ -2,6 +2,8 @@
 
 namespace RRZE\Elements\Columns;
 
+use function RRZE\Elements\Config\calculateContrastColor;
+
 defined('ABSPATH') || exit;
 
 /**
@@ -74,28 +76,33 @@ class Columns
         $defaults = array(
             'span' => '1',
             'valign' => '',
+            'color' => '',
         );
         $spans = ['1', '2', '3'];
         $args = shortcode_atts($defaults, $atts);
-        $class = 'colspan-' . (in_array($args['span'], $spans) ? $args['span'] : $defaults['span']);
+        $classesArr = ['colspan-' . (in_array($args['span'], $spans) ? $args['span'] : $defaults['span'])];
+        $stylesArr = [];
         switch ($args['valign']) {
             case 'top':
-                $style = 'style="align-self: flex-start"';
+                $stylesArr[] = 'style="align-self: flex-start"';
                 break;
             case 'bottom':
-                $style = 'style="align-self: flex-end"';
+                $stylesArr[] = 'style="align-self: flex-end"';
                 break;
             case 'center':
             case 'middle':
-                $style = 'style="align-self: center"';
+            $stylesArr[] = 'style="align-self: center"';
                 break;
             case 'stretch':
-                $style = 'style="align-self: stretch"';
+                $stylesArr[] = 'style="align-self: stretch"';
                 break;
-            default:
-                $style = '';
         }
-        return "<div class=\"column $class\" $style>" . wpautop(do_shortcode(shortcode_unautop($content)), false) . '</div>';
+        if ((str_starts_with($args['color'], '#')) && (in_array(strlen($args['color']), [4, 7]))) {
+            $stylesArr[] = 'background-color:' . $args['color'];
+            $classesArr[] = 'has-background';
+            $classesArr[] = (calculateContrastColor($atts['color']) == '#000000' ? 'font-dark' : 'font-light');
+        }
+        return '<div class="column ' . implode(' ', $classesArr) . '" style="' . implode('; ', $stylesArr) . '">' . wpautop(do_shortcode(shortcode_unautop($content)), false) . '</div>';
     }
 
 

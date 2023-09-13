@@ -118,13 +118,24 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    width: calc(100% + 20px);
-    margin: 0 -10px;
+    gap: 20px;
 
     * {
         -webkit-hyphens: auto;
         -ms-hyphens: auto;
         hyphens: auto;
+    }
+
+    .column {
+        &.font-light {
+            * {
+                color: #fff;
+                text-decoration-color: #fff;
+            }
+        }
+        &.has-background {
+            padding: 15px;
+        }
     }
 
     .colspan-1,
@@ -135,7 +146,7 @@
         // Fix für FAU-Themes
         float: none;
         margin: 0;
-        padding: 0 10px 1.5em;
+        padding: 0;
         .entry-content {
             min-width: 0;
         }
