@@ -63,7 +63,7 @@ class Alert
 			}
 			$output .= '<div style="overflow: hidden;">';
 		}
-		$output .= '<div class="' . implode(' ', $classesArr) . '" style="' . implode('; ', $stylesArr) . '" ' . $titleTag . '>' . do_shortcode(wpautop($content)) . '</div>';
+		$output .= '<div class="' . implode(' ', $classesArr) . '" style="' . implode('; ', $stylesArr) . '" ' . $titleTag . '>' . do_shortcode(shortcode_unautop($content)) . '</div>';
 	    if ($isExample) {
 		    $output .= '</div>';
 		}
