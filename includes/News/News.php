@@ -18,6 +18,7 @@ class News
     {
         add_shortcode('custom-news', [$this, 'shortcodeCustomNews']);
         add_shortcode('blogroll', [$this, 'shortcodeCustomNews']);
+        add_filter( 'the_seo_framework_query_supports_seo',  [$this, 'disableTSF']);
     }
 
     /**
@@ -188,8 +189,8 @@ class News
             $args['post__in'] = $id;
         }
 
-        if($hideDuplicates && isset($GLOBALS['a_displayedPosts']) && is_array($GLOBALS['a_displayedPosts'])) {
-        	$args['post__not_in'] = array_unique($GLOBALS['a_displayedPosts']);
+        if($hideDuplicates && isset($GLOBALS['a_rrze_elements_displayed_posts']) && is_array($GLOBALS['a_rrze_elements_displayed_posts'])) {
+        	$args['post__not_in'] = array_unique($GLOBALS['a_rrze_elements_displayed_posts']);
         }
 
         if ($hasThumbnail) {
@@ -275,7 +276,7 @@ class News
                 if (filter_var($externalLink, FILTER_VALIDATE_URL) !== false) {
                     $permalink = $externalLink;
                 }
-                $GLOBALS['a_displayedPosts'][] = $id;
+                $GLOBALS['a_rrze_elements_displayed_posts'][] = $id;
                 $args = [];
 
                 if ($display == 'list') {
@@ -419,8 +420,9 @@ class News
         if (filter_var($externalLink, FILTER_VALIDATE_URL) !== false) {
             $permalink = $externalLink;
         }
-        if (has_post_thumbnail($id) && ! $hide_thumbnail) {
-            $image_data = wp_get_attachment_image_src( get_post_thumbnail_id( $id ), $thumbnailSize );
+        $displayThumbnail = false;
+        if (has_post_thumbnail($id) && ! $hide_thumbnail && $image_data = wp_get_attachment_image_src( get_post_thumbnail_id( $id ), $thumbnailSize )) {
+            $displayThumbnail = true;
             if ($forceLandscape) {
                 $ratioClass = 'ratio-landscape';
             } else {
@@ -441,7 +443,7 @@ class News
            $output .= '[columns number="'. $numCols .'"][column span="' . $postCols['left'] . '"]';
         }
 
-        if (has_post_thumbnail($id) && ! $hide_thumbnail && $imgFirst) {
+        if ($displayThumbnail && $imgFirst && $image_data) {
             $output .= '<div class="entry-thumbnail ' . $ratioClass . ' ' . $imgfloat . '" aria-hidden="true" role="presentation">'
                 . '<meta itemprop="image" content="'.get_the_post_thumbnail_url($id).'">'
                 . '<a href="'.$permalink.'" tabindex="-1">'
@@ -475,7 +477,7 @@ class News
             }
         }
         $output .= '</div>';
-        if (has_post_thumbnail($id) && ! $hide_thumbnail && !$imgFirst) {
+        if ($displayThumbnail && !$imgFirst) {
             $output .= '<div class="entry-thumbnail ' . $ratioClass . ' ' . $imgfloat . '">' . get_the_post_thumbnail($id, $thumbnailSize)
                 . '<meta itemprop="image" content="'.get_the_post_thumbnail_url($id).'">'
                 . '</div>';
@@ -511,5 +513,22 @@ class News
         $output .= '</article>';
 
         return do_shortcode($output);
+    }
+
+    /*
+     * Disable TSF on pages containing 'hideduplicates="true"' because of counter issues
+     * Cf. https://wordpress.org/support/topic/how-to-identify-pre-rendered-content/
+     */
+    public function disableTSF($supported) {
+        if (!is_plugin_active('autodescription/autodescription.php') && !is_plugin_active_for_network('autodescription/autodescription.php')) {
+            return true;
+        }
+
+        $content = get_the_content(null, false, get_the_ID());
+        if (str_contains($content, 'hideduplicates="true"')) {
+            return false;
+        } else {
+            return TRUE;
+        }
     }
 }
