@@ -18,6 +18,7 @@ class News
     {
         add_shortcode('custom-news', [$this, 'shortcodeCustomNews']);
         add_shortcode('blogroll', [$this, 'shortcodeCustomNews']);
+        add_filter( 'the_seo_framework_query_supports_seo',  [$this, 'disableTSF']);
     }
 
     /**
@@ -512,5 +513,22 @@ class News
         $output .= '</article>';
 
         return do_shortcode($output);
+    }
+
+    /*
+     * Disable TSF on pages containing 'hideduplicates="true"' because of counter issues
+     * Cf. https://wordpress.org/support/topic/how-to-identify-pre-rendered-content/
+     */
+    public function disableTSF($supported) {
+        if (!is_plugin_active('autodescription/autodescription.php') && !is_plugin_active_for_network('autodescription/autodescription.php')) {
+            return true;
+        }
+
+        $content = get_the_content(null, false, get_the_ID());
+        if (str_contains($content, 'hideduplicates="true"')) {
+            return false;
+        } else {
+            return TRUE;
+        }
     }
 }
