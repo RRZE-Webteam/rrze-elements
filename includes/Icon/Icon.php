@@ -67,7 +67,7 @@ class Icon {
 		} else {
 			$CSSstyles[] = 'fill: currentcolor;';
 		}
-		$style = 'style="' . implode(' ', $CSSstyles) .'" ';
+		$style = ' style="' . implode(' ', $CSSstyles) .'" ';
 
 		$output = str_replace('<svg ', '<svg height="1em" width="1em" class="rrze-elements-icon"' . $style . $a11yTags, $svg);
 		//$output = str_replace('<svg ', '<svg ' . $style, $svg);

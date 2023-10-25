@@ -84,17 +84,17 @@ class Columns
         $stylesArr = [];
         switch ($args['valign']) {
             case 'top':
-                $stylesArr[] = 'style="align-self: flex-start"';
+                $stylesArr[] = 'align-self: flex-start';
                 break;
             case 'bottom':
-                $stylesArr[] = 'style="align-self: flex-end"';
+                $stylesArr[] = 'align-self: flex-end';
                 break;
             case 'center':
             case 'middle':
-            $stylesArr[] = 'style="align-self: center"';
+            $stylesArr[] = 'align-self: center';
                 break;
             case 'stretch':
-                $stylesArr[] = 'style="align-self: stretch"';
+                $stylesArr[] = 'align-self: stretch';
                 break;
         }
         if ((str_starts_with($args['color'], '#')) && (in_array(strlen($args['color']), [4, 7]))) {
