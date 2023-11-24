@@ -12,8 +12,9 @@ class LaTeX
     /**
      * KaTeX version
      * @var string
+     * @link https://github.com/KaTeX/KaTeX/releases
      */
-    const KATEX_VERSION = '0.16.4';
+    const KATEX_VERSION = '0.16.9';
 
     /**
      * Constructor
