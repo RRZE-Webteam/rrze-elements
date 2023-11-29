@@ -78,7 +78,7 @@
         border-radius: 0;
         &:hover, &:focus, &:active {
             box-shadow: none;
-            background-color: var(--color-button-bg, #1f4c7a);
+            background-color: var(--color-button-bg, #004a9f);
             text-decoration: none;
             .rrze-2019 & {
                 background-color: #00458C;
@@ -95,6 +95,7 @@
             padding-bottom: 0;
             padding-right: 0;
             border-radius: 0 !important;
+            box-shadow: none;
         }
         @media screen and (min-width: 992px) {
             max-width: 100%;

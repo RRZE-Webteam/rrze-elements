@@ -19,6 +19,7 @@ button.accordion-toggle {
     width: 100%;
     border: none;
     text-align: left;
+    margin: 0;
 }
 button.expand-all.standard-btn {
     margin: 5px 0;
@@ -57,9 +58,7 @@ button.expand-all.standard-btn {
     }
     .accordion-toggle {
         display: block;
-        //border-left: 10px solid var(--color-primary-ci-hell, $colorDefault);
-        border-left-width: 10px;
-        border-left-style: solid;
+        border-left: 10px solid var(--color-primary-ci-hell, $colorDefault);
         background: var(--color-ContentBorders, #d2ddeb);
         color:  var(--color-Text, #444);
         font-size: 1rem;
@@ -67,20 +66,10 @@ button.expand-all.standard-btn {
         padding: 8px 35px 8px 10px;
         position: relative;
         &:before {
-            @include svg-content('caret-down', 'solid');
+            @include mask-icon(url("../svg/solid/caret-down.svg"), var(--color-Text, #444), 1em);
             position: absolute;
             top: 12px;
             right: 10px;
-            width: 12px;
-        }
-        &.active {
-            &:before {
-                @include svg-content('caret-up', 'solid');
-                position: absolute;
-                right: 10px;
-                width: 12px;
-                top: 12px;
-            }
         }
         &:hover,
         &:focus,
@@ -88,6 +77,12 @@ button.expand-all.standard-btn {
             text-decoration: none;
             background-color: var(--color-primary-ci-hell, $colorDefault);
             color: var(--color-primary-ci-hell-kontrast, #fff);
+            &:before {
+                @include mask-icon(url("../svg/solid/caret-down.svg"), var(--color-primary-ci-hell-kontrast, #fff), 1em);
+                position: absolute;
+                top: 12px;
+                right: 10px;
+            }
             .alert.font-light &  {
                 * {
                     color: var(--color-primary-ci-hell-kontrast, #fff);
@@ -95,20 +90,41 @@ button.expand-all.standard-btn {
             }
 
         }
+        &.active {
+            &:before {
+                @include mask-icon(url("../svg/solid/caret-up.svg"), var(--color-primary-ci-hell-kontrast, #fff), 1em);
+                position: absolute;
+                top: 12px;
+                right: 10px;
+            }
+        }
         &.active:hover,
         &.active:focus {
             border-color: var(--color-primary-dunkler, $colorDefaultDunkler);
             background-color: var(--color-primary-dunkler, $colorDefaultDunkler);
             color: var(--color-primary-ci-hell-kontrast, #fff);
-        }
-        .alert.font-light &  {
-            * {
-                color: var(--color-Text, #444);
+            &:before {
+                @include mask-icon(url("../svg/solid/caret-up.svg"), var(--color-primary-ci-hell-kontrast, #fff), 1em);
+                position: absolute;
+                top: 12px;
+                right: 10px;
             }
         }
         svg.rrze-elements-icon {
             margin-right: 3px;
         }
+        .alert.font-light & {
+            color: var(--color-Text, #444);
+            * {
+                color: var(--color-Text, #444);
+            }
+            &:hover,
+            &:focus,
+            &.active {
+                color: var(--color-primary-ci-hell-kontrast, #fff);
+            }
+        }
+
     }
     .phil .accordion-heading .accordion-toggle,
     .philfak .accordion-heading .accordion-toggle,
@@ -224,7 +240,7 @@ button.expand-all.standard-btn {
         overflow: hidden;
 
         .accordion-inner {
-            @extend .clearfix;
+            @extend .clearfix !optional;
             border: none;
             background-color: #fff;
             padding: 15px 20px;
@@ -247,7 +263,7 @@ button.expand-all.standard-btn {
     .accordion-body {
         .accordion-inner {
             background-color: #f5f7f9;
-            @include border-bottom-radius(4px);
+            //@include border-bottom-radius(4px);
         }
     }
     .accordion-group .accordion-body .accordion-inner {
