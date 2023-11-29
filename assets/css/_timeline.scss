@@ -405,3 +405,22 @@
         width: 200px;
     }
 }
+
+.fau-theme {
+    #content [id^="timeline"]  {
+        .issues li p:not(.wp-caption-text) {
+            @include px2rem(16);
+        }
+        .timeline-nav a,
+        ul.dates a,
+        a.next,
+        a.prev {
+            text-decoration: none;
+            &:hover,
+            &:focus {
+                color: var(--color-submenu-hover-bg);
+                text-decoration: none;
+            }
+        }
+    }
+}
