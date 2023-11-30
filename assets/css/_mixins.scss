@@ -55,3 +55,27 @@ Functions and Mixins
     position: relative;
     top: 2px;
 }
+
+@mixin mask-icon($iconurl: '',$color: #000, $iconsize: 1.2rem) {
+    content: " ";
+    -webkit-mask-size: var(--icon-size-mask, 70%);
+    mask-size: var(--icon-size-mask, 70%);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    display: inline-block;
+    width: 1em;
+    margin-right: 5px;
+    position: relative;
+    top: 2px;
+
+    @if ($iconurl != '') {
+        mask-image: $iconurl;
+        -webkit-mask-image: $iconurl;
+        background-color: var(--icon-color, $color);
+        width: var(--icon-size, $iconsize);
+        height: var(--icon-size, $iconsize);
+    }
+
+}

@@ -101,3 +101,24 @@
         content: attr(title);
     }
 }
+
+.fau-theme {
+    #content .alert {
+        h2 {
+            padding-top: 7px;
+        }
+        p {
+            padding: 5px 0;
+        }
+        &.alert-danger p {
+            font-size: 1.1rem;
+        }
+
+        margin-left: calc(var(--gutter-halfwidth, 15px) * -1);
+        margin-right: calc(var(--gutter-halfwidth, 15px) * -1);
+        @media (min-width: 768px) {
+            margin-left: 0;
+            margin-right: 0;
+        }
+    }
+}
