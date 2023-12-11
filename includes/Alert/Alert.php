@@ -39,9 +39,11 @@ class Alert
         $classesArr = ['alert', 'clearfix', 'clear'];
         $stylesArr = [];
 
-        if (in_array($style, array('success', 'info', 'warning', 'danger', 'example'))) {
+        if (in_array($style, array('success', 'info', 'warning', 'danger', 'example', 'shadow', 'shadow-hover'))) {
             $classesArr[] = 'alert-' . $style;
-        } else {
+        }
+
+        if (!in_array($style, array('success', 'info', 'warning', 'danger', 'example'))) {
             if ((substr($color, 0, 1) == '#') && (in_array(strlen($color), [4, 7]))) {
                 $stylesArr[] = 'background-color:' . $color;
                 if (calculateContrastColor($color) == '#ffffff') {
@@ -49,7 +51,7 @@ class Alert
                 }
             }
             if ((substr($border_color, 0, 1) == '#') && (in_array(strlen($border_color), [4, 7]))) {
-                $stylesArr[] = ' border:1px solid' . $border_color;
+                $stylesArr[] = ' border:1px solid ' . $border_color;
             }
         }
 
