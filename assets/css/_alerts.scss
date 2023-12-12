@@ -62,6 +62,20 @@
     font-size: 1rem;
     line-height: 1.5;
 }
+.alert.alert-shadow,
+.alert.alert-shadow-hover {
+    background: #fff;
+    box-shadow: 0 3px 12px 0 #ebebeb;
+    //border: 1px solid var(--color-primary-ci-hell2, #dfe6ec);
+}
+.alert.alert-shadow-hover {
+    transition: all .25s;
+    background: #fff;
+    &:hover, &:focus, &:active {
+        transform: translateY(-5px);
+        box-shadow: 0 2px 30px 0 #ced3d6;
+    }
+}
 
 .alert-example,
 #content .alert-example {
