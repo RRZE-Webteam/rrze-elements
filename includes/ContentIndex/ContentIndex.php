@@ -7,8 +7,10 @@ defined('ABSPATH') || exit;
 /**
  * [ContentIndex description]
  */
-class ContentIndex
-{
+class ContentIndex {
+    
+    public $page_cat;
+    public $page_tag;
     /**
      * [__construct description]
      */
