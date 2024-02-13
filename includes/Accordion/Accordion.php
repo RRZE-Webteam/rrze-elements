@@ -28,6 +28,9 @@ class Accordion
         add_action('wp_enqueue_scripts', [$this, 'enqueueScripts']);
         add_action('wp_enqueue_scripts', [$this, 'enqueueScriptTranslations'], 100);
 
+        add_action('enqueue_block_assets', [$this, 'enqueueScripts']);
+        add_action('enqueue_block_assets', [$this, 'enqueueScriptTranslations'], 100);
+
         $this->pluginFile = $pluginFile;
     }
 
