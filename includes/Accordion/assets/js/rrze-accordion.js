@@ -21,7 +21,7 @@ jQuery(document).ready(function($) {
         }
     });
 
-    $('.accordion-toggle').bind('mousedown', function(event) {
+    $('.accordion-toggle').on('mousedown', function(event) {
         event.preventDefault();
         var $accordion = $(this).attr('href');
         var $name = $(this).data('name');
@@ -136,7 +136,7 @@ jQuery(document).ready(function($) {
     });
 
     // Assistant tabs
-    $('.assistant-tabs-nav a').bind('click', function (event) {
+    $('.assistant-tabs-nav a').on('click', function (event) {
         event.preventDefault();
         var pane = $(this).attr('href');
         $(this).parents('ul').find('a').removeClass('active');

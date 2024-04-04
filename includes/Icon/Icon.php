@@ -23,9 +23,9 @@ class Icon {
         }
 
 		if ($args['alt'] == '') {
-			$a11yTags = ' aria-hidden="true" focusable="false"';
+			$a11yTags = ' aria-hidden="true" focusable="false" ';
 		} else {
-			$a11yTags = ' alt="' . $args['alt'] . '"';
+			$a11yTags = ' alt="' . $args['alt'] . '" ';
 		}
 		$styles = array_map('trim', explode(',', $args['style']));
 		sort($styles);
