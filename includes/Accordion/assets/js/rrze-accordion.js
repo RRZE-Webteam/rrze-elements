@@ -3,9 +3,9 @@
  * RRZE Webteam
  */
 
-const { __, _x, _n, sprintf } = wp.i18n;
-
 jQuery(document).ready(function($) {
+    const { __, _x, _n, sprintf } = wp.i18n;
+
     // Close Accordions on start, except first
     $('.accordion-body').not(".accordion-body.open").not('.accordion-body.stayopen').hide();
     $('.accordion-body.open').each( function () {
