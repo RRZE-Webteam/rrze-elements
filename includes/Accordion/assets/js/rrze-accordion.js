@@ -1,159 +1,122 @@
 /**
- * RRZE Accordion 1.0.0
- * RRZE Webteam
+ * RRZE Accordion 1.25.21
+ * Refactored and documented for efficiency and readability.
+ * Uses jQuery for DOM manipulation and event handling.
  */
 
 const { __, _x, _n, sprintf } = wp.i18n;
 
 jQuery(document).ready(function($) {
-    // Close Accordions on start, except first
-    $('.accordion-body').not(".accordion-body.open").not('.accordion-body.stayopen').hide();
-    $('.accordion-body.open').each( function () {
-        $(this).closest('.accordion-group').find('button.accordion-toggle').first().addClass('active');
-    })
+    /**
+     * Initially hides all accordion bodies except those marked as open or should stay open,
+     * and marks the corresponding toggles as active.
+     */
+    $('.accordion-body').not(".open, .stayopen").hide();
+    $('.accordion-body.open').each(function() {
+        $(this).closest('.accordion-group').find('.accordion-toggle').first().addClass('active');
+    });
+
+    /**
+     * Checks if all items within an accordion are open to toggle the 'Expand All/Collapse All' button state.
+     */
     $('.accordion').each(function() {
-        if ($(this).find('button.expand-all').length > 0) {
-            var items = $(this).find(".accordion-group");
-            var open = $(this).find(".accordion-body.open");
-            if (items.length == open.length) {
-                $(this).find('button.expand-all').attr("data-status", 'open').data('status', 'open').html(__('Collapse All', 'rrze-elements'));
-            }
+        const $accordion = $(this);
+        const items = $accordion.find(".accordion-group");
+        const openItems = items.find(".accordion-body.open");
+        if (items.length === openItems.length) {
+            $accordion.find('button.expand-all').attr("data-status", 'open').data('status', 'open').html(__('Collapse All', 'rrze-elements'));
         }
     });
 
-    $('.accordion-toggle').bind('mousedown', function(event) {
-        event.preventDefault();
-        var $accordion = $(this).attr('href');
-        var $name = $(this).data('name');
-        toggleAccordion($accordion);
-        // Put name attribute in URL path if available, else href
-        if (typeof($name) !== 'undefined') {
-            window.history.replaceState(null, null, '#' + $name);
-        } else {
-            window.history.replaceState(null, null, $accordion);
-        }
-    });
+    /**
+     * Retrieves the target accordion ID from a button or link element.
+     * @param {jQuery} $elem - The element that may contain a href or data-href attribute.
+     * @returns {string} The target selector for the accordion to be toggled.
+     */
+    function getAccordionTarget($elem) {
+        return $elem.data('href') || $elem.attr('href');
+    }
 
-    // Keyboard navigation for accordions
-    $('.accordion-toggle').keydown(function(event) {
-        if (event.keyCode == 32) {
-            var $accordion = $(this).attr('href');
-            var $name = $(this).data('name');
-            toggleAccordion($accordion);
-            if (typeof($name) !== 'undefined') {
-                window.history.replaceState(null, null, '#' + $name);
-            } else {
-                window.history.replaceState(null, null, $accordion);
-            }
-        }
-    });
-
+    /**
+     * Toggles the visibility of an accordion's content.
+     * @param {string} $accordion - The selector of the accordion whose visibility will be toggled.
+     */
     function toggleAccordion($accordion) {
-        var $thisgroup = $($accordion).closest('.accordion-group');
-        var $othergroups = $($accordion).closest('.accordion').find('.accordion-group').not($thisgroup);
-        $($othergroups).children('.accordion-heading').children(' .accordion-toggle').removeClass('active');
-        $($othergroups).children('.accordion-body').not('.accordion-body.stayopen').slideUp();
-        $($thisgroup).children('.accordion-heading').children('.accordion-toggle').toggleClass('active');
-        $($thisgroup).children('.accordion-body').slideToggle();
-        // refresh Slick Gallery
-        var $slick = $($thisgroup).find("div.slick-slider");
-            if ($slick.length < 0) {
-                $slick.slick("refresh");
-            }
+        const $group = $($accordion).closest('.accordion-group');
+        const $directBody = $group.children('.accordion-body');
+        const $directToggle = $group.children('.accordion-heading').children('.accordion-toggle');
+        const $otherGroups = $group.siblings();
+
+        $otherGroups.children('.accordion-heading').children('.accordion-toggle').removeClass('active');
+        $otherGroups.children('.accordion-body').not('.accordion-body.stayopen').slideUp();
+
+        $directToggle.toggleClass('active');
+        $directBody.slideToggle();
+
+        refreshSlickGallery($group);
     }
 
-    function openAnchorAccordion($target) {
-        if ($target.closest('.accordion').parent().closest('.accordion-group')) {
-            var $thisgroup = $($target).closest('.accordion-group');
-            var $othergroups = $($target).closest('.accordion').find('.accordion-group').not($thisgroup);
-            $($othergroups).find('.accordion-toggle').removeClass('active');
-            $($othergroups).find('.accordion-body').not('.accordion-body.stayopen').slideUp();
-            $($thisgroup).find('.accordion-toggle:first').not('.active').addClass('active');
-            $($thisgroup).find('.accordion-body:first').slideDown();
-            // open parent accordion bodies if target = nested accordion
-            $($thisgroup).parents('.accordion-group').find('.accordion-toggle:first').not('.active').addClass('active');
-            $($thisgroup).parents('.accordion-body').slideDown();
+    /**
+     * Refreshes the Slick Gallery within an accordion if it exists.
+     * This is needed because changes in visibility can affect Slick's layout.
+     * @param {jQuery} $group - The accordion group that may contain a Slick slider.
+     */
+    function refreshSlickGallery($group) {
+        const $slick = $group.find(".slick-slider");
+        if ($slick.length) {
+            $slick.slick("refresh");
         }
-        var offset = $target.offset();
-        var $scrolloffset = offset.top - 300;
-        $('html,body').animate({
-            scrollTop: $scrolloffset
-        }, 'slow');
     }
 
-    if (window.location.hash) {
-        var identifier = window.location.hash.split('_')[0];
-        var inpagenum = window.location.hash.split('_')[1];
-        if (identifier == '#collapse') {
-            if ($.isNumeric(inpagenum)) {
-                var $findid = 'collapse_' + inpagenum;
-                var $target = $('body').find('#' + $findid);
-            }
+    /**
+     * Binds mousedown and keydown events to accordion toggles.
+     * Prevents default action and toggles the accordion based on the target derived from the element.
+     * Updates the URL hash if a name is provided.
+     */
+    $('.accordion-toggle').on('mousedown keydown', function(event) {
+        if (event.type === 'mousedown' || event.keyCode === 32) {
+            event.preventDefault();
+            const $target = getAccordionTarget($(this));
+            const $name = $(this).data('name');
+            toggleAccordion($target);
+            window.history.replaceState(null, null, $name ? '#' + $name : $target);
+        }
+    });
+
+    /**
+     * Handles clicks on the 'expand all' or 'collapse all' buttons within an accordion.
+     * Toggles the expansion state of all accordion bodies and toggles within the same accordion.
+     */
+    $('.expand-all').on('click', function() {
+        const $this = $(this);
+        const $accordion = $this.closest('.accordion');
+        const $bodies = $accordion.find('.accordion-body');
+        const $toggles = $accordion.find('.accordion-toggle');
+        if ($this.data('status') === 'open') {
+            $bodies.slideUp();
+            $toggles.removeClass('active');
+            $this.attr("data-status", 'closed').data('status', 'closed').html(__('Expand All', 'rrze-elements'));
         } else {
-            var $findname = window.location.hash.replace('\#', '');
-            var $target = $('body').find('div[name=' + $findname + ']');
-        }
-        if ($target.length > 0) {
-            openAnchorAccordion($target);
-        }
-    }
-
-    $('a:not(.prev, .next)').click(function(e) { // prev und next wegen Konflikt mit Timeline ausgeschlossen
-        // nur auf Seiten, auf denen ein Accordion existiert,
-        // und nur, wenn der geklickte Link nicht der Accordion-Toggle-Link oder der Expand-All-Link ist
-        if (($('[id^=accordion-]').length) &&
-            (!$(this).hasClass("accordion-toggle")) &&
-            (!$(this).hasClass("accordion-tabs-nav-toggle"))) {
-            var $hash = $(this).prop("hash");
-            var identifier = $hash.split('_')[0];
-            var inpagenum = $hash.split('_')[1];
-            if (identifier == '#collapse') {
-                if ($.isNumeric(inpagenum)) {
-                    var $findid = 'collapse_' + inpagenum;
-                    var $target = $('body').find('#' + $findid);
-                }
-            } else {
-                var $findname = identifier.replace('\#', '');
-                var $target = $('body').find('div[name=' + $findname + ']');
-            }
-            if ($target) {
-                openAnchorAccordion($target);
-            }
+            $bodies.slideDown();
+            $toggles.addClass('active');
+            $this.attr("data-status", 'open').data('status', 'open').html(__('Collapse All', 'rrze-elements'));
         }
     });
 
-    $('.expand-all').click(function(e) {
-        var $thisgroup = $(this).closest('.accordion');
-        if ($(this).data('status') === 'open') {
-            $($thisgroup).find('.accordion-body').slideUp();
-            $($thisgroup).find('.accordion-toggle').removeClass('active');
-            $(this).attr("data-status", 'closed').data('status', 'closed').html(__('Expand All', 'rrze-elements'));
-        } else {
-            $($thisgroup).find('.accordion-body').slideDown();
-            $($thisgroup).find('.accordion-toggle').addClass('active');
-            $(this).attr("data-status", 'open').data('status', 'open').html(__('Collapse All', 'rrze-elements'));
+    /**
+     * Binds click and keydown events to links within assistant tabs.
+     * Activates the tab associated with the clicked link and displays its corresponding pane.
+     */
+    $('.assistant-tabs-nav a').on('click keydown', function(event) {
+        if (event.type === 'click' || event.keyCode === 32) {
+            event.preventDefault();
+            const $link = $(this);
+            const $tabs = $link.parents('.assistant-tabs');
+            const $paneId = $link.attr('href');
+            $link.closest('ul').find('a').removeClass('active');
+            $link.addClass('active');
+            $tabs.find('.assistant-tab-pane').removeClass('assistant-tab-pane-active');
+            $($paneId).addClass('assistant-tab-pane-active');
         }
     });
-
-    // Assistant tabs
-    $('.assistant-tabs-nav a').bind('click', function (event) {
-        event.preventDefault();
-        var pane = $(this).attr('href');
-        $(this).parents('ul').find('a').removeClass('active');
-        $(this).addClass('active');
-        $(this).parents('.assistant-tabs').find('.assistant-tab-pane').removeClass('assistant-tab-pane-active');
-        $(pane).addClass('assistant-tab-pane-active');
-    });
-
-    // Keyboard navigation for assistant tabs
-    $('.assistant-tabs-nav a').keydown('click', function (event) {
-        if (event.keyCode == 32) {
-            var pane = $(this).attr('href');
-            $(this).parents('ul').find('a').removeClass('active');
-            $(this).addClass('active');
-            $(this).parents('.assistant-tabs').find('.assistant-tab-pane').removeClass('assistant-tab-pane-active');
-            $(pane).addClass('assistant-tab-pane-active');
-        }
-    });
-
 });
