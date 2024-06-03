@@ -79,7 +79,6 @@ class News
         $hideDuplicates = Helper::shortcode_boolean($hideDuplicates);
         $forceLandscape = !empty($sc_atts['forcelandscape']) ? $sc_atts['forcelandscape'] : $sc_atts['force_landscape'];
         $forceLandscape = Helper::shortcode_boolean($forceLandscape);
-        $stickyOnly = !empty($sc_atts['hideduplicates']) ? $sc_atts['hideduplicates'] : $sc_atts['hide_duplicates'];
         $stickyOnly = Helper::shortcode_boolean($sc_atts['sticky_only']);
         $teaserLength = absint($sc_atts['teaser_length']);
 
