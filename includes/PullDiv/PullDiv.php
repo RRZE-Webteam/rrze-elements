@@ -2,6 +2,8 @@
 
 namespace RRZE\Elements\PullDiv;
 
+use RRZE\Elements\Helper;
+
 defined('ABSPATH') || exit;
 
 /**
@@ -39,7 +41,7 @@ class PullDiv
         $type = $tag_array[1];
 
         $textalign = in_array($atts['align'], ['left', 'right']) ? ' align-' . $atts['align'] : '';
-        $clearafter = $atts['clearafter'] == 'true' ? '<div style="clear: both;"></div>' : '';
+        $clearafter = Helper::shortcode_boolean($atts['clearafter']) == true ? '<div style="clear: both;"></div>' : '';
         $output = '<aside class="pull-' . $type . $textalign . '">';
         $output .= $atts['title'] ? '<h1>' . $atts['title'] . '</h1>' : '';
         $output .= '<p>' . do_shortcode(wpautop($content)) . '</p></aside>' . $clearafter;

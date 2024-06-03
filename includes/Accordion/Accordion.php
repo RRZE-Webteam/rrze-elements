@@ -51,10 +51,8 @@ class Accordion
 
         $defaults = array('expand-all-link' => 'false', 'register' => 'false', 'hstart' => '');
         $args = shortcode_atts($defaults, $atts);
-        $expand = esc_attr($args['expand-all-link']);
-        $expand = (($expand == '1')||($expand == 'true')) ? true : false;
-        $register = esc_attr($args['register']);
-        $register = (($register == '1')||($register == 'true')) ? true : false;
+        $expand = Helper::shortcode_boolean($args['expand-all-link']);
+        $register = Helper::shortcode_boolean($args['register']);
         if ($args['hstart'] != '') {
             $hstart = intval($args['hstart']);
         } else {

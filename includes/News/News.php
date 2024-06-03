@@ -4,6 +4,8 @@ namespace RRZE\Elements\News;
 
 defined('ABSPATH') || exit;
 
+use RRZE\Elements\Helper;
+
 use function RRZE\Elements\Config\getThemeGroup;
 
 /**
@@ -66,20 +68,22 @@ class News
         $imgfloat = ($sc_atts['imgfloat'] == 'right') ? 'float-right' : 'float-left';
         $hstart = intval($sc_atts['hstart']);
         $divclass = esc_attr($sc_atts['divclass']);
-        $hideMeta = $sc_atts['hidemeta'] == 'true' ? true : false;
+        $hideMeta = Helper::shortcode_boolean($sc_atts['hidemeta']);
         $title = esc_attr($sc_atts['title']);
-        $hasThumbnail = $sc_atts['has_thumbnail'] == 'true' ? true : false;
+        $hasThumbnail = Helper::shortcode_boolean($sc_atts['has_thumbnail']);
         $columns = absint($sc_atts['columns']);
         $type = esc_attr($sc_atts['type']);
         $mode = array_map('trim', explode(",", $type));
         $thumbnailSize = 'large';
-        $hideDuplicates = ($sc_atts['hideduplicates'] == 'true' || $sc_atts['hide_duplicates'] == 'true') ? true : false;
-        $forceLandscape = ($sc_atts['forcelandscape'] == 'true' || $sc_atts['force_landscape'] == 'true') ? true : false;
-        $stickyOnly = ($sc_atts['sticky_only'] == 'true' || $sc_atts['sticky_only'] == 'true') ? true : false;
+        $hideDuplicates = !empty($sc_atts['hideduplicates']) ? $sc_atts['hideduplicates'] : $sc_atts['hide_duplicates'];
+        $hideDuplicates = Helper::shortcode_boolean($hideDuplicates);
+        $forceLandscape = !empty($sc_atts['forcelandscape']) ? $sc_atts['forcelandscape'] : $sc_atts['force_landscape'];
+        $forceLandscape = Helper::shortcode_boolean($forceLandscape);
+        $stickyOnly = Helper::shortcode_boolean($sc_atts['sticky_only']);
         $teaserLength = absint($sc_atts['teaser_length']);
 
         $borderTop = '';
-        if ($sc_atts['fau_settings'] == 'true') {
+        if (Helper::shortcode_boolean($sc_atts['fau_settings'])) {
             array_push($mode, 'img_first','ili_mode','show_more');
             $hideMeta = true;
             $borderTop = '1px solid #036';

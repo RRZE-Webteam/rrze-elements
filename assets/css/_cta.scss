@@ -107,6 +107,7 @@
         width: 100%;
         display: flex;
         justify-content: flex-end;
+        margin-bottom: .5rem;
         @media screen and (min-width: 992px) {
             //position: relative;
             //right: 15%;
@@ -155,6 +156,16 @@
                 .rrze-2019 & {
                     background-color: #00458c;
                 }
+            }
+        }
+    }
+    .cta-search-container {
+        flex-wrap: wrap;
+        .extended-search-link {
+            display: block;
+            text-align: right;
+            a {
+                margin: 0;
             }
         }
     }
@@ -249,6 +260,11 @@
                     padding-left: min(5%,2em);
                 }
             }
+        }
+    }
+    &.has-additional-link {
+        .cta-content {
+            padding-bottom: 160px;
         }
     }
 }
