@@ -2,6 +2,8 @@
 
 namespace RRZE\Elements\TextColumns;
 
+use RRZE\Elements\Helper;
+
 use function RRZE\Elements\Config\calculateContrastColor;
 
 defined('ABSPATH') || exit;
@@ -37,7 +39,7 @@ class TextColumns {
             "column-count: $count;",
             "column-width: $width\px;",
         ];
-        if ($args['rule'] == 'true') {
+        if (Helper::shortcode_boolean($args['rule']) == true) {
             $stylesArr[] = "column-rule: 1px solid $ruleColor";
         }
         if (in_array($args['style'], array('success', 'info', 'warning', 'danger', 'example'))) {

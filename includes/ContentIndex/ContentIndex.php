@@ -2,6 +2,8 @@
 
 namespace RRZE\Elements\ContentIndex;
 
+use RRZE\Elements\Helper;
+
 defined('ABSPATH') || exit;
 
 /**
@@ -86,9 +88,9 @@ class ContentIndex {
         $tag_name = sanitize_text_field($sc_args['tag-name']);
         $tag = sanitize_text_field($sc_args['tag']);
         $display = (sanitize_text_field($sc_args['display']) == 'list') ? 'list' : '';
-        $excerpt = ($sc_args['excerpt'] == '1') ? true : false;
+        $excerpt = Helper::shortcode_boolean($sc_args['excerpt']);
         $accordion_color = sanitize_text_field($sc_args['accordion-color']);
-        $register = ($sc_args['register'] == '1') ? true : false;
+        $register = Helper::shortcode_boolean($sc_args['register']);
         $prefix = ($sc_args['prefix'] != '') ? sanitize_title($sc_args['prefix']) . '_' : '';
         $expand = ($sc_args['expand-all-link'] == '1') ? '1' : '0';
         $hstart = intval($sc_args['hstart']);

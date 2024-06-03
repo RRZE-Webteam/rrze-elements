@@ -4,6 +4,7 @@ namespace RRZE\Elements\TimeLine;
 
 defined('ABSPATH') || exit;
 
+use RRZE\Elements\Helper;
 use RRZE\Elements\Main;
 
 /**
@@ -42,15 +43,15 @@ class TimeLine
             'start-end' => 'false',
         ];
         $args = shortcode_atts($defaults, $atts);
-        $autoplay = filter_var($args['autoplay'], FILTER_VALIDATE_BOOLEAN);
-        $autoplay_text = $autoplay ? 'true' : 'false';
+        $autoplay = Helper::shortcode_boolean($args['autoplay']);
+        $autoplay_text = $autoplay == true ? 'true' : 'false';
         $autoplaypause = intval($args['autoplaypause']);
-        $fixedsize = $args['fixedsize'] == '1' ? 'true' : 'false';
+        $fixedsize = Helper::shortcode_boolean($args['fixedsize']) == true ? 'true' : 'false';
         $datewidth = $args['datewidth'] == 'large' ? 'large' : 'normal';
         $speed = esc_attr($args['speed']);
         $startat = intval($args['startat']);
         $orientation = esc_attr($args['orientation']);
-        $startend = filter_var($args['start-end'], FILTER_VALIDATE_BOOLEAN);
+        $startend = Helper::shortcode_boolean($args['start-end']);
         static $timelinr_instance;
         $timelinr_instance++;
 
