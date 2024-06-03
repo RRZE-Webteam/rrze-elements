@@ -35,32 +35,47 @@ class CTA {
             'image' => '',
             'search' => '',
             'style' => '',
+            'placeholder' => __('Search for...', 'rrze-elements'),
+            'additional_link' => '',
+            'additional_link_text' => '',
         ], $atts);
         $title = sanitize_text_field($atts['title']);
         $subtitle = sanitize_text_field($atts['subtitle']);
         $button = sanitize_text_field($atts['button']);
+        $placeholder = sanitize_text_field($atts['placeholder']);
         $url = sanitize_url($atts['url']);
-        $icon = sanitize_text_field($atts['icon']);
-        if ($icon != '') {
-            $iconCB = new Icon($this->pluginFile);
-            $iconOut = $iconCB->shortcodeIcon(['icon'=> $icon, 'style' => '2x']);
-        } else {
-            $iconOut = '';
-        }
+        $additionalLink = sanitize_url($atts['additional_link']);
+        $additionalLinkText = $atts['additional_link_text'] != '' ? sanitize_text_field($atts['additional_link_text']) : $additionalLink;
         $styleClass = $atts['style'] == 'small' ? ' style-'.$atts['style'] : '';
         $bgClass = in_array($atts['background'], ['1', 'rrze']) ? ' bg-'.$atts['background'] : '';
         $image = sanitize_url($atts['image']);
         $imageID = attachment_url_to_postid($image); // returns 0 on failure
         $wrapperClass = $imageID != '0' ? ' has-image' : ' no-image';
+        $wrapperClass .= $additionalLink != '' ? ' has-additional-link' : '';
         switch ($atts['search']) {
             case '':
                 $search = false;
                 break;
+            case true:
+            case 'true':
             case '1':
+            case 'yes':
+            case 'ja':
+            case 'on':
                 $search = 's'; // Backwards compatibility
                 break;
             default:
                 $search = sanitize_text_field($atts['search']);
+        }
+        $icon = sanitize_text_field($atts['icon']);
+        if ($search && $icon == '') {
+            $icon = 'magnifying-glass';
+        }
+        if ($icon != '') {
+            $iconCB = new Icon($this->pluginFile);
+            $iconOut = $iconCB->shortcodeIcon(['icon'=> $icon, 'style' => '2x']);
+        } else {
+            $iconOut = '';
         }
         $output = '<div class="rrze-elements-cta' . $wrapperClass . $bgClass . $styleClass . '"><div class="cta-content' . '">';
         if ($title != '') {
@@ -81,10 +96,13 @@ class CTA {
                 . '<form itemprop="potentialAction" itemscope="" itemtype="https://schema.org/SearchAction" role="search" aria-label="' . sprintf(__('Search on %s', 'rrze-elements'), $url) . '" method="get" class="cta-search searchform" action="' . trailingslashit($url) . '">'
                 . '<label for="cta_search_' . $rand . '">' . sprintf(__('Please enter the search term for searching on %s', 'rrze-elements'), $url) . ':</label>'
                 . '<meta itemprop="target" content="' . trailingslashit($url) . '?' . $search . '={' . $search . '}">'
-                . '<input itemprop="query-input" id="' . $rand . '" type="text" value="" name="' . $search . '" placeholder="' . __('Search for...', 'rrze-elements') . '" required>'
-                . '<button type="submit" enterkeyhint="search" value="">'.do_shortcode('[icon icon="magnifying-glass" color="#1f4c7a" style="2x"]').'<span class="sr-only">' . __('Find', 'rrze-elements') . '</span></button>'
-                . '</form>'
-                . '</div>';
+                . '<input itemprop="query-input" id="' . $rand . '" type="text" value="" name="' . $search . '" placeholder="' . $placeholder . '" required>'
+                . '<button type="submit" enterkeyhint="search" value="">' . $iconOut . '<span class="sr-only">' . __('Find', 'rrze-elements') . '</span></button>'
+                . '</form>';
+            if ($additionalLink != '') {
+                $output .= '<div class="extended-search-link"><a href="' . $additionalLink . '" class="standard-btn primary-btn xsmall-btn">' . $additionalLinkText . '</a></div>';
+            }
+            $output .= '</div>';
         } else {
             $output .= '<div class="cta-button-container"><a href="' . $url . '" class="btn cta-button">' . $button . $iconOut . '</a></div>';
         }
