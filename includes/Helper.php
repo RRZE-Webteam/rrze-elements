@@ -100,4 +100,8 @@ class Helper
             $logPath
         );
     }
+
+    public static function shortcode_boolean($value) {
+        return in_array($value, [true, 'true', '1', 'yes', 'ja', 'on']);
+    }
 }
