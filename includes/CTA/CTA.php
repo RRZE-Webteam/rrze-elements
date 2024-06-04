@@ -52,11 +52,10 @@ class CTA {
         $imageID = attachment_url_to_postid($image); // returns 0 on failure
         $wrapperClass = $imageID != '0' ? ' has-image' : ' no-image';
         $wrapperClass .= $additionalLink != '' ? ' has-additional-link' : '';
-        switch ($atts['search']) {
+        switch ((string)$atts['search']) {
             case '':
                 $search = false;
                 break;
-            case true:
             case 'true':
             case '1':
             case 'yes':
