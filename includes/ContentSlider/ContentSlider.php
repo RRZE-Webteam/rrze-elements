@@ -193,7 +193,6 @@ class ContentSlider
             wp_localize_script('rrze-flexslider', 'object_name', $localizeScript);
         }
 
-        wp_enqueue_style('fontawesome');
         wp_enqueue_style('rrze-elements');
         wp_enqueue_script('jquery-flexslider');
         wp_enqueue_script('rrze-flexslider');

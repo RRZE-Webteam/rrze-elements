@@ -2,6 +2,8 @@
 
 namespace RRZE\Elements\Notice;
 
+use RRZE\Elements\Icon\Icon;
+
 defined('ABSPATH') || exit;
 
 /**
@@ -9,10 +11,11 @@ defined('ABSPATH') || exit;
  */
 class Notice
 {
+    protected $pluginFile;
     /**
      * [__construct description]
      */
-    public function __construct()
+    public function __construct($pluginFile)
     {
         add_shortcode('notice-alert', [$this, 'shortcodeNotice']);
         add_shortcode('notice-attention', [$this, 'shortcodeNotice']);
@@ -36,6 +39,8 @@ class Notice
         add_shortcode('plus', [$this, 'shortcodeNotice']);
         add_shortcode('minus', [$this, 'shortcodeNotice']);
         add_shortcode('question', [$this, 'shortcodeNotice']);
+
+        $this->pluginFile = $pluginFile;
     }
 
     /**
@@ -116,13 +121,12 @@ class Notice
 		}
 
         $output = '<div class="notice notice-' . $type . $class . '"><div>'
-            . do_shortcode('[icon icon="'.$icon.'" style="2x" alt="' . $alt . '"]') . '</div>';
+            . (new Icon($this->pluginFile))->shortcodeIcon(['icon' => $icon, 'style' => '2x', 'alt' => $alt]) . '</div>';
 	    if (isset($title) && $title != '') {
             $output .= "<h$hstart>" . $title . "</h$hstart>";
         }
         $output .= '<p>' . wpautop(do_shortcode($content)) . '</p></div>';
 
-        wp_enqueue_style('fontawesome');
         wp_enqueue_style('rrze-elements');
 
         return $output;

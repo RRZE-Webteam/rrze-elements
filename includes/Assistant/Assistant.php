@@ -87,7 +87,6 @@ class Assistant
         $collapsibles = sprintf('[collapsibles expand-all-link="%1$s"]%2$s[/collapsibles]', $atts['expand-all-link'], $shortcode_data);
         $return .= do_shortcode($collapsibles);
 
-        wp_enqueue_style('fontawesome');
         wp_enqueue_style('rrze-elements');
         wp_enqueue_script('rrze-accordions');
 

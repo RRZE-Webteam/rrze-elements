@@ -2,6 +2,8 @@
 
 namespace RRZE\Elements\HiddenText;
 
+use RRZE\Elements\Notice\Notice;
+
 defined('ABSPATH') || exit;
 
 /**
@@ -9,12 +11,17 @@ defined('ABSPATH') || exit;
  */
 class HiddenText
 {
+
+    protected $pluginFile;
+
     /**
      * [__construct description]
      */
-    public function __construct()
+    public function __construct($pluginFile)
     {
         add_shortcode('hidden-text', [$this, 'shortcodeHiddenText']);
+
+        $this->pluginFile = $pluginFile;
     }
 
     /**
@@ -36,7 +43,7 @@ class HiddenText
         $t_end = $end != '' ? strtotime($end, $now) : $now;
 
         if ($t_start === false || $t_end === false) {
-            return do_shortcode('[notice-attention]' . __('Please use a valid date format: Y-m-d H:i:s.', 'rrze-elements') . '[/notice-attention]' . $content);
+            return (new Notice($this->pluginFile))->shortcodeNotice([], __('Please use a valid date format: Y-m-d H:i:s.', 'rrze-elements'), 'notice-attention') . do_shortcode($content);
         }
 
         if (($start != '' && $now <= $t_start) || ($end != '' && $now >= $t_end)) {

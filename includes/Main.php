@@ -62,17 +62,17 @@ class Main
         new ContentSlider();
         new LaTeX();
         new News();
-        new Notice();
+        new Notice($this->pluginFile);
         new PullDiv();
-        new TimeLine();
+        new TimeLine($this->pluginFile);
         new ContentIndex();
-        new HiddenText();
+        new HiddenText($pluginFile);
         new LegalText();
         new Assistant();
 		new Symbols();
 		new Icon($this->pluginFile);
 		new TextColumns();
-		new Tabs();
+		new Tabs($this->pluginFile);
         new Table();
         new CTA($this->pluginFile);
 

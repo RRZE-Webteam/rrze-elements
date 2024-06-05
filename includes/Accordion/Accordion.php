@@ -2,6 +2,7 @@
 
 namespace RRZE\Elements\Accordion;
 
+use RRZE\Elements\Icon\Icon;
 use const RRZE\Elements\RRZE_ELEMENTS_VERSION;
 use RRZE\Elements\Helper;
 
@@ -141,7 +142,7 @@ class Accordion
 
         $icon_html = '';
         if (!empty($icon)) {
-            $icon_html .= do_shortcode('[icon icon="'.$icon.'"]');
+            $icon_html = (new Icon($this->pluginFile))->shortcodeIcon(['icon' => $icon]);
         }
         $suffix_hmtl = '';
         if (!empty($suffix)) {
@@ -164,7 +165,6 @@ class Accordion
         $output .= '</div></div>';  // .accordion-inner & .accordion-body
         $output .= '</div>';        // . accordion-group
 
-        wp_enqueue_style('fontawesome');
         wp_enqueue_style('rrze-elements');
         wp_enqueue_script('rrze-accordions');
 

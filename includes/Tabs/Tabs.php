@@ -2,6 +2,8 @@
 
 namespace RRZE\Elements\Tabs;
 
+use RRZE\Elements\Icon\Icon;
+
 use const RRZE\Elements\RRZE_ELEMENTS_VERSION;
 
 defined( 'ABSPATH') || exit;
@@ -11,15 +13,19 @@ defined( 'ABSPATH') || exit;
  */
 class Tabs
 {
+    protected $pluginFile;
+
 	/**
      * [__construct description]
      */
-    public function __construct()
+    public function __construct($pluginFile)
     {
         add_shortcode('tabs', [$this, 'shortcodeTabs']);
 	    add_shortcode('tab', [$this, 'shortcodeTab']);
 
         add_action('wp_enqueue_scripts', [$this, 'enqueueScripts']);
+
+        $this->pluginFile = $pluginFile;
     }
 
     /**
@@ -65,7 +71,7 @@ class Tabs
             $title = $matchesTitle[1];
             $slug = sanitize_title($title);
             if (isset($matchesIcons[$i][1]) && $matchesIcons[$i][1] != '') {
-                $icon = do_shortcode('[icon icon="'.$matchesIcons[$i][1].'"]');
+                $icon = (new Icon($this->pluginFile))->shortcodeIcon(['icon' => $matchesIcons[$i][1]]);;
             } else {
                 $icon = '';
             }
@@ -140,7 +146,7 @@ class Tabs
 
         $icon_html = '';
         if (!empty($icon)) {
-            $icon_html .= do_shortcode('[icon icon="'.$icon.'"] ');
+            $icon_html = (new Icon($this->pluginFile))->shortcodeIcon(['icon' => $icon]);
         }
         $suffix_hmtl = '';
         if (!empty($suffix)) {
@@ -162,7 +168,6 @@ class Tabs
         $output .= do_shortcode($content);
         $output .= '</div>';
 
-        wp_enqueue_style('fontawesome');
         wp_enqueue_style('rrze-elements');
         wp_enqueue_script('rrze-tabs');
 

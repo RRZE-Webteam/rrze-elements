@@ -332,14 +332,17 @@ aside .content-slider.flexslider,
                 border-bottom:none;
                 color:#1559A6;
             }
-            &:before {
-                font-family: "FontAwesome";
-                font-size: 40px;
-                display: inline-block;
-                content: '\f104';
+            &.flex-prev:before {
+                @include mask-icon(url('../svg/solid/angle-left.svg'), #1559A6, 36px);
+                position: relative;
+                left: -8px;
+                margin-right: 0;
             }
             &.flex-next:before  {
-                content: '\f105';
+                @include mask-icon(url('../svg/solid/angle-right.svg'), #1559A6, 36px);
+                position: relative;
+                left: 8px;
+                margin-right: 0;
             }
         }
         .flex-prev {
@@ -387,11 +390,7 @@ aside .content-slider.flexslider,
             }
 
             &:before {
-                font-family: "FontAwesome";
-                font-size: 20px;
-                display: inline-block;
-                content: '\f04c';
-                color: #1559a6;
+                @include mask-icon(url('../svg/solid/pause.svg'), #1559A6, 30px);
             }
 
             &:hover, &:focus {
@@ -401,7 +400,7 @@ aside .content-slider.flexslider,
             }
 
             &.flex-play:before {
-                content: '\f04b';
+                @include mask-icon(url('../svg/solid/play.svg'), #1559A6, 30px);
             }
         }
     }

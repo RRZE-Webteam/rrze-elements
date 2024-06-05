@@ -4,6 +4,7 @@ namespace RRZE\Elements\News;
 
 defined('ABSPATH') || exit;
 
+use RRZE\Elements\Columns\Columns;
 use RRZE\Elements\Helper;
 
 use function RRZE\Elements\Config\getThemeGroup;
@@ -253,9 +254,9 @@ class News
         $moreLink = '';
         if (in_array('show_more', $mode)) {
             if ($cat != '') {
-                $moreLink = '<p class="more-posts"><a class="standard-btn xsmall-btn primary-btn" href="'.get_category_link($c_id[0]).'" aria-label="' . __('More news', 'rrze-elements') . ': ' . $cat . '">' . __('More news', 'rrze-elements') . '</a></p>';
+                $moreLink = '<div class="more-posts"><a class="standard-btn xsmall-btn primary-btn" href="'.get_category_link($c_id[0]).'" aria-label="' . __('More news', 'rrze-elements') . ': ' . $cat . '">' . __('More news', 'rrze-elements') . '</a></div>';
             } elseif ($tag != '') {
-                $moreLink = '<p class="more-posts"><a class="standard-btn xsmall-btn primary-btn" href="'.get_tag_link($t_id[0]).'" aria-label="' . __('More news', 'rrze-elements') . ': ' . $tag . '">' . __('More news', 'rrze-elements') . '</a></p>';
+                $moreLink = '<div class="more-posts"><a class="standard-btn xsmall-btn primary-btn" href="'.get_tag_link($t_id[0]).'" aria-label="' . __('More news', 'rrze-elements') . ': ' . $tag . '">' . __('More news', 'rrze-elements') . '</a></div>';
             }
         }
 
@@ -306,7 +307,7 @@ class News
                             'forceLandscape' => $forceLandscape,
                             'showContent' => (in_array('show_content', $mode) ? true : false),
                         ];
-                        $output .= do_shortcode('[column]' . $this->display_news_teaser($args) . '[/column]');
+                        $output .= (new Columns())->shortcodeColumn([], $this->display_news_teaser($args));
                     } elseif (!empty($postCols)) {
                         if (array_sum($postCols) / $postCols['left'] > .3) {
                             $thumbnailSize = 'large';
@@ -387,7 +388,6 @@ class News
             <?php
         }
 
-        wp_enqueue_style('fontawesome');
         wp_enqueue_style('rrze-elements');
 
         wp_reset_postdata();

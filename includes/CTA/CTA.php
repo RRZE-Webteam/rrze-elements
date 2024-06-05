@@ -2,6 +2,7 @@
 
 namespace RRZE\Elements\CTA;
 
+use RRZE\Elements\Alert\Alert;
 use RRZE\Elements\Icon\Icon;
 
 use function RRZE\Downloads\Shortcodes\downloads;
@@ -23,7 +24,7 @@ class CTA {
 
     public function shortcodeCTA($atts, $content = '') {
         if ((!isset($atts['search']) || $atts['search'] == '') && (!isset($atts['url']) || $atts['url'] == '')) {
-            return do_shortcode('[alert style="danger"]' . sprintf(__('%1$sURL missing.%2$s Please provide the %3$surl%4$s attribute in your CTA shortcode.', 'rrze-elements'), '<strong>', '</strong>', '<code>', '</code>') . '[/alert]');
+            return (new Alert)->shortcodeAlert(['style' => 'danger'], sprintf(__('%1$sURL missing.%2$s Please provide the %3$surl%4$s attribute in your CTA shortcode.', 'rrze-elements'), '<strong>', '</strong>', '<code>', '</code>'));
         }
         $atts = shortcode_atts([
             'title' => '',
