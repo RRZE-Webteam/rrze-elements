@@ -5,6 +5,7 @@ namespace RRZE\Elements\TimeLine;
 defined('ABSPATH') || exit;
 
 use RRZE\Elements\Helper;
+use RRZE\Elements\Icon\Icon;
 use RRZE\Elements\Main;
 
 /**
@@ -12,14 +13,18 @@ use RRZE\Elements\Main;
  */
 class TimeLine
 {
+    protected $pluginFile;
+
     /**
      * [__construct description]
      */
-    public function __construct()
+    public function __construct($pluginFile)
     {
         add_action('wp_enqueue_scripts', [$this, 'enqueueScripts']);
         add_shortcode('timeline', [$this, 'shortcodeTimeline']);
         add_shortcode('timeline-item', [$this, 'shortcodeTimelineItem']);
+
+        $this->pluginFile = $pluginFile;
     }
 
     /**
@@ -60,10 +65,10 @@ class TimeLine
         if ($autoplay || $startend) {
             $output .= '<div class="timeline-nav">';
             if ($startend) {
-                $output .= "<a href=\"#\" class=\"to-start\" data-toggle=\"pause\" title=\"Zum ersten Eintrag springen\">". do_shortcode('[icon icon="step-backward"]') . "<span class=\"sr-only\">Zum ersten Eintrag springen</span></a> <a href=\"#\" class=\"to-end\" data-toggle=\"pause\">". do_shortcode('[icon icon="step-forward"]') . "<span class=\"sr-only\">Zum letzten Eintrag springen</span></a>";
+                $output .= "<a href=\"#\" class=\"to-start\" data-toggle=\"pause\" title=\"Zum ersten Eintrag springen\">". (new Icon($this->pluginFile))->shortcodeIcon(['icon' => 'step-backward']) . "<span class=\"sr-only\">Zum ersten Eintrag springen</span></a> <a href=\"#\" class=\"to-end\" data-toggle=\"pause\">". (new Icon($this->pluginFile))->shortcodeIcon(['icon' => 'step-forward']) . "<span class=\"sr-only\">Zum letzten Eintrag springen</span></a>";
             }
             if ($autoplay) {
-                $output .= "<a href=\"#\" class=\"toggle-autoplay\" data-toggle=\"pause\">". do_shortcode('[icon icon="pause"]') . "<span class=\"sr-only\">Pause</span></a> ";
+                $output .= "<a href=\"#\" class=\"toggle-autoplay\" data-toggle=\"pause\">". (new Icon($this->pluginFile))->shortcodeIcon(['icon' => 'pause']) . "<span class=\"sr-only\">Pause</span></a> ";
             }
             $output .= '</div>';
         }
@@ -73,13 +78,13 @@ class TimeLine
         if ($orientation == 'horizontal') {
             $output .= "<div class=\"grad_left\"></div>" .
                     "<div class=\"grad_right\"></div>";
-            $output .= "<div><a href=\"#\" class=\"prev\">". do_shortcode('[icon icon="angle-left"]') . "<span class=\"sr-only\">Previous</span></a></div>"
-                    . "<div><a href=\"#\" class=\"next\">". do_shortcode('[icon icon="angle-right"]') . "<span class=\"sr-only\">Next</span></a></div>";
+            $output .= "<div><a href=\"#\" class=\"prev\">". (new Icon($this->pluginFile))->shortcodeIcon(['icon' => 'angle-left']) . "<span class=\"sr-only\">Previous</span></a></div>"
+                    . "<div><a href=\"#\" class=\"next\">". (new Icon($this->pluginFile))->shortcodeIcon(['icon' => 'angle-right']) . "<span class=\"sr-only\">Next</span></a></div>";
         } else {
             $output .= "<div class=\"grad_top\"></div>" .
                     "<div class=\"grad_bottom\"></div>";
-            $output .= "<a href=\"#\" class=\"next\">". do_shortcode('[icon icon="angle-down"]') . "<span class=\"sr-only\">Next</span></a>" .
-                    "<a href=\"#\" class=\"prev\">". do_shortcode('[icon icon="angle-up"]') . "<span class=\"sr-only\">Previous</span></a>";
+            $output .= "<a href=\"#\" class=\"next\">". (new Icon($this->pluginFile))->shortcodeIcon(['icon' => 'angle-down']) . "<span class=\"sr-only\">Next</span></a>" .
+                    "<a href=\"#\" class=\"prev\">". (new Icon($this->pluginFile))->shortcodeIcon(['icon' => 'angle-up']) . "<span class=\"sr-only\">Previous</span></a>";
         }
 
         $output .= "</div>";
@@ -120,7 +125,6 @@ class TimeLine
         $output .= wpautop(do_shortcode($content));
         $output .= "</li>";
 
-        wp_enqueue_style('fontawesome');
         wp_enqueue_style('rrze-elements');
         wp_enqueue_script('rrze-timelinr');
 

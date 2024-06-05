@@ -4,6 +4,7 @@ namespace RRZE\Elements\News;
 
 defined('ABSPATH') || exit;
 
+use RRZE\Elements\Columns\Columns;
 use RRZE\Elements\Helper;
 
 use function RRZE\Elements\Config\getThemeGroup;
@@ -306,7 +307,7 @@ class News
                             'forceLandscape' => $forceLandscape,
                             'showContent' => (in_array('show_content', $mode) ? true : false),
                         ];
-                        $output .= do_shortcode('[column]' . $this->display_news_teaser($args) . '[/column]');
+                        $output .= (new Columns())->shortcodeColumn([], $this->display_news_teaser($args));
                     } elseif (!empty($postCols)) {
                         if (array_sum($postCols) / $postCols['left'] > .3) {
                             $thumbnailSize = 'large';
@@ -387,7 +388,6 @@ class News
             <?php
         }
 
-        wp_enqueue_style('fontawesome');
         wp_enqueue_style('rrze-elements');
 
         wp_reset_postdata();

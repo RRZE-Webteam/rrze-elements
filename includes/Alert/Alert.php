@@ -70,7 +70,6 @@ class Alert
 		    $output .= '</div>';
 		}
 
-        wp_enqueue_style('fontawesome');
         wp_enqueue_style('rrze-elements');
 
         return wpautop($output);

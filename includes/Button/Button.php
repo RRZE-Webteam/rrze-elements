@@ -4,6 +4,8 @@ namespace RRZE\Elements\Button;
 
 defined('ABSPATH') || exit;
 
+use RRZE\Elements\Alert\Alert;
+
 use function RRZE\Elements\Config\calculateContrastColor;
 
 /**
@@ -43,7 +45,7 @@ class Button
 
         $arialabel = $atts['aria-label'] != '' ? ' aria-label="' . sanitize_text_field($atts['aria-label']) . '"' : '';
         /*if ($arialabel != '' && stripos($arialabel, $content) === false) {
-            return do_shortcode('[alert style="danger"]' . __('<strong>Button shortcode error</strong>: The button text ("' . $content .  '") has to be included in the aria label ("' . sanitize_text_field($atts['aria-label']) .  '"). ' , 'rrze-elements') . '[/alert]');
+            return (new Alert())->shortcodeAlert(['style' => 'danger'], __('<strong>Button shortcode error</strong>: The button text ("' . $content .  '") has to be included in the aria label ("' . sanitize_text_field($atts['aria-label']) .  '"). ' , 'rrze-elements'));
         }*/
         $classesArr = ['standard-btn'];
         $stylesArr = [];
@@ -82,7 +84,6 @@ class Button
 
         $output = '<a' . $target . $title . $arialabel . ' class="' . implode(' ', $classesArr) . '" href="' . $link . '" style="' . implode('; ', $stylesArr) . '"><span>' . do_shortcode($content) . '</span></a>';
 
-        wp_enqueue_style('fontawesome');
         wp_enqueue_style('rrze-elements');
 
         return $output;

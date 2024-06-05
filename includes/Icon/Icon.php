@@ -70,9 +70,7 @@ class Icon {
 		$style = ' style="' . implode(' ', $CSSstyles) .'" ';
 
 		$output = str_replace('<svg ', '<svg height="1em" width="1em" class="rrze-elements-icon"' . $style . $a11yTags, $svg);
-		//$output = str_replace('<svg ', '<svg ' . $style, $svg);
 
-		wp_enqueue_style('fontawesome');
 		wp_enqueue_style('rrze-elements');
 
 		return $output;
