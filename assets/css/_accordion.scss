@@ -102,7 +102,7 @@ button.expand-all.standard-btn {
         &.active:focus {
             border-color: var(--color-primary-dunkler, $colorDefaultDunkler);
             background-color: var(--color-primary-dunkler, $colorDefaultDunkler);
-            color: var(--color-primary-ci-hell-kontrast, #fff);
+            color: var(--color-primary-dunkler-kontrast, #fff);
             &:before {
                 @include mask-icon(url("../svg/solid/caret-up.svg"), var(--color-primary-ci-hell-kontrast, #fff), 1em);
                 position: absolute;
@@ -141,7 +141,7 @@ button.expand-all.standard-btn {
         &.active:focus {
             border-color: var(--color-phil-dunkler, $colorPhilFakDunkler);
             background-color: var(--color-phil-dunkler, $colorPhilFakDunkler);
-            color: var(--color-phil-ci-hell-kontrast, #000);
+            color: var(--color-phil-dunkler-kontrast, #000);
         }
     }
     .rw .accordion-heading .accordion-toggle,
@@ -159,7 +159,7 @@ button.expand-all.standard-btn {
         &.active:focus {
             border-color: var(--color-rw-dunkler, $colorRwFakDunkler);
             background-color: var(--color-rw-dunkler, $colorRwFakDunkler);
-            color: var(--color-rw-ci-hell-kontrast, #fff);
+            color: var(--color-rw-dunkler-kontrast, #fff);
         }
     }
     .med .accordion-heading .accordion-toggle,
@@ -177,7 +177,7 @@ button.expand-all.standard-btn {
         &.active:focus {
             border-color: var(--color-med-dunkler, $colorMedFakDunkler);
             background-color: var(--color-med-dunkler, $colorMedFakDunkler);
-            color: var(--color-med-ci-dunkel-kontrast, #fff);
+            color: var(--color-med-dunkler-kontrast, #fff);
         }
     }
     .nat .accordion-heading .accordion-toggle,
@@ -196,7 +196,7 @@ button.expand-all.standard-btn {
         &.active:focus {
             border-color: var(--color-nat-dunkler, $colorNatFakDunkler);
             background-color: var(--color-nat-dunkler, $colorNatFakDunkler);
-            color: var(--color-nat-ci-dunkel-kontrast, #fff);
+            color: var(--color-nat-dunkler-kontrast, #fff);
         }
     }
     .tf .accordion-heading .accordion-toggle,
@@ -208,13 +208,13 @@ button.expand-all.standard-btn {
         &.active {
             border-color: var(--color-tf-ci-hell, $colorTechFak);
             background-color: var(--color-tf-ci-hell, $colorTechFak);
-            color: var(--color-tf-ci-dunkel-kontrast, #000);
+            color: var(--color-tf-ci-hell-kontrast, #000);
         }
         &.active:hover,
         &.active:focus {
             border-color: var(--color-tf-dunkler, $colorTechFakDunkler);
             background-color: var(--color-tf-dunkler, $colorTechFakDunkler);
-            color: var(--color-tf-ci-dunkel-kontrast, #fff);
+            color: var(--color-tf-dunkler-kontrast, #fff);
         }
     }
     .fau .accordion-heading .accordion-toggle,
@@ -231,7 +231,7 @@ button.expand-all.standard-btn {
         &.active:focus {
             border-color: var(--color-zentral-dunkler, $colorDefaultDunkler);
             background-color: var(--color-zentral-dunkler, $colorDefaultDunkler);
-            color: var(--color-zentral-ci-hell-kontrast, #fff);
+            color: var(--color-zentral-dunkler-kontrast, #fff);
         }
     }
 
