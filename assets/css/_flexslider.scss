@@ -443,6 +443,7 @@ aside .content-slider.flexslider,
             display: inline-block;
             zoom: 1;
             *display: inline;
+            padding: 0;
             &:before {
                 content: none;
             }
@@ -450,8 +451,8 @@ aside .content-slider.flexslider,
                 padding: 0;
             }
             a {
-                width: 12px;
-                height: 12px;
+                width: 24px;
+                height: 24px;
                 display: block;
                 background: #666;
                 background: rgba(0,0,0,0.5);
