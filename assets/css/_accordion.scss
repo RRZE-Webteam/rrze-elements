@@ -309,7 +309,7 @@ button.expand-all.standard-btn {
         .gold {
             .accordion-heading .accordion-toggle {
                 &:before {
-                    @include mask-icon(url("../svg/solid/angle-up.svg"), var(--color-phil-dunkler, $colorPhilFakDunkler), 2em);
+                    @include mask-icon(url("../svg/solid/angle-down.svg"), var(--color-phil-dunkler, $colorPhilFakDunkler), 2em);
                     position: absolute;
                     top: 9px;
                     right: 5px;
@@ -319,7 +319,7 @@ button.expand-all.standard-btn {
                 &:hover,
                 &:focus {
                     &:before {
-                        @include mask-icon(url("../svg/solid/angle-up.svg"), var(--color-phil-dunkler, $colorPhilFakDunkler), 2em);
+                        @include mask-icon(url("../svg/solid/angle-down.svg"), var(--color-phil-dunkler, $colorPhilFakDunkler), 2em);
                         position: absolute;
                         top: 9px;
                         right: 5px;
@@ -329,7 +329,7 @@ button.expand-all.standard-btn {
 
                 &.active {
                     &:before {
-                        @include mask-icon(url("../svg/solid/angle-down.svg"), var(--color-phil-dunkler, $colorPhilFakDunkler), 2em);
+                        @include mask-icon(url("../svg/solid/angle-up.svg"), var(--color-phil-dunkler, $colorPhilFakDunkler), 2em);
                         position: absolute;
                         top: 9px;
                         right: 5px;
@@ -343,7 +343,7 @@ button.expand-all.standard-btn {
         .red {
             .accordion-heading .accordion-toggle {
                 &:before {
-                    @include mask-icon(url("../svg/solid/angle-up.svg"), var(--color-rw-ci-hell, $colorRwFak), 2em);
+                    @include mask-icon(url("../svg/solid/angle-down.svg"), var(--color-rw-ci-hell, $colorRwFak), 2em);
                     position: absolute;
                     top: 9px;
                     right: 5px;
@@ -352,7 +352,7 @@ button.expand-all.standard-btn {
                 &:hover,
                 &:focus {
                     &:before {
-                        @include mask-icon(url("../svg/solid/angle-up.svg"), var(--color-rw-ci-hell, $colorRwFak), 2em);
+                        @include mask-icon(url("../svg/solid/angle-down.svg"), var(--color-rw-ci-hell, $colorRwFak), 2em);
                         position: absolute;
                         top: 9px;
                         right: 5px;
@@ -361,7 +361,7 @@ button.expand-all.standard-btn {
                 }
                 &.active {
                     &:before {
-                        @include mask-icon(url("../svg/solid/angle-down.svg"), var(--color-rw-ci-hell, $colorRwFak), 2em);
+                        @include mask-icon(url("../svg/solid/angle-up.svg"), var(--color-rw-ci-hell, $colorRwFak), 2em);
                         position: absolute;
                         top: 9px;
                         right: 5px;
@@ -375,7 +375,7 @@ button.expand-all.standard-btn {
         .blue {
             .accordion-heading .accordion-toggle {
                 &:before {
-                    @include mask-icon(url("../svg/solid/angle-up.svg"), var(--color-med-ci-hell, $colorMedFak), 2em);
+                    @include mask-icon(url("../svg/solid/angle-down.svg"), var(--color-med-ci-hell, $colorMedFak), 2em);
                     position: absolute;
                     top: 9px;
                     right: 5px;
@@ -384,7 +384,7 @@ button.expand-all.standard-btn {
                 &:hover,
                 &:focus {
                     &:before {
-                        @include mask-icon(url("../svg/solid/angle-up.svg"), var(--color-med-ci-hell, $colorMedFak), 2em);
+                        @include mask-icon(url("../svg/solid/angle-down.svg"), var(--color-med-ci-hell, $colorMedFak), 2em);
                         position: absolute;
                         top: 9px;
                         right: 5px;
@@ -393,7 +393,7 @@ button.expand-all.standard-btn {
                 }
                 &.active {
                     &:before {
-                        @include mask-icon(url("../svg/solid/angle-down.svg"), var(--color-med-ci-hell, $colorMedFak), 2em);
+                        @include mask-icon(url("../svg/solid/angle-up.svg"), var(--color-med-ci-hell, $colorMedFak), 2em);
                         position: absolute;
                         top: 9px;
                         right: 5px;
@@ -407,7 +407,7 @@ button.expand-all.standard-btn {
         .green {
             .accordion-heading .accordion-toggle {
                 &:before {
-                    @include mask-icon(url("../svg/solid/angle-up.svg"), var(--color-nat-ci-hell, $colorNatFak), 2em);
+                    @include mask-icon(url("../svg/solid/angle-down.svg"), var(--color-nat-ci-hell, $colorNatFak), 2em);
                     position: absolute;
                     top: 9px;
                     right: 5px;
@@ -416,7 +416,7 @@ button.expand-all.standard-btn {
                 &:hover,
                 &:focus {
                     &:before {
-                        @include mask-icon(url("../svg/solid/angle-up.svg"), var(--color-nat-ci-hell, $colorNatFak), 2em);
+                        @include mask-icon(url("../svg/solid/angle-down.svg"), var(--color-nat-ci-hell, $colorNatFak), 2em);
                         position: absolute;
                         top: 9px;
                         right: 5px;
@@ -425,7 +425,7 @@ button.expand-all.standard-btn {
                 }
                 &.active {
                     &:before {
-                        @include mask-icon(url("../svg/solid/angle-down.svg"), var(--color-nat-ci-hell, $colorNatFak), 2em);
+                        @include mask-icon(url("../svg/solid/angle-up.svg"), var(--color-nat-ci-hell, $colorNatFak), 2em);
                         position: absolute;
                         top: 9px;
                         right: 5px;
@@ -439,7 +439,7 @@ button.expand-all.standard-btn {
         .grey {
              .accordion-heading .accordion-toggle {
                  &:before {
-                     @include mask-icon(url("../svg/solid/angle-up.svg"), var(--color-tf-ci-hell, $colorTechFak), 2em);
+                     @include mask-icon(url("../svg/solid/angle-down.svg"), var(--color-tf-ci-hell, $colorTechFak), 2em);
                      position: absolute;
                      top: 9px;
                      right: 5px;
@@ -448,7 +448,7 @@ button.expand-all.standard-btn {
                  &:hover,
                  &:focus {
                      &:before {
-                         @include mask-icon(url("../svg/solid/angle-up.svg"), var(--color-tf-ci-hell, $colorTechFak), 2em);
+                         @include mask-icon(url("../svg/solid/angle-down.svg"), var(--color-tf-ci-hell, $colorTechFak), 2em);
                          position: absolute;
                          top: 9px;
                          right: 5px;
@@ -457,7 +457,7 @@ button.expand-all.standard-btn {
                  }
                  &.active {
                      &:before {
-                         @include mask-icon(url("../svg/solid/angle-down.svg"), var(--color-tf-ci-hell, $colorTechFak), 2em);
+                         @include mask-icon(url("../svg/solid/angle-up.svg"), var(--color-tf-ci-hell, $colorTechFak), 2em);
                          position: absolute;
                          top: 9px;
                          right: 5px;
@@ -470,7 +470,7 @@ button.expand-all.standard-btn {
         .default {
             .accordion-heading .accordion-toggle {
                 &:before {
-                    @include mask-icon(url("../svg/solid/angle-up.svg"), var(--color-zentral-dunkler, $colorDefaultDunkler), 2em);
+                    @include mask-icon(url("../svg/solid/angle-down.svg"), var(--color-zentral-dunkler, $colorDefaultDunkler), 2em);
                     position: absolute;
                     top: 9px;
                     right: 5px;
@@ -479,7 +479,7 @@ button.expand-all.standard-btn {
                 &:hover,
                 &:focus {
                     &:before {
-                        @include mask-icon(url("../svg/solid/angle-up.svg"), var(--color-zentral-dunkler, $colorDefaultDunkler), 2em);
+                        @include mask-icon(url("../svg/solid/angle-down.svg"), var(--color-zentral-dunkler, $colorDefaultDunkler), 2em);
                         position: absolute;
                         top: 9px;
                         right: 5px;
@@ -488,7 +488,7 @@ button.expand-all.standard-btn {
                 }
                 &.active {
                     &:before {
-                        @include mask-icon(url("../svg/solid/angle-down.svg"), var(--color-zentral-dunkler, $colorDefaultDunkler), 2em);
+                        @include mask-icon(url("../svg/solid/angle-up.svg"), var(--color-zentral-dunkler, $colorDefaultDunkler), 2em);
                         position: absolute;
                         top: 9px;
                         right: 5px;
