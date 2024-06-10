@@ -50,7 +50,7 @@ class Accordion
         }
         $GLOBALS['collapsibles_id'] = $GLOBALS['collapsibles_count'];
 
-        $defaults = array('expand-all-link' => 'false', 'register' => 'false', 'hstart' => '');
+        $defaults = array('expand-all-link' => 'false', 'register' => 'false', 'hstart' => '', 'style' => '');
         $args = shortcode_atts($defaults, $atts);
         $expand = Helper::shortcode_boolean($args['expand-all-link']);
         $register = Helper::shortcode_boolean($args['register']);
@@ -62,8 +62,11 @@ class Accordion
         if (($hstart < 1) || ($hstart > 6)) {
             $hstart = 2;
         }
+        $style = esc_attr($args['style']);
+        $class = $style == 'light' ? 'style_'.$style : 'style_default';
         $GLOBALS['collapsibles_hstart'][$GLOBALS['collapsibles_id']] = $hstart;
-        $output = '<div class="accordion" id="accordion-' . $GLOBALS['collapsibles_count'] . '">';
+
+        $output = '<div class="accordion ' . $class . '" id="accordion-' . $GLOBALS['collapsibles_count'] . '">';
         if ($expand) {
             switch (get_post_meta(get_the_ID(), 'fauval_langcode', true)) {
                 case 'en':
