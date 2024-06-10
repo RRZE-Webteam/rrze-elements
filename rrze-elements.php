@@ -23,7 +23,7 @@ use RRZE\Elements\Main;
 
 const RRZE_PHP_VERSION = '7.4';
 const RRZE_WP_VERSION = '5.9';
-const RRZE_ELEMENTS_VERSION = '1.26.2';
+const RRZE_ELEMENTS_VERSION = '1.28.2';
 
 spl_autoload_register(function ($class) {
     $prefix = __NAMESPACE__;
