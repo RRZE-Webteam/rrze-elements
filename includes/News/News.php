@@ -56,7 +56,7 @@ class News
             'forcelandscape' => 'false',
             'force_landscape' => 'false',
             'sticky_only' => 'false',
-            'teaser_length' => '0',
+            'teaser_length' => '55',
         ], $atts);
         $sc_atts = array_map('sanitize_text_field', $sc_atts);
 
@@ -306,6 +306,7 @@ class News
                             'thumbnailSize' => $thumbnailSize,
                             'forceLandscape' => $forceLandscape,
                             'showContent' => (in_array('show_content', $mode) ? true : false),
+                            'teaserLength' => $teaserLength,
                         ];
                         $output .= (new Columns())->shortcodeColumn([], $this->display_news_teaser($args));
                     } elseif (!empty($postCols)) {
@@ -322,6 +323,7 @@ class News
                             'thumbnailSize' => $thumbnailSize,
                             'forceLandscape' => $forceLandscape,
                             'showContent' => (in_array('show_content', $mode) ? true : false),
+                            'teaserLength' => $teaserLength,
                         ];
                         $output .= do_shortcode($this->display_news_teaser($args));
                     } else {
@@ -404,8 +406,9 @@ class News
             'postCols'      => [],
             'thumbnailSize' => 'large',
             'forceLandscape'=> false,
+            'teaserLength'  => 20,
             ];
-        if ($argsRaw['id'] == 0) return;
+        if ($argsRaw['id'] == 0) return '';
         $args = wp_parse_args($argsRaw, $defaults);
         foreach ($args as $k => $v) {
             ${$k} = $v;
@@ -500,7 +503,9 @@ class News
                             $abstract .= fau_create_readmore($permalink, get_the_title(), false, true);
                         }
                     } else {
-                        $abstract = get_the_excerpt($id);
+                        $excerpt = get_the_excerpt($id);
+                        $excerpt_more = apply_filters( 'excerpt_more', '&hellip;' );
+                        $abstract = wp_trim_words( $excerpt, $teaserLength, $excerpt_more );
                     }
                 } else {
                     if (function_exists('fau_create_readmore')) {
