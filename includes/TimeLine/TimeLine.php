@@ -139,7 +139,7 @@ class TimeLine
     {
         wp_register_script(
             'rrze-timelinr',
-            plugins_url('assets/js/rrze-timelinr.min.js', plugin_basename(__FILE__)),
+            plugins_url('assets/js/rrze-timelinr.js', plugin_basename(__FILE__)),
             ['jquery'],
             '1.0.0'
         );
