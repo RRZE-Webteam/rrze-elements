@@ -78,8 +78,8 @@ class TimeLine
         if ($orientation == 'horizontal') {
             $output .= "<div class=\"grad_left\"></div>" .
                     "<div class=\"grad_right\"></div>";
-            $output .= "<div><a href=\"#\" class=\"prev\">". (new Icon($this->pluginFile))->shortcodeIcon(['icon' => 'angle-left']) . "<span class=\"sr-only\">Previous</span></a></div>"
-                    . "<div><a href=\"#\" class=\"next\">". (new Icon($this->pluginFile))->shortcodeIcon(['icon' => 'angle-right']) . "<span class=\"sr-only\">Next</span></a></div>";
+            $output .= "<div class='nav-prev-wrapper'><a href=\"#\" class=\"prev\">". (new Icon($this->pluginFile))->shortcodeIcon(['icon' => 'angle-left']) . "<span class=\"sr-only\">Previous</span></a></div>"
+                    . "<div class='nav-next-wrapper'><a href=\"#\" class=\"next\">". (new Icon($this->pluginFile))->shortcodeIcon(['icon' => 'angle-right']) . "<span class=\"sr-only\">Next</span></a></div>";
         } else {
             $output .= "<div class=\"grad_top\"></div>" .
                     "<div class=\"grad_bottom\"></div>";
