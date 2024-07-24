@@ -6,8 +6,8 @@
     max-width: 100%;
     overflow-x: hidden;
     position: relative;
-    //padding-top: 32px;
-    margin-top: 1em;
+    padding-top: 30px;
+    //margin-top: 1em;
     margin-bottom: 1em;
     @media screen and (min-width: 45em) {
         max-width: 800px;
@@ -260,9 +260,7 @@
         vertical-align: top;
         font-size: 32px;
         @media screen and (min-width: 45em) {
-            font-size: 70px;
-            //width: 27px;
-            //height: 44px;
+            font-size: 50px;
             position: absolute;
             top: 43%;
         }
@@ -398,6 +396,7 @@
         font-size: 20px;
         position: relative;
         top: -32px;
+        z-index: 1;
         .toggle-autoplay {
             display: inline-block;
             margin: 0 .5em 0 0;
