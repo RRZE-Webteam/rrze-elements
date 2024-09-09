@@ -72,6 +72,6 @@ class Alert
 
         wp_enqueue_style('rrze-elements');
 
-        return wpautop($output);
+        return wpautop($output, false);
     }
 }
