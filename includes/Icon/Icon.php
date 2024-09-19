@@ -19,7 +19,7 @@ class Icon {
 
         $svg = self::getIcon($args['icon']);
         if ($svg == '') {
-            return '<span style="background-color: var(--color-Negative, #a71c18); color: var(--color-Negative-Kontrast, #ffffff); padding: 0 5px;">' . __('Icon not found.', 'rrze-elements') . '</span>';
+            return '<span class="rrze-elements-icon-error">' . __('Icon not found.', 'rrze-elements') . '</span>';
         }
 
 		if ($args['alt'] == '') {

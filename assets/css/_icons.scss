@@ -48,3 +48,9 @@ ul[class^="rrze-elements-icon-list-"] {
         }
     }
 }
+
+span.rrze-elements-icon-error {
+    background-color: var(--color-Negative, #a71c18);
+    color: var(--color-Negative-Kontrast, #ffffff);
+    padding: 0 5px;
+}
