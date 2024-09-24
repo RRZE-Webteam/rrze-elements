@@ -71,6 +71,6 @@ class PullDiv
         $output = '<div class="limit-width" style="max-width: min(' . $atts['width'] . ', 100%); ' . $margin . '">' . do_shortcode($content) . '</div>';
 
         wp_enqueue_style('rrze-elements');
-        return wpautop($output);
+        return wpautop($output, false);
     }
 }
