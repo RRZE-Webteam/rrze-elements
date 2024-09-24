@@ -1,6 +1,6 @@
 {
   "name": "rrze-elements",
-  "version": "1.29.0",
+  "version": "1.29.1",
   "description": "RRZE Elements: Gestalterische Erweiterungen für Webauftritte.",
   "main": "rrze-elements.php",
   "textdomain": "rrze-elements",
