@@ -138,9 +138,11 @@ class Accordion
         $hlevel = 'h'.($GLOBALS['collapsibles_hstart'][$GLOBALS['collapsibles_id']] ?? '2');
         $icon = esc_attr($icon);
         $suffix = esc_attr($suffix);
+        $expanded = 'false';
 
         if (!empty($load)) {
             $addclass .= " " . $load;
+            $expanded = 'true';
         }
 
         $icon_html = '';
@@ -158,8 +160,8 @@ class Accordion
         }
 
         $output = '<div class="accordion-group' . $color . '">';
-        $output .= "<$hlevel class=\"accordion-heading\"><span class=\"read-mode-only\">$title $suffix_hmtl</span><button class=\"accordion-toggle\" data-toggle=\"collapse\" $dataname href=\"#collapse_$id\">$icon_html $title $suffix_hmtl</button></$hlevel>";
-        $output .= '<div id="collapse_' . $id . '" class="accordion-body' . $addclass . '"' . $name . '>';
+        $output .= "<$hlevel class=\"accordion-heading\"><button class=\"accordion-toggle\" data-toggle=\"collapse\" $dataname href=\"#collapse_$id\" aria-expanded=\"$expanded\" aria-controls=\"collapse_$id\" id=\"collapse_button_$id\">$icon_html $title $suffix_hmtl</button></$hlevel>";
+        $output .= '<div id="collapse_' . $id . '" class="accordion-body' . $addclass . '"' . $name . ' aria-labelledby="collapse_button_' . $id . '">';
         $output .= '<div class="accordion-inner clearfix">';
 
 

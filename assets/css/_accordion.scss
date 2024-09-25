@@ -567,6 +567,7 @@ button.expand-all.standard-btn {
     display: none;
 }
 
+#content main .accordion-body:target,
 .admin-bar #content main .accordion-body:target {
     padding-top: 0;
 }

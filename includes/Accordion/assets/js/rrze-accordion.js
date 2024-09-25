@@ -59,7 +59,7 @@ jQuery(document).ready(function($) {
         $otherGroups.children('.accordion-heading').children('.accordion-toggle').removeClass('active');
         $otherGroups.children('.accordion-body').not('.accordion-body.stayopen').slideUp();
 
-        $directToggle.toggleClass('active');
+        $directToggle.toggleClass('active').attr('aria-expanded', function(_, attr) { return !(attr === 'true') });
         $directBody.slideToggle();
 
         refreshSlickGallery($group);
@@ -85,11 +85,11 @@ jQuery(document).ready(function($) {
         if ($target.closest('.accordion').parent().closest('.accordion-group')) {
             const $thisgroup = $($target).closest('.accordion-group');
             const $othergroups = $($target).closest('.accordion').find('.accordion-group').not($thisgroup);
-            $($othergroups).find('.accordion-toggle').removeClass('active');
+            $($othergroups).find('.accordion-toggle').removeClass('active').attr('aria-expanded', 'false');
             $($othergroups).find('.accordion-body').not('.accordion-body.stayopen').slideUp();
-            $($thisgroup).find('.accordion-toggle:first').not('.active').addClass('active');
+            $($thisgroup).find('.accordion-toggle:first').not('.active').addClass('active').attr('aria-explanded', 'true');
             $($thisgroup).find('.accordion-body:first').slideDown();
-            $($thisgroup).parents('.accordion-group').find('.accordion-toggle:first').not('.active').addClass('active');
+            $($thisgroup).parents('.accordion-group').find('.accordion-toggle:first').not('.active').addClass('active').attr('aria-expanded', 'true');
             $($thisgroup).parents('.accordion-body').slideDown();
         }
         const offset = $target.offset();
