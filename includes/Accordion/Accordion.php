@@ -160,7 +160,7 @@ class Accordion
         }
 
         $output = '<div class="accordion-group' . $color . '">';
-        $output .= "<$hlevel class=\"accordion-heading\"><button class=\"accordion-toggle\" data-toggle=\"collapse\" $dataname href=\"#collapse_$id\" aria-expanded=$expanded aria-controls=\"collapse_$id\" id=\"collapse_button_$id\">$icon_html $title $suffix_hmtl</button></$hlevel>";
+        $output .= "<$hlevel class=\"accordion-heading\"><button class=\"accordion-toggle\" data-toggle=\"collapse\" $dataname href=\"#collapse_$id\" aria-expanded=\"$expanded\" aria-controls=\"collapse_$id\" id=\"collapse_button_$id\">$icon_html $title $suffix_hmtl</button></$hlevel>";
         $output .= '<div id="collapse_' . $id . '" class="accordion-body' . $addclass . '"' . $name . ' aria-labelledby="collapse_button_' . $id . '">';
         $output .= '<div class="accordion-inner clearfix">';
 
