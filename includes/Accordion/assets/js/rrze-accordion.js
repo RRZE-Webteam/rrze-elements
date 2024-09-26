@@ -87,7 +87,7 @@ jQuery(document).ready(function($) {
             const $othergroups = $($target).closest('.accordion').find('.accordion-group').not($thisgroup);
             $($othergroups).find('.accordion-toggle').removeClass('active').attr('aria-expanded', 'false');
             $($othergroups).find('.accordion-body').not('.accordion-body.stayopen').slideUp();
-            $($thisgroup).find('.accordion-toggle:first').not('.active').addClass('active').attr('aria-explanded', 'true');
+            $($thisgroup).find('.accordion-toggle:first').not('.active').addClass('active').attr('aria-expanded', 'true');
             $($thisgroup).find('.accordion-body:first').slideDown();
             $($thisgroup).parents('.accordion-group').find('.accordion-toggle:first').not('.active').addClass('active').attr('aria-expanded', 'true');
             $($thisgroup).parents('.accordion-body').slideDown();
