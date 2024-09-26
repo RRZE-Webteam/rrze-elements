@@ -56,7 +56,7 @@ jQuery(document).ready(function($) {
         const $directToggle = $group.children('.accordion-heading').children('.accordion-toggle');
         const $otherGroups = $group.siblings();
 
-        $otherGroups.children('.accordion-heading').children('.accordion-toggle').removeClass('active');
+        $otherGroups.children('.accordion-heading').children('.accordion-toggle').removeClass('active').attr('aria-expanded', 'false');
         $otherGroups.children('.accordion-body').not('.accordion-body.stayopen').slideUp();
 
         $directToggle.toggleClass('active').attr('aria-expanded', function(_, attr) { return !(attr === 'true') });
