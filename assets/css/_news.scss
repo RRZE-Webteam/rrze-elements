@@ -122,3 +122,14 @@
         }
     }
 }
+
+.rrze-elements-news-table {
+	display: table;
+    .rrze-elements-news-table-row {
+    	display: table-row;
+        .rrze-elements-news-table-cell {
+        	display: table-cell;
+        	padding: .125rem;
+        }
+    }
+}
