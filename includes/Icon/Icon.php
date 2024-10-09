@@ -60,16 +60,16 @@ class Icon {
 			if ($args['color'] == 'fau' || $args['color'] == 'zuv') {
 				$args['color'] = 'zentral';
 			}
-			$CSSstyles[] = 'fill: var(--color-'.$args['color'].'-basis, #04316A);';
+			$color = ' var(--color-'.$args['color'].'-basis, #04316A)';
 		} elseif (strlen($args['color']) == 7 && strpos($args['color'], '#') == 0) {
 			// Hex Colors
-			$CSSstyles[] = 'fill: '.$args['color'].';';
+            $color = $args['color'];
 		} else {
-			$CSSstyles[] = 'fill: currentcolor;';
+            $color = 'currentcolor';
 		}
 		$style = ' style="' . implode(' ', $CSSstyles) .'" ';
 
-		$output = str_replace('<svg ', '<svg height="1em" width="1em" class="rrze-elements-icon"' . $style . $a11yTags, $svg);
+		$output = str_replace(['<svg ', '<path '], ['<svg height="1em" width="1em" class="rrze-elements-icon"' . $style . $a11yTags, '<path fill="' . $color . '" '], $svg);
 
 		wp_enqueue_style('rrze-elements');
 
