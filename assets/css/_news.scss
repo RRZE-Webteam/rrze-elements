@@ -122,3 +122,15 @@
         }
     }
 }
+
+.rrze-elements-news.news-table {
+	display: table;
+    margin-left: 0;
+    li {
+    	display: table-row;
+        .news-date, .news-title {
+        	display: table-cell;
+        	padding: .125rem;
+        }
+    }
+}

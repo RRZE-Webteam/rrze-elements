@@ -44,6 +44,9 @@ class News
             'has_thumbnail' => 'false',
             'columns' => '',
             'type' => '',
+            'year' => '',
+            'month' => '',
+            'day' => '',
             // aus FAU-Einrichtungen
             'cat'	=> '',
             'num'	=> '',
@@ -65,7 +68,7 @@ class News
         $num = ($sc_atts['num'] != '') ? intval($sc_atts['num']) : intval($sc_atts['number']);
         $days = intval($sc_atts['days']);
         $hide = array_map('trim', explode(",", $sc_atts['hide']));
-        $display = $sc_atts['display'] == 'list' ? 'list' : '';
+        $display = ($sc_atts['display'] == 'list' || $sc_atts['display'] == 'table') ? $sc_atts['display'] : '';
         $imgfloat = ($sc_atts['imgfloat'] == 'right') ? 'float-right' : 'float-left';
         $hstart = intval($sc_atts['hstart']);
         $divclass = esc_attr($sc_atts['divclass']);
@@ -190,6 +193,17 @@ class News
             }
         }
 
+        if(absint($sc_atts['year'])) {
+        	$date_query['year'] = $sc_atts['year'];
+        	if(absint($sc_atts['month'])) {
+	        	$date_query['month'] = $sc_atts['month'];
+                if(absint($sc_atts['day'])) {
+                    $date_query['day'] = $sc_atts['day'];
+                }
+            }
+        	$args['date_query'] = $date_query;
+        }
+
         if (!empty($id)) {
             $args['post__in'] = $id;
         }
@@ -266,8 +280,8 @@ class News
 
         if ($wp_query->have_posts()) {
 
-            if ($display == 'list') {
-                $output .= $titleHtml . '<ul class="rrze-elements-news">';
+            if ($display == 'list' || $display == 'table') {
+                $output .= $titleHtml . '<ul class="rrze-elements-news' . ($display == 'table' ? ' news-table' : '') . '">';
             } else {
                 $output .= '<section class="rrze-elements-news blogroll ' . $divclass . '">' . $titleHtml . $moreLink . $scColumnsOpen;
             }
@@ -284,14 +298,14 @@ class News
                 $GLOBALS['a_rrze_elements_displayed_posts'][] = $id;
                 $args = [];
 
-                if ($display == 'list') {
+                if ($display == 'list' || $display == 'table') {
                     $output .= '<li>';
                     if (! $hide_date) {
-                        $output .= get_the_date('d.m.Y', $id) . ': ';
+                        $output .= '<span class="news-date">' . get_the_date('d.m.Y', $id) . ': </span>';
                     }
-                    $output .= '<a href="' . $permalink . '" rel="bookmark">' . $title . '</a>';
+                    $output .= '<a href="' . $permalink . '" rel="bookmark" class="news-title">' . $title . '</a>';
                     $output .= '</li>';
-                } else {
+	            } else {
                     if ($columns > 0) {
                         if ($columns <= 3 || $wp_query->post_count <= 3) {
                             $thumbnailSize = 'large';
@@ -377,7 +391,7 @@ class News
                 }
             }
 
-            if ($display == 'list') {
+            if ($display == 'list' || $display == 'table') {
                 $output .= '</ul>';
             } else {
                 $output .= $scColumnsClose . '</section>';
