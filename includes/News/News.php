@@ -44,6 +44,9 @@ class News
             'has_thumbnail' => 'false',
             'columns' => '',
             'type' => '',
+            'year' => '',
+            'month' => '',
+            'day' => '',
             // aus FAU-Einrichtungen
             'cat'	=> '',
             'num'	=> '',
@@ -65,7 +68,7 @@ class News
         $num = ($sc_atts['num'] != '') ? intval($sc_atts['num']) : intval($sc_atts['number']);
         $days = intval($sc_atts['days']);
         $hide = array_map('trim', explode(",", $sc_atts['hide']));
-        $display = $sc_atts['display'] == 'list' ? 'list' : '';
+        $display = ($sc_atts['display'] == 'list' || $sc_atts['display'] == 'table') ? $sc_atts['display'] : '';
         $imgfloat = ($sc_atts['imgfloat'] == 'right') ? 'float-right' : 'float-left';
         $hstart = intval($sc_atts['hstart']);
         $divclass = esc_attr($sc_atts['divclass']);
@@ -189,6 +192,17 @@ class News
                 $args['date_query'] = $date_query;
             }
         }
+        
+        if(absint($sc_atts['year'])) {
+        	$date_query['year'] = $sc_atts['year'];
+        	if(absint($sc_atts['month'])) {
+	        	$date_query['month'] = $sc_atts['month'];
+        	}
+        	if(absint($sc_atts['day'])) {
+	        	$date_query['day'] = $sc_atts['day'];
+        	}
+        	$args['date_query'] = $date_query;
+        }
 
         if (!empty($id)) {
             $args['post__in'] = $id;
@@ -268,6 +282,8 @@ class News
 
             if ($display == 'list') {
                 $output .= $titleHtml . '<ul class="rrze-elements-news">';
+            } elseif ($display == 'table') {
+                $output .= $titleHtml . '<section class="rrze-elements-news-table">';
             } else {
                 $output .= '<section class="rrze-elements-news blogroll ' . $divclass . '">' . $titleHtml . $moreLink . $scColumnsOpen;
             }
@@ -291,6 +307,17 @@ class News
                     }
                     $output .= '<a href="' . $permalink . '" rel="bookmark">' . $title . '</a>';
                     $output .= '</li>';
+	            } elseif ($display == 'table') {
+                    $output .= '<div class="rrze-elements-news-table-row">';
+                    if (! $hide_date) {
+	                    $output .= '<div class="rrze-elements-news-table-cell">';
+                        $output .= get_the_date('d.m.Y', $id);
+	                    $output .= '</div>';
+                    }
+                    $output .= '<div class="rrze-elements-news-table-cell">';
+                    $output .= '<a href="' . $permalink . '" rel="bookmark">' . $title . '</a>';
+                    $output .= '</div>';
+                    $output .= '</div>';
                 } else {
                     if ($columns > 0) {
                         if ($columns <= 3 || $wp_query->post_count <= 3) {
@@ -379,6 +406,8 @@ class News
 
             if ($display == 'list') {
                 $output .= '</ul>';
+            } elseif ($display == 'table') {
+                $output .= '</section>';
             } else {
                 $output .= $scColumnsClose . '</section>';
             }
