@@ -191,6 +191,7 @@ class Accordion
     }
 
     public function enqueueScriptTranslations() {
+        wp_set_script_translations('rrze-accordions', 'rrze-elements',plugin_dir_path( $this->pluginFile ) . 'languages/');
         self::console_log(wp_set_script_translations('rrze-accordions', 'rrze-elements',plugin_dir_path( $this->pluginFile ) . 'languages/'));
     }
 

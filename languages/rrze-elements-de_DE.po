@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: RRZE Elements\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-17 15:15+0000\n"
-"PO-Revision-Date: 2023-05-24 10:17+0000\n"
+"PO-Revision-Date: 2024-10-22 08:26+0000\n"
 "Last-Translator: RRZE Webteam <webmaster@fau.de>\n"
 "Language-Team: Deutsch\n"
 "Language: de_DE\n"
@@ -21,8 +21,7 @@ msgstr ""
 "X-Poedit-SearchPath-1: ..\n"
 "X-Loco-Version: 2.2.2; wp-5.2"
 
-#: includes/CTA/CTA.php:26
-#, php-format
+#: includes/CTA/CTA.php:27
 msgid ""
 "%1$sURL missing.%2$s Please provide the %3$surl%4$s attribute in your CTA "
 "shortcode."
@@ -31,22 +30,28 @@ msgstr ""
 "Shortcode."
 
 #. Description of the plugin
+#: rrze-elements.php
 msgid "Advanced design elements for WordPress websites."
 msgstr "Erweiterte Gestaltungselemente für WordPress-Websites."
 
-#: includes/Notice/Notice.php:95
+#: includes/Notice/Notice.php:102
 msgid "Audio"
 msgstr "Audio"
 
-#: includes/ContentIndex/ContentIndex.php:250
+#: includes/ContentIndex/ContentIndex.php:254
 msgid "Category"
 msgstr "Kategorie"
 
-#: includes/Notice/Notice.php:91
+#: includes/Notice/Notice.php:98
 msgid "Cloud"
 msgstr "Cloud"
 
-#: includes/Notice/Notice.php:87
+#: includes/Accordion/assets/js/rrze-accordion.js:27
+#: includes/Accordion/assets/js/rrze-accordion.js:157
+msgid "Collapse All"
+msgstr "Alle schließen"
+
+#: includes/Notice/Notice.php:94
 msgid "Download"
 msgstr "Download"
 
@@ -54,36 +59,38 @@ msgstr "Download"
 msgid "Erfüllt"
 msgstr "Erfüllt"
 
-#: includes/Notice/Notice.php:113
+#: includes/Notice/Notice.php:120
 msgid "Exclamation mark"
 msgstr "Ausrufezeichen"
 
-#: includes/Accordion/Accordion.php:73
+#: includes/Accordion/Accordion.php:79
+#: includes/Accordion/assets/js/rrze-accordion.js:153
 msgid "Expand All"
 msgstr "Alle öffnen"
 
-#: includes/CTA/CTA.php:76
+#: includes/CTA/CTA.php:100
 msgid "Find"
 msgstr "Suchen"
 
 #. Author URI of the plugin
+#: rrze-elements.php
 msgid "https://blogs.fau.de/webworking/"
 msgstr "https://blogs.fau.de/webworking/"
 
-#. URI of the plugin
+#. Plugin URI of the plugin
+#: rrze-elements.php
 msgid "https://github.com/RRZE-Webteam/rrze-elements"
 msgstr "https://github.com/RRZE-Webteam/rrze-elements"
 
-#: includes/Icon/Icon.php:22 includes/Icon/Icon.php:89
+#: includes/Icon/Icon.php:22 includes/Icon/Icon.php:87
 msgid "Icon not found."
 msgstr "Icon nicht gefunden."
 
-#: includes/Notice/Notice.php:75
+#: includes/Notice/Notice.php:82
 msgid "Minus"
 msgstr "Minus"
 
-#: includes/News/News.php:251 includes/News/News.php:253
-#: includes/News/News.php:253
+#: includes/News/News.php:271 includes/News/News.php:273
 msgid "More news"
 msgstr "Weitere Artikel"
 
@@ -91,47 +98,46 @@ msgstr "Weitere Artikel"
 msgid "Nicht erfüllt"
 msgstr "Nicht erfüllt"
 
-#: includes/News/News.php:381
+#: includes/News/News.php:403
 msgid "No posts found."
 msgstr "Keine Beiträge gefunden."
 
-#: includes/CTA/CTA.php:72
-#, php-format
+#: includes/CTA/CTA.php:97
 msgid "Please enter the search term for searching on %s"
 msgstr "Bitte geben Sie den Suchbegriff ein, um auf %s zu suchen."
 
-#: includes/HiddenText/HiddenText.php:39
+#: includes/HiddenText/HiddenText.php:46
 msgid "Please use a valid date format: Y-m-d H:i:s."
 msgstr ""
 "Ungültiges Datumsformat. Bitte verwenden Sie ein Datum im Format Y-m-d H:i:s."
 
-#: includes/Notice/Notice.php:79
+#: includes/Notice/Notice.php:86
 msgid "Plus"
 msgstr "Plus"
 
-#: includes/Notice/Notice.php:71
+#: includes/Notice/Notice.php:78
 msgid "Question"
 msgstr "Frage"
 
-#. Name of the plugin
+#. Plugin Name of the plugin
+#: rrze-elements.php
 msgid "RRZE Elements"
 msgstr "RRZE Elements"
 
 #. Author of the plugin
+#: rrze-elements.php
 msgid "RRZE Webteam"
 msgstr "RRZE-Webteam"
 
-#: includes/CTA/CTA.php:74
+#: includes/CTA/CTA.php:39
 msgid "Search for..."
 msgstr "Suchen nach..."
 
-#: includes/CTA/CTA.php:71
-#, php-format
+#: includes/CTA/CTA.php:96
 msgid "Search on %s"
 msgstr "Auf %s suchen"
 
 #: rrze-elements.php:71
-#, php-format
 msgid ""
 "The server is running PHP version %1$s. The Plugin requires at least PHP "
 "version %2$s."
@@ -140,7 +146,6 @@ msgstr ""
 "Version %2$s."
 
 #: rrze-elements.php:73
-#, php-format
 msgid ""
 "The server is running WordPress version %1$s. The Plugin requires at least "
 "WordPress version %2$s."
@@ -148,27 +153,26 @@ msgstr ""
 "The server is running WordPress version %1$s. The Plugin requires at least "
 "WordPress version %2$s."
 
-#: includes/Notice/Notice.php:107
+#: includes/Notice/Notice.php:114
 msgid "Thumbs down"
 msgstr "Daumen runter"
 
-#: includes/Notice/Notice.php:103
+#: includes/Notice/Notice.php:110
 msgid "Thumbs up"
 msgstr "Daumen hoch"
 
-#: includes/Notice/Notice.php:83
+#: includes/Notice/Notice.php:90
 msgid "Tipp"
 msgstr "Tipp"
 
-#: includes/Notice/Notice.php:67
+#: includes/Notice/Notice.php:74
 msgid "Tools"
 msgstr "Werkzeug"
 
-#: includes/Notice/Notice.php:99
+#: includes/Notice/Notice.php:106
 msgid "Video"
 msgstr "Video"
 
-#: includes/News/News.php:472
-#, php-format
+#: includes/News/News.php:495
 msgid "View all posts in %s"
 msgstr "Alle Beiträge in %s anzeigen"
