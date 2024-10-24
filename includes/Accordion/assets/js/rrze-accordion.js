@@ -1,12 +1,11 @@
-/**
- * RRZE Elements Blocks - Accordion 1.0.4
- * Refactored and documented for efficiency and readability.
- * Uses jQuery for DOM manipulation and event handling.
- */
-
-const { __, _x, _n, sprintf } = wp.i18n;
-
 jQuery(document).ready(function($) {
+
+    /**
+     * RRZE Elements Blocks - Accordion 1.0.4
+     * Refactored and documented for efficiency and readability.
+     * Uses jQuery for DOM manipulation and event handling.
+     */
+
     /**
      * Initially hides all accordion bodies except those marked as open or should stay open,
      * and marks the corresponding toggles as active.
@@ -24,7 +23,7 @@ jQuery(document).ready(function($) {
         const items = $accordion.find(".accordion-group");
         const openItems = items.find(".accordion-body.open");
         if (items.length === openItems.length) {
-            $accordion.find('button.expand-all').attr("data-status", 'open').data('status', 'open').html(__('Collapse All', 'rrze-elements'));
+            $accordion.find('button.expand-all').attr("data-status", 'open').data('status', 'open').html(elementsTranslations.collapse_all);
         }
     });
 
@@ -150,11 +149,11 @@ jQuery(document).ready(function($) {
         if ($this.data('status') === 'open') {
             $bodies.slideUp();
             $toggles.removeClass('active');
-            $this.attr("data-status", 'closed').data('status', 'closed').html(__('Expand All', 'rrze-elements'));
+            $this.attr("data-status", 'closed').data('status', 'closed').html(elementsTranslations.expand_all);
         } else {
             $bodies.slideDown();
             $toggles.addClass('active');
-            $this.attr("data-status", 'open').data('status', 'open').html(__('Collapse All', 'rrze-elements'));
+            $this.attr("data-status", 'open').data('status', 'open').html(elementsTranslations.collapse_all);
         }
     });
 

@@ -27,10 +27,7 @@ class Accordion
         add_shortcode('accordion-item', [$this, 'shortcodeCollapse']);
 
         add_action('wp_enqueue_scripts', [$this, 'enqueueScripts']);
-        add_action('wp_enqueue_scripts', [$this, 'enqueueScriptTranslations'], 100);
-
         add_action('enqueue_block_assets', [$this, 'enqueueScripts']);
-        add_action('enqueue_block_assets', [$this, 'enqueueScriptTranslations'], 100);
 
         $this->pluginFile = $pluginFile;
     }
@@ -188,10 +185,14 @@ class Accordion
             ['jquery', 'wp-i18n'],
             RRZE_ELEMENTS_VERSION
         );
-    }
-
-    public function enqueueScriptTranslations() {
-        self::console_log(wp_set_script_translations('rrze-accordions', 'rrze-elements',plugin_dir_path( $this->pluginFile ) . 'languages/'));
+        wp_localize_script(
+            'rrze-accordions',
+            'elementsTranslations',
+            [
+                'collapse_all' => __('Collapse All', 'rrze-elements'),
+                'expand_all' => __('Expand All', 'rrze-elements')
+            ],
+        );
     }
 
     public static function console_log($msg = '', $tsStart = 0) {
