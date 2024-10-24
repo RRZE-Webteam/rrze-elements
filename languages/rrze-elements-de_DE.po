@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: RRZE Elements\n"
+"Project-Id-Version: RRZE Elements 1.30.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-17 15:15+0000\n"
-"PO-Revision-Date: 2024-10-22 08:26+0000\n"
+"PO-Revision-Date: 2024-10-24 10:12+0000\n"
 "Last-Translator: RRZE Webteam <webmaster@fau.de>\n"
 "Language-Team: Deutsch\n"
 "Language: de_DE\n"
@@ -22,6 +22,7 @@ msgstr ""
 "X-Loco-Version: 2.2.2; wp-5.2"
 
 #: includes/CTA/CTA.php:27
+#, php-format
 msgid ""
 "%1$sURL missing.%2$s Please provide the %3$surl%4$s attribute in your CTA "
 "shortcode."
@@ -30,7 +31,6 @@ msgstr ""
 "Shortcode."
 
 #. Description of the plugin
-#: rrze-elements.php
 msgid "Advanced design elements for WordPress websites."
 msgstr "Erweiterte Gestaltungselemente für WordPress-Websites."
 
@@ -46,8 +46,7 @@ msgstr "Kategorie"
 msgid "Cloud"
 msgstr "Cloud"
 
-#: includes/Accordion/assets/js/rrze-accordion.js:27
-#: includes/Accordion/assets/js/rrze-accordion.js:157
+#: includes/Accordion/Accordion.php:195
 msgid "Collapse All"
 msgstr "Alle schließen"
 
@@ -63,8 +62,7 @@ msgstr "Erfüllt"
 msgid "Exclamation mark"
 msgstr "Ausrufezeichen"
 
-#: includes/Accordion/Accordion.php:79
-#: includes/Accordion/assets/js/rrze-accordion.js:153
+#: includes/Accordion/Accordion.php:79 includes/Accordion/Accordion.php:196
 msgid "Expand All"
 msgstr "Alle öffnen"
 
@@ -73,12 +71,10 @@ msgid "Find"
 msgstr "Suchen"
 
 #. Author URI of the plugin
-#: rrze-elements.php
 msgid "https://blogs.fau.de/webworking/"
 msgstr "https://blogs.fau.de/webworking/"
 
-#. Plugin URI of the plugin
-#: rrze-elements.php
+#. URI of the plugin
 msgid "https://github.com/RRZE-Webteam/rrze-elements"
 msgstr "https://github.com/RRZE-Webteam/rrze-elements"
 
@@ -91,6 +87,7 @@ msgid "Minus"
 msgstr "Minus"
 
 #: includes/News/News.php:271 includes/News/News.php:273
+#: includes/News/News.php:273
 msgid "More news"
 msgstr "Weitere Artikel"
 
@@ -103,6 +100,7 @@ msgid "No posts found."
 msgstr "Keine Beiträge gefunden."
 
 #: includes/CTA/CTA.php:97
+#, php-format
 msgid "Please enter the search term for searching on %s"
 msgstr "Bitte geben Sie den Suchbegriff ein, um auf %s zu suchen."
 
@@ -119,13 +117,11 @@ msgstr "Plus"
 msgid "Question"
 msgstr "Frage"
 
-#. Plugin Name of the plugin
-#: rrze-elements.php
+#. Name of the plugin
 msgid "RRZE Elements"
 msgstr "RRZE Elements"
 
 #. Author of the plugin
-#: rrze-elements.php
 msgid "RRZE Webteam"
 msgstr "RRZE-Webteam"
 
@@ -134,10 +130,12 @@ msgid "Search for..."
 msgstr "Suchen nach..."
 
 #: includes/CTA/CTA.php:96
+#, php-format
 msgid "Search on %s"
 msgstr "Auf %s suchen"
 
 #: rrze-elements.php:71
+#, php-format
 msgid ""
 "The server is running PHP version %1$s. The Plugin requires at least PHP "
 "version %2$s."
@@ -146,6 +144,7 @@ msgstr ""
 "Version %2$s."
 
 #: rrze-elements.php:73
+#, php-format
 msgid ""
 "The server is running WordPress version %1$s. The Plugin requires at least "
 "WordPress version %2$s."
@@ -174,5 +173,6 @@ msgid "Video"
 msgstr "Video"
 
 #: includes/News/News.php:495
+#, php-format
 msgid "View all posts in %s"
 msgstr "Alle Beiträge in %s anzeigen"

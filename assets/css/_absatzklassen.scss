@@ -34,7 +34,9 @@
     .notice-alert,
     .notice-attention {
         svg.rrze-elements-icon {
-            fill: $red !important;
+            path {
+                fill: $red;
+            }
         }
         h1, h2, h3, h4, h5, h6 {
             color: $red;
@@ -47,7 +49,9 @@
 
     .notice-hinweis {
         svg.rrze-elements-icon {
-            fill: $text-blue !important;
+            path {
+                fill: $text-blue;
+            }
         }
         h1, h2, h3, h4, h5, h6 {
             color: $text-blue;
@@ -60,7 +64,9 @@
 
     .notice-baustelle {
         svg.rrze-elements-icon {
-            fill: $dark-grey !important;
+            path {
+                fill: $dark-grey;
+            }
         }
         h1, h2, h3, h4, h5, h6 {
             color: $dark-grey;
@@ -73,24 +79,32 @@
 
     .notice-question {
         svg.rrze-elements-icon {
-            fill: $medium-blue !important;
+            path {
+                fill: $medium-blue;
+            }
         }
     }
 
     .notice-minus {
         svg.rrze-elements-icon {
-            fill: $red !important;
+            path {
+                fill: $red;
+            }
         }
     }
 
     .notice-plus {
         svg.rrze-elements-icon {
-            fill: $green !important;
+            path {
+                fill: $green;
+            }
         }
     }
     .notice-tipp {
         svg.rrze-elements-icon {
-            fill: orange !important;
+            path {
+                fill: orange;
+            }
         }
         h1, h2, h3, h4, h5, h6 {
             color: $dark-grey;
@@ -102,36 +116,48 @@
     }
     .notice-download {
         svg.rrze-elements-icon {
-            fill: $medium-blue !important;
+            path {
+                fill: $medium-blue;
+            }
         }
     }
 
     .notice-faubox {
         svg.rrze-elements-icon {
-            fill: $medium-blue !important;
+            path {
+                fill: $medium-blue;
+            }
         }
     }
 
     .notice-audio {
         svg.rrze-elements-icon {
-            fill: $medium-blue !important;
+            path {
+                fill: $medium-blue;
+            }
         }
     }
  
     .notice-video {
         svg.rrze-elements-icon {
-            fill: $medium-blue !important;
+            path {
+                fill: $medium-blue;
+            }
         }
     }
 
     .notice-thumbs-up {
         svg.rrze-elements-icon {
-            fill: $green !important;
+            path {
+                fill: $green;
+            }
     }
 }
     .notice-thumbs-down {
         svg.rrze-elements-icon {
-            fill: $red !important;
+            path {
+                fill: $red;
+            }
     }
 }
     

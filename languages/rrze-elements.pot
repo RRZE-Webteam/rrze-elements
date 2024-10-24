@@ -1,55 +1,121 @@
 # Copyright (C) 2024 RRZE Webteam
 # This file is distributed under the GNU General Public License v2.
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: RRZE Elements 1.30.0\n"
+"Project-Id-Version: RRZE Elements 1.30.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/rrze-elements\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-10-22T08:26:26+00:00\n"
+"POT-Creation-Date: 2024-10-24 10:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.10.0\n"
+"X-Generator: Loco https://localise.biz/\n"
 "X-Domain: rrze-elements\n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;"
 
-#. Plugin Name of the plugin
-#: rrze-elements.php
-msgid "RRZE Elements"
-msgstr ""
-
-#. Plugin URI of the plugin
-#: rrze-elements.php
-msgid "https://github.com/RRZE-Webteam/rrze-elements"
+#: includes/CTA/CTA.php:27
+#, php-format
+msgid ""
+"%1$sURL missing.%2$s Please provide the %3$surl%4$s attribute in your CTA "
+"shortcode."
 msgstr ""
 
 #. Description of the plugin
-#: rrze-elements.php
 msgid "Advanced design elements for WordPress websites."
 msgstr ""
 
-#. Author of the plugin
-#: rrze-elements.php
-msgid "RRZE Webteam"
-msgstr ""
-
-#. Author URI of the plugin
-#: rrze-elements.php
-msgid "https://blogs.fau.de/webworking/"
-msgstr ""
-
-#: includes/Accordion/Accordion.php:79
-#: includes/Accordion/assets/js/rrze-accordion.js:153
-msgid "Expand All"
+#: includes/Notice/Notice.php:102
+msgid "Audio"
 msgstr ""
 
 #: includes/ContentIndex/ContentIndex.php:254
 msgid "Category"
 msgstr ""
 
-#: includes/CTA/CTA.php:27
-msgid "%1$sURL missing.%2$s Please provide the %3$surl%4$s attribute in your CTA shortcode."
+#: includes/Notice/Notice.php:98
+msgid "Cloud"
+msgstr ""
+
+#: includes/Accordion/Accordion.php:195
+msgid "Collapse All"
+msgstr ""
+
+#: includes/Notice/Notice.php:94
+msgid "Download"
+msgstr ""
+
+#: includes/Symbols/Symbols.php:23
+msgid "Erfüllt"
+msgstr ""
+
+#: includes/Notice/Notice.php:120
+msgid "Exclamation mark"
+msgstr ""
+
+#: includes/Accordion/Accordion.php:79 includes/Accordion/Accordion.php:196
+msgid "Expand All"
+msgstr ""
+
+#: includes/CTA/CTA.php:100
+msgid "Find"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://blogs.fau.de/webworking/"
+msgstr ""
+
+#. URI of the plugin
+msgid "https://github.com/RRZE-Webteam/rrze-elements"
+msgstr ""
+
+#: includes/Icon/Icon.php:22 includes/Icon/Icon.php:87
+msgid "Icon not found."
+msgstr ""
+
+#: includes/Notice/Notice.php:82
+msgid "Minus"
+msgstr ""
+
+#: includes/News/News.php:271 includes/News/News.php:273
+#: includes/News/News.php:273
+msgid "More news"
+msgstr ""
+
+#: includes/Symbols/Symbols.php:48
+msgid "Nicht erfüllt"
+msgstr ""
+
+#: includes/News/News.php:403
+msgid "No posts found."
+msgstr ""
+
+#: includes/CTA/CTA.php:97
+#, php-format
+msgid "Please enter the search term for searching on %s"
+msgstr ""
+
+#: includes/HiddenText/HiddenText.php:46
+msgid "Please use a valid date format: Y-m-d H:i:s."
+msgstr ""
+
+#: includes/Notice/Notice.php:86
+msgid "Plus"
+msgstr ""
+
+#: includes/Notice/Notice.php:78
+msgid "Question"
+msgstr ""
+
+#. Name of the plugin
+msgid "RRZE Elements"
+msgstr ""
+
+#. Author of the plugin
+msgid "RRZE Webteam"
 msgstr ""
 
 #: includes/CTA/CTA.php:39
@@ -57,104 +123,45 @@ msgid "Search for..."
 msgstr ""
 
 #: includes/CTA/CTA.php:96
+#, php-format
 msgid "Search on %s"
 msgstr ""
 
-#: includes/CTA/CTA.php:97
-msgid "Please enter the search term for searching on %s"
+#: rrze-elements.php:71
+#, php-format
+msgid ""
+"The server is running PHP version %1$s. The Plugin requires at least PHP "
+"version %2$s."
 msgstr ""
 
-#: includes/CTA/CTA.php:100
-msgid "Find"
-msgstr ""
-
-#: includes/HiddenText/HiddenText.php:46
-msgid "Please use a valid date format: Y-m-d H:i:s."
-msgstr ""
-
-#: includes/Icon/Icon.php:22
-#: includes/Icon/Icon.php:87
-msgid "Icon not found."
-msgstr ""
-
-#: includes/News/News.php:271
-#: includes/News/News.php:273
-msgid "More news"
-msgstr ""
-
-#: includes/News/News.php:403
-msgid "No posts found."
-msgstr ""
-
-#: includes/News/News.php:495
-msgid "View all posts in %s"
-msgstr ""
-
-#: includes/Notice/Notice.php:74
-msgid "Tools"
-msgstr ""
-
-#: includes/Notice/Notice.php:78
-msgid "Question"
-msgstr ""
-
-#: includes/Notice/Notice.php:82
-msgid "Minus"
-msgstr ""
-
-#: includes/Notice/Notice.php:86
-msgid "Plus"
-msgstr ""
-
-#: includes/Notice/Notice.php:90
-msgid "Tipp"
-msgstr ""
-
-#: includes/Notice/Notice.php:94
-msgid "Download"
-msgstr ""
-
-#: includes/Notice/Notice.php:98
-msgid "Cloud"
-msgstr ""
-
-#: includes/Notice/Notice.php:102
-msgid "Audio"
-msgstr ""
-
-#: includes/Notice/Notice.php:106
-msgid "Video"
-msgstr ""
-
-#: includes/Notice/Notice.php:110
-msgid "Thumbs up"
+#: rrze-elements.php:73
+#, php-format
+msgid ""
+"The server is running WordPress version %1$s. The Plugin requires at least "
+"WordPress version %2$s."
 msgstr ""
 
 #: includes/Notice/Notice.php:114
 msgid "Thumbs down"
 msgstr ""
 
-#: includes/Notice/Notice.php:120
-msgid "Exclamation mark"
+#: includes/Notice/Notice.php:110
+msgid "Thumbs up"
 msgstr ""
 
-#: includes/Symbols/Symbols.php:23
-msgid "Erfüllt"
+#: includes/Notice/Notice.php:90
+msgid "Tipp"
 msgstr ""
 
-#: includes/Symbols/Symbols.php:48
-msgid "Nicht erfüllt"
+#: includes/Notice/Notice.php:74
+msgid "Tools"
 msgstr ""
 
-#: rrze-elements.php:71
-msgid "The server is running PHP version %1$s. The Plugin requires at least PHP version %2$s."
+#: includes/Notice/Notice.php:106
+msgid "Video"
 msgstr ""
 
-#: rrze-elements.php:73
-msgid "The server is running WordPress version %1$s. The Plugin requires at least WordPress version %2$s."
-msgstr ""
-
-#: includes/Accordion/assets/js/rrze-accordion.js:27
-#: includes/Accordion/assets/js/rrze-accordion.js:157
-msgid "Collapse All"
+#: includes/News/News.php:495
+#, php-format
+msgid "View all posts in %s"
 msgstr ""
