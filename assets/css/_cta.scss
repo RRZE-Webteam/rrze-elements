@@ -1,8 +1,8 @@
 .rrze-elements-cta {
     position: relative;
     margin: 2em 0;
-    color: #fff;
-    background-color: var(--color-zentral-primary, #04316a);
+    color: var(--color-zentral-ci-hell-kontrast, #fff);
+    background-color: var(--color-zentral-ci-hell, #04316a);
     $backgrounds: '1', 'rrze';
     @each $background in $backgrounds {
         &.bg-#{$background} {
@@ -10,6 +10,21 @@
             background-position: bottom 50% left;
             background-size: 100%;
             background-repeat: no-repeat;
+        }
+    }
+    $colors: 'fau', 'phil', 'med', 'nat', 'rw', 'tf';
+    @each $color in $colors {
+        $colorVar: $color;
+        @if $color == 'fau' {
+            $colorVar: 'zentral';
+        }
+        &.color-#{$color} {
+            background-color: var(--color-#{$colorVar}-ci-hell, #04316a);
+            color: var(--color-#{$colorVar}-ci-hell-kontrast, #fff);
+        }
+        &.color-#{$color}2 {
+            background-color: var(--color-#{$colorVar}-dunkler, #04316a);
+            color: var(--color-#{$colorVar}-dunkler-kontrast, #fff);
         }
     }
     @media screen and (max-width: 767px) {
