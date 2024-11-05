@@ -39,6 +39,7 @@ class CTA {
             'placeholder' => __('Search for...', 'rrze-elements'),
             'additional_link' => '',
             'additional_link_text' => '',
+            'color' => 'fau'
         ], $atts);
         $title = sanitize_text_field($atts['title']);
         $subtitle = sanitize_text_field($atts['subtitle']);
@@ -47,12 +48,28 @@ class CTA {
         $url = sanitize_url($atts['url']);
         $additionalLink = sanitize_url($atts['additional_link']);
         $additionalLinkText = $atts['additional_link_text'] != '' ? sanitize_text_field($atts['additional_link_text']) : $additionalLink;
-        $styleClass = $atts['style'] == 'small' ? ' style-'.$atts['style'] : '';
-        $bgClass = in_array($atts['background'], ['1', 'rrze']) ? ' bg-'.$atts['background'] : '';
+        $cssClasses = [];
+        if ($atts['style'] == 'small') {
+            $cssClasses[] = 'style-'.$atts['style'];
+        }
+        if (in_array($atts['background'], ['1', 'rrze'])) {
+            $cssClasses[] = 'bg-'.$atts['background'];
+        }
         $image = sanitize_url($atts['image']);
         $imageID = attachment_url_to_postid($image); // returns 0 on failure
-        $wrapperClass = $imageID != '0' ? ' has-image' : ' no-image';
-        $wrapperClass .= $additionalLink != '' ? ' has-additional-link' : '';
+        if ($imageID != '0') {
+            $cssClasses[] = 'has-image';
+        } else {
+            $cssClasses[] = 'no-image';
+        }
+        if ($additionalLink != '') {
+            $cssClasses[] = 'has-additional-link';
+        }
+        if (in_array($atts['color'], ['fau', 'phil', 'med', 'nat', 'rw', 'tf', 'fau2', 'phil2', 'med2', 'nat2', 'rw2', 'tf2'])) {
+            $cssClasses[] = 'color-' . $atts['color'];
+        } else {
+            $cssClasses[] = 'color-fau';
+        }
         switch ((string)$atts['search']) {
             case '':
                 $search = false;
@@ -77,7 +94,7 @@ class CTA {
         } else {
             $iconOut = '';
         }
-        $output = '<div class="rrze-elements-cta' . $wrapperClass . $bgClass . $styleClass . '"><div class="cta-content' . '">';
+        $output = '<div class="rrze-elements-cta ' . implode(' ', $cssClasses) . '"><div class="cta-content' . '">';
         if ($title != '') {
             $output .= '<span class="cta-title">' . $title . '</span>';
         }
