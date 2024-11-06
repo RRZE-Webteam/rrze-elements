@@ -21,10 +21,36 @@
         &.color-#{$color} {
             background-color: var(--color-#{$colorVar}-ci-hell, #04316a);
             color: var(--color-#{$colorVar}-ci-hell-kontrast, #fff);
+            .cta-button {
+                svg.rrze-elements-icon {
+                    color: var(--color-#{$colorVar}-dunkelste, #041E42);
+                }
+                &:hover, &:focus, &:active {
+                    background-color: var(--color-#{$colorVar}-dunkler, #004a9f);
+                    color: var(--color-#{$colorVar}-dunkler-kontrast, #fff);
+                    svg.rrze-elements-icon {
+                        background-color: var(--color-#{$colorVar}-dunkler, #004a9f);
+                        color: var(--color-#{$colorVar}-dunkler-kontrast, #fff);
+                    }
+                }
+            }
         }
         &.color-#{$color}2 {
-            background-color: var(--color-#{$colorVar}-dunkler, #04316a);
+            background-color: var(--color-#{$colorVar}-dunkler, #004a9f);
             color: var(--color-#{$colorVar}-dunkler-kontrast, #fff);
+            .cta-button {
+                svg.rrze-elements-icon {
+                    color: var(--color-#{$colorVar}-dunkelste, #041E42);
+                }
+                &:hover, &:focus, &:active {
+                    background-color: var(--color-#{$colorVar}-ci-hell, #04316a);
+                    color: var(--color-#{$colorVar}-ci-hell-kontrast, #fff);
+                    svg.rrze-elements-icon {
+                        background-color: var(--color-#{$colorVar}-ci-hell, #04316a);
+                        color: var(--color-#{$colorVar}-ci-hell-kontrast, #fff);
+                    }
+                }
+            }
         }
     }
     @media screen and (max-width: 767px) {
