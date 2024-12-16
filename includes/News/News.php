@@ -344,6 +344,7 @@ class News
                         switch (getThemeGroup(get_stylesheet())) {
                             case 'fau':
                                 if (function_exists('fau_display_news_teaser')) {
+                                    $hideMeta = in_array('category', $hide);
                                     $output .= do_shortcode(fau_display_news_teaser($id, !$hide_date, $hstart, $hideMeta, true));
                                 } else {
                                     $args = [
