@@ -35,7 +35,7 @@ class Symbols {
 	}
 	
 	
-        $output = '<span class="symbol-check '.$class.'"';
+        $output = '<span class="rrze-elements symbol-check '.$class.'"';
 	$output .= '></span>';
 	$output .= '<span class="screen-reader-text">'.$text.'</span>';
         wp_enqueue_style('rrze-elements');
@@ -61,7 +61,7 @@ class Symbols {
 	}
 	
 	
-        $output = '<span class="symbol-miss '.$class.'"';
+        $output = '<span class="rrze-elements symbol-miss '.$class.'"';
 	$output .= '></span>';
 	$output .= '<span class="screen-reader-text">'.$text.'</span>';
         wp_enqueue_style('rrze-elements');

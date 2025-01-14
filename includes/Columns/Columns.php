@@ -68,7 +68,7 @@ class Columns
             default:
                 $valign = '';
         }
-        return wpautop('<div class="elements-columns '.$colClass.'" ' . $valign . '>' . do_shortcode($content) . '</div>', false);
+        return wpautop('<div class="rrze-elements elements-columns '.$colClass.'" ' . $valign . '>' . do_shortcode($content) . '</div>', false);
     }
 
     public function shortcodeColumn($atts, $content = null){
@@ -126,7 +126,7 @@ class Columns
             $v = (is_numeric($v)) ? $v.'fr' : $v;
         });
         $cols = 'grid-template-columns: ' . implode(' ', $grid) . ';';
-        return wpautop('<div class="columns-grid" style="' . $cols . '">'
+        return wpautop('<div class="rrze-elements columns-grid" style="' . $cols . '">'
                 . wpautop(do_shortcode(shortcode_unautop($content)), false)
                 . '</div>');
     }

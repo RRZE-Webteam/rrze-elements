@@ -120,7 +120,7 @@ class Notice
 				$alt = __('Exclamation mark', 'rrze-elements');
 		}
 
-        $output = '<div class="notice notice-' . $type . $class . '"><div>'
+        $output = '<div class="rrze-elements notice notice-' . $type . $class . '"><div>'
             . (new Icon($this->pluginFile))->shortcodeIcon(['icon' => $icon, 'style' => '2x', 'alt' => $alt]) . '</div>';
 	    if (isset($title) && $title != '') {
             $output .= "<h$hstart>" . $title . "</h$hstart>";

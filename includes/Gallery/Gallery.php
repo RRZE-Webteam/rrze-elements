@@ -59,7 +59,7 @@ class Gallery {
 
         if (empty($attachments)) return '';
 
-        $output .= '<div class="elements-gallery">';
+        $output .= '<div class="rrze-elements elements-gallery">';
         switch ($atts['type']) {
             case 'slider':
                 $output .= '<div id="slider" class="gallery-slider flexslider clearfix">'

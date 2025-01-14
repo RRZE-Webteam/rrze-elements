@@ -47,7 +47,7 @@ class Button
         /*if ($arialabel != '' && stripos($arialabel, $content) === false) {
             return (new Alert())->shortcodeAlert(['style' => 'danger'], __('<strong>Button shortcode error</strong>: The button text ("' . $content .  '") has to be included in the aria label ("' . sanitize_text_field($atts['aria-label']) .  '"). ' , 'rrze-elements'));
         }*/
-        $classesArr = ['standard-btn'];
+        $classesArr = ['rrze-elements', 'standard-btn'];
         $stylesArr = [];
         if (in_array($atts['style'], ['success', 'info', 'warning', 'danger', 'primary', 'ghost'])) {
             $classesArr[] = $atts['style'] . '-btn';

@@ -34,7 +34,7 @@ class TextColumns {
         $borderColor = esc_attr($args['border-color']);
         $style = (in_array($args['style'], array('success', 'info', 'warning', 'danger', 'example'))) ? ' alert-' . $args['style'] : '';
 
-        $classesArr = ['elements-textcolumns'];
+        $classesArr = ['rrze-elements', 'elements-textcolumns'];
         $stylesArr = [
             "column-count: $count;",
             "column-width: $width\px;",
