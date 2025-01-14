@@ -42,7 +42,7 @@ class PullDiv
 
         $textalign = in_array($atts['align'], ['left', 'right']) ? ' align-' . $atts['align'] : '';
         $clearafter = Helper::shortcode_boolean($atts['clearafter']) == true ? '<div style="clear: both;"></div>' : '';
-        $output = '<aside class="pull-' . $type . $textalign . '">';
+        $output = '<aside class="rrze-elements pull-' . $type . $textalign . '">';
         $output .= $atts['title'] ? '<h1>' . $atts['title'] . '</h1>' : '';
         $output .= '<p>' . do_shortcode(wpautop($content)) . '</p></aside>' . $clearafter;
 
@@ -68,7 +68,7 @@ class PullDiv
                 $margin = 'margin: 0 auto;';
         }
 
-        $output = '<div class="limit-width" style="max-width: min(' . $atts['width'] . ', 100%); ' . $margin . '">' . do_shortcode($content) . '</div>';
+        $output = '<div class="rrze-elements limit-width" style="max-width: min(' . $atts['width'] . ', 100%); ' . $margin . '">' . do_shortcode($content) . '</div>';
 
         wp_enqueue_style('rrze-elements');
         return wpautop($output, false);

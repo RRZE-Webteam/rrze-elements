@@ -61,7 +61,7 @@ class TimeLine
         $timelinr_instance++;
 
         $output = '';
-        $output .= "<div id=\"timeline-" . $timelinr_instance . "\" class=\"$orientation date-$datewidth\">";
+        $output .= "<div id=\"timeline-" . $timelinr_instance . "\" class=\"rrze-elements $orientation date-$datewidth\">";
         if ($autoplay || $startend) {
             $output .= '<div class="timeline-nav">';
             if ($startend) {

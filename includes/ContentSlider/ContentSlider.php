@@ -37,7 +37,7 @@ class ContentSlider
         $content = shortcode_unautop(trim($content));
 
         if ($tag == 'text-slider') {
-            $output .= '<div class="content-slider flexslider clear clearfix"><ul class="slides">'
+            $output .= '<div class="rrze-elements content-slider flexslider clear clearfix"><ul class="slides">'
                     . do_shortcode($content)
                     . '</ul></div>';
         } else {
@@ -136,7 +136,7 @@ class ContentSlider
             }
 
             if ($the_query->have_posts()) {
-                $output .= "<div class=\"content-slider flexslider clear clearfix $format\">"
+                $output .= "<div class=\"rrze-elements content-slider flexslider clear clearfix $format\">"
                         . '<ul class="slides">';
                 while ($the_query->have_posts()) {
                     $the_query->the_post();

@@ -51,7 +51,7 @@ class Assistant
             $subpages = get_pages(array('sort_order' => 'ASC', 'sort_column' => 'menu_order', 'parent' => $page->ID, 'hierarchical' => 0));
 
             if($showSubpages && count($subpages) > 0)  {
-                $inner .= '<div class="assistant-tabs">';
+                $inner .= '<div class="rrze-elements assistant-tabs">';
 
                 $inner .= '<ul class="assistant-tabs-nav">';
 

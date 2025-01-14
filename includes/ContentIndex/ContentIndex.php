@@ -177,7 +177,7 @@ class ContentIndex {
             });
 
             // Build Output
-            $output .= '<div class="content-index">';
+            $output .= '<div class="rrze-elements content-index">';
             if ($register) {
                 $alphabet = range('A', 'Z');
                 $output .= '<ul aria-hidden="true" class="tax-list-register clear clearfix">';

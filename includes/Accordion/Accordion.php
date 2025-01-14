@@ -63,7 +63,7 @@ class Accordion
         $class = $style == 'light' ? 'style_'.$style : 'style_default';
         $GLOBALS['collapsibles_hstart'][$GLOBALS['collapsibles_id']] = $hstart;
 
-        $output = '<div class="accordion ' . $class . '" id="accordion-' . $GLOBALS['collapsibles_count'] . '">';
+        $output = '<div class="rrze-elements accordion ' . $class . '" id="accordion-' . $GLOBALS['collapsibles_count'] . '">';
         if ($expand) {
             switch (get_post_meta(get_the_ID(), 'fauval_langcode', true)) {
                 case 'en':
