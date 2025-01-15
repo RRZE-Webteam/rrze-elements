@@ -4,7 +4,7 @@
 Plugin Name:     RRZE Elements
 Plugin URI:      https://github.com/RRZE-Webteam/rrze-elements
 Description:     Advanced design elements for WordPress websites.
-Version:         1.31.3
+Version:         1.31.4
 Author:          RRZE Webteam
 Author URI:      https://blogs.fau.de/webworking/
 License:         GNU General Public License v2
@@ -23,7 +23,7 @@ use RRZE\Elements\Main;
 
 const RRZE_PHP_VERSION = '8.1';
 const RRZE_WP_VERSION = '5.9';
-const RRZE_ELEMENTS_VERSION = '1.31.3';
+const RRZE_ELEMENTS_VERSION = '1.31.4';
 
 spl_autoload_register(function ($class) {
     $prefix = __NAMESPACE__;
@@ -68,8 +68,10 @@ function systemRequirements()
 {
     $error = '';
     if (version_compare(PHP_VERSION, RRZE_PHP_VERSION, '<')) {
+        /* translators: PHP version number */
         $error = sprintf(__('The server is running PHP version %1$s. The Plugin requires at least PHP version %2$s.', 'rrze-elements'), PHP_VERSION, RRZE_PHP_VERSION);
     } elseif (version_compare($GLOBALS['wp_version'], RRZE_WP_VERSION, '<')) {
+        /* translators: WordPress version number */
         $error = sprintf(__('The server is running WordPress version %1$s. The Plugin requires at least WordPress version %2$s.', 'rrze-elements'), $GLOBALS['wp_version'], RRZE_WP_VERSION);
     }
     return $error;

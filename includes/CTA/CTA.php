@@ -24,6 +24,7 @@ class CTA {
 
     public function shortcodeCTA($atts, $content = '') {
         if ((!isset($atts['search']) || $atts['search'] == '') && (!isset($atts['url']) || $atts['url'] == '')) {
+            /* translators: HTML Tags*/
             return (new Alert)->shortcodeAlert(['style' => 'danger'], sprintf(__('%1$sURL missing.%2$s Please provide the %3$surl%4$s attribute in your CTA shortcode.', 'rrze-elements'), '<strong>', '</strong>', '<code>', '</code>'));
         }
         $atts = shortcode_atts([
@@ -110,7 +111,9 @@ class CTA {
             if ($url == '') $url = get_site_url();
             $rand = random_int(0, 999999);
             $output .= '<div class="cta-search-container">'
+                /* translators: URL*/
                 . '<form itemprop="potentialAction" itemscope="" itemtype="https://schema.org/SearchAction" role="search" aria-label="' . sprintf(__('Search on %s', 'rrze-elements'), $url) . '" method="get" class="cta-search searchform" action="' . trailingslashit($url) . '">'
+                /* translators: URL*/
                 . '<label for="cta_search_' . $rand . '">' . sprintf(__('Please enter the search term for searching on %s', 'rrze-elements'), $url) . ':</label>'
                 . '<meta itemprop="target" content="' . trailingslashit($url) . '?' . $search . '={' . $search . '}">'
                 . '<input itemprop="query-input" id="' . $rand . '" type="text" value="" name="' . $search . '" placeholder="' . $placeholder . '" required>'

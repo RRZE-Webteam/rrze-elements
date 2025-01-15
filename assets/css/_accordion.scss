@@ -508,6 +508,7 @@ button.expand-all.standard-btn {
             border: none;
             background-color: #fff;
             padding: 15px 20px;
+            overflow-x: scroll;
             .alert.font-light & {
                 color: var(--color-Text, #222);
                 h1, h2, h3, h4, h5, p, li, a, span, blockquote, code, pre, th, td, strong, em {

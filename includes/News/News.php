@@ -493,6 +493,7 @@ class News
             $cat_links = [];
             if (!empty($categories)) {
                 foreach ($categories as $cat) {
+                    /* translators: Category Name*/
                     $cat_links[] = '<a href="' . esc_url(get_category_link($cat->term_id)) . '" alt="' . esc_attr(sprintf(__('View all posts in %s', 'rrze-elements'), $cat->name)) . '">' . esc_html($cat->name) . '</a>';
                 }
                 $output .= '<div class="entry-cats">' . implode($separator, $cat_links) . '</div>';
