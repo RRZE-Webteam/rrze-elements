@@ -1,181 +1,207 @@
-.rrze-elements details {
-    inline-size: 100%;
-    margin-bottom: 5px;
-
-    summary {
-        border-left: 10px solid var(--color-primary-ci-hell, #04316A);
-        background: var(--color-ContentBorders, #d2ddeb);
-        color: var(--color-Text, #444);
-        font-size: 1rem;
-        text-decoration: none;
-        padding: 8px 35px 8px 10px;
-        cursor: pointer;
-        list-style: none;
-        padding-right: 1.5em;
-        position: relative;
-        &::-webkit-details-marker,
-        &::marker {
-            display: none;
-        }
-        .accordion-suffix {
-            font-weight: bold;
-        }
-        .marker {
-            @include mask-icon(url("../svg/solid/caret-down.svg"), var(--color-Text, #444), 1em);
-            position: absolute;
-            top: 50%;
-            right: 10px;
-            transform: translateY(-50%) rotate(0deg);
-            transition: transform 0.3s ease;
-        }
-    }
-
-    &[open] {
+.rrze-elements.accordion2 {
+    margin-bottom: 1em;
+    details {
+        inline-size: 100%;
+        margin-bottom: 5px;
         summary {
-            background-color: var(--color-primary-ci-hell, #04316A);
-            color: var(--color-primary-ci-hell-kontrast, #fff);
-        }
-        .marker {
-            transform: translateY(-50%) rotate(180deg);
-        }
-        &:hover, &:focus, &:active {
-            summary {
-                border-color: var(--color-primary-dunkler, #004A9F);
-                background-color: var(--color-primary-dunkler, #004A9F);
-                color: var(--color-primary-dunkler-kontrast, #fff);
+            border-left: 10px solid var(--color-primary-ci-hell, #04316A);
+            background: var(--color-ContentBorders, #d2ddeb);
+            color: var(--color-Text, #444);
+            font-size: 1rem;
+            text-decoration: none;
+            padding: 8px 1.5em 8px 10px;
+            cursor: pointer;
+            list-style: none;
+            position: relative;
+            &:target {
+                padding-top: 8px !important; // Fix für FAU-Einrichtungen
+            }
+
+            &::-webkit-details-marker,
+            &::marker {
+                display: none;
+            }
+            .accordion-suffix {
+                font-weight: bold;
+            }
+
+            .marker {
+                @include mask-icon(url("../svg/solid/caret-down.svg"), var(--color-Text, #444), 1em);
+                position: absolute;
+                top: 50%;
+                right: 10px;
+                transform: translateY(-50%) rotate(0deg);
+                transition: transform 0.3s ease;
             }
         }
-        .details-content {
-            background-color: #f5f7f9;
-            padding: 15px 20px;
-            overflow-x: scroll;
-        }
-    }
 
-    &.phil,
-    &.philfak,
-    &.gold {
-        summary {
-            border-color: var(--color-phil-ci-hell, $colorPhilFak);
-        }
         &[open] {
+            summary {
+                background-color: var(--color-primary-ci-hell, #04316A);
+                color: var(--color-primary-ci-hell-kontrast, #fff);
+            }
+
+            .marker {
+                transform: translateY(-50%) rotate(180deg);
+            }
+
+            &:hover, &:focus, &:active {
+                summary {
+                    border-color: var(--color-primary-dunkler, #004A9F);
+                    background-color: var(--color-primary-dunkler, #004A9F);
+                    color: var(--color-primary-dunkler-kontrast, #fff);
+                }
+            }
+
+            .details-content {
+                background-color: #f5f7f9;
+                padding: 15px 20px;
+                overflow-x: scroll;
+            }
+        }
+
+        &.phil,
+        &.philfak,
+        &.gold {
             summary {
                 border-color: var(--color-phil-ci-hell, $colorPhilFak);
-                background-color: var(--color-phil-ci-hell, $colorPhilFak);
-                color: var(--color-phil-ci-hell-kontrast, #000);
             }
-            &:hover, &:focus, &:active {
+
+            &[open] {
                 summary {
-                    border-color: var(--color-phil-dunkler, $colorPhilFakDunkler);
-                    background-color: var(--color-phil-dunkler, $colorPhilFakDunkler);
-                    color: var(--color-phil-dunkler-kontrast, #000);
+                    border-color: var(--color-phil-ci-hell, $colorPhilFak);
+                    background-color: var(--color-phil-ci-hell, $colorPhilFak);
+                    color: var(--color-phil-ci-hell-kontrast, #000);
+                }
+
+                &:hover, &:focus, &:active {
+                    summary {
+                        border-color: var(--color-phil-dunkler, $colorPhilFakDunkler);
+                        background-color: var(--color-phil-dunkler, $colorPhilFakDunkler);
+                        color: var(--color-phil-dunkler-kontrast, #000);
+                    }
                 }
             }
         }
-    }
-    &.med,
-    &.medfak,
-    &.blue {
-        summary {
-            border-color: var(--color-med-ci-hell, $colorMedFak);
-        }
-        &[open] {
+
+        &.med,
+        &.medfak,
+        &.blue {
             summary {
                 border-color: var(--color-med-ci-hell, $colorMedFak);
-                background-color: var(--color-med-ci-hell, $colorMedFak);
-                color: var(--color-med-ci-hell-kontrast, #000);
             }
-            &:hover, &:focus, &:active {
+
+            &[open] {
                 summary {
-                    border-color: var(--color-med-dunkler, $colorMedFakDunkler);
-                    background-color: var(--color-med-dunkler, $colorMedFakDunkler);
-                    color: var(--color-med-dunkler-kontrast, #fff);
+                    border-color: var(--color-med-ci-hell, $colorMedFak);
+                    background-color: var(--color-med-ci-hell, $colorMedFak);
+                    color: var(--color-med-ci-hell-kontrast, #000);
+                }
+
+                &:hover, &:focus, &:active {
+                    summary {
+                        border-color: var(--color-med-dunkler, $colorMedFakDunkler);
+                        background-color: var(--color-med-dunkler, $colorMedFakDunkler);
+                        color: var(--color-med-dunkler-kontrast, #fff);
+                    }
                 }
             }
         }
-    }
-    &.nat,
-    &.natfak,
-    &.green {
-        summary {
-            border-color: var(--color-nat-ci-hell, $colorNatFak);
-        }
-        &[open] {
+
+        &.nat,
+        &.natfak,
+        &.green {
             summary {
                 border-color: var(--color-nat-ci-hell, $colorNatFak);
-                background-color: var(--color-nat-ci-hell, $colorNatFak);
-                color: var(--color-nat-ci-hell-kontrast, #000);
             }
-            &:hover, &:focus, &:active {
+
+            &[open] {
                 summary {
-                    border-color: var(--color-nat-dunkler, $colorNatFakDunkler);
-                    background-color: var(--color-nat-dunkler, $colorNatFakDunkler);
-                    color: var(--color-nat-dunkler-kontrast, #fff);
+                    border-color: var(--color-nat-ci-hell, $colorNatFak);
+                    background-color: var(--color-nat-ci-hell, $colorNatFak);
+                    color: var(--color-nat-ci-hell-kontrast, #000);
+                }
+
+                &:hover, &:focus, &:active {
+                    summary {
+                        border-color: var(--color-nat-dunkler, $colorNatFakDunkler);
+                        background-color: var(--color-nat-dunkler, $colorNatFakDunkler);
+                        color: var(--color-nat-dunkler-kontrast, #fff);
+                    }
                 }
             }
         }
-    }
-    &.rw,
-    &.rwfak,
-    &.green {
-        summary {
-            border-color: var(--color-rw-ci-hell, $colorRwFak);
-        }
-        &[open] {
+
+        &.rw,
+        &.rwfak,
+        &.green {
             summary {
                 border-color: var(--color-rw-ci-hell, $colorRwFak);
-                background-color: var(--color-rw-ci-hell, $colorRwFak);
-                color: var(--color-rw-ci-hell-kontrast, #fff);
             }
-            &:hover, &:focus, &:active {
+
+            &[open] {
                 summary {
-                    border-color: var(--color-rw-dunkler, $colorRwFakDunkler);
-                    background-color: var(--color-rw-dunkler, $colorRwFakDunkler);
-                    color: var(--color-rw-dunkler-kontrast, #fff);
+                    border-color: var(--color-rw-ci-hell, $colorRwFak);
+                    background-color: var(--color-rw-ci-hell, $colorRwFak);
+                    color: var(--color-rw-ci-hell-kontrast, #fff);
+                }
+
+                &:hover, &:focus, &:active {
+                    summary {
+                        border-color: var(--color-rw-dunkler, $colorRwFakDunkler);
+                        background-color: var(--color-rw-dunkler, $colorRwFakDunkler);
+                        color: var(--color-rw-dunkler-kontrast, #fff);
+                    }
                 }
             }
         }
-    }
-    &.tf,
-    &.techfak,
-    &.green {
-        summary {
-            border-color: var(--color-tf-ci-hell, $colorTechFak);
-        }
-        &[open] {
+
+        &.tf,
+        &.techfak,
+        &.green {
             summary {
                 border-color: var(--color-tf-ci-hell, $colorTechFak);
-                background-color: var(--color-tf-ci-hell, $colorTechFak);
-                color: var(--color-tf-ci-hell-kontrast, #000);
             }
-            &:hover, &:focus, &:active {
+
+            &[open] {
                 summary {
-                    border-color: var(--color-tf-dunkler, $colorTechFak);
-                    background-color: var(--color-tf-dunkler, $colorTechFak);
-                    color: var(--color-tf-dunkler-kontrast, #fff);
+                    border-color: var(--color-tf-ci-hell, $colorTechFak);
+                    background-color: var(--color-tf-ci-hell, $colorTechFak);
+                    color: var(--color-tf-ci-hell-kontrast, #000);
+                }
+
+                &:hover, &:focus, &:active {
+                    summary {
+                        border-color: var(--color-tf-dunkler, $colorTechFak);
+                        background-color: var(--color-tf-dunkler, $colorTechFak);
+                        color: var(--color-tf-dunkler-kontrast, #fff);
+                    }
                 }
             }
         }
-    }
-    .fau,
-    .default {
-        summary {
-            border-color: var(--color-zentral-ci-hell, $colorDefault);
-        }
-        &[open] {
+
+        .fau,
+        .default {
             summary {
                 border-color: var(--color-zentral-ci-hell, $colorDefault);
-                background-color: var(--color-zentral-ci-hell, $colorDefault);
-                color: var(--color-zentral-ci-hell-kontrast, #fff);
             }
-            &:hover, &:focus, &:active {
+
+            &[open] {
                 summary {
-                    border-color: var(--color-zentral-dunkler, $colorDefaultDunkler);
-                    background-color: var(--color-zentral-dunkler, $colorDefaultDunkler);
-                    color: var(--color-zentral-dunkler-kontrast, #fff);
+                    border-color: var(--color-zentral-ci-hell, $colorDefault);
+                    background-color: var(--color-zentral-ci-hell, $colorDefault);
+                    color: var(--color-zentral-ci-hell-kontrast, #fff);
+                }
+
+                &:hover, &:focus, &:active {
+                    summary {
+                        border-color: var(--color-zentral-dunkler, $colorDefaultDunkler);
+                        background-color: var(--color-zentral-dunkler, $colorDefaultDunkler);
+                        color: var(--color-zentral-dunkler-kontrast, #fff);
+                    }
                 }
             }
         }
-    }
 
+    }
 }

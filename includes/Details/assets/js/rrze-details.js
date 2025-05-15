@@ -1,19 +1,9 @@
 jQuery(document).ready(function($) {
 
     /**
-     * RRZE Elements Blocks - Accordion 1.0.4
-     * Refactored and documented for efficiency and readability.
-     * Uses jQuery for DOM manipulation and event handling.
+     * RRZE Elements - Accordion 1.0.4
+     * Refactored using <details> element
      */
-
-    /**
-     * Initially hides all accordion bodies except those marked as open or should stay open,
-     * and marks the corresponding toggles as active.
-     */
-    $('.accordion-body').not(".open, .stayopen").hide();
-    $('.accordion-body.open').each(function() {
-        $(this).closest('.accordion-group').find('.accordion-toggle').first().addClass('active');
-    });
 
     /**
      * Checks if all items within an accordion are open to toggle the 'Expand All/Collapse All' button state.
@@ -26,15 +16,6 @@ jQuery(document).ready(function($) {
             $accordion.find('button.expand-all').attr("data-status", 'open').data('status', 'open').html(elementsTranslations.collapse_all);
         }
     });
-
-    /**
-     * Retrieves the target accordion ID from a button or link element.
-     * @param {jQuery} $elem - The element that may contain a href or data-href attribute.
-     * @returns {string} The target selector for the accordion to be toggled.
-     */
-    function getAccordionTarget($elem) {
-        return sanitizeSelector($elem.data('href') || $elem.attr('href'));
-    }
 
     /**
      * Sanitizes a jQuery selector to prevent jQuery selector injection.
@@ -121,21 +102,6 @@ jQuery(document).ready(function($) {
             openAnchorAccordion($target);
         }
     }
-
-    /**
-     * Binds mousedown and keydown events to accordion toggles.
-     * Prevents default action and toggles the accordion based on the target derived from the element.
-     * Updates the URL hash if a name is provided.
-     */
-    $('.accordion-toggle').on('mousedown keydown', function(event) {
-        if (event.type === 'mousedown' || event.keyCode === 32) {
-            event.preventDefault();
-            const $target = getAccordionTarget($(this));
-            const $name = $(this).data('name');
-            toggleAccordion($target);
-            window.history.replaceState(null, null, $name ? '#' + $name : $target);
-        }
-    });
 
     /**
      * Handles clicks on the 'expand all' or 'collapse all' buttons within an accordion.

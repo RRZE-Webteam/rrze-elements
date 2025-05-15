@@ -35,23 +35,15 @@ class Details
         }
         $GLOBALS['collapsibles_id'] = $GLOBALS['collapsibles_count'];
 
-        $defaults = array('expand-all-link' => 'false', 'register' => 'false', 'hstart' => '', 'style' => '');
+        $defaults = array('expand-all-link' => 'false', 'register' => 'false', 'style' => '');
         $args = shortcode_atts($defaults, $atts);
         $expand = Helper::shortcode_boolean($args['expand-all-link']);
         $register = Helper::shortcode_boolean($args['register']);
-        if ($args['hstart'] != '') {
-            $hstart = intval($args['hstart']);
-        } else {
-            $hstart = 2;
-        }
-        if (($hstart < 1) || ($hstart > 6)) {
-            $hstart = 2;
-        }
         $style = esc_attr($args['style']);
         $class = $style == 'light' ? 'style_'.$style : 'style_default';
-        $GLOBALS['collapsibles_hstart'][$GLOBALS['collapsibles_id']] = $hstart;
 
-        $output = '<div class="rrze-elements accordion2 ' . $class . '" id="accordion-' . $GLOBALS['collapsibles_count'] . '">';
+        //$output = '<div class="rrze-elements accordion2 ' . $class . '" id="accordion-' . $GLOBALS['collapsibles_count'] . '">';
+        $output = '<div class="rrze-elements accordion2 ' . $class . '">';
         if ($expand) {
             switch (get_post_meta(get_the_ID(), 'fauval_langcode', true)) {
                 case 'en':
@@ -109,8 +101,6 @@ class Details
         $defaults = array('title' => 'Tab', 'color' => '', 'id' => '', 'load' => '', 'name' => '', 'icon' => '', 'suffix' => '');
         extract(shortcode_atts($defaults, $atts));
 
-        $addclass = '';
-
         if (!isset($GLOBALS['collapsibles_id'])) {
             $GLOBALS['collapsibles_id'] = $GLOBALS['collapsibles_count'];
         }
@@ -119,16 +109,12 @@ class Details
         $color = $color ? ' ' . esc_attr($color) : '';
         $load = $load ? ' ' . esc_attr($load) : '';
         $dataname = $name ? 'data-name="' . esc_attr($name) . '"' : '';
+        $idName = $name ? ' id="' . esc_attr($name) . '"' : '';
         $name = $name ? ' name="' . esc_attr($name) . '"' : '';
-        $hlevel = 'h'.($GLOBALS['collapsibles_hstart'][$GLOBALS['collapsibles_id']] ?? '2');
         $icon = esc_attr($icon);
         $suffix = esc_attr($suffix);
-        $expanded = 'false';
 
-        if (!empty($load)) {
-            $addclass .= " " . $load;
-            $expanded = 'true';
-        }
+        $open = empty($load) ? '' : ' open';
 
         $icon_html = '';
         if (!empty($icon)) {
@@ -152,9 +138,9 @@ class Details
         $output .= '</div></div>';  // .accordion-inner & .accordion-body
         $output .= '</div>';        // . accordion-group*/
 
-        $output = '<details class="details-group' . $color . '" name="' . $GLOBALS['collapsibles_id'] . '">'
-            . '<summary>' . $icon_html . ' ' . $title . ' ' . $suffix_hmtl . '<span class="marker">▸</span></summary>'
-            . '<div class="details-content">' . do_shortcode(shortcode_unautop($content)) . '</div>';
+        $output = '<details class="details-group' . $color . '" name="accordion-' . $GLOBALS['collapsibles_id'] . '"' . $open . '>'
+            . '<summary class="details-summary"' . $idName . '>' . $icon_html . ' ' . $title . ' ' . $suffix_hmtl . '<span class="marker"></span></summary>'
+            . '<div class="details-content" ' . '>' . do_shortcode(shortcode_unautop($content)) . '</div>';
         $output .= '</details>';
 
         wp_enqueue_style('rrze-elements');

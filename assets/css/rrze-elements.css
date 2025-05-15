@@ -1829,29 +1829,34 @@ button.expand-all.standard-btn {
   padding-top: 0;
 }
 
-.rrze-elements details {
+.rrze-elements.accordion2 {
+  margin-bottom: 1em;
+}
+.rrze-elements.accordion2 details {
   inline-size: 100%;
   margin-bottom: 5px;
 }
-.rrze-elements details summary {
+.rrze-elements.accordion2 details summary {
   border-left: 10px solid var(--color-primary-ci-hell, #04316A);
   background: var(--color-ContentBorders, #d2ddeb);
   color: var(--color-Text, #444);
   font-size: 1rem;
   text-decoration: none;
-  padding: 8px 35px 8px 10px;
+  padding: 8px 1.5em 8px 10px;
   cursor: pointer;
   list-style: none;
-  padding-right: 1.5em;
   position: relative;
 }
-.rrze-elements details summary::-webkit-details-marker, .rrze-elements details summary::marker {
+.rrze-elements.accordion2 details summary:target {
+  padding-top: 8px !important;
+}
+.rrze-elements.accordion2 details summary::-webkit-details-marker, .rrze-elements.accordion2 details summary::marker {
   display: none;
 }
-.rrze-elements details summary .accordion-suffix {
+.rrze-elements.accordion2 details summary .accordion-suffix {
   font-weight: bold;
 }
-.rrze-elements details summary .marker {
+.rrze-elements.accordion2 details summary .marker {
   content: " ";
   -webkit-mask-size: var(--icon-size-mask, 70%);
   mask-size: var(--icon-size-mask, 70%);
@@ -1875,102 +1880,102 @@ button.expand-all.standard-btn {
   transform: translateY(-50%) rotate(0deg);
   transition: transform 0.3s ease;
 }
-.rrze-elements details[open] summary {
+.rrze-elements.accordion2 details[open] summary {
   background-color: var(--color-primary-ci-hell, #04316A);
   color: var(--color-primary-ci-hell-kontrast, #fff);
 }
-.rrze-elements details[open] .marker {
+.rrze-elements.accordion2 details[open] .marker {
   transform: translateY(-50%) rotate(180deg);
 }
-.rrze-elements details[open]:hover summary, .rrze-elements details[open]:focus summary, .rrze-elements details[open]:active summary {
+.rrze-elements.accordion2 details[open]:hover summary, .rrze-elements.accordion2 details[open]:focus summary, .rrze-elements.accordion2 details[open]:active summary {
   border-color: var(--color-primary-dunkler, #004A9F);
   background-color: var(--color-primary-dunkler, #004A9F);
   color: var(--color-primary-dunkler-kontrast, #fff);
 }
-.rrze-elements details[open] .details-content {
+.rrze-elements.accordion2 details[open] .details-content {
   background-color: #f5f7f9;
   padding: 15px 20px;
   overflow-x: scroll;
 }
-.rrze-elements details.phil summary, .rrze-elements details.philfak summary, .rrze-elements details.gold summary {
+.rrze-elements.accordion2 details.phil summary, .rrze-elements.accordion2 details.philfak summary, .rrze-elements.accordion2 details.gold summary {
   border-color: var(--color-phil-ci-hell, #FDB735);
 }
-.rrze-elements details.phil[open] summary, .rrze-elements details.philfak[open] summary, .rrze-elements details.gold[open] summary {
+.rrze-elements.accordion2 details.phil[open] summary, .rrze-elements.accordion2 details.philfak[open] summary, .rrze-elements.accordion2 details.gold[open] summary {
   border-color: var(--color-phil-ci-hell, #FDB735);
   background-color: var(--color-phil-ci-hell, #FDB735);
   color: var(--color-phil-ci-hell-kontrast, #000);
 }
-.rrze-elements details.phil[open]:hover summary, .rrze-elements details.phil[open]:focus summary, .rrze-elements details.phil[open]:active summary, .rrze-elements details.philfak[open]:hover summary, .rrze-elements details.philfak[open]:focus summary, .rrze-elements details.philfak[open]:active summary, .rrze-elements details.gold[open]:hover summary, .rrze-elements details.gold[open]:focus summary, .rrze-elements details.gold[open]:active summary {
+.rrze-elements.accordion2 details.phil[open]:hover summary, .rrze-elements.accordion2 details.phil[open]:focus summary, .rrze-elements.accordion2 details.phil[open]:active summary, .rrze-elements.accordion2 details.philfak[open]:hover summary, .rrze-elements.accordion2 details.philfak[open]:focus summary, .rrze-elements.accordion2 details.philfak[open]:active summary, .rrze-elements.accordion2 details.gold[open]:hover summary, .rrze-elements.accordion2 details.gold[open]:focus summary, .rrze-elements.accordion2 details.gold[open]:active summary {
   border-color: var(--color-phil-dunkler, #e87722);
   background-color: var(--color-phil-dunkler, #e87722);
   color: var(--color-phil-dunkler-kontrast, #000);
 }
-.rrze-elements details.med summary, .rrze-elements details.medfak summary, .rrze-elements details.blue summary {
+.rrze-elements.accordion2 details.med summary, .rrze-elements.accordion2 details.medfak summary, .rrze-elements.accordion2 details.blue summary {
   border-color: var(--color-med-ci-hell, #18B4F1);
 }
-.rrze-elements details.med[open] summary, .rrze-elements details.medfak[open] summary, .rrze-elements details.blue[open] summary {
+.rrze-elements.accordion2 details.med[open] summary, .rrze-elements.accordion2 details.medfak[open] summary, .rrze-elements.accordion2 details.blue[open] summary {
   border-color: var(--color-med-ci-hell, #18B4F1);
   background-color: var(--color-med-ci-hell, #18B4F1);
   color: var(--color-med-ci-hell-kontrast, #000);
 }
-.rrze-elements details.med[open]:hover summary, .rrze-elements details.med[open]:focus summary, .rrze-elements details.med[open]:active summary, .rrze-elements details.medfak[open]:hover summary, .rrze-elements details.medfak[open]:focus summary, .rrze-elements details.medfak[open]:active summary, .rrze-elements details.blue[open]:hover summary, .rrze-elements details.blue[open]:focus summary, .rrze-elements details.blue[open]:active summary {
+.rrze-elements.accordion2 details.med[open]:hover summary, .rrze-elements.accordion2 details.med[open]:focus summary, .rrze-elements.accordion2 details.med[open]:active summary, .rrze-elements.accordion2 details.medfak[open]:hover summary, .rrze-elements.accordion2 details.medfak[open]:focus summary, .rrze-elements.accordion2 details.medfak[open]:active summary, .rrze-elements.accordion2 details.blue[open]:hover summary, .rrze-elements.accordion2 details.blue[open]:focus summary, .rrze-elements.accordion2 details.blue[open]:active summary {
   border-color: var(--color-med-dunkler, #005287);
   background-color: var(--color-med-dunkler, #005287);
   color: var(--color-med-dunkler-kontrast, #fff);
 }
-.rrze-elements details.nat summary, .rrze-elements details.natfak summary, .rrze-elements details.green summary {
+.rrze-elements.accordion2 details.nat summary, .rrze-elements.accordion2 details.natfak summary, .rrze-elements.accordion2 details.green summary {
   border-color: var(--color-nat-ci-hell, #7BB725);
 }
-.rrze-elements details.nat[open] summary, .rrze-elements details.natfak[open] summary, .rrze-elements details.green[open] summary {
+.rrze-elements.accordion2 details.nat[open] summary, .rrze-elements.accordion2 details.natfak[open] summary, .rrze-elements.accordion2 details.green[open] summary {
   border-color: var(--color-nat-ci-hell, #7BB725);
   background-color: var(--color-nat-ci-hell, #7BB725);
   color: var(--color-nat-ci-hell-kontrast, #000);
 }
-.rrze-elements details.nat[open]:hover summary, .rrze-elements details.nat[open]:focus summary, .rrze-elements details.nat[open]:active summary, .rrze-elements details.natfak[open]:hover summary, .rrze-elements details.natfak[open]:focus summary, .rrze-elements details.natfak[open]:active summary, .rrze-elements details.green[open]:hover summary, .rrze-elements details.green[open]:focus summary, .rrze-elements details.green[open]:active summary {
+.rrze-elements.accordion2 details.nat[open]:hover summary, .rrze-elements.accordion2 details.nat[open]:focus summary, .rrze-elements.accordion2 details.nat[open]:active summary, .rrze-elements.accordion2 details.natfak[open]:hover summary, .rrze-elements.accordion2 details.natfak[open]:focus summary, .rrze-elements.accordion2 details.natfak[open]:active summary, .rrze-elements.accordion2 details.green[open]:hover summary, .rrze-elements.accordion2 details.green[open]:focus summary, .rrze-elements.accordion2 details.green[open]:active summary {
   border-color: var(--color-nat-dunkler, #266141);
   background-color: var(--color-nat-dunkler, #266141);
   color: var(--color-nat-dunkler-kontrast, #fff);
 }
-.rrze-elements details.rw summary, .rrze-elements details.rwfak summary, .rrze-elements details.green summary {
+.rrze-elements.accordion2 details.rw summary, .rrze-elements.accordion2 details.rwfak summary, .rrze-elements.accordion2 details.green summary {
   border-color: var(--color-rw-ci-hell, #C50F3C);
 }
-.rrze-elements details.rw[open] summary, .rrze-elements details.rwfak[open] summary, .rrze-elements details.green[open] summary {
+.rrze-elements.accordion2 details.rw[open] summary, .rrze-elements.accordion2 details.rwfak[open] summary, .rrze-elements.accordion2 details.green[open] summary {
   border-color: var(--color-rw-ci-hell, #C50F3C);
   background-color: var(--color-rw-ci-hell, #C50F3C);
   color: var(--color-rw-ci-hell-kontrast, #fff);
 }
-.rrze-elements details.rw[open]:hover summary, .rrze-elements details.rw[open]:focus summary, .rrze-elements details.rw[open]:active summary, .rrze-elements details.rwfak[open]:hover summary, .rrze-elements details.rwfak[open]:focus summary, .rrze-elements details.rwfak[open]:active summary, .rrze-elements details.green[open]:hover summary, .rrze-elements details.green[open]:focus summary, .rrze-elements details.green[open]:active summary {
+.rrze-elements.accordion2 details.rw[open]:hover summary, .rrze-elements.accordion2 details.rw[open]:focus summary, .rrze-elements.accordion2 details.rw[open]:active summary, .rrze-elements.accordion2 details.rwfak[open]:hover summary, .rrze-elements.accordion2 details.rwfak[open]:focus summary, .rrze-elements.accordion2 details.rwfak[open]:active summary, .rrze-elements.accordion2 details.green[open]:hover summary, .rrze-elements.accordion2 details.green[open]:focus summary, .rrze-elements.accordion2 details.green[open]:active summary {
   border-color: var(--color-rw-dunkler, #971B2F);
   background-color: var(--color-rw-dunkler, #971B2F);
   color: var(--color-rw-dunkler-kontrast, #fff);
 }
-.rrze-elements details.tf summary, .rrze-elements details.techfak summary, .rrze-elements details.green summary {
+.rrze-elements.accordion2 details.tf summary, .rrze-elements.accordion2 details.techfak summary, .rrze-elements.accordion2 details.green summary {
   border-color: var(--color-tf-ci-hell, #8C9FB1);
 }
-.rrze-elements details.tf[open] summary, .rrze-elements details.techfak[open] summary, .rrze-elements details.green[open] summary {
+.rrze-elements.accordion2 details.tf[open] summary, .rrze-elements.accordion2 details.techfak[open] summary, .rrze-elements.accordion2 details.green[open] summary {
   border-color: var(--color-tf-ci-hell, #8C9FB1);
   background-color: var(--color-tf-ci-hell, #8C9FB1);
   color: var(--color-tf-ci-hell-kontrast, #000);
 }
-.rrze-elements details.tf[open]:hover summary, .rrze-elements details.tf[open]:focus summary, .rrze-elements details.tf[open]:active summary, .rrze-elements details.techfak[open]:hover summary, .rrze-elements details.techfak[open]:focus summary, .rrze-elements details.techfak[open]:active summary, .rrze-elements details.green[open]:hover summary, .rrze-elements details.green[open]:focus summary, .rrze-elements details.green[open]:active summary {
+.rrze-elements.accordion2 details.tf[open]:hover summary, .rrze-elements.accordion2 details.tf[open]:focus summary, .rrze-elements.accordion2 details.tf[open]:active summary, .rrze-elements.accordion2 details.techfak[open]:hover summary, .rrze-elements.accordion2 details.techfak[open]:focus summary, .rrze-elements.accordion2 details.techfak[open]:active summary, .rrze-elements.accordion2 details.green[open]:hover summary, .rrze-elements.accordion2 details.green[open]:focus summary, .rrze-elements.accordion2 details.green[open]:active summary {
   border-color: var(--color-tf-dunkler, #8C9FB1);
   background-color: var(--color-tf-dunkler, #8C9FB1);
   color: var(--color-tf-dunkler-kontrast, #fff);
 }
-.rrze-elements details .fau summary,
-.rrze-elements details .default summary {
+.rrze-elements.accordion2 details .fau summary,
+.rrze-elements.accordion2 details .default summary {
   border-color: var(--color-zentral-ci-hell, #04316A);
 }
-.rrze-elements details .fau[open] summary,
-.rrze-elements details .default[open] summary {
+.rrze-elements.accordion2 details .fau[open] summary,
+.rrze-elements.accordion2 details .default[open] summary {
   border-color: var(--color-zentral-ci-hell, #04316A);
   background-color: var(--color-zentral-ci-hell, #04316A);
   color: var(--color-zentral-ci-hell-kontrast, #fff);
 }
-.rrze-elements details .fau[open]:hover summary, .rrze-elements details .fau[open]:focus summary, .rrze-elements details .fau[open]:active summary,
-.rrze-elements details .default[open]:hover summary,
-.rrze-elements details .default[open]:focus summary,
-.rrze-elements details .default[open]:active summary {
+.rrze-elements.accordion2 details .fau[open]:hover summary, .rrze-elements.accordion2 details .fau[open]:focus summary, .rrze-elements.accordion2 details .fau[open]:active summary,
+.rrze-elements.accordion2 details .default[open]:hover summary,
+.rrze-elements.accordion2 details .default[open]:focus summary,
+.rrze-elements.accordion2 details .default[open]:active summary {
   border-color: var(--color-zentral-dunkler, #004A9F);
   background-color: var(--color-zentral-dunkler, #004A9F);
   color: var(--color-zentral-dunkler-kontrast, #fff);
