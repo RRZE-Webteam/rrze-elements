@@ -27,37 +27,6 @@ jQuery(document).ready(function($) {
     }
 
     /**
-     * Toggles the visibility of an accordion's content.
-     * @param {string} $accordion - The selector of the accordion whose visibility will be toggled.
-     */
-    function toggleAccordion($accordion) {
-        const $group = $($accordion).closest('.accordion-group');
-        const $directBody = $group.children('.accordion-body');
-        const $directToggle = $group.children('.accordion-heading').children('.accordion-toggle');
-        const $otherGroups = $group.siblings();
-
-        $otherGroups.children('.accordion-heading').children('.accordion-toggle').removeClass('active').attr('aria-expanded', 'false');
-        $otherGroups.children('.accordion-body').not('.accordion-body.stayopen').slideUp();
-
-        $directToggle.toggleClass('active').attr('aria-expanded', function(_, attr) { return !(attr === 'true') });
-        $directBody.slideToggle();
-
-        refreshSlickGallery($group);
-    }
-
-    /**
-     * Refreshes the Slick Gallery within an accordion if it exists.
-     * This is needed because changes in visibility can affect Slick's layout.
-     * @param {jQuery} $group - The accordion group that may contain a Slick slider.
-     */
-    function refreshSlickGallery($group) {
-        const $slick = $group.find(".slick-slider");
-        if ($slick.length) {
-            $slick.slick("refresh");
-        }
-    }
-
-    /**
      * Opens an accordion based on a target anchor link and scrolls to the accordion.
      * @param {jQuery} $target - The target accordion body element to be opened.
      */
@@ -107,20 +76,25 @@ jQuery(document).ready(function($) {
      * Handles clicks on the 'expand all' or 'collapse all' buttons within an accordion.
      * Toggles the expansion state of all accordion bodies and toggles within the same accordion.
      */
-    $('.expand-all').on('click', function() {
-        const $this = $(this);
-        const $accordion = $this.closest('.accordion');
-        const $bodies = $accordion.find('.accordion-body');
-        const $toggles = $accordion.find('.accordion-toggle');
-        if ($this.data('status') === 'open') {
-            $bodies.slideUp();
-            $toggles.removeClass('active');
-            $this.attr("data-status", 'closed').data('status', 'closed').html(elementsTranslations.expand_all);
-        } else {
-            $bodies.slideDown();
-            $toggles.addClass('active');
-            $this.attr("data-status", 'open').data('status', 'open').html(elementsTranslations.collapse_all);
-        }
+    document.querySelectorAll(".expand-all").forEach(button => {
+        button.addEventListener("click", function () {
+            const $this = $(this);
+            const container = this.closest(".details-wrapper");
+            const detailsElements = container.querySelectorAll("details");
+            if ($this.data('status') === 'open') {
+                detailsElements.forEach(detail => {
+                    detail.setAttribute("name", $this.data('name'));
+                    detail.open = false;
+                });
+                $this.attr("data-status", 'closed').data('status', 'closed').html(elementsTranslations.expand_all);
+            } else {
+                detailsElements.forEach(detail => {
+                    detail.removeAttribute("name");
+                    detail.open = true;
+                });
+                $this.attr("data-status", 'open').data('status', 'open').html(elementsTranslations.collapse_all);
+            }
+        });
     });
 
     /**

@@ -42,8 +42,8 @@ class Details
         $style = esc_attr($args['style']);
         $class = $style == 'light' ? 'style_'.$style : 'style_default';
 
-        //$output = '<div class="rrze-elements accordion2 ' . $class . '" id="accordion-' . $GLOBALS['collapsibles_count'] . '">';
-        $output = '<div class="rrze-elements accordion2 ' . $class . '">';
+        //$output = '<div class="rrze-elements details-wrapper ' . $class . '" id="accordion-' . $GLOBALS['collapsibles_count'] . '">';
+        $output = '<div class="rrze-elements details-wrapper ' . $class . '">';
         if ($expand) {
             switch (get_post_meta(get_the_ID(), 'fauval_langcode', true)) {
                 case 'en':
@@ -55,7 +55,7 @@ class Details
                 default:
                     $expandText = __('Expand All', 'rrze-elements');
             }
-            $output .= '<div class="button-container-right"><button class="expand-all standard-btn primary-btn xsmall-btn" data-status="closed">' . $expandText . '</button></div>';
+            $output .= '<div class="button-container-right"><button class="expand-all standard-btn primary-btn xsmall-btn" data-status="closed" data-name="accordion-' . $GLOBALS['collapsibles_id'] . '">' . $expandText . '</button></div>';
         }
         if ($register) {
             preg_match_all('(name="(.*?)")',$content, $matches);

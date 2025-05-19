@@ -1,4 +1,4 @@
-.rrze-elements.accordion2 {
+.rrze-elements.details-wrapper {
     margin-bottom: 1em;
     details {
         inline-size: 100%;
@@ -24,7 +24,6 @@
             .accordion-suffix {
                 font-weight: bold;
             }
-
             .marker {
                 @include mask-icon(url("../svg/solid/caret-down.svg"), var(--color-Text, #444), 1em);
                 position: absolute;
@@ -202,6 +201,253 @@
                 }
             }
         }
+    }
+    &.style_light {
+        details {
+            background-color: #fff;
+            margin-bottom: 0;
+            border-top: 1px solid var(--color-content-borders, #dfe6ec);
+            &:last-child {
+                border-bottom: 1px solid var(--color-content-borders, #dfe6ec);
+            }
+            summary {
+                border-left: none;
+                background: #fff;
+                color: var(--color-Text, #222);
+                padding: 12px 40px 12px 10px;
+                font-weight: bold;
+                .marker {
+                    @include mask-icon(url("../svg/solid/angle-down.svg"), var(--color-primary-ci-hell, $colorDefault), 2em);
+                    position: absolute;
+                    top: 50%;
+                    right: 10px;
+                    margin-right: 0;
+                }
+                &:hover,
+                &:focus {
+                    background-color: var(--color-ContentRegions,#f5f7f9);
+                    color: var(--color-Text, #222);
+                    /*&:before {
+                        @include mask-icon(url("../svg/solid/angle-down.svg"), var(--color-primary-ci-hell, $colorDefault), 2em);
+                        position: absolute;
+                        top: 9px;
+                        right: 5px;
+                        margin-right: 0;
+                    }*/
+                }
+                &[open] {
+                    background-color: var(--color-ContentRegions,#f5f7f9);
+                    color: var(--color-Text, #222);
+                    .marker {
+                        @include mask-icon(url("../svg/solid/angle-up.svg"), var(--color-primary-ci-hell, $colorDefault), 2em);
+                        position: absolute;
+                        top: 9px;
+                        right: 5px;
+                        margin-right: 0;
+                    }
+                }
+                &[open]:hover,
+                &[open]:focus {
+                    background-color: var(--color-StandardHellgrau, #e9edf2);
+                    color: var(--color-Text, #222);
+                }
+                &.phil,
+                &.philfak,
+                &.gold {
+                    summary {
+                        .marker {
+                            @include mask-icon(url("../svg/solid/angle-down.svg"), var(--color-phil-dunkler, $colorPhilFakDunkler), 2em);
+                            position: absolute;
+                            top: 9px;
+                            right: 5px;
+                            margin-right: 0;
+                        }
 
+                        &:hover,
+                        &:focus {
+                            .marker {
+                                @include mask-icon(url("../svg/solid/angle-down.svg"), var(--color-phil-dunkler, $colorPhilFakDunkler), 2em);
+                                position: absolute;
+                                top: 9px;
+                                right: 5px;
+                                margin-right: 0;
+                            }
+                        }
+
+                        &.active {
+                            .marker {
+                                @include mask-icon(url("../svg/solid/angle-up.svg"), var(--color-phil-dunkler, $colorPhilFakDunkler), 2em);
+                                position: absolute;
+                                top: 9px;
+                                right: 5px;
+                                margin-right: 0;
+                            }
+                        }
+                    }
+                }
+                &.rw,
+                &.rwfak,
+                &.red {
+                    summary {
+                        .marker {
+                            @include mask-icon(url("../svg/solid/angle-down.svg"), var(--color-rw-ci-hell, $colorRwFak), 2em);
+                            position: absolute;
+                            top: 9px;
+                            right: 5px;
+                            margin-right: 0;
+                        }
+                        &:hover,
+                        &:focus {
+                            .marker {
+                                @include mask-icon(url("../svg/solid/angle-down.svg"), var(--color-rw-ci-hell, $colorRwFak), 2em);
+                                position: absolute;
+                                top: 9px;
+                                right: 5px;
+                                margin-right: 0;
+                            }
+                        }
+                        &.active {
+                            .marker {
+                                @include mask-icon(url("../svg/solid/angle-up.svg"), var(--color-rw-ci-hell, $colorRwFak), 2em);
+                                position: absolute;
+                                top: 9px;
+                                right: 5px;
+                                margin-right: 0;
+                            }
+                        }
+                    }
+                }
+                &.med,
+                &.medfak,
+                &.blue {
+                    summary {
+                        .marker {
+                            @include mask-icon(url("../svg/solid/angle-down.svg"), var(--color-med-ci-hell, $colorMedFak), 2em);
+                            position: absolute;
+                            top: 9px;
+                            right: 5px;
+                            margin-right: 0;
+                        }
+                        &:hover,
+                        &:focus {
+                            .marker {
+                                @include mask-icon(url("../svg/solid/angle-down.svg"), var(--color-med-ci-hell, $colorMedFak), 2em);
+                                position: absolute;
+                                top: 9px;
+                                right: 5px;
+                                margin-right: 0;
+                            }
+                        }
+                        &.active {
+                            .marker {
+                                @include mask-icon(url("../svg/solid/angle-up.svg"), var(--color-med-ci-hell, $colorMedFak), 2em);
+                                position: absolute;
+                                top: 9px;
+                                right: 5px;
+                                margin-right: 0;
+                            }
+                        }
+                    }
+                }
+                &.nat,
+                &.natfak,
+                &.green {
+                    summary {
+                        .marker {
+                            @include mask-icon(url("../svg/solid/angle-down.svg"), var(--color-nat-ci-hell, $colorNatFak), 2em);
+                            position: absolute;
+                            top: 9px;
+                            right: 5px;
+                            margin-right: 0;
+                        }
+                        &:hover,
+                        &:focus {
+                            .marker {
+                                @include mask-icon(url("../svg/solid/angle-down.svg"), var(--color-nat-ci-hell, $colorNatFak), 2em);
+                                position: absolute;
+                                top: 9px;
+                                right: 5px;
+                                margin-right: 0;
+                            }
+                        }
+                        &.active {
+                            .marker {
+                                @include mask-icon(url("../svg/solid/angle-up.svg"), var(--color-nat-ci-hell, $colorNatFak), 2em);
+                                position: absolute;
+                                top: 9px;
+                                right: 5px;
+                                margin-right: 0;
+                            }
+                        }
+                    }
+                }
+                &.tf,
+                &.techfak,
+                &.grey {
+                    summary {
+                        .marker {
+                            @include mask-icon(url("../svg/solid/angle-down.svg"), var(--color-tf-ci-hell, $colorTechFak), 2em);
+                            position: absolute;
+                            top: 9px;
+                            right: 5px;
+                            margin-right: 0;
+                        }
+                        &:hover,
+                        &:focus {
+                            .marker {
+                                @include mask-icon(url("../svg/solid/angle-down.svg"), var(--color-tf-ci-hell, $colorTechFak), 2em);
+                                position: absolute;
+                                top: 9px;
+                                right: 5px;
+                                margin-right: 0;
+                            }
+                        }
+                        &.active {
+                            .marker {
+                                @include mask-icon(url("../svg/solid/angle-up.svg"), var(--color-tf-ci-hell, $colorTechFak), 2em);
+                                position: absolute;
+                                top: 9px;
+                                right: 5px;
+                                margin-right: 0;
+                            }
+                        }
+                    }
+                }
+                &.fau,
+                &.default {
+                    summary {
+                        .marker {
+                            @include mask-icon(url("../svg/solid/angle-down.svg"), var(--color-zentral-dunkler, $colorDefaultDunkler), 2em);
+                            position: absolute;
+                            top: 9px;
+                            right: 5px;
+                            margin-right: 0;
+                        }
+                        &:hover,
+                        &:focus {
+                            .marker {
+                                @include mask-icon(url("../svg/solid/angle-down.svg"), var(--color-zentral-dunkler, $colorDefaultDunkler), 2em);
+                                position: absolute;
+                                top: 9px;
+                                right: 5px;
+                                margin-right: 0;
+                            }
+                        }
+                        &.active {
+                            .marker {
+                                @include mask-icon(url("../svg/solid/angle-up.svg"), var(--color-zentral-dunkler, $colorDefaultDunkler), 2em);
+                                position: absolute;
+                                top: 9px;
+                                right: 5px;
+                                margin-right: 0;
+                            }
+                        }
+                    }
+                }
+            }
+            .accordion-suffix {
+                font-weight: normal;
+            }
+        }
     }
 }
