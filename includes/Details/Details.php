@@ -140,7 +140,7 @@ class Details
 
         $output = '<details class="details-group' . $color . '" name="accordion-' . $GLOBALS['collapsibles_id'] . '"' . $open . '>'
             . '<summary class="details-summary"' . $idName . '>' . $icon_html . ' ' . $title . ' ' . $suffix_hmtl . '<span class="marker"></span></summary>'
-            . '<div class="details-content" ' . '>' . do_shortcode(shortcode_unautop($content)) . '</div>';
+            . '<div class="details-content" ' . '><div class="details-content-inner">' . do_shortcode(shortcode_unautop($content)) . '</div></div>';
         $output .= '</details>';
 
         wp_enqueue_style('rrze-elements');

@@ -143,3 +143,55 @@ jQuery(document).ready(function($) {
         }
     });
 });
+
+const accordions = document.querySelectorAll(".details-wrapper details");
+
+accordions.forEach(details => {
+    const summary = details.querySelector("summary");
+    const content = details.querySelector(".details-content");
+    console.log(content);
+    summary.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        // Wenn bereits offen → schließen
+        if (details.hasAttribute("open")) {
+            collapse(details, content);
+        } else {
+            // Andere schließen
+            accordions.forEach(other => {
+                if (other !== details && other.hasAttribute("open")) {
+                    const otherContent = other.querySelector(".details-content");
+                    collapse(other, otherContent);
+                }
+            });
+
+            // Dann dieses öffnen
+            expand(details, content);
+        }
+    });
+});
+
+function expand(details, content) {
+    details.setAttribute("open", "");
+    const height = content.scrollHeight;
+    content.style.height = "0px";
+    requestAnimationFrame(() => {
+        content.style.height = height + "px";
+    });
+    content.addEventListener("transitionend", function handler() {
+        content.style.height = "auto";
+        content.removeEventListener("transitionend", handler);
+    });
+}
+
+function collapse(details, content) {
+    const height = content.scrollHeight;
+    content.style.height = height + "px";
+    requestAnimationFrame(() => {
+        content.style.height = "0px";
+    });
+    content.addEventListener("transitionend", function handler() {
+        details.removeAttribute("open");
+        content.removeEventListener("transitionend", handler);
+    });
+}
