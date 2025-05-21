@@ -79,7 +79,7 @@ jQuery(document).ready(function($) {
     document.querySelectorAll(".expand-all").forEach(button => {
         button.addEventListener("click", function () {
             const $this = $(this);
-            const container = this.closest(".details-wrapper");
+            const container = this.closest(".details-accordion");
             const detailsElements = container.querySelectorAll("details");
             if ($this.data('status') === 'open') {
                 detailsElements.forEach(detail => {
@@ -144,12 +144,15 @@ jQuery(document).ready(function($) {
     });
 });
 
-const accordions = document.querySelectorAll(".details-wrapper details");
+/*
+
+JS zur Slide-Open-Animation: weglassen, denn es war ja gerade das Ziel, eine Lösung ohne JS zu bauen
+
+const accordions = document.querySelectorAll(".details-accordion details");
 
 accordions.forEach(details => {
     const summary = details.querySelector("summary");
     const content = details.querySelector(".details-content");
-    console.log(content);
     summary.addEventListener("click", (e) => {
         e.preventDefault();
 
@@ -195,3 +198,5 @@ function collapse(details, content) {
         content.removeEventListener("transitionend", handler);
     });
 }
+
+ */

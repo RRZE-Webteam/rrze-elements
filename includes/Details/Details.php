@@ -42,8 +42,8 @@ class Details
         $style = esc_attr($args['style']);
         $class = $style == 'light' ? 'style_'.$style : 'style_default';
 
-        //$output = '<div class="rrze-elements details-wrapper ' . $class . '" id="accordion-' . $GLOBALS['collapsibles_count'] . '">';
-        $output = '<div class="rrze-elements details-wrapper ' . $class . '">';
+        // Expand-all Button
+        $output = '<div class="rrze-elements details-accordion ' . $class . '">';
         if ($expand) {
             switch (get_post_meta(get_the_ID(), 'fauval_langcode', true)) {
                 case 'en':
@@ -57,6 +57,8 @@ class Details
             }
             $output .= '<div class="button-container-right"><button class="expand-all standard-btn primary-btn xsmall-btn" data-status="closed" data-name="accordion-' . $GLOBALS['collapsibles_id'] . '">' . $expandText . '</button></div>';
         }
+
+        // Register
         if ($register) {
             preg_match_all('(name="(.*?)")',$content, $matches);
             $names = array_filter($matches[1], function($value) { return $value !== ''; });
@@ -68,6 +70,8 @@ class Details
                 $output .= '</ul>';
             }
         }
+
+        // Output
         if (str_starts_with($content, '</p>')) {
             $content = substr($content, 4);
         }
@@ -130,18 +134,10 @@ class Details
             $id = $GLOBALS['current_collapse'];
         }
 
-        /*$output = '<div class="accordion-group' . $color . '">';
-        $output .= "<$hlevel class=\"accordion-heading\"><button class=\"accordion-toggle\" data-toggle=\"collapse\" $dataname href=\"#collapse_$id\" aria-expanded=\"$expanded\" aria-controls=\"collapse_$id\" id=\"collapse_button_$id\">$icon_html $title $suffix_hmtl</button></$hlevel>";
-        $output .= '<div id="collapse_' . $id . '" class="accordion-body' . $addclass . '"' . $name . ' aria-labelledby="collapse_button_' . $id . '">';
-        $output .= '<div class="accordion-inner clearfix">';
-        $output .= do_shortcode(shortcode_unautop($content));
-        $output .= '</div></div>';  // .accordion-inner & .accordion-body
-        $output .= '</div>';        // . accordion-group*/
-
         $output = '<details class="details-group' . $color . '" name="accordion-' . $GLOBALS['collapsibles_id'] . '"' . $open . '>'
             . '<summary class="details-summary"' . $idName . '>' . $icon_html . ' ' . $title . ' ' . $suffix_hmtl . '<span class="marker"></span></summary>'
-            . '<div class="details-content" ' . '><div class="details-content-inner">' . do_shortcode(shortcode_unautop($content)) . '</div></div>';
-        $output .= '</details>';
+            . '<div class="details-content" ' . '><div class="details-content-inner">' . do_shortcode(shortcode_unautop($content)) . '</div></div>'
+            . '</details>';
 
         wp_enqueue_style('rrze-elements');
         wp_enqueue_script('rrze-details');

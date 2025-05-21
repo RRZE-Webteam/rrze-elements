@@ -1,5 +1,8 @@
-.rrze-elements.details-wrapper {
+.rrze-elements.details-accordion {
     margin-bottom: 1em;
+    .button-container-right {
+        text-align: right;
+    }
     details {
         inline-size: 100%;
         margin-bottom: 5px;
@@ -37,8 +40,8 @@
         .details-content {
             background-color: #f5f7f9;
             overflow: hidden;
-            transition: height 0.4s ease;
-            height: 0;
+            transition: height 0.3s ease;
+            //height: 0;
             .details-content-inner {
                 padding: 15px 20px;
                 overflow-x: scroll;
@@ -153,7 +156,7 @@
 
         &.rw,
         &.rwfak,
-        &.green {
+        &.red {
             summary {
                 border-color: var(--color-rw-ci-hell, $colorRwFak);
             }
@@ -182,7 +185,7 @@
 
         &.tf,
         &.techfak,
-        &.green {
+        &.grey {
             summary {
                 border-color: var(--color-tf-ci-hell, $colorTechFak);
             }

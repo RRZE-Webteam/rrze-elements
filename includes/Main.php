@@ -56,8 +56,8 @@ class Main
 
         new TinyMCEButtons();
         new Lightbox();
-        //new Accordion($this->pluginFile);
-        new Details($this->pluginFile);
+        new Accordion($this->pluginFile);
+        //new Details($this->pluginFile);
         new Alert();
         new Button();
         new Columns();
