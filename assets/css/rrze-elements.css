@@ -851,7 +851,7 @@ aside .gallery-slider-thumbs .flex-control-nav li {
 #content .sidebar-inline + .content-inline .content-slider.flexslider .slides:after {
   clear: left;
 }
-#content .sidebar-inline + .content-inline .content-slider.flexslider.clearfix:after, #content .sidebar-inline + .content-inline .accordion .accordion-body .content-slider.flexslider.accordion-inner:after, .accordion .accordion-body #content .sidebar-inline + .content-inline .content-slider.flexslider.accordion-inner:after {
+#content .sidebar-inline + .content-inline .content-slider.flexslider.clearfix:after, #content .sidebar-inline + .content-inline body:not(.fau-elemental) .accordion .accordion-body .content-slider.flexslider.accordion-inner:after, body:not(.fau-elemental) .accordion .accordion-body #content .sidebar-inline + .content-inline .content-slider.flexslider.accordion-inner:after {
   clear: left;
 }
 
@@ -885,61 +885,56 @@ aside .gallery-slider-thumbs .flex-control-nav li {
 /*!
  * Accordion
  */
-h1.accordion-heading,
-h2.accordion-heading,
-h3.accordion-heading,
-h4.accordion-heading,
-h5.accordion-heading,
-h6.accordion-heading {
+body:not(.fau-elemental) h1.accordion-heading,
+body:not(.fau-elemental) h2.accordion-heading,
+body:not(.fau-elemental) h3.accordion-heading,
+body:not(.fau-elemental) h4.accordion-heading,
+body:not(.fau-elemental) h5.accordion-heading,
+body:not(.fau-elemental) h6.accordion-heading {
   width: auto;
   padding: 0 !important;
   margin: 0;
   border: none;
   text-align: left;
 }
-
-button.accordion-toggle {
+body:not(.fau-elemental) button.accordion-toggle {
   width: 100%;
   border: none;
   text-align: left;
   margin: 0;
 }
-
-button.expand-all.standard-btn {
+body:not(.fau-elemental) button.expand-all.standard-btn {
   margin: 5px 0;
   float: none;
 }
-
-.button-container-right {
+body:not(.fau-elemental) .button-container-right {
   text-align: right;
 }
-
-.button-container-left {
+body:not(.fau-elemental) .button-container-left {
   text-align: left;
 }
-
-.accordion .accordion {
+body:not(.fau-elemental) .accordion .accordion {
   margin: 0;
 }
-.accordion .accordion-register {
+body:not(.fau-elemental) .accordion .accordion-register {
   padding-left: 0;
   margin: 0 0 0.5em;
   border-top: 1px solid #C3C3CB;
   border-bottom: 1px solid #C3C3CB;
 }
-.accordion .accordion-register li {
+body:not(.fau-elemental) .accordion .accordion-register li {
   float: left;
   list-style-type: none;
   padding: 0.25em 0.5em;
 }
-.accordion .accordion-suffix {
+body:not(.fau-elemental) .accordion .accordion-suffix {
   font-weight: bold;
 }
-.accordion .accordion-group {
+body:not(.fau-elemental) .accordion .accordion-group {
   border: none;
   margin-bottom: 5px;
 }
-.accordion .accordion-toggle {
+body:not(.fau-elemental) .accordion .accordion-toggle {
   display: block;
   border-left: 10px solid var(--color-primary-ci-hell, #04316A);
   background: var(--color-ContentBorders, #d2ddeb);
@@ -949,7 +944,7 @@ button.expand-all.standard-btn {
   padding: 8px 35px 8px 10px;
   position: relative;
 }
-.accordion .accordion-toggle:before {
+body:not(.fau-elemental) .accordion .accordion-toggle:before {
   content: " ";
   -webkit-mask-size: var(--icon-size-mask, 70%);
   mask-size: var(--icon-size-mask, 70%);
@@ -971,13 +966,13 @@ button.expand-all.standard-btn {
   top: 12px;
   right: 10px;
 }
-.accordion .accordion-toggle:hover, .accordion .accordion-toggle:focus, .accordion .accordion-toggle.active {
+body:not(.fau-elemental) .accordion .accordion-toggle:hover, body:not(.fau-elemental) .accordion .accordion-toggle:focus, body:not(.fau-elemental) .accordion .accordion-toggle.active {
   text-decoration: none;
   background-color: var(--color-primary-ci-hell, #04316A);
   color: var(--color-primary-ci-hell-kontrast, #fff);
   cursor: pointer;
 }
-.accordion .accordion-toggle:hover:before, .accordion .accordion-toggle:focus:before, .accordion .accordion-toggle.active:before {
+body:not(.fau-elemental) .accordion .accordion-toggle:hover:before, body:not(.fau-elemental) .accordion .accordion-toggle:focus:before, body:not(.fau-elemental) .accordion .accordion-toggle.active:before {
   content: " ";
   -webkit-mask-size: var(--icon-size-mask, 70%);
   mask-size: var(--icon-size-mask, 70%);
@@ -999,10 +994,10 @@ button.expand-all.standard-btn {
   top: 12px;
   right: 10px;
 }
-.alert.font-light .accordion .accordion-toggle:hover *, .alert.font-light .accordion .accordion-toggle:focus *, .alert.font-light .accordion .accordion-toggle.active * {
+.alert.font-light body:not(.fau-elemental) .accordion .accordion-toggle:hover *, .alert.font-light body:not(.fau-elemental) .accordion .accordion-toggle:focus *, .alert.font-light body:not(.fau-elemental) .accordion .accordion-toggle.active * {
   color: var(--color-primary-ci-hell-kontrast, #fff);
 }
-.accordion .accordion-toggle.active:before {
+body:not(.fau-elemental) .accordion .accordion-toggle.active:before {
   content: " ";
   -webkit-mask-size: var(--icon-size-mask, 70%);
   mask-size: var(--icon-size-mask, 70%);
@@ -1024,12 +1019,12 @@ button.expand-all.standard-btn {
   top: 12px;
   right: 10px;
 }
-.accordion .accordion-toggle.active:hover, .accordion .accordion-toggle.active:focus {
+body:not(.fau-elemental) .accordion .accordion-toggle.active:hover, body:not(.fau-elemental) .accordion .accordion-toggle.active:focus {
   border-color: var(--color-primary-dunkler, #004A9F);
   background-color: var(--color-primary-dunkler, #004A9F);
   color: var(--color-primary-dunkler-kontrast, #fff);
 }
-.accordion .accordion-toggle.active:hover:before, .accordion .accordion-toggle.active:focus:before {
+body:not(.fau-elemental) .accordion .accordion-toggle.active:hover:before, body:not(.fau-elemental) .accordion .accordion-toggle.active:focus:before {
   content: " ";
   -webkit-mask-size: var(--icon-size-mask, 70%);
   mask-size: var(--icon-size-mask, 70%);
@@ -1051,179 +1046,179 @@ button.expand-all.standard-btn {
   top: 12px;
   right: 10px;
 }
-.accordion .accordion-toggle svg.rrze-elements-icon {
+body:not(.fau-elemental) .accordion .accordion-toggle svg.rrze-elements-icon {
   margin-right: 3px;
 }
-.alert.font-light .accordion .accordion-toggle {
+.alert.font-light body:not(.fau-elemental) .accordion .accordion-toggle {
   color: var(--color-Text, #444);
 }
-.alert.font-light .accordion .accordion-toggle * {
+.alert.font-light body:not(.fau-elemental) .accordion .accordion-toggle * {
   color: var(--color-Text, #444);
 }
-.alert.font-light .accordion .accordion-toggle:hover, .alert.font-light .accordion .accordion-toggle:focus, .alert.font-light .accordion .accordion-toggle.active {
+.alert.font-light body:not(.fau-elemental) .accordion .accordion-toggle:hover, .alert.font-light body:not(.fau-elemental) .accordion .accordion-toggle:focus, .alert.font-light body:not(.fau-elemental) .accordion .accordion-toggle.active {
   color: var(--color-primary-ci-hell-kontrast, #fff);
 }
-.accordion .phil .accordion-heading .accordion-toggle,
-.accordion .philfak .accordion-heading .accordion-toggle,
-.accordion .gold .accordion-heading .accordion-toggle {
+body:not(.fau-elemental) .accordion .phil .accordion-heading .accordion-toggle,
+body:not(.fau-elemental) .accordion .philfak .accordion-heading .accordion-toggle,
+body:not(.fau-elemental) .accordion .gold .accordion-heading .accordion-toggle {
   border-color: var(--color-phil-ci-hell, #FDB735);
 }
-.accordion .phil .accordion-heading .accordion-toggle:hover, .accordion .phil .accordion-heading .accordion-toggle:focus, .accordion .phil .accordion-heading .accordion-toggle.active,
-.accordion .philfak .accordion-heading .accordion-toggle:hover,
-.accordion .philfak .accordion-heading .accordion-toggle:focus,
-.accordion .philfak .accordion-heading .accordion-toggle.active,
-.accordion .gold .accordion-heading .accordion-toggle:hover,
-.accordion .gold .accordion-heading .accordion-toggle:focus,
-.accordion .gold .accordion-heading .accordion-toggle.active {
+body:not(.fau-elemental) .accordion .phil .accordion-heading .accordion-toggle:hover, body:not(.fau-elemental) .accordion .phil .accordion-heading .accordion-toggle:focus, body:not(.fau-elemental) .accordion .phil .accordion-heading .accordion-toggle.active,
+body:not(.fau-elemental) .accordion .philfak .accordion-heading .accordion-toggle:hover,
+body:not(.fau-elemental) .accordion .philfak .accordion-heading .accordion-toggle:focus,
+body:not(.fau-elemental) .accordion .philfak .accordion-heading .accordion-toggle.active,
+body:not(.fau-elemental) .accordion .gold .accordion-heading .accordion-toggle:hover,
+body:not(.fau-elemental) .accordion .gold .accordion-heading .accordion-toggle:focus,
+body:not(.fau-elemental) .accordion .gold .accordion-heading .accordion-toggle.active {
   border-color: var(--color-phil-ci-hell, #FDB735);
   background-color: var(--color-phil-ci-hell, #FDB735);
   color: var(--color-phil-ci-hell-kontrast, #000);
 }
-.accordion .phil .accordion-heading .accordion-toggle.active:hover, .accordion .phil .accordion-heading .accordion-toggle.active:focus,
-.accordion .philfak .accordion-heading .accordion-toggle.active:hover,
-.accordion .philfak .accordion-heading .accordion-toggle.active:focus,
-.accordion .gold .accordion-heading .accordion-toggle.active:hover,
-.accordion .gold .accordion-heading .accordion-toggle.active:focus {
+body:not(.fau-elemental) .accordion .phil .accordion-heading .accordion-toggle.active:hover, body:not(.fau-elemental) .accordion .phil .accordion-heading .accordion-toggle.active:focus,
+body:not(.fau-elemental) .accordion .philfak .accordion-heading .accordion-toggle.active:hover,
+body:not(.fau-elemental) .accordion .philfak .accordion-heading .accordion-toggle.active:focus,
+body:not(.fau-elemental) .accordion .gold .accordion-heading .accordion-toggle.active:hover,
+body:not(.fau-elemental) .accordion .gold .accordion-heading .accordion-toggle.active:focus {
   border-color: var(--color-phil-dunkler, #e87722);
   background-color: var(--color-phil-dunkler, #e87722);
   color: var(--color-phil-dunkler-kontrast, #000);
 }
-.accordion .rw .accordion-heading .accordion-toggle,
-.accordion .rwfak .accordion-heading .accordion-toggle,
-.accordion .red .accordion-heading .accordion-toggle {
+body:not(.fau-elemental) .accordion .rw .accordion-heading .accordion-toggle,
+body:not(.fau-elemental) .accordion .rwfak .accordion-heading .accordion-toggle,
+body:not(.fau-elemental) .accordion .red .accordion-heading .accordion-toggle {
   border-color: var(--color-rw-ci-hell, #C50F3C);
 }
-.accordion .rw .accordion-heading .accordion-toggle:hover, .accordion .rw .accordion-heading .accordion-toggle:focus, .accordion .rw .accordion-heading .accordion-toggle.active,
-.accordion .rwfak .accordion-heading .accordion-toggle:hover,
-.accordion .rwfak .accordion-heading .accordion-toggle:focus,
-.accordion .rwfak .accordion-heading .accordion-toggle.active,
-.accordion .red .accordion-heading .accordion-toggle:hover,
-.accordion .red .accordion-heading .accordion-toggle:focus,
-.accordion .red .accordion-heading .accordion-toggle.active {
+body:not(.fau-elemental) .accordion .rw .accordion-heading .accordion-toggle:hover, body:not(.fau-elemental) .accordion .rw .accordion-heading .accordion-toggle:focus, body:not(.fau-elemental) .accordion .rw .accordion-heading .accordion-toggle.active,
+body:not(.fau-elemental) .accordion .rwfak .accordion-heading .accordion-toggle:hover,
+body:not(.fau-elemental) .accordion .rwfak .accordion-heading .accordion-toggle:focus,
+body:not(.fau-elemental) .accordion .rwfak .accordion-heading .accordion-toggle.active,
+body:not(.fau-elemental) .accordion .red .accordion-heading .accordion-toggle:hover,
+body:not(.fau-elemental) .accordion .red .accordion-heading .accordion-toggle:focus,
+body:not(.fau-elemental) .accordion .red .accordion-heading .accordion-toggle.active {
   border-color: var(--color-rw-ci-hell, #C50F3C);
   background-color: var(--color-rw-ci-hell, #C50F3C);
   color: var(--color-rw-ci-hell-kontrast, #fff);
 }
-.accordion .rw .accordion-heading .accordion-toggle.active:hover, .accordion .rw .accordion-heading .accordion-toggle.active:focus,
-.accordion .rwfak .accordion-heading .accordion-toggle.active:hover,
-.accordion .rwfak .accordion-heading .accordion-toggle.active:focus,
-.accordion .red .accordion-heading .accordion-toggle.active:hover,
-.accordion .red .accordion-heading .accordion-toggle.active:focus {
+body:not(.fau-elemental) .accordion .rw .accordion-heading .accordion-toggle.active:hover, body:not(.fau-elemental) .accordion .rw .accordion-heading .accordion-toggle.active:focus,
+body:not(.fau-elemental) .accordion .rwfak .accordion-heading .accordion-toggle.active:hover,
+body:not(.fau-elemental) .accordion .rwfak .accordion-heading .accordion-toggle.active:focus,
+body:not(.fau-elemental) .accordion .red .accordion-heading .accordion-toggle.active:hover,
+body:not(.fau-elemental) .accordion .red .accordion-heading .accordion-toggle.active:focus {
   border-color: var(--color-rw-dunkler, #971B2F);
   background-color: var(--color-rw-dunkler, #971B2F);
   color: var(--color-rw-dunkler-kontrast, #fff);
 }
-.accordion .med .accordion-heading .accordion-toggle,
-.accordion .medfak .accordion-heading .accordion-toggle,
-.accordion .blue .accordion-heading .accordion-toggle {
+body:not(.fau-elemental) .accordion .med .accordion-heading .accordion-toggle,
+body:not(.fau-elemental) .accordion .medfak .accordion-heading .accordion-toggle,
+body:not(.fau-elemental) .accordion .blue .accordion-heading .accordion-toggle {
   border-color: var(--color-med-ci-hell, #18B4F1);
 }
-.accordion .med .accordion-heading .accordion-toggle:hover, .accordion .med .accordion-heading .accordion-toggle:focus, .accordion .med .accordion-heading .accordion-toggle.active,
-.accordion .medfak .accordion-heading .accordion-toggle:hover,
-.accordion .medfak .accordion-heading .accordion-toggle:focus,
-.accordion .medfak .accordion-heading .accordion-toggle.active,
-.accordion .blue .accordion-heading .accordion-toggle:hover,
-.accordion .blue .accordion-heading .accordion-toggle:focus,
-.accordion .blue .accordion-heading .accordion-toggle.active {
+body:not(.fau-elemental) .accordion .med .accordion-heading .accordion-toggle:hover, body:not(.fau-elemental) .accordion .med .accordion-heading .accordion-toggle:focus, body:not(.fau-elemental) .accordion .med .accordion-heading .accordion-toggle.active,
+body:not(.fau-elemental) .accordion .medfak .accordion-heading .accordion-toggle:hover,
+body:not(.fau-elemental) .accordion .medfak .accordion-heading .accordion-toggle:focus,
+body:not(.fau-elemental) .accordion .medfak .accordion-heading .accordion-toggle.active,
+body:not(.fau-elemental) .accordion .blue .accordion-heading .accordion-toggle:hover,
+body:not(.fau-elemental) .accordion .blue .accordion-heading .accordion-toggle:focus,
+body:not(.fau-elemental) .accordion .blue .accordion-heading .accordion-toggle.active {
   border-color: var(--color-med-ci-hell, #18B4F1);
   background-color: var(--color-med-ci-hell, #18B4F1);
   color: var(--color-med-ci-hell-kontrast, #000);
 }
-.accordion .med .accordion-heading .accordion-toggle.active:hover, .accordion .med .accordion-heading .accordion-toggle.active:focus,
-.accordion .medfak .accordion-heading .accordion-toggle.active:hover,
-.accordion .medfak .accordion-heading .accordion-toggle.active:focus,
-.accordion .blue .accordion-heading .accordion-toggle.active:hover,
-.accordion .blue .accordion-heading .accordion-toggle.active:focus {
+body:not(.fau-elemental) .accordion .med .accordion-heading .accordion-toggle.active:hover, body:not(.fau-elemental) .accordion .med .accordion-heading .accordion-toggle.active:focus,
+body:not(.fau-elemental) .accordion .medfak .accordion-heading .accordion-toggle.active:hover,
+body:not(.fau-elemental) .accordion .medfak .accordion-heading .accordion-toggle.active:focus,
+body:not(.fau-elemental) .accordion .blue .accordion-heading .accordion-toggle.active:hover,
+body:not(.fau-elemental) .accordion .blue .accordion-heading .accordion-toggle.active:focus {
   border-color: var(--color-med-dunkler, #005287);
   background-color: var(--color-med-dunkler, #005287);
   color: var(--color-med-dunkler-kontrast, #fff);
 }
-.accordion .nat .accordion-heading .accordion-toggle,
-.accordion .natfak .accordion-heading .accordion-toggle,
-.accordion .green .accordion-heading .accordion-toggle {
+body:not(.fau-elemental) .accordion .nat .accordion-heading .accordion-toggle,
+body:not(.fau-elemental) .accordion .natfak .accordion-heading .accordion-toggle,
+body:not(.fau-elemental) .accordion .green .accordion-heading .accordion-toggle {
   border-color: var(--color-nat-ci-hell, #7BB725);
 }
-.accordion .nat .accordion-heading .accordion-toggle:hover, .accordion .nat .accordion-heading .accordion-toggle:focus, .accordion .nat .accordion-heading .accordion-toggle.active, .accordion .nat .accordion-heading .accordion-toggle.active:focus,
-.accordion .natfak .accordion-heading .accordion-toggle:hover,
-.accordion .natfak .accordion-heading .accordion-toggle:focus,
-.accordion .natfak .accordion-heading .accordion-toggle.active,
-.accordion .natfak .accordion-heading .accordion-toggle.active:focus,
-.accordion .green .accordion-heading .accordion-toggle:hover,
-.accordion .green .accordion-heading .accordion-toggle:focus,
-.accordion .green .accordion-heading .accordion-toggle.active,
-.accordion .green .accordion-heading .accordion-toggle.active:focus {
+body:not(.fau-elemental) .accordion .nat .accordion-heading .accordion-toggle:hover, body:not(.fau-elemental) .accordion .nat .accordion-heading .accordion-toggle:focus, body:not(.fau-elemental) .accordion .nat .accordion-heading .accordion-toggle.active, body:not(.fau-elemental) .accordion .nat .accordion-heading .accordion-toggle.active:focus,
+body:not(.fau-elemental) .accordion .natfak .accordion-heading .accordion-toggle:hover,
+body:not(.fau-elemental) .accordion .natfak .accordion-heading .accordion-toggle:focus,
+body:not(.fau-elemental) .accordion .natfak .accordion-heading .accordion-toggle.active,
+body:not(.fau-elemental) .accordion .natfak .accordion-heading .accordion-toggle.active:focus,
+body:not(.fau-elemental) .accordion .green .accordion-heading .accordion-toggle:hover,
+body:not(.fau-elemental) .accordion .green .accordion-heading .accordion-toggle:focus,
+body:not(.fau-elemental) .accordion .green .accordion-heading .accordion-toggle.active,
+body:not(.fau-elemental) .accordion .green .accordion-heading .accordion-toggle.active:focus {
   border-color: var(--color-nat-ci-hell, #7BB725);
   background-color: var(--color-nat-ci-hell, #7BB725);
   color: var(--color-nat-ci-hell-kontrast, #000);
 }
-.accordion .nat .accordion-heading .accordion-toggle.active:hover, .accordion .nat .accordion-heading .accordion-toggle.active:focus,
-.accordion .natfak .accordion-heading .accordion-toggle.active:hover,
-.accordion .natfak .accordion-heading .accordion-toggle.active:focus,
-.accordion .green .accordion-heading .accordion-toggle.active:hover,
-.accordion .green .accordion-heading .accordion-toggle.active:focus {
+body:not(.fau-elemental) .accordion .nat .accordion-heading .accordion-toggle.active:hover, body:not(.fau-elemental) .accordion .nat .accordion-heading .accordion-toggle.active:focus,
+body:not(.fau-elemental) .accordion .natfak .accordion-heading .accordion-toggle.active:hover,
+body:not(.fau-elemental) .accordion .natfak .accordion-heading .accordion-toggle.active:focus,
+body:not(.fau-elemental) .accordion .green .accordion-heading .accordion-toggle.active:hover,
+body:not(.fau-elemental) .accordion .green .accordion-heading .accordion-toggle.active:focus {
   border-color: var(--color-nat-dunkler, #266141);
   background-color: var(--color-nat-dunkler, #266141);
   color: var(--color-nat-dunkler-kontrast, #fff);
 }
-.accordion .tf .accordion-heading .accordion-toggle,
-.accordion .techfak .accordion-heading .accordion-toggle,
-.accordion .grey .accordion-heading .accordion-toggle {
+body:not(.fau-elemental) .accordion .tf .accordion-heading .accordion-toggle,
+body:not(.fau-elemental) .accordion .techfak .accordion-heading .accordion-toggle,
+body:not(.fau-elemental) .accordion .grey .accordion-heading .accordion-toggle {
   border-color: var(--color-tf-ci-hell, #8C9FB1);
 }
-.accordion .tf .accordion-heading .accordion-toggle:hover, .accordion .tf .accordion-heading .accordion-toggle:focus, .accordion .tf .accordion-heading .accordion-toggle.active,
-.accordion .techfak .accordion-heading .accordion-toggle:hover,
-.accordion .techfak .accordion-heading .accordion-toggle:focus,
-.accordion .techfak .accordion-heading .accordion-toggle.active,
-.accordion .grey .accordion-heading .accordion-toggle:hover,
-.accordion .grey .accordion-heading .accordion-toggle:focus,
-.accordion .grey .accordion-heading .accordion-toggle.active {
+body:not(.fau-elemental) .accordion .tf .accordion-heading .accordion-toggle:hover, body:not(.fau-elemental) .accordion .tf .accordion-heading .accordion-toggle:focus, body:not(.fau-elemental) .accordion .tf .accordion-heading .accordion-toggle.active,
+body:not(.fau-elemental) .accordion .techfak .accordion-heading .accordion-toggle:hover,
+body:not(.fau-elemental) .accordion .techfak .accordion-heading .accordion-toggle:focus,
+body:not(.fau-elemental) .accordion .techfak .accordion-heading .accordion-toggle.active,
+body:not(.fau-elemental) .accordion .grey .accordion-heading .accordion-toggle:hover,
+body:not(.fau-elemental) .accordion .grey .accordion-heading .accordion-toggle:focus,
+body:not(.fau-elemental) .accordion .grey .accordion-heading .accordion-toggle.active {
   border-color: var(--color-tf-ci-hell, #8C9FB1);
   background-color: var(--color-tf-ci-hell, #8C9FB1);
   color: var(--color-tf-ci-hell-kontrast, #000);
 }
-.accordion .tf .accordion-heading .accordion-toggle.active:hover, .accordion .tf .accordion-heading .accordion-toggle.active:focus,
-.accordion .techfak .accordion-heading .accordion-toggle.active:hover,
-.accordion .techfak .accordion-heading .accordion-toggle.active:focus,
-.accordion .grey .accordion-heading .accordion-toggle.active:hover,
-.accordion .grey .accordion-heading .accordion-toggle.active:focus {
+body:not(.fau-elemental) .accordion .tf .accordion-heading .accordion-toggle.active:hover, body:not(.fau-elemental) .accordion .tf .accordion-heading .accordion-toggle.active:focus,
+body:not(.fau-elemental) .accordion .techfak .accordion-heading .accordion-toggle.active:hover,
+body:not(.fau-elemental) .accordion .techfak .accordion-heading .accordion-toggle.active:focus,
+body:not(.fau-elemental) .accordion .grey .accordion-heading .accordion-toggle.active:hover,
+body:not(.fau-elemental) .accordion .grey .accordion-heading .accordion-toggle.active:focus {
   border-color: var(--color-tf-dunkler, #2F586E);
   background-color: var(--color-tf-dunkler, #2F586E);
   color: var(--color-tf-dunkler-kontrast, #fff);
 }
-.accordion .fau .accordion-heading .accordion-toggle,
-.accordion .default .accordion-heading .accordion-toggle {
+body:not(.fau-elemental) .accordion .fau .accordion-heading .accordion-toggle,
+body:not(.fau-elemental) .accordion .default .accordion-heading .accordion-toggle {
   border-color: var(--color-zentral-ci-hell, #04316A);
 }
-.accordion .fau .accordion-heading .accordion-toggle:hover, .accordion .fau .accordion-heading .accordion-toggle:focus, .accordion .fau .accordion-heading .accordion-toggle.active,
-.accordion .default .accordion-heading .accordion-toggle:hover,
-.accordion .default .accordion-heading .accordion-toggle:focus,
-.accordion .default .accordion-heading .accordion-toggle.active {
+body:not(.fau-elemental) .accordion .fau .accordion-heading .accordion-toggle:hover, body:not(.fau-elemental) .accordion .fau .accordion-heading .accordion-toggle:focus, body:not(.fau-elemental) .accordion .fau .accordion-heading .accordion-toggle.active,
+body:not(.fau-elemental) .accordion .default .accordion-heading .accordion-toggle:hover,
+body:not(.fau-elemental) .accordion .default .accordion-heading .accordion-toggle:focus,
+body:not(.fau-elemental) .accordion .default .accordion-heading .accordion-toggle.active {
   border-color: var(--color-zentral-ci-hell, #04316A);
   background-color: var(--color-zentral-ci-hell, #04316A);
   color: var(--color-zentral-ci-hell-kontrast, #fff);
 }
-.accordion .fau .accordion-heading .accordion-toggle.active:hover, .accordion .fau .accordion-heading .accordion-toggle.active:focus,
-.accordion .default .accordion-heading .accordion-toggle.active:hover,
-.accordion .default .accordion-heading .accordion-toggle.active:focus {
+body:not(.fau-elemental) .accordion .fau .accordion-heading .accordion-toggle.active:hover, body:not(.fau-elemental) .accordion .fau .accordion-heading .accordion-toggle.active:focus,
+body:not(.fau-elemental) .accordion .default .accordion-heading .accordion-toggle.active:hover,
+body:not(.fau-elemental) .accordion .default .accordion-heading .accordion-toggle.active:focus {
   border-color: var(--color-zentral-dunkler, #004A9F);
   background-color: var(--color-zentral-dunkler, #004A9F);
   color: var(--color-zentral-dunkler-kontrast, #fff);
 }
-.accordion.style_light .accordion-group {
+body:not(.fau-elemental) .accordion.style_light .accordion-group {
   margin-bottom: 0;
   border-top: 1px solid var(--color-content-borders, #dfe6ec);
 }
-.accordion.style_light .accordion-group:last-child {
+body:not(.fau-elemental) .accordion.style_light .accordion-group:last-child {
   border-bottom: 1px solid var(--color-content-borders, #dfe6ec);
 }
-.accordion.style_light .accordion-group .accordion-heading .accordion-toggle {
+body:not(.fau-elemental) .accordion.style_light .accordion-group .accordion-heading .accordion-toggle {
   border-left: none;
   background: #fff;
   color: var(--color-Text, #222);
   padding: 12px 40px 12px 10px;
   font-weight: bold;
 }
-.accordion.style_light .accordion-group .accordion-heading .accordion-toggle:before {
+body:not(.fau-elemental) .accordion.style_light .accordion-group .accordion-heading .accordion-toggle:before {
   content: " ";
   -webkit-mask-size: var(--icon-size-mask, 70%);
   mask-size: var(--icon-size-mask, 70%);
@@ -1246,11 +1241,11 @@ button.expand-all.standard-btn {
   right: 5px;
   margin-right: 0;
 }
-.accordion.style_light .accordion-group .accordion-heading .accordion-toggle:hover, .accordion.style_light .accordion-group .accordion-heading .accordion-toggle:focus {
+body:not(.fau-elemental) .accordion.style_light .accordion-group .accordion-heading .accordion-toggle:hover, body:not(.fau-elemental) .accordion.style_light .accordion-group .accordion-heading .accordion-toggle:focus {
   background-color: var(--color-ContentRegions, #f5f7f9);
   color: var(--color-Text, #222);
 }
-.accordion.style_light .accordion-group .accordion-heading .accordion-toggle:hover:before, .accordion.style_light .accordion-group .accordion-heading .accordion-toggle:focus:before {
+body:not(.fau-elemental) .accordion.style_light .accordion-group .accordion-heading .accordion-toggle:hover:before, body:not(.fau-elemental) .accordion.style_light .accordion-group .accordion-heading .accordion-toggle:focus:before {
   content: " ";
   -webkit-mask-size: var(--icon-size-mask, 70%);
   mask-size: var(--icon-size-mask, 70%);
@@ -1273,11 +1268,11 @@ button.expand-all.standard-btn {
   right: 5px;
   margin-right: 0;
 }
-.accordion.style_light .accordion-group .accordion-heading .accordion-toggle.active {
+body:not(.fau-elemental) .accordion.style_light .accordion-group .accordion-heading .accordion-toggle.active {
   background-color: var(--color-ContentRegions, #f5f7f9);
   color: var(--color-Text, #222);
 }
-.accordion.style_light .accordion-group .accordion-heading .accordion-toggle.active:before {
+body:not(.fau-elemental) .accordion.style_light .accordion-group .accordion-heading .accordion-toggle.active:before {
   content: " ";
   -webkit-mask-size: var(--icon-size-mask, 70%);
   mask-size: var(--icon-size-mask, 70%);
@@ -1300,19 +1295,19 @@ button.expand-all.standard-btn {
   right: 5px;
   margin-right: 0;
 }
-.accordion.style_light .accordion-group .accordion-heading .accordion-toggle.active:hover, .accordion.style_light .accordion-group .accordion-heading .accordion-toggle.active:focus {
+body:not(.fau-elemental) .accordion.style_light .accordion-group .accordion-heading .accordion-toggle.active:hover, body:not(.fau-elemental) .accordion.style_light .accordion-group .accordion-heading .accordion-toggle.active:focus {
   background-color: var(--color-StandardHellgrau, #e9edf2);
   color: var(--color-Text, #222);
 }
-.accordion.style_light .accordion-group .accordion-suffix {
+body:not(.fau-elemental) .accordion.style_light .accordion-group .accordion-suffix {
   font-weight: normal;
 }
-.accordion.style_light .accordion-group .accordion-body .accordion-inner {
+body:not(.fau-elemental) .accordion.style_light .accordion-group .accordion-body .accordion-inner {
   background-color: #fff;
 }
-.accordion.style_light .phil .accordion-heading .accordion-toggle:before,
-.accordion.style_light .philfak .accordion-heading .accordion-toggle:before,
-.accordion.style_light .gold .accordion-heading .accordion-toggle:before {
+body:not(.fau-elemental) .accordion.style_light .phil .accordion-heading .accordion-toggle:before,
+body:not(.fau-elemental) .accordion.style_light .philfak .accordion-heading .accordion-toggle:before,
+body:not(.fau-elemental) .accordion.style_light .gold .accordion-heading .accordion-toggle:before {
   content: " ";
   -webkit-mask-size: var(--icon-size-mask, 70%);
   mask-size: var(--icon-size-mask, 70%);
@@ -1335,11 +1330,11 @@ button.expand-all.standard-btn {
   right: 5px;
   margin-right: 0;
 }
-.accordion.style_light .phil .accordion-heading .accordion-toggle:hover:before, .accordion.style_light .phil .accordion-heading .accordion-toggle:focus:before,
-.accordion.style_light .philfak .accordion-heading .accordion-toggle:hover:before,
-.accordion.style_light .philfak .accordion-heading .accordion-toggle:focus:before,
-.accordion.style_light .gold .accordion-heading .accordion-toggle:hover:before,
-.accordion.style_light .gold .accordion-heading .accordion-toggle:focus:before {
+body:not(.fau-elemental) .accordion.style_light .phil .accordion-heading .accordion-toggle:hover:before, body:not(.fau-elemental) .accordion.style_light .phil .accordion-heading .accordion-toggle:focus:before,
+body:not(.fau-elemental) .accordion.style_light .philfak .accordion-heading .accordion-toggle:hover:before,
+body:not(.fau-elemental) .accordion.style_light .philfak .accordion-heading .accordion-toggle:focus:before,
+body:not(.fau-elemental) .accordion.style_light .gold .accordion-heading .accordion-toggle:hover:before,
+body:not(.fau-elemental) .accordion.style_light .gold .accordion-heading .accordion-toggle:focus:before {
   content: " ";
   -webkit-mask-size: var(--icon-size-mask, 70%);
   mask-size: var(--icon-size-mask, 70%);
@@ -1362,9 +1357,9 @@ button.expand-all.standard-btn {
   right: 5px;
   margin-right: 0;
 }
-.accordion.style_light .phil .accordion-heading .accordion-toggle.active:before,
-.accordion.style_light .philfak .accordion-heading .accordion-toggle.active:before,
-.accordion.style_light .gold .accordion-heading .accordion-toggle.active:before {
+body:not(.fau-elemental) .accordion.style_light .phil .accordion-heading .accordion-toggle.active:before,
+body:not(.fau-elemental) .accordion.style_light .philfak .accordion-heading .accordion-toggle.active:before,
+body:not(.fau-elemental) .accordion.style_light .gold .accordion-heading .accordion-toggle.active:before {
   content: " ";
   -webkit-mask-size: var(--icon-size-mask, 70%);
   mask-size: var(--icon-size-mask, 70%);
@@ -1387,9 +1382,9 @@ button.expand-all.standard-btn {
   right: 5px;
   margin-right: 0;
 }
-.accordion.style_light .rw .accordion-heading .accordion-toggle:before,
-.accordion.style_light .rwfak .accordion-heading .accordion-toggle:before,
-.accordion.style_light .red .accordion-heading .accordion-toggle:before {
+body:not(.fau-elemental) .accordion.style_light .rw .accordion-heading .accordion-toggle:before,
+body:not(.fau-elemental) .accordion.style_light .rwfak .accordion-heading .accordion-toggle:before,
+body:not(.fau-elemental) .accordion.style_light .red .accordion-heading .accordion-toggle:before {
   content: " ";
   -webkit-mask-size: var(--icon-size-mask, 70%);
   mask-size: var(--icon-size-mask, 70%);
@@ -1412,11 +1407,11 @@ button.expand-all.standard-btn {
   right: 5px;
   margin-right: 0;
 }
-.accordion.style_light .rw .accordion-heading .accordion-toggle:hover:before, .accordion.style_light .rw .accordion-heading .accordion-toggle:focus:before,
-.accordion.style_light .rwfak .accordion-heading .accordion-toggle:hover:before,
-.accordion.style_light .rwfak .accordion-heading .accordion-toggle:focus:before,
-.accordion.style_light .red .accordion-heading .accordion-toggle:hover:before,
-.accordion.style_light .red .accordion-heading .accordion-toggle:focus:before {
+body:not(.fau-elemental) .accordion.style_light .rw .accordion-heading .accordion-toggle:hover:before, body:not(.fau-elemental) .accordion.style_light .rw .accordion-heading .accordion-toggle:focus:before,
+body:not(.fau-elemental) .accordion.style_light .rwfak .accordion-heading .accordion-toggle:hover:before,
+body:not(.fau-elemental) .accordion.style_light .rwfak .accordion-heading .accordion-toggle:focus:before,
+body:not(.fau-elemental) .accordion.style_light .red .accordion-heading .accordion-toggle:hover:before,
+body:not(.fau-elemental) .accordion.style_light .red .accordion-heading .accordion-toggle:focus:before {
   content: " ";
   -webkit-mask-size: var(--icon-size-mask, 70%);
   mask-size: var(--icon-size-mask, 70%);
@@ -1439,9 +1434,9 @@ button.expand-all.standard-btn {
   right: 5px;
   margin-right: 0;
 }
-.accordion.style_light .rw .accordion-heading .accordion-toggle.active:before,
-.accordion.style_light .rwfak .accordion-heading .accordion-toggle.active:before,
-.accordion.style_light .red .accordion-heading .accordion-toggle.active:before {
+body:not(.fau-elemental) .accordion.style_light .rw .accordion-heading .accordion-toggle.active:before,
+body:not(.fau-elemental) .accordion.style_light .rwfak .accordion-heading .accordion-toggle.active:before,
+body:not(.fau-elemental) .accordion.style_light .red .accordion-heading .accordion-toggle.active:before {
   content: " ";
   -webkit-mask-size: var(--icon-size-mask, 70%);
   mask-size: var(--icon-size-mask, 70%);
@@ -1464,9 +1459,9 @@ button.expand-all.standard-btn {
   right: 5px;
   margin-right: 0;
 }
-.accordion.style_light .med .accordion-heading .accordion-toggle:before,
-.accordion.style_light .medfak .accordion-heading .accordion-toggle:before,
-.accordion.style_light .blue .accordion-heading .accordion-toggle:before {
+body:not(.fau-elemental) .accordion.style_light .med .accordion-heading .accordion-toggle:before,
+body:not(.fau-elemental) .accordion.style_light .medfak .accordion-heading .accordion-toggle:before,
+body:not(.fau-elemental) .accordion.style_light .blue .accordion-heading .accordion-toggle:before {
   content: " ";
   -webkit-mask-size: var(--icon-size-mask, 70%);
   mask-size: var(--icon-size-mask, 70%);
@@ -1489,11 +1484,11 @@ button.expand-all.standard-btn {
   right: 5px;
   margin-right: 0;
 }
-.accordion.style_light .med .accordion-heading .accordion-toggle:hover:before, .accordion.style_light .med .accordion-heading .accordion-toggle:focus:before,
-.accordion.style_light .medfak .accordion-heading .accordion-toggle:hover:before,
-.accordion.style_light .medfak .accordion-heading .accordion-toggle:focus:before,
-.accordion.style_light .blue .accordion-heading .accordion-toggle:hover:before,
-.accordion.style_light .blue .accordion-heading .accordion-toggle:focus:before {
+body:not(.fau-elemental) .accordion.style_light .med .accordion-heading .accordion-toggle:hover:before, body:not(.fau-elemental) .accordion.style_light .med .accordion-heading .accordion-toggle:focus:before,
+body:not(.fau-elemental) .accordion.style_light .medfak .accordion-heading .accordion-toggle:hover:before,
+body:not(.fau-elemental) .accordion.style_light .medfak .accordion-heading .accordion-toggle:focus:before,
+body:not(.fau-elemental) .accordion.style_light .blue .accordion-heading .accordion-toggle:hover:before,
+body:not(.fau-elemental) .accordion.style_light .blue .accordion-heading .accordion-toggle:focus:before {
   content: " ";
   -webkit-mask-size: var(--icon-size-mask, 70%);
   mask-size: var(--icon-size-mask, 70%);
@@ -1516,9 +1511,9 @@ button.expand-all.standard-btn {
   right: 5px;
   margin-right: 0;
 }
-.accordion.style_light .med .accordion-heading .accordion-toggle.active:before,
-.accordion.style_light .medfak .accordion-heading .accordion-toggle.active:before,
-.accordion.style_light .blue .accordion-heading .accordion-toggle.active:before {
+body:not(.fau-elemental) .accordion.style_light .med .accordion-heading .accordion-toggle.active:before,
+body:not(.fau-elemental) .accordion.style_light .medfak .accordion-heading .accordion-toggle.active:before,
+body:not(.fau-elemental) .accordion.style_light .blue .accordion-heading .accordion-toggle.active:before {
   content: " ";
   -webkit-mask-size: var(--icon-size-mask, 70%);
   mask-size: var(--icon-size-mask, 70%);
@@ -1541,9 +1536,9 @@ button.expand-all.standard-btn {
   right: 5px;
   margin-right: 0;
 }
-.accordion.style_light .nat .accordion-heading .accordion-toggle:before,
-.accordion.style_light .natfak .accordion-heading .accordion-toggle:before,
-.accordion.style_light .green .accordion-heading .accordion-toggle:before {
+body:not(.fau-elemental) .accordion.style_light .nat .accordion-heading .accordion-toggle:before,
+body:not(.fau-elemental) .accordion.style_light .natfak .accordion-heading .accordion-toggle:before,
+body:not(.fau-elemental) .accordion.style_light .green .accordion-heading .accordion-toggle:before {
   content: " ";
   -webkit-mask-size: var(--icon-size-mask, 70%);
   mask-size: var(--icon-size-mask, 70%);
@@ -1566,11 +1561,11 @@ button.expand-all.standard-btn {
   right: 5px;
   margin-right: 0;
 }
-.accordion.style_light .nat .accordion-heading .accordion-toggle:hover:before, .accordion.style_light .nat .accordion-heading .accordion-toggle:focus:before,
-.accordion.style_light .natfak .accordion-heading .accordion-toggle:hover:before,
-.accordion.style_light .natfak .accordion-heading .accordion-toggle:focus:before,
-.accordion.style_light .green .accordion-heading .accordion-toggle:hover:before,
-.accordion.style_light .green .accordion-heading .accordion-toggle:focus:before {
+body:not(.fau-elemental) .accordion.style_light .nat .accordion-heading .accordion-toggle:hover:before, body:not(.fau-elemental) .accordion.style_light .nat .accordion-heading .accordion-toggle:focus:before,
+body:not(.fau-elemental) .accordion.style_light .natfak .accordion-heading .accordion-toggle:hover:before,
+body:not(.fau-elemental) .accordion.style_light .natfak .accordion-heading .accordion-toggle:focus:before,
+body:not(.fau-elemental) .accordion.style_light .green .accordion-heading .accordion-toggle:hover:before,
+body:not(.fau-elemental) .accordion.style_light .green .accordion-heading .accordion-toggle:focus:before {
   content: " ";
   -webkit-mask-size: var(--icon-size-mask, 70%);
   mask-size: var(--icon-size-mask, 70%);
@@ -1593,9 +1588,9 @@ button.expand-all.standard-btn {
   right: 5px;
   margin-right: 0;
 }
-.accordion.style_light .nat .accordion-heading .accordion-toggle.active:before,
-.accordion.style_light .natfak .accordion-heading .accordion-toggle.active:before,
-.accordion.style_light .green .accordion-heading .accordion-toggle.active:before {
+body:not(.fau-elemental) .accordion.style_light .nat .accordion-heading .accordion-toggle.active:before,
+body:not(.fau-elemental) .accordion.style_light .natfak .accordion-heading .accordion-toggle.active:before,
+body:not(.fau-elemental) .accordion.style_light .green .accordion-heading .accordion-toggle.active:before {
   content: " ";
   -webkit-mask-size: var(--icon-size-mask, 70%);
   mask-size: var(--icon-size-mask, 70%);
@@ -1618,9 +1613,9 @@ button.expand-all.standard-btn {
   right: 5px;
   margin-right: 0;
 }
-.accordion.style_light .tf .accordion-heading .accordion-toggle:before,
-.accordion.style_light .techfak .accordion-heading .accordion-toggle:before,
-.accordion.style_light .grey .accordion-heading .accordion-toggle:before {
+body:not(.fau-elemental) .accordion.style_light .tf .accordion-heading .accordion-toggle:before,
+body:not(.fau-elemental) .accordion.style_light .techfak .accordion-heading .accordion-toggle:before,
+body:not(.fau-elemental) .accordion.style_light .grey .accordion-heading .accordion-toggle:before {
   content: " ";
   -webkit-mask-size: var(--icon-size-mask, 70%);
   mask-size: var(--icon-size-mask, 70%);
@@ -1643,11 +1638,11 @@ button.expand-all.standard-btn {
   right: 5px;
   margin-right: 0;
 }
-.accordion.style_light .tf .accordion-heading .accordion-toggle:hover:before, .accordion.style_light .tf .accordion-heading .accordion-toggle:focus:before,
-.accordion.style_light .techfak .accordion-heading .accordion-toggle:hover:before,
-.accordion.style_light .techfak .accordion-heading .accordion-toggle:focus:before,
-.accordion.style_light .grey .accordion-heading .accordion-toggle:hover:before,
-.accordion.style_light .grey .accordion-heading .accordion-toggle:focus:before {
+body:not(.fau-elemental) .accordion.style_light .tf .accordion-heading .accordion-toggle:hover:before, body:not(.fau-elemental) .accordion.style_light .tf .accordion-heading .accordion-toggle:focus:before,
+body:not(.fau-elemental) .accordion.style_light .techfak .accordion-heading .accordion-toggle:hover:before,
+body:not(.fau-elemental) .accordion.style_light .techfak .accordion-heading .accordion-toggle:focus:before,
+body:not(.fau-elemental) .accordion.style_light .grey .accordion-heading .accordion-toggle:hover:before,
+body:not(.fau-elemental) .accordion.style_light .grey .accordion-heading .accordion-toggle:focus:before {
   content: " ";
   -webkit-mask-size: var(--icon-size-mask, 70%);
   mask-size: var(--icon-size-mask, 70%);
@@ -1670,9 +1665,9 @@ button.expand-all.standard-btn {
   right: 5px;
   margin-right: 0;
 }
-.accordion.style_light .tf .accordion-heading .accordion-toggle.active:before,
-.accordion.style_light .techfak .accordion-heading .accordion-toggle.active:before,
-.accordion.style_light .grey .accordion-heading .accordion-toggle.active:before {
+body:not(.fau-elemental) .accordion.style_light .tf .accordion-heading .accordion-toggle.active:before,
+body:not(.fau-elemental) .accordion.style_light .techfak .accordion-heading .accordion-toggle.active:before,
+body:not(.fau-elemental) .accordion.style_light .grey .accordion-heading .accordion-toggle.active:before {
   content: " ";
   -webkit-mask-size: var(--icon-size-mask, 70%);
   mask-size: var(--icon-size-mask, 70%);
@@ -1695,8 +1690,8 @@ button.expand-all.standard-btn {
   right: 5px;
   margin-right: 0;
 }
-.accordion.style_light .fau .accordion-heading .accordion-toggle:before,
-.accordion.style_light .default .accordion-heading .accordion-toggle:before {
+body:not(.fau-elemental) .accordion.style_light .fau .accordion-heading .accordion-toggle:before,
+body:not(.fau-elemental) .accordion.style_light .default .accordion-heading .accordion-toggle:before {
   content: " ";
   -webkit-mask-size: var(--icon-size-mask, 70%);
   mask-size: var(--icon-size-mask, 70%);
@@ -1719,9 +1714,9 @@ button.expand-all.standard-btn {
   right: 5px;
   margin-right: 0;
 }
-.accordion.style_light .fau .accordion-heading .accordion-toggle:hover:before, .accordion.style_light .fau .accordion-heading .accordion-toggle:focus:before,
-.accordion.style_light .default .accordion-heading .accordion-toggle:hover:before,
-.accordion.style_light .default .accordion-heading .accordion-toggle:focus:before {
+body:not(.fau-elemental) .accordion.style_light .fau .accordion-heading .accordion-toggle:hover:before, body:not(.fau-elemental) .accordion.style_light .fau .accordion-heading .accordion-toggle:focus:before,
+body:not(.fau-elemental) .accordion.style_light .default .accordion-heading .accordion-toggle:hover:before,
+body:not(.fau-elemental) .accordion.style_light .default .accordion-heading .accordion-toggle:focus:before {
   content: " ";
   -webkit-mask-size: var(--icon-size-mask, 70%);
   mask-size: var(--icon-size-mask, 70%);
@@ -1744,8 +1739,8 @@ button.expand-all.standard-btn {
   right: 5px;
   margin-right: 0;
 }
-.accordion.style_light .fau .accordion-heading .accordion-toggle.active:before,
-.accordion.style_light .default .accordion-heading .accordion-toggle.active:before {
+body:not(.fau-elemental) .accordion.style_light .fau .accordion-heading .accordion-toggle.active:before,
+body:not(.fau-elemental) .accordion.style_light .default .accordion-heading .accordion-toggle.active:before {
   content: " ";
   -webkit-mask-size: var(--icon-size-mask, 70%);
   mask-size: var(--icon-size-mask, 70%);
@@ -1768,65 +1763,165 @@ button.expand-all.standard-btn {
   right: 5px;
   margin-right: 0;
 }
-.accordion .accordion-body {
+body:not(.fau-elemental) .accordion .accordion-body {
   display: block;
   overflow: hidden;
 }
-.accordion .accordion-body .accordion-inner {
+body:not(.fau-elemental) .accordion .accordion-body .accordion-inner {
   border: none;
   background-color: #fff;
   padding: 15px 20px;
   overflow-x: scroll;
 }
-.alert.font-light .accordion .accordion-body .accordion-inner {
+.alert.font-light body:not(.fau-elemental) .accordion .accordion-body .accordion-inner {
   color: var(--color-Text, #222);
 }
-.alert.font-light .accordion .accordion-body .accordion-inner h1, .alert.font-light .accordion .accordion-body .accordion-inner h2, .alert.font-light .accordion .accordion-body .accordion-inner h3, .alert.font-light .accordion .accordion-body .accordion-inner h4, .alert.font-light .accordion .accordion-body .accordion-inner h5, .alert.font-light .accordion .accordion-body .accordion-inner p, .alert.font-light .accordion .accordion-body .accordion-inner li, .alert.font-light .accordion .accordion-body .accordion-inner a, .alert.font-light .accordion .accordion-body .accordion-inner span, .alert.font-light .accordion .accordion-body .accordion-inner blockquote, .alert.font-light .accordion .accordion-body .accordion-inner code, .alert.font-light .accordion .accordion-body .accordion-inner pre, .alert.font-light .accordion .accordion-body .accordion-inner th, .alert.font-light .accordion .accordion-body .accordion-inner td, .alert.font-light .accordion .accordion-body .accordion-inner strong, .alert.font-light .accordion .accordion-body .accordion-inner em {
+.alert.font-light body:not(.fau-elemental) .accordion .accordion-body .accordion-inner h1, .alert.font-light body:not(.fau-elemental) .accordion .accordion-body .accordion-inner h2, .alert.font-light body:not(.fau-elemental) .accordion .accordion-body .accordion-inner h3, .alert.font-light body:not(.fau-elemental) .accordion .accordion-body .accordion-inner h4, .alert.font-light body:not(.fau-elemental) .accordion .accordion-body .accordion-inner h5, .alert.font-light body:not(.fau-elemental) .accordion .accordion-body .accordion-inner p, .alert.font-light body:not(.fau-elemental) .accordion .accordion-body .accordion-inner li, .alert.font-light body:not(.fau-elemental) .accordion .accordion-body .accordion-inner a, .alert.font-light body:not(.fau-elemental) .accordion .accordion-body .accordion-inner span, .alert.font-light body:not(.fau-elemental) .accordion .accordion-body .accordion-inner blockquote, .alert.font-light body:not(.fau-elemental) .accordion .accordion-body .accordion-inner code, .alert.font-light body:not(.fau-elemental) .accordion .accordion-body .accordion-inner pre, .alert.font-light body:not(.fau-elemental) .accordion .accordion-body .accordion-inner th, .alert.font-light body:not(.fau-elemental) .accordion .accordion-body .accordion-inner td, .alert.font-light body:not(.fau-elemental) .accordion .accordion-body .accordion-inner strong, .alert.font-light body:not(.fau-elemental) .accordion .accordion-body .accordion-inner em {
   color: var(--color-Text, #222);
 }
-
-.fau-theme .accordion-toggle {
-  border-radius: var(--border-radius, 4px);
-  background-clip: padding-box;
-}
-.fau-theme .accordion-body .accordion-inner {
+body:not(.fau-elemental) .fau-theme .accordion-body .accordion-inner {
   background-color: #f5f7f9;
 }
-.fau-theme .accordion-group .accordion-body .accordion-inner .accordion-inner {
+body:not(.fau-elemental) .fau-theme .accordion-group .accordion-body .accordion-inner .accordion-inner {
   background-color: rgb(232.25, 236.8, 241.35);
 }
-
 @media print {
-  .accordion {
+  body:not(.fau-elemental) .accordion {
     position: relative;
     display: block;
     overflow: visible;
   }
-  .accordion-group,
-  .accordion-body,
-  .accordion-inner,
-  .accordion-inner p {
+  body:not(.fau-elemental) .accordion-group,
+  body:not(.fau-elemental) .accordion-body,
+  body:not(.fau-elemental) .accordion-inner,
+  body:not(.fau-elemental) .accordion-inner p {
     position: relative;
     display: block !important;
     page-break-inside: avoid;
     break-inside: avoid;
     overflow: visible;
   }
-  button.expand-all.standard-btn {
+  body:not(.fau-elemental) button.expand-all.standard-btn {
     display: none;
   }
-  h3.accordion-heading,
-  h4.accordion-heading {
+  body:not(.fau-elemental) h3.accordion-heading,
+  body:not(.fau-elemental) h4.accordion-heading {
     margin-bottom: 0 !important;
   }
 }
-.read-mode-only {
+body:not(.fau-elemental) .read-mode-only {
   display: none;
 }
-
-#content main .accordion-body:target,
-.admin-bar #content main .accordion-body:target {
+body:not(.fau-elemental) #content main .accordion-body:target,
+body:not(.fau-elemental) .admin-bar #content main .accordion-body:target {
   padding-top: 0;
+}
+
+.fau-elemental .rrze-elements.accordion h1.accordion-heading,
+.fau-elemental .rrze-elements.accordion h2.accordion-heading,
+.fau-elemental .rrze-elements.accordion h3.accordion-heading,
+.fau-elemental .rrze-elements.accordion h4.accordion-heading,
+.fau-elemental .rrze-elements.accordion h5.accordion-heading,
+.fau-elemental .rrze-elements.accordion h6.accordion-heading {
+  width: auto;
+  padding: 0 !important;
+  margin: 0;
+  border: none;
+  text-align: left;
+}
+.fau-elemental .rrze-elements.accordion .accordion-group {
+  border-top: 1px solid #04316A;
+}
+.fau-elemental .rrze-elements.accordion .accordion-group:last-child {
+  border-bottom: 1px solid #04316A;
+}
+.fau-elemental .rrze-elements.accordion button.accordion-toggle {
+  width: 100%;
+  position: relative;
+  border: none;
+  text-align: left;
+  margin: 0;
+  padding: 16px 3em 16px 0;
+  background: transparent;
+  font-weight: bold;
+  color: #04316A;
+  font-family: var(--font-family-base), "Roboto", sans-serif;
+  font-size: 20px;
+  min-height: calc(2em + 32px);
+}
+.fau-elemental .rrze-elements.accordion button.accordion-toggle:before {
+  content: "";
+  width: 2em;
+  height: 2em;
+  position: absolute;
+  right: 0;
+  top: 16px;
+  background-color: #04316A;
+}
+.fau-elemental .rrze-elements.accordion button.accordion-toggle:after {
+  content: " ";
+  -webkit-mask-size: var(--icon-size-mask, 70%);
+  mask-size: var(--icon-size-mask, 70%);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  display: inline-block;
+  width: 1em;
+  margin-right: 5px;
+  position: relative;
+  top: 2px;
+  mask-image: url("../svg/solid/angle-down.svg");
+  -webkit-mask-image: url("../svg/solid/angle-down.svg");
+  background-color: var(--icon-color, #fff);
+  width: var(--icon-size, 1.2em);
+  height: var(--icon-size, 1.2em);
+  display: inline-block;
+  position: absolute;
+  right: 0.4em;
+  top: calc(16px + 0.4em);
+  margin-right: 0;
+}
+.fau-elemental .rrze-elements.accordion button.accordion-toggle .accordion-suffix {
+  font-weight: normal;
+}
+.fau-elemental .rrze-elements.accordion button.accordion-toggle.active:after {
+  content: " ";
+  -webkit-mask-size: var(--icon-size-mask, 70%);
+  mask-size: var(--icon-size-mask, 70%);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  display: inline-block;
+  width: 1em;
+  margin-right: 5px;
+  position: relative;
+  top: 2px;
+  mask-image: url("../svg/solid/angle-up.svg");
+  -webkit-mask-image: url("../svg/solid/angle-up.svg");
+  background-color: var(--icon-color, #fff);
+  width: var(--icon-size, 1.2em);
+  height: var(--icon-size, 1.2em);
+  display: inline-block;
+  position: absolute;
+  right: 0.4em;
+  top: calc(16px + 0.4em);
+  margin-right: 0;
+}
+.fau-elemental .rrze-elements.accordion .accordion-body {
+  padding: 8px 0 16px;
+  font-size: 16px;
+}
+.fau-elemental .rrze-elements.accordion .button-container-right {
+  text-align: right;
+}
+.fau-elemental .rrze-elements.accordion .button-container-left {
+  text-align: left;
+}
+.fau-elemental .rrze-elements.accordion button.expand-all {
+  font-family: var(--font-family-base), "Roboto", sans-serif;
+  letter-spacing: 0.05em;
 }
 
 .rrze-elements-tabs {
