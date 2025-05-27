@@ -1817,6 +1817,9 @@ body:not(.fau-elemental) .admin-bar #content main .accordion-body:target {
   padding-top: 0;
 }
 
+.fau-elemental .rrze-elements.accordion {
+  margin: 16px 0 32px;
+}
 .fau-elemental .rrze-elements.accordion h1.accordion-heading,
 .fau-elemental .rrze-elements.accordion h2.accordion-heading,
 .fau-elemental .rrze-elements.accordion h3.accordion-heading,
@@ -1832,7 +1835,7 @@ body:not(.fau-elemental) .admin-bar #content main .accordion-body:target {
 .fau-elemental .rrze-elements.accordion .accordion-group {
   border-top: 1px solid #04316A;
 }
-.fau-elemental .rrze-elements.accordion .accordion-group:last-child {
+.fau-elemental .rrze-elements.accordion .accordion-group:last-child, .fau-elemental .rrze-elements.accordion .accordion-group:last-of-type {
   border-bottom: 1px solid #04316A;
 }
 .fau-elemental .rrze-elements.accordion button.accordion-toggle {
@@ -1844,7 +1847,7 @@ body:not(.fau-elemental) .admin-bar #content main .accordion-body:target {
   padding: 16px 3em 16px 0;
   background: transparent;
   font-weight: bold;
-  color: #04316A;
+  color: var(--FAU-Col-FAU-Blau-100, #04316a);
   font-family: var(--font-family-base), "Roboto", sans-serif;
   font-size: 20px;
   min-height: calc(2em + 32px);
@@ -1856,7 +1859,10 @@ body:not(.fau-elemental) .admin-bar #content main .accordion-body:target {
   position: absolute;
   right: 0;
   top: 16px;
-  background-color: #04316A;
+  background-color: var(--FAU-Col-FAU-Blau-100, #04316a);
+}
+.fau-elemental .rrze-elements.accordion button.accordion-toggle:hover:before {
+  background-color: var(--FAU-Col-FAU-Dunkelblau-100, #041e42);
 }
 .fau-elemental .rrze-elements.accordion button.accordion-toggle:after {
   content: " ";
@@ -1873,7 +1879,7 @@ body:not(.fau-elemental) .admin-bar #content main .accordion-body:target {
   top: 2px;
   mask-image: url("../svg/solid/angle-down.svg");
   -webkit-mask-image: url("../svg/solid/angle-down.svg");
-  background-color: var(--icon-color, #fff);
+  background-color: var(--icon-color, var(--FAU-Col-FAU-Weiss-100, #fff));
   width: var(--icon-size, 1.2em);
   height: var(--icon-size, 1.2em);
   display: inline-block;
@@ -1901,6 +1907,330 @@ body:not(.fau-elemental) .admin-bar #content main .accordion-body:target {
   mask-image: url("../svg/solid/angle-up.svg");
   -webkit-mask-image: url("../svg/solid/angle-up.svg");
   background-color: var(--icon-color, #fff);
+  width: var(--icon-size, 1.2em);
+  height: var(--icon-size, 1.2em);
+  display: inline-block;
+  position: absolute;
+  right: 0.4em;
+  top: calc(16px + 0.4em);
+  margin-right: 0;
+}
+.fau-elemental .rrze-elements.accordion .fau button.accordion-toggle:before {
+  background-color: var(--FAU-Col-FAU-Blau-100, #04316a);
+}
+.fau-elemental .rrze-elements.accordion .fau button.accordion-toggle:hover:before {
+  background-color: var(--FAU-Col-FAU-Dunkelblau-100, #041e42);
+}
+.fau-elemental .rrze-elements.accordion .fau button.accordion-toggle:after {
+  content: " ";
+  -webkit-mask-size: var(--icon-size-mask, 70%);
+  mask-size: var(--icon-size-mask, 70%);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  display: inline-block;
+  width: 1em;
+  margin-right: 5px;
+  position: relative;
+  top: 2px;
+  mask-image: url("../svg/solid/angle-down.svg");
+  -webkit-mask-image: url("../svg/solid/angle-down.svg");
+  background-color: var(--icon-color, var(--FAU-Col-FAU-Weiss-100, #fff));
+  width: var(--icon-size, 1.2em);
+  height: var(--icon-size, 1.2em);
+  display: inline-block;
+  position: absolute;
+  right: 0.4em;
+  top: calc(16px + 0.4em);
+  margin-right: 0;
+}
+.fau-elemental .rrze-elements.accordion .fau button.accordion-toggle:hover:after {
+  content: " ";
+  -webkit-mask-size: var(--icon-size-mask, 70%);
+  mask-size: var(--icon-size-mask, 70%);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  display: inline-block;
+  width: 1em;
+  margin-right: 5px;
+  position: relative;
+  top: 2px;
+  mask-image: url("../svg/solid/angle-down.svg");
+  -webkit-mask-image: url("../svg/solid/angle-down.svg");
+  background-color: var(--icon-color, var(--FAU-Col-FAU-Weiss-100, #fff));
+  width: var(--icon-size, 1.2em);
+  height: var(--icon-size, 1.2em);
+  display: inline-block;
+  position: absolute;
+  right: 0.4em;
+  top: calc(16px + 0.4em);
+  margin-right: 0;
+}
+.fau-elemental .rrze-elements.accordion .med button.accordion-toggle:before {
+  background-color: var(--FAU-Col-Med-Blau-100, #18b4f1);
+}
+.fau-elemental .rrze-elements.accordion .med button.accordion-toggle:hover:before {
+  background-color: var(--FAU-Col-Med-Dunkelblau-100, #005287);
+}
+.fau-elemental .rrze-elements.accordion .med button.accordion-toggle:after {
+  content: " ";
+  -webkit-mask-size: var(--icon-size-mask, 70%);
+  mask-size: var(--icon-size-mask, 70%);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  display: inline-block;
+  width: 1em;
+  margin-right: 5px;
+  position: relative;
+  top: 2px;
+  mask-image: url("../svg/solid/angle-down.svg");
+  -webkit-mask-image: url("../svg/solid/angle-down.svg");
+  background-color: var(--icon-color, var(--FAU-Col-FAU-Schwarz-100, #000));
+  width: var(--icon-size, 1.2em);
+  height: var(--icon-size, 1.2em);
+  display: inline-block;
+  position: absolute;
+  right: 0.4em;
+  top: calc(16px + 0.4em);
+  margin-right: 0;
+}
+.fau-elemental .rrze-elements.accordion .med button.accordion-toggle:hover:after {
+  content: " ";
+  -webkit-mask-size: var(--icon-size-mask, 70%);
+  mask-size: var(--icon-size-mask, 70%);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  display: inline-block;
+  width: 1em;
+  margin-right: 5px;
+  position: relative;
+  top: 2px;
+  mask-image: url("../svg/solid/angle-down.svg");
+  -webkit-mask-image: url("../svg/solid/angle-down.svg");
+  background-color: var(--icon-color, var(--FAU-Col-FAU-Weiss-100, #fff));
+  width: var(--icon-size, 1.2em);
+  height: var(--icon-size, 1.2em);
+  display: inline-block;
+  position: absolute;
+  right: 0.4em;
+  top: calc(16px + 0.4em);
+  margin-right: 0;
+}
+.fau-elemental .rrze-elements.accordion .nat button.accordion-toggle:before {
+  background-color: var(--FAU-Col-Nat-Gruen-100, #7bb725);
+}
+.fau-elemental .rrze-elements.accordion .nat button.accordion-toggle:hover:before {
+  background-color: var(--FAU-Col-Nat-Dunkelgruen-100, #266141);
+}
+.fau-elemental .rrze-elements.accordion .nat button.accordion-toggle:after {
+  content: " ";
+  -webkit-mask-size: var(--icon-size-mask, 70%);
+  mask-size: var(--icon-size-mask, 70%);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  display: inline-block;
+  width: 1em;
+  margin-right: 5px;
+  position: relative;
+  top: 2px;
+  mask-image: url("../svg/solid/angle-down.svg");
+  -webkit-mask-image: url("../svg/solid/angle-down.svg");
+  background-color: var(--icon-color, var(--FAU-Col-FAU-Schwarz-100, #000));
+  width: var(--icon-size, 1.2em);
+  height: var(--icon-size, 1.2em);
+  display: inline-block;
+  position: absolute;
+  right: 0.4em;
+  top: calc(16px + 0.4em);
+  margin-right: 0;
+}
+.fau-elemental .rrze-elements.accordion .nat button.accordion-toggle:hover:after {
+  content: " ";
+  -webkit-mask-size: var(--icon-size-mask, 70%);
+  mask-size: var(--icon-size-mask, 70%);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  display: inline-block;
+  width: 1em;
+  margin-right: 5px;
+  position: relative;
+  top: 2px;
+  mask-image: url("../svg/solid/angle-down.svg");
+  -webkit-mask-image: url("../svg/solid/angle-down.svg");
+  background-color: var(--icon-color, var(--FAU-Col-FAU-Weiss-100, #fff));
+  width: var(--icon-size, 1.2em);
+  height: var(--icon-size, 1.2em);
+  display: inline-block;
+  position: absolute;
+  right: 0.4em;
+  top: calc(16px + 0.4em);
+  margin-right: 0;
+}
+.fau-elemental .rrze-elements.accordion .phil button.accordion-toggle:before {
+  background-color: var(--FAU-Col-Phil-Gelb-100, #fdb735);
+}
+.fau-elemental .rrze-elements.accordion .phil button.accordion-toggle:hover:before {
+  background-color: var(--FAU-Col-Phil-Orange-100, #e87722);
+}
+.fau-elemental .rrze-elements.accordion .phil button.accordion-toggle:after {
+  content: " ";
+  -webkit-mask-size: var(--icon-size-mask, 70%);
+  mask-size: var(--icon-size-mask, 70%);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  display: inline-block;
+  width: 1em;
+  margin-right: 5px;
+  position: relative;
+  top: 2px;
+  mask-image: url("../svg/solid/angle-down.svg");
+  -webkit-mask-image: url("../svg/solid/angle-down.svg");
+  background-color: var(--icon-color, var(--FAU-Col-FAU-Schwarz-100, #000));
+  width: var(--icon-size, 1.2em);
+  height: var(--icon-size, 1.2em);
+  display: inline-block;
+  position: absolute;
+  right: 0.4em;
+  top: calc(16px + 0.4em);
+  margin-right: 0;
+}
+.fau-elemental .rrze-elements.accordion .phil button.accordion-toggle:hover:after {
+  content: " ";
+  -webkit-mask-size: var(--icon-size-mask, 70%);
+  mask-size: var(--icon-size-mask, 70%);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  display: inline-block;
+  width: 1em;
+  margin-right: 5px;
+  position: relative;
+  top: 2px;
+  mask-image: url("../svg/solid/angle-down.svg");
+  -webkit-mask-image: url("../svg/solid/angle-down.svg");
+  background-color: var(--icon-color, var(--FAU-Col-FAU-Schwarz-100, #000));
+  width: var(--icon-size, 1.2em);
+  height: var(--icon-size, 1.2em);
+  display: inline-block;
+  position: absolute;
+  right: 0.4em;
+  top: calc(16px + 0.4em);
+  margin-right: 0;
+}
+.fau-elemental .rrze-elements.accordion .rw button.accordion-toggle:before {
+  background-color: var(--FAU-Col-RW-Rot-100, #c50f3c);
+}
+.fau-elemental .rrze-elements.accordion .rw button.accordion-toggle:hover:before {
+  background-color: var(--FAU-Col-RW-Dunkelrot-100, #971b2f);
+}
+.fau-elemental .rrze-elements.accordion .rw button.accordion-toggle:after {
+  content: " ";
+  -webkit-mask-size: var(--icon-size-mask, 70%);
+  mask-size: var(--icon-size-mask, 70%);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  display: inline-block;
+  width: 1em;
+  margin-right: 5px;
+  position: relative;
+  top: 2px;
+  mask-image: url("../svg/solid/angle-down.svg");
+  -webkit-mask-image: url("../svg/solid/angle-down.svg");
+  background-color: var(--icon-color, var(--FAU-Col-FAU-Weiss-100, #fff));
+  width: var(--icon-size, 1.2em);
+  height: var(--icon-size, 1.2em);
+  display: inline-block;
+  position: absolute;
+  right: 0.4em;
+  top: calc(16px + 0.4em);
+  margin-right: 0;
+}
+.fau-elemental .rrze-elements.accordion .rw button.accordion-toggle:hover:after {
+  content: " ";
+  -webkit-mask-size: var(--icon-size-mask, 70%);
+  mask-size: var(--icon-size-mask, 70%);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  display: inline-block;
+  width: 1em;
+  margin-right: 5px;
+  position: relative;
+  top: 2px;
+  mask-image: url("../svg/solid/angle-down.svg");
+  -webkit-mask-image: url("../svg/solid/angle-down.svg");
+  background-color: var(--icon-color, var(--FAU-Col-FAU-Weiss-100, #fff));
+  width: var(--icon-size, 1.2em);
+  height: var(--icon-size, 1.2em);
+  display: inline-block;
+  position: absolute;
+  right: 0.4em;
+  top: calc(16px + 0.4em);
+  margin-right: 0;
+}
+.fau-elemental .rrze-elements.accordion .tf button.accordion-toggle:before {
+  background-color: var(--FAU-Col-TF-Metallic-100, #8c9fb1);
+}
+.fau-elemental .rrze-elements.accordion .tf button.accordion-toggle:hover:before {
+  background-color: var(--FAU-Col-TF-Dunkel-Metallic-100, #2f586e);
+}
+.fau-elemental .rrze-elements.accordion .tf button.accordion-toggle:after {
+  content: " ";
+  -webkit-mask-size: var(--icon-size-mask, 70%);
+  mask-size: var(--icon-size-mask, 70%);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  display: inline-block;
+  width: 1em;
+  margin-right: 5px;
+  position: relative;
+  top: 2px;
+  mask-image: url("../svg/solid/angle-down.svg");
+  -webkit-mask-image: url("../svg/solid/angle-down.svg");
+  background-color: var(--icon-color, var(--FAU-Col-FAU-Schwarz-100, #000));
+  width: var(--icon-size, 1.2em);
+  height: var(--icon-size, 1.2em);
+  display: inline-block;
+  position: absolute;
+  right: 0.4em;
+  top: calc(16px + 0.4em);
+  margin-right: 0;
+}
+.fau-elemental .rrze-elements.accordion .tf button.accordion-toggle:hover:after {
+  content: " ";
+  -webkit-mask-size: var(--icon-size-mask, 70%);
+  mask-size: var(--icon-size-mask, 70%);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  display: inline-block;
+  width: 1em;
+  margin-right: 5px;
+  position: relative;
+  top: 2px;
+  mask-image: url("../svg/solid/angle-down.svg");
+  -webkit-mask-image: url("../svg/solid/angle-down.svg");
+  background-color: var(--icon-color, var(--FAU-Col-FAU-Weiss-100, #fff));
   width: var(--icon-size, 1.2em);
   height: var(--icon-size, 1.2em);
   display: inline-block;

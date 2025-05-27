@@ -644,10 +644,58 @@ body:not(.fau-elemental) {
 }
 
 .fau-elemental {
-    .rrze-elements.accordion{
-        $gap: 32px;
-        $gap-half: 16px;
-        $color-blue: #04316A;
+    $gap: 32px;
+    $gap-half: 16px;
+    @mixin accordion-mask-icon-settings {
+        display: inline-block;
+        position: absolute;
+        right: .4em;
+        top: calc($gap-half + .4em);
+        margin-right: 0;
+    }
+    $themes: (
+            fau: (
+                    base: var(--FAU-Col-FAU-Blau-100, #04316a),
+                    base_kontrast: var(--FAU-Col-FAU-Weiss-100, #fff),
+                    hover: var(--FAU-Col-FAU-Dunkelblau-100, #041e42),
+                    hover_kontrast: var(--FAU-Col-FAU-Weiss-100, #fff)
+            ),
+            med: (
+                    base: var(--FAU-Col-Med-Blau-100, #18b4f1),
+                    base_kontrast: var(--FAU-Col-FAU-Schwarz-100, #000),
+                    hover: var(--FAU-Col-Med-Dunkelblau-100, #005287),
+                    hover_kontrast: var(--FAU-Col-FAU-Weiss-100, #fff)
+            ),
+            nat: (
+                    base: var(--FAU-Col-Nat-Gruen-100, #7bb725),
+                    base_kontrast: var(--FAU-Col-FAU-Schwarz-100, #000),
+                    hover: var(--FAU-Col-Nat-Dunkelgruen-100, #266141),
+                    hover_kontrast: var(--FAU-Col-FAU-Weiss-100, #fff)
+            ),
+            phil: (
+                    base: var(--FAU-Col-Phil-Gelb-100, #fdb735),
+                    base_kontrast: var(--FAU-Col-FAU-Schwarz-100, #000),
+                    hover: var(--FAU-Col-Phil-Orange-100, #e87722),
+                    hover_kontrast: var(--FAU-Col-FAU-Schwarz-100, #000)
+            ),
+            rw: (
+                    base: var(--FAU-Col-RW-Rot-100, #c50f3c),
+                    base_kontrast: var(--FAU-Col-FAU-Weiss-100, #fff),
+                    hover: var(--FAU-Col-RW-Dunkelrot-100, #971b2f),
+                    hover_kontrast: var(--FAU-Col-FAU-Weiss-100, #fff)
+            ),
+            tf: (
+                    base: var(--FAU-Col-TF-Metallic-100, #8c9fb1),
+                    base_kontrast: var(--FAU-Col-FAU-Schwarz-100, #000),
+                    hover: var(--FAU-Col-TF-Dunkel-Metallic-100, #2f586e),
+                    hover_kontrast: var(--FAU-Col-FAU-Weiss-100, #fff)
+            )
+    );
+
+
+    .rrze-elements.accordion {
+
+        margin: $gap-half 0 $gap;
 
         h1.accordion-heading,
         h2.accordion-heading,
@@ -666,7 +714,7 @@ body:not(.fau-elemental) {
             border-top: 1px solid #04316A;
             //padding: 8px 0 $gap-half;
 
-            &:last-child {
+            &:last-child, &:last-of-type {
                 border-bottom: 1px solid #04316A;
             }
         }
@@ -680,7 +728,7 @@ body:not(.fau-elemental) {
             padding: $gap-half 3em $gap-half 0;
             background: transparent;
             font-weight: bold;
-            color: $color-blue;
+            color: var(--FAU-Col-FAU-Blau-100, #04316a);
             font-family: var(--font-family-base), 'Roboto', sans-serif;
             font-size: 20px;
             min-height: calc(2em + $gap);
@@ -692,16 +740,16 @@ body:not(.fau-elemental) {
                 position: absolute;
                 right: 0;
                 top: $gap-half;
-                background-color: $color-blue;
+                background-color: var(--FAU-Col-FAU-Blau-100, #04316a);
+            }
+
+            &:hover:before {
+                background-color: var(--FAU-Col-FAU-Dunkelblau-100, #041e42),
             }
 
             &:after {
-                @include mask-icon(url("../svg/solid/angle-down.svg"), #fff, 1.2em);
-                display: inline-block;
-                position: absolute;
-                right: .4em;
-                top: calc($gap-half + .4em);
-                margin-right: 0;
+                @include mask-icon(url("../svg/solid/angle-down.svg"), var(--FAU-Col-FAU-Weiss-100, #fff), 1.2em);
+                @include accordion-mask-icon-settings;
             }
 
             .accordion-suffix {
@@ -711,11 +759,26 @@ body:not(.fau-elemental) {
             &.active {
                 &:after {
                     @include mask-icon(url("../svg/solid/angle-up.svg"), #fff, 1.2em);
-                    display: inline-block;
-                    position: absolute;
-                    right: .4em;
-                    top: calc($gap-half + .4em);
-                    margin-right: 0;
+                    @include accordion-mask-icon-settings;
+                }
+            }
+        }
+
+        @each $key, $colors in $themes {
+            .#{$key} button.accordion-toggle {
+                &:before {
+                    background-color: map-get($colors, base);
+                }
+                &:hover:before {
+                    background-color: map-get($colors, hover);
+                }
+                &:after {
+                    @include mask-icon(url("../svg/solid/angle-down.svg"), map-get($colors, base_kontrast), 1.2em);
+                    @include accordion-mask-icon-settings;
+                }
+                &:hover:after {
+                    @include mask-icon(url("../svg/solid/angle-down.svg"), map-get($colors, hover_kontrast), 1.2em);
+                    @include accordion-mask-icon-settings;
                 }
             }
         }
