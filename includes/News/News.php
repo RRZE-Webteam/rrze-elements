@@ -401,7 +401,7 @@ class News
             wp_reset_postdata();
         } else {
             ?>
-            <p><?php $output = __('No posts found.', 'rrze-elements'); ?></p>
+            <?php $output = '<p>' . __('No posts found.', 'rrze-elements') . '</p>'; ?>
             <?php
         }
 
