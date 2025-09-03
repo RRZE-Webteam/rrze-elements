@@ -10,6 +10,7 @@ use RRZE\Elements\Button\Button;
 use RRZE\Elements\Columns\Columns;
 use RRZE\Elements\ContentSlider\ContentSlider;
 use RRZE\Elements\CTA\CTA;
+use RRZE\Elements\Details\Details;
 use RRZE\Elements\LaTeX\LaTeX;
 use RRZE\Elements\LegalText\LegalText;
 use RRZE\Elements\Assistant\Assistant;
@@ -56,6 +57,7 @@ class Main
         new TinyMCEButtons();
         new Lightbox();
         new Accordion($this->pluginFile);
+        //new Details($this->pluginFile);
         new Alert();
         new Button();
         new Columns();

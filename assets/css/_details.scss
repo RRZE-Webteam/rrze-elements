@@ -1,0 +1,423 @@
+.rrze-elements.details-accordion {
+    margin-bottom: 1em;
+    .button-container-right {
+        text-align: right;
+    }
+    details {
+        inline-size: 100%;
+        margin-bottom: 5px;
+        summary {
+            border-left: 10px solid var(--color-primary-ci-hell, #04316A);
+            background: var(--color-ContentBorders, #d2ddeb);
+            color: var(--color-Text, #444);
+            font-size: 1rem;
+            text-decoration: none;
+            padding: 8px 1.5em 8px 10px;
+            cursor: pointer;
+            list-style: none;
+            position: relative;
+            &:target {
+                padding-top: 8px !important; // Fix für FAU-Einrichtungen
+            }
+
+            &::-webkit-details-marker,
+            &::marker {
+                display: none;
+            }
+            .accordion-suffix {
+                font-weight: bold;
+            }
+            .marker {
+                @include mask-icon(url("../svg/solid/caret-down.svg"), var(--color-Text, #444), 1em);
+                position: absolute;
+                top: 50%;
+                right: 10px;
+                transform: translateY(-50%) rotate(0deg);
+                transition: transform 0.3s ease;
+            }
+        }
+
+        .details-content {
+            background-color: #f5f7f9;
+            overflow: hidden;
+            transition: height 0.3s ease;
+            //height: 0;
+            .details-content-inner {
+                padding: 15px 20px;
+                overflow-x: scroll;
+            }
+        }
+
+        &[open] {
+            summary {
+                background-color: var(--color-primary-ci-hell, #04316A);
+                color: var(--color-primary-ci-hell-kontrast, #fff);
+            }
+
+            .marker {
+                transform: translateY(-50%) rotate(180deg);
+                background-color: var(--color-primary-ci-hell-kontrast, #fff);
+            }
+
+            &:hover, &:focus, &:active {
+                summary {
+                    border-color: var(--color-primary-dunkler, #004A9F);
+                    background-color: var(--color-primary-dunkler, #004A9F);
+                    color: var(--color-primary-dunkler-kontrast, #fff);
+                }
+            }
+        }
+
+        &.phil,
+        &.philfak,
+        &.gold {
+            summary {
+                border-color: var(--color-phil-ci-hell, $colorPhilFak);
+            }
+            &[open] {
+                summary {
+                    border-color: var(--color-phil-ci-hell, $colorPhilFak);
+                    background-color: var(--color-phil-ci-hell, $colorPhilFak);
+                    color: var(--color-phil-ci-hell-kontrast, #000);
+                    .marker {
+                        background-color: var(--color-phil-ci-hell-kontrast, #000);
+                    }
+                }
+
+                &:hover, &:focus, &:active {
+                    summary {
+                        border-color: var(--color-phil-dunkler, $colorPhilFakDunkler);
+                        background-color: var(--color-phil-dunkler, $colorPhilFakDunkler);
+                        color: var(--color-phil-dunkler-kontrast, #000);
+                        .marker {
+                            background-color: var(--color-phil-dunkler-kontrast, #000);
+                        }
+                    }
+                }
+            }
+        }
+
+        &.med,
+        &.medfak,
+        &.blue {
+            summary {
+                border-color: var(--color-med-ci-hell, $colorMedFak);
+            }
+            &[open] {
+                summary {
+                    border-color: var(--color-med-ci-hell, $colorMedFak);
+                    background-color: var(--color-med-ci-hell, $colorMedFak);
+                    color: var(--color-med-ci-hell-kontrast, #000);
+                    .marker {
+                        background-color: var(--color-med-ci-hell-kontrast, #000);
+                    }
+                }
+
+                &:hover, &:focus, &:active {
+                    summary {
+                        border-color: var(--color-med-dunkler, $colorMedFakDunkler);
+                        background-color: var(--color-med-dunkler, $colorMedFakDunkler);
+                        color: var(--color-med-dunkler-kontrast, #fff);
+                        .marker {
+                            background-color: var(--color-med-dunkler-kontrast, #fff);
+                        }
+                    }
+                }
+            }
+        }
+
+        &.nat,
+        &.natfak,
+        &.green {
+            summary {
+                border-color: var(--color-nat-ci-hell, $colorNatFak);
+            }
+            &[open] {
+                summary {
+                    border-color: var(--color-nat-ci-hell, $colorNatFak);
+                    background-color: var(--color-nat-ci-hell, $colorNatFak);
+                    color: var(--color-nat-ci-hell-kontrast, #000);
+                    .marker {
+                        background-color: var(--color-nat-ci-hell-kontrast, #000);
+                    }
+                }
+                &:hover, &:focus, &:active {
+                    summary {
+                        border-color: var(--color-nat-dunkler, $colorNatFakDunkler);
+                        background-color: var(--color-nat-dunkler, $colorNatFakDunkler);
+                        color: var(--color-nat-dunkler-kontrast, #fff);
+                        .marker {
+                            background-color: var(--color-nat-dunkler-kontrast, #fff);
+                        }
+                    }
+                }
+            }
+        }
+
+        &.rw,
+        &.rwfak,
+        &.red {
+            summary {
+                border-color: var(--color-rw-ci-hell, $colorRwFak);
+            }
+            &[open] {
+                summary {
+                    border-color: var(--color-rw-ci-hell, $colorRwFak);
+                    background-color: var(--color-rw-ci-hell, $colorRwFak);
+                    color: var(--color-rw-ci-hell-kontrast, #fff);
+                    .marker {
+                        background-color: var(--color-rw-ci-hell-kontrast, #fff);
+                    }
+                }
+
+                &:hover, &:focus, &:active {
+                    summary {
+                        border-color: var(--color-rw-dunkler, $colorRwFakDunkler);
+                        background-color: var(--color-rw-dunkler, $colorRwFakDunkler);
+                        color: var(--color-rw-dunkler-kontrast, #fff);
+                        .marker {
+                            background-color: var(--color-rw-dunkler-kontrast, #fff);
+                        }
+                    }
+                }
+            }
+        }
+
+        &.tf,
+        &.techfak,
+        &.grey {
+            summary {
+                border-color: var(--color-tf-ci-hell, $colorTechFak);
+            }
+            &[open] {
+                summary {
+                    border-color: var(--color-tf-ci-hell, $colorTechFak);
+                    background-color: var(--color-tf-ci-hell, $colorTechFak);
+                    color: var(--color-tf-ci-hell-kontrast, #000);
+                    .marker {
+                        background-color: var(--color-tf-ci-hell-kontrast, #000);
+                    }
+                }
+                &:hover, &:focus, &:active {
+                    summary {
+                        border-color: var(--color-tf-dunkler, $colorTechFak);
+                        background-color: var(--color-tf-dunkler, $colorTechFak);
+                        color: var(--color-tf-dunkler-kontrast, #fff);
+                        .marker {
+                            background-color: var(--color-tf-dunkler-kontrast, #fff);
+                        }
+                    }
+                }
+            }
+        }
+
+        .fau,
+        .default {
+            summary {
+                border-color: var(--color-zentral-ci-hell, $colorDefault);
+            }
+            &[open] {
+                summary {
+                    border-color: var(--color-zentral-ci-hell, $colorDefault);
+                    background-color: var(--color-zentral-ci-hell, $colorDefault);
+                    color: var(--color-zentral-ci-hell-kontrast, #fff);
+                    .marker {
+                        background-color: var(--color-zentral-ci-hell-kontrast, #fff);
+                    }
+                }
+                &:hover, &:focus, &:active {
+                    summary {
+                        border-color: var(--color-zentral-dunkler, $colorDefaultDunkler);
+                        background-color: var(--color-zentral-dunkler, $colorDefaultDunkler);
+                        color: var(--color-zentral-dunkler-kontrast, #fff);
+                        .marker {
+                            background-color: var(--color-zentral-dunkler-kontrast, #fff);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &.style_light {
+        details {
+            background-color: #fff;
+            margin-bottom: 0;
+            border-top: 1px solid var(--color-content-borders, #dfe6ec);
+
+            &:last-child {
+                border-bottom: 1px solid var(--color-content-borders, #dfe6ec);
+            }
+
+            .details-content {
+                background-color: #fff;
+                .details-content-inner {
+                    padding: 15px 20px;
+                    overflow-x: scroll;
+                }
+            }
+
+            summary {
+                border-left: none;
+                background: #fff;
+                color: var(--color-Text, #222);
+                padding: 12px 40px 12px 10px;
+                font-weight: bold;
+
+                .marker {
+                    @include mask-icon(url("../svg/solid/angle-down.svg"), var(--color-primary-ci-hell, $colorDefault), 2em);
+                    position: absolute;
+                    top: 50%;
+                    right: 10px;
+                    margin-right: 0;
+                }
+
+                &:hover,
+                &:focus {
+                    background-color: var(--color-ContentRegions, #f5f7f9);
+                    color: var(--color-Text, #222);
+                }
+            }
+
+            .accordion-suffix {
+                font-weight: normal;
+            }
+
+            &[open] {
+                summary {
+                    background-color: var(--color-ContentRegions, #f5f7f9);
+                    color: var(--color-Text, #222);
+                }
+            }
+
+            &[open]:hover,
+            &[open]:focus {
+                summary {
+                    background-color: var(--color-StandardHellgrau, #e9edf2);
+                    color: var(--color-Text, #222);
+                }
+            }
+
+            &.phil,
+            &.philfak,
+            &.gold,
+            &.rw,
+            &.rwfak,
+            &.red,
+            &.med,
+            &.medfak,
+            &.blue,
+            &.nat,
+            &.natfak,
+            &.green,
+            &.tf,
+            &.techfak,
+            &.grey,
+            &.fau,
+            &.default {
+                &[open] {
+                    summary {
+                        background-color: var(--color-ContentRegions, #f5f7f9);
+                        color: var(--color-Text, #222);
+
+                        &:hover,
+                        &:focus {
+                            background-color: var(--color-StandardHellgrau, #e9edf2);
+                        }
+                    }
+                }
+            }
+        }
+        details, details[open] {
+            &.phil,
+            &.philfak,
+            &.gold {
+                summary {
+                    .marker {
+                        @include mask-icon(url("../svg/solid/angle-down.svg"), var(--color-phil-dunkler, $colorPhilFakDunkler), 2em);
+                        position: absolute;
+                        top: 50%;
+                        right: 10px;
+                        margin-right: 0;
+                    }
+                }
+
+            }
+            &.rw,
+            &.rwfak,
+            &.red {
+                summary {
+                    .marker {
+                        @include mask-icon(url("../svg/solid/angle-down.svg"), var(--color-rw-ci-hell, $colorRwFak), 2em);
+                        position: absolute;
+                        top: 50%;
+                        right: 10px;
+                        margin-right: 0;
+                    }
+                }
+            }
+            &.med,
+            &.medfak,
+            &.blue {
+                summary {
+                    .marker {
+                        @include mask-icon(url("../svg/solid/angle-down.svg"), var(--color-med-ci-hell, $colorMedFak), 2em);
+                        position: absolute;
+                        top: 50%;
+                        right: 10px;
+                        margin-right: 0;
+                    }
+                }
+            }
+            &.nat,
+            &.natfak,
+            &.green {
+                summary {
+                    .marker {
+                        @include mask-icon(url("../svg/solid/angle-down.svg"), var(--color-nat-ci-hell, $colorNatFak), 2em);
+                        position: absolute;
+                        top: 50%;
+                        right: 10px;
+                        margin-right: 0;
+                    }
+                }
+            }
+            &.tf,
+            &.techfak,
+            &.grey {
+                summary {
+                    .marker {
+                        @include mask-icon(url("../svg/solid/angle-down.svg"), var(--color-tf-ci-hell, $colorTechFak), 2em);
+                        position: absolute;
+                        top: 50%;
+                        right: 10px;
+                        margin-right: 0;
+                    }
+                }
+            }
+            &.fau,
+            &.default {
+                summary {
+                    .marker {
+                        @include mask-icon(url("../svg/solid/angle-down.svg"), var(--color-zentral-dunkler, $colorDefaultDunkler), 2em);
+                        position: absolute;
+                        top: 50%;
+                        right: 10px;
+                        margin-right: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    .accordion-register {
+        padding-left: 0;
+        margin: 0 0 .5em;
+        border-top: 1px solid $border;
+        border-bottom: 1px solid $border;
+        li {
+            float: left;
+            list-style-type: none;
+            padding: .25em .5em;
+        }
+    }
+}
