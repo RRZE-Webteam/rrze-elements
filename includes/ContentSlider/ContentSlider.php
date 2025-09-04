@@ -81,7 +81,7 @@ class ContentSlider
 
             $cat  = sanitize_text_field($atts['category']);
             $tag  = sanitize_text_field($atts['tag']);
-            $num  = sanitize_text_field($atts['number']);
+            $num  = (int) sanitize_text_field($atts['number']);
             $link = filter_var($atts['link'], FILTER_VALIDATE_BOOLEAN);
             $format  = sanitize_text_field($atts['format']);
             $start = ($atts['start'] == 'pause' ? 'pause' : '');
@@ -93,7 +93,7 @@ class ContentSlider
                 'orderby'             => $orderby,
                 'ignore_sticky_posts' => 1
             ];
-            if (!empty($post->ID))  {
+            if (is_object($post) && !empty($post->ID))  {
                 $args ['post__not_in'] = [$post->ID];
             }
 
