@@ -91,9 +91,11 @@ class ContentSlider
                 'post_type'           => $type,
                 'posts_per_page'      => $num,
                 'orderby'             => $orderby,
-                'post__not_in'        => [ $post->ID ],
                 'ignore_sticky_posts' => 1
             ];
+            if (!empty($post->ID))  {
+                $args ['post__not_in'] = [$post->ID];
+            }
 
             if (strlen($id) > 0) {
                 $args['post__in'] = $ids;
