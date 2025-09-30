@@ -36,35 +36,32 @@ class ContentIndex {
     public function elementsEnablePageTax()
     {
 
-        if (!is_plugin_active('rrze-settings/rrze-settings.php')
-            && (!is_plugin_active_for_network('rrze-settings/rrze-settings.php'))) {
+        $existingTax = get_object_taxonomies('page');
+        $site_options = get_site_option('rrze_settings');
 
-            $existingTax = get_object_taxonomies('page');
-            $site_options = get_site_option('rrze_settings');
-
-            if (!isset($site_options->taxonomies->taxonomy_page_category) || $site_options->taxonomies->taxonomy_page_category != 1) {
-                if (!in_array($this->page_cat, $existingTax)) {
-                    $labels_cat = [];
-                    $args_cat = [
-                        'labels' => $labels_cat,
-                        'hierarchical' => true,
-                        'rewrite' => false,
-                    ];
-                    register_taxonomy($this->page_cat, 'page', $args_cat);
-                }
-            }
-
-            if (!isset($site_options->taxonomies->taxonomy_page_tag) || $site_options->taxonomies->taxonomy_page_tag != 1) {
-                if ( ! in_array($this->page_tag, $existingTax)) {
-                    $labels_tag = [];
-                    $args_tag   = [
-                        'labels'  => $labels_tag,
-                        'rewrite' => false,
-                    ];
-                    register_taxonomy($this->page_tag, 'page', $args_tag);
-                }
+        if (!$site_options || !isset($site_options->taxonomies->taxonomy_page_category) || $site_options->taxonomies->taxonomy_page_category != 1) {
+            if (!in_array($this->page_cat, $existingTax)) {
+                $labels_cat = [];
+                $args_cat = [
+                    'labels' => $labels_cat,
+                    'hierarchical' => true,
+                    'rewrite' => false,
+                ];
+                register_taxonomy($this->page_cat, 'page', $args_cat);
             }
         }
+
+        if (!$site_options || !isset($site_options->taxonomies->taxonomy_page_tag) || $site_options->taxonomies->taxonomy_page_tag != 1) {
+            if ( ! in_array($this->page_tag, $existingTax)) {
+                $labels_tag = [];
+                $args_tag   = [
+                    'labels'  => $labels_tag,
+                    'rewrite' => false,
+                ];
+                register_taxonomy($this->page_tag, 'page', $args_tag);
+            }
+        }
+
     }
 
     /**
