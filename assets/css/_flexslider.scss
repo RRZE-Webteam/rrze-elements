@@ -331,16 +331,16 @@ aside .content-slider.flexslider,
             &:hover, &:focus {
                 background-color:transparent;
                 border-bottom:none;
-                color:#1559A6;
+                color:#1457A3;
             }
             &.flex-prev:before {
-                @include mask-icon(url('../svg/solid/angle-left.svg'), #1559A6, 36px);
+                @include mask-icon(url('../svg/solid/angle-left.svg'), #1457A3, 36px);
                 position: relative;
                 left: -8px;
                 margin-right: 0;
             }
             &.flex-next:before  {
-                @include mask-icon(url('../svg/solid/angle-right.svg'), #1559A6, 36px);
+                @include mask-icon(url('../svg/solid/angle-right.svg'), #1457A3, 36px);
                 position: relative;
                 left: 8px;
                 margin-right: 0;
@@ -391,7 +391,7 @@ aside .content-slider.flexslider,
             }
 
             &:before {
-                @include mask-icon(url('../svg/solid/pause.svg'), #1559A6, 30px);
+                @include mask-icon(url('../svg/solid/pause.svg'), #1457A3, 30px);
             }
 
             &:hover, &:focus {
@@ -401,7 +401,7 @@ aside .content-slider.flexslider,
             }
 
             &.flex-play:before {
-                @include mask-icon(url('../svg/solid/play.svg'), #1559A6, 30px);
+                @include mask-icon(url('../svg/solid/play.svg'), #1457A3, 30px);
             }
         }
     }
@@ -472,9 +472,10 @@ aside .content-slider.flexslider,
                     background: rgba(0,0,0,0.7);
                 }
                 &.flex-active {
-                    background: #1559A6;
+                    background: #1457A3;
                     background: rgba(21,89,166,1);
                     cursor: default;
+                    color: #fff;
                 }
             }
         }
@@ -658,5 +659,10 @@ aside .content-slider.flexslider,
 .rrze-2019 .content-slider {
     figure:first-child {
         margin-top: 0;
+    }
+    .gallery-slider-thumbs {
+        .flex-control-nav.flex-control-paging {
+            color: #fff;
+        }
     }
 }

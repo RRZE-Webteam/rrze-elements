@@ -415,7 +415,7 @@ aside .content-slider.flexslider .flex-direction-nav .flex-next,
 .gallery-slider-thumbs .flex-direction-nav a:focus {
   background-color: transparent;
   border-bottom: none;
-  color: #1559A6;
+  color: #1457A3;
 }
 .content-slider .flex-direction-nav a.flex-prev:before,
 .gallery-slider .flex-direction-nav a.flex-prev:before,
@@ -434,7 +434,7 @@ aside .content-slider.flexslider .flex-direction-nav .flex-next,
   top: 2px;
   mask-image: url("../svg/solid/angle-left.svg");
   -webkit-mask-image: url("../svg/solid/angle-left.svg");
-  background-color: var(--icon-color, #1559A6);
+  background-color: var(--icon-color, #1457A3);
   width: var(--icon-size, 36px);
   height: var(--icon-size, 36px);
   position: relative;
@@ -458,7 +458,7 @@ aside .content-slider.flexslider .flex-direction-nav .flex-next,
   top: 2px;
   mask-image: url("../svg/solid/angle-right.svg");
   -webkit-mask-image: url("../svg/solid/angle-right.svg");
-  background-color: var(--icon-color, #1559A6);
+  background-color: var(--icon-color, #1457A3);
   width: var(--icon-size, 36px);
   height: var(--icon-size, 36px);
   position: relative;
@@ -547,7 +547,7 @@ aside .content-slider.flexslider .flex-direction-nav .flex-next,
   top: 2px;
   mask-image: url("../svg/solid/pause.svg");
   -webkit-mask-image: url("../svg/solid/pause.svg");
-  background-color: var(--icon-color, #1559A6);
+  background-color: var(--icon-color, #1457A3);
   width: var(--icon-size, 30px);
   height: var(--icon-size, 30px);
 }
@@ -577,7 +577,7 @@ aside .content-slider.flexslider .flex-direction-nav .flex-next,
   top: 2px;
   mask-image: url("../svg/solid/play.svg");
   -webkit-mask-image: url("../svg/solid/play.svg");
-  background-color: var(--icon-color, #1559A6);
+  background-color: var(--icon-color, #1457A3);
   width: var(--icon-size, 30px);
   height: var(--icon-size, 30px);
 }
@@ -681,9 +681,10 @@ aside .gallery-slider-thumbs .flex-control-nav li {
 .content-slider .flex-control-nav li a.flex-active,
 .gallery-slider .flex-control-nav li a.flex-active,
 .gallery-slider-thumbs .flex-control-nav li a.flex-active {
-  background: #1559A6;
+  background: #1457A3;
   background: rgb(21, 89, 166);
   cursor: default;
+  color: #fff;
 }
 .content-slider .flex-control-thumbs,
 .gallery-slider .flex-control-thumbs,
@@ -880,6 +881,9 @@ aside .gallery-slider-thumbs .flex-control-nav li {
 /* Fixes for RRZE-Theme */
 .rrze-2019 .content-slider figure:first-child {
   margin-top: 0;
+}
+.rrze-2019 .content-slider .gallery-slider-thumbs .flex-control-nav.flex-control-paging {
+  color: #fff;
 }
 
 /*!
